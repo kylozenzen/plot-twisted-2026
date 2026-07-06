@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <title>Plot Twisted</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,11 +29,13 @@
     --screen-glow:#dfe9f2; --ink:#f4e6cf;
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  html,body{height:100%}
+  button,.seat{-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent}
+  html{height:100%;background:#0e0708}
   body{
-    background:radial-gradient(120% 80% at 50% -10%, #2a1013 0%, var(--void-2) 42%, var(--void) 100%);
+    background:radial-gradient(120% 80% at 50% -10%, #2a1013 0%, var(--void-2) 42%, var(--void) 100%) var(--void);
+    background-attachment:fixed; background-repeat:no-repeat;
     color:var(--ink); font-family:'Barlow',system-ui,sans-serif;
-    overflow-x:hidden; -webkit-tap-highlight-color:transparent;
+    min-height:100dvh; overflow-x:hidden; overscroll-behavior:none; -webkit-tap-highlight-color:transparent;
   }
   .stage{min-height:100dvh;display:flex;align-items:center;justify-content:center;padding:20px;position:relative}
 
@@ -152,6 +154,12 @@
     border:1px solid var(--velvet-lit);color:#c99;border-radius:20px;padding:5px 12px;cursor:pointer;
     transition:border-color .15s,color .15s}
   .quit:hover{border-color:var(--neon);color:var(--neon)}
+  .pips{display:flex;gap:8px;justify-content:center;margin:-2px 0 12px}
+  .pip{width:24px;height:6px;border-radius:3px;background:#3a1a1e;transition:background .2s,box-shadow .2s}
+  .pip.now{background:var(--brass);box-shadow:0 0 8px rgba(228,179,76,.55)}
+  .pip.ok{background:#5ee08a}
+  .pip.miss{background:#a3434a}
+  .pbest{margin-top:6px;font-family:'Space Mono';font-size:11px;color:var(--brass)}
 
   .auditorium{border-radius:16px;padding:20px 16px 14px;
     background:radial-gradient(120% 120% at 50% 0%, #1c0a0c 0%, var(--void) 70%);
@@ -229,6 +237,7 @@
   .t-rating{text-align:center;margin:4px 0 10px}
   .t-rating .stars{font-size:22px;color:#c9962b;letter-spacing:3px}
   .t-rating .crit{font-family:'Barlow Condensed';font-weight:700;text-transform:uppercase;letter-spacing:.14em;font-size:16px;margin-top:2px}
+  .t-best{text-align:center;font-family:'Barlow Condensed';font-weight:700;letter-spacing:.12em;color:#8a5a12;background:rgba(228,179,76,.22);border:1px dashed #b9a488;border-radius:6px;padding:6px;margin:2px 0 8px;font-size:13px}
   .barcode{height:44px;margin:14px 0 4px;background-image:repeating-linear-gradient(90deg,
     #1c1310 0 2px, transparent 2px 4px, #1c1310 4px 5px, transparent 5px 9px, #1c1310 9px 12px, transparent 12px 14px);background-size:14px 100%}
   .t-serial{text-align:center;font-size:10px;letter-spacing:.2em;color:#7a6a55;margin-top:4px}
@@ -259,7 +268,7 @@
     #ident .reel{animation:none}
   }
   @media(max-width:480px){
-    .stage{padding:10px}
+    .stage{padding:max(10px,env(safe-area-inset-top)) max(10px,env(safe-area-inset-right)) max(10px,env(safe-area-inset-bottom)) max(10px,env(safe-area-inset-left))}
     .movie-screen,.subtitle,.answer-line,.actions{margin-left:10px;margin-right:10px}
     .auditorium{padding:16px 10px 12px}
     .seating{padding:6px 4px 2px}
@@ -296,7 +305,7 @@
       <button class="btn btn-ghost" onclick="showScreen('more')">More Showings</button>
       <button class="btn btn-ghost" onclick="showScreen('settings')">Settings</button>
     </div>
-    <div class="foot">A Nobody Creative Production · Standard Feature: 5 Questions</div>
+    <div class="foot">A Nobody Creative Production · 5 Questions · v0.1</div>
   </section>
 
   <!-- BOX OFFICE -->
@@ -305,7 +314,7 @@
     <h2 class="head">Pick Your Showing</h2>
     <p class="subhead">One ticket. Five questions. No refunds.</p>
     <div class="board" id="board"></div>
-    <div class="back-wrap"><button class="btn btn-ghost" onclick="goLobby()">← Back to Lobby</button></div>
+    <div class="back-wrap" style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap"><button class="btn btn-primary" onclick="surpriseMe()">🎲 Surprise Me</button><button class="btn btn-ghost" onclick="goLobby()">← Back to Lobby</button></div>
   </section>
 
   <!-- MORE SHOWINGS -->
@@ -341,7 +350,7 @@
         <button class="toggle" id="setLayout" onclick="toggleLayout()">QWERTY</button>
       </div>
       <div class="set-row">
-        <div><div class="set-name">Sound</div><div class="set-sub">Let the Speak button read clues aloud</div></div>
+        <div><div class="set-name">Sound</div><div class="set-sub">Sound effects & spoken clues</div></div>
         <button class="toggle" id="setSound" onclick="toggleSound()">ON</button>
       </div>
     </div>
@@ -358,11 +367,12 @@
         <button class="quit" onclick="quitGame()" aria-label="Exit to lobby">✕ EXIT</button>
       </div>
     </div>
+    <div class="pips" id="pips" aria-hidden="true"></div>
     <div class="auditorium">
       <div class="curtains l"></div>
       <div class="curtains r"></div>
       <div class="movie-screen" id="movieScreen"><div class="clue" id="clue">—</div></div>
-      <div class="subtitle" id="subtitle"></div>
+      <div class="subtitle" id="subtitle" aria-live="polite"></div>
       <div class="answer-line" id="answerLine">
         <span class="caret-lbl">YOUR&nbsp;ANSWER</span>
         <span class="typed" id="typed"><span class="cur">▊</span></span>
@@ -421,17 +431,31 @@ const CAT_ORDER = ["Family","Superhero","SciFi","Fantasy","EmotionalDamage","Str
 /* ============ SETTINGS ============ */
 const SETTINGS = { layout:'qwerty', sound:true };
 const LAYOUTS = { qwerty:["QWERTYUIOP","ASDFGHJKL","ZXCVBNM"], abc:["ABCDEFGHI","JKLMNOPQR","STUVWXYZ"] };
-function toggleLayout(){ SETTINGS.layout = SETTINGS.layout==='qwerty'?'abc':'qwerty'; document.getElementById('setLayout').textContent = SETTINGS.layout==='qwerty'?'QWERTY':'A\u2013Z'; }
-function toggleSound(){ SETTINGS.sound=!SETTINGS.sound; const b=document.getElementById('setSound'); b.textContent=SETTINGS.sound?'ON':'OFF'; b.classList.toggle('off',!SETTINGS.sound); }
+const LS={get(k,d){try{const v=localStorage.getItem(k);return v==null?d:JSON.parse(v);}catch(_){return d;}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(_){}}};
+Object.assign(SETTINGS, LS.get('pt_settings',{}));
+let BEST = LS.get('pt_best',{});
+function saveSettings(){ LS.set('pt_settings', SETTINGS); }
+function toggleLayout(){ SETTINGS.layout = SETTINGS.layout==='qwerty'?'abc':'qwerty'; saveSettings(); document.getElementById('setLayout').textContent = SETTINGS.layout==='qwerty'?'QWERTY':'A\u2013Z'; }
+function toggleSound(){ SETTINGS.sound=!SETTINGS.sound; saveSettings(); const b=document.getElementById('setSound'); b.textContent=SETTINGS.sound?'ON':'OFF'; b.classList.toggle('off',!SETTINGS.sound); }
 
 /* ============ STATE ============ */
 const ROUND_SIZE = 5;
-const S = { cat:null, qs:[], i:0, score:0, correct:0, typed:"", hintUsed:false, locked:false };
+const S = { cat:null, qs:[], i:0, score:0, correct:0, typed:"", hintUsed:false, locked:false, results:[] };
 
 /* ============ HELPERS ============ */
 function esc(s){ return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c])); }
 function norm(s){ return s.toLowerCase().replace(/[^a-z0-9]/g,""); }
 function stripArticle(s){ return s.replace(/^(the|a|an)/,""); }
+let actx;
+function tone(f,d,t,v){ if(!SETTINGS.sound)return; try{ actx=actx||new (window.AudioContext||window.webkitAudioContext)(); if(actx.state==='suspended')actx.resume(); const o=actx.createOscillator(),g=actx.createGain(); o.type=t||'sine'; o.frequency.value=f; o.connect(g); g.connect(actx.destination); const s=actx.currentTime; g.gain.setValueAtTime(v||0.05,s); g.gain.exponentialRampToValueAtTime(0.0001,s+d); o.start(s); o.stop(s+d);}catch(_){}}
+function sfxType(){ tone(300,0.03,'square',0.02); }
+function sfxCorrect(){ tone(660,0.09,'sine',0.06); setTimeout(()=>tone(990,0.13,'sine',0.06),85); }
+function sfxWrong(){ tone(150,0.16,'sawtooth',0.05); }
+function buzz(p){ try{ navigator.vibrate&&navigator.vibrate(p); }catch(_){} }
+function buildPips(){ const w=document.getElementById('pips'); if(!w)return; w.innerHTML=S.qs.map((_,i)=>'<span class="pip" data-i="'+i+'"></span>').join(''); }
+function renderPips(){ const w=document.getElementById('pips'); if(!w)return; [...w.children].forEach((el,i)=>{ el.className='pip'+(S.results[i]===true?' ok':S.results[i]===false?' miss':'')+(i===S.i?' now':''); }); }
+function surpriseMe(){ startRound(CAT_ORDER[Math.random()*CAT_ORDER.length|0]); }
+function applySettingsUI(){ const a=document.getElementById('setLayout'); if(a)a.textContent=SETTINGS.layout==='qwerty'?'QWERTY':'A\u2013Z'; const b=document.getElementById('setSound'); if(b){ b.textContent=SETTINGS.sound?'ON':'OFF'; b.classList.toggle('off',!SETTINGS.sound);} }
 
 /* ============ NAV ============ */
 function showScreen(id){ document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active')); document.getElementById(id).classList.add('active'); window.scrollTo(0,0); }
@@ -452,7 +476,7 @@ function renderBoard(){
       <span class="flick" aria-hidden="true">${m.flick}</span>
       <h3>${esc(m.name)}</h3>
       <p>${esc(m.blurb)}</p>
-      <div class="runtime">&nbsp;\u00b7 ${ROUND_SIZE} of ${n}</div>
+      <div class="runtime">&nbsp;\u00b7 ${ROUND_SIZE} questions</div>${BEST[key]?`<div class="pbest">★ Best ${BEST[key]}</div>`:''}
     </button>`;
   }).join('');
 }
@@ -462,10 +486,10 @@ function shuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){const j=Math.ran
 function startRound(key){
   S.cat = Object.assign({key}, CAT_META[key]);
   S.qs = shuffle(QUESTIONS[key]||[]).slice(0,ROUND_SIZE);
-  S.i=0; S.score=0; S.correct=0;
+  S.i=0; S.score=0; S.correct=0; S.results=new Array(S.qs.length).fill(null);
   document.getElementById('hudCat').textContent=S.cat.name;
   document.getElementById('hudTotal').textContent=S.qs.length;
-  buildSeats(); showScreen('theater'); loadQuestion();
+  buildSeats(); buildPips(); showScreen('theater'); loadQuestion();
 }
 function loadQuestion(){
   const q=S.qs[S.i];
@@ -477,7 +501,7 @@ function loadQuestion(){
   document.getElementById('hintBtn').disabled=false;
   document.getElementById('hudQ').textContent=S.i+1;
   document.getElementById('hudScore').textContent=S.score;
-  renderTyped();
+  renderPips(); renderTyped();
 }
 
 /* ============ SEATS ============ */
@@ -494,7 +518,7 @@ function buildSeats(){
   wrap.innerHTML=html;
 }
 function flashSeat(key){ const el=document.querySelector(`.seat[data-key="${key}"]`); if(!el)return; el.classList.add('hit'); setTimeout(()=>el.classList.remove('hit'),110); }
-function typeChar(ch){ if(S.locked)return; if(S.typed.length>=40)return; S.typed+=ch; flashSeat(ch===" "?" ":ch.toUpperCase()); renderTyped(); }
+function typeChar(ch){ if(S.locked)return; if(S.typed.length>=40)return; S.typed+=ch; sfxType(); flashSeat(ch===" "?" ":ch.toUpperCase()); renderTyped(); }
 function backspace(){ if(S.locked)return; S.typed=S.typed.slice(0,-1); flashSeat("Backspace"); renderTyped(); }
 function renderTyped(){ document.getElementById('typed').innerHTML=esc(S.typed)+`<span class="cur">\u258a</span>`; }
 
@@ -534,14 +558,14 @@ function isMatch(guess,pool){
 /* ============ ANSWER FLOW ============ */
 function submitAnswer(){ if(S.locked)return; const guess=norm(S.typed); if(!guess){bump();return;} const q=S.qs[S.i]; if(isMatch(guess,buildPool(q))) win(q); else wrong(); }
 function win(q){
-  S.locked=true; const gained=S.hintUsed?50:100; S.score+=gained; S.correct++;
+  S.locked=true; const gained=S.hintUsed?50:100; S.score+=gained; S.correct++; S.results[S.i]=true; sfxCorrect(); buzz(20); renderPips();
   const ms=document.getElementById('movieScreen'); ms.classList.add('correct'); ms.innerHTML='<div class="verdict">CORRECT!</div>';
   const sub=document.getElementById('subtitle'); sub.classList.remove('wrong');
   sub.innerHTML=`<span class="lbl">+${gained}</span>${esc(q.title)}`;
   document.getElementById('hudScore').textContent=S.score;
   setTimeout(next,1150);
 }
-function wrong(){
+function wrong(){ sfxWrong(); buzz([0,30,40,30]);
   const line=document.getElementById('answerLine'); line.classList.add('shake'); setTimeout(()=>line.classList.remove('shake'),350);
   const sub=document.getElementById('subtitle'); sub.classList.add('wrong'); sub.innerHTML=`<span class="lbl">cut!</span>Not that one. Roll it again.`;
   S.typed=""; renderTyped();
@@ -568,6 +592,7 @@ function skipQuestion(){
   if(S.locked)return; S.locked=true; const q=S.qs[S.i];
   const sub=document.getElementById('subtitle'); sub.classList.remove('wrong');
   sub.innerHTML=`<span class="lbl">the answer was</span>${esc(q.title)}`;
+  S.results[S.i]=false; renderPips();
   setTimeout(next,1100);
 }
 function next(){ if('speechSynthesis' in window) speechSynthesis.cancel(); S.i++; if(S.i>=S.qs.length) endRound(); else loadQuestion(); }
@@ -578,6 +603,7 @@ function ratingFor(c){ switch(c){ case 5:return{stars:"\u2605\u2605\u2605\u2605\
 function serial(){ return Array.from({length:12},()=>Math.random().toString(36)[2]||"0").join("").toUpperCase(); }
 function endRound(){
   const r=ratingFor(S.correct); const now=new Date();
+  const bkey=S.cat.key, prev=BEST[bkey]||0, isBest=S.score>prev&&S.score>0; if(isBest){ BEST[bkey]=S.score; LS.set('pt_best',BEST); }
   const when=now.toLocaleDateString(undefined,{month:'short',day:'numeric',year:'numeric'})+" \u00b7 "+now.toLocaleTimeString(undefined,{hour:'numeric',minute:'2-digit'});
   document.getElementById('ticket').innerHTML=`
     <div class="t-brand"><div class="cinema">PLOT TWISTED CINEMAS</div><div class="admit">ADMIT ONE</div></div>
@@ -586,6 +612,7 @@ function endRound(){
     <div class="t-row"><span class="k">SEATS PLAYED</span><span class="v">${S.correct}/${S.qs.length} correct</span></div>
     <div class="t-score"><div class="num">${S.score}</div><div class="lbl">FINAL SCORE</div></div>
     <div class="t-rating"><div class="stars">${r.stars}</div><div class="crit">${r.crit}</div></div>
+    ${isBest?'<div class="t-best">★ NEW HIGH SCORE ★</div>':''}
     <div class="barcode" aria-hidden="true"></div>
     <div class="t-serial">NO. ${serial()} \u00b7 NOBODY CREATIVE</div>`;
   showScreen('receipt');
@@ -605,25 +632,38 @@ async function shareScoreCard(){
     toast("Score card saved");
   }catch(err){ toast("Couldn't make image"); }
 }
+function roundRect(x,X,Y,w,h,r){ x.beginPath(); x.moveTo(X+r,Y); x.arcTo(X+w,Y,X+w,Y+h,r); x.arcTo(X+w,Y+h,X,Y+h,r); x.arcTo(X,Y+h,X,Y,r); x.arcTo(X,Y,X+w,Y,r); x.closePath(); }
+function cdot(x,X,Y,r){ x.beginPath(); x.arc(X,Y,r,0,7); x.fill(); }
 async function renderCard(){
-  if(document.fonts){ try{ await document.fonts.ready; }catch(_){}}
-  const W=1080,H=1350; const c=document.createElement('canvas'); c.width=W; c.height=H; const x=c.getContext('2d');
+  if(document.fonts){ try{ await document.fonts.load('92px "Bungee"'); await document.fonts.load('700 210px "Barlow Condensed"'); await document.fonts.load('700 34px "Barlow Condensed"'); await document.fonts.load('italic 30px "Barlow"'); await document.fonts.load('500 40px "Space Mono"'); await document.fonts.ready; }catch(_){} }
+  const W=1080,H=1350,cx=W/2,r=ratingFor(S.correct);
+  const c=document.createElement('canvas'); c.width=W; c.height=H; const x=c.getContext('2d');
   const g=x.createLinearGradient(0,0,0,H); g.addColorStop(0,'#2a1013'); g.addColorStop(.5,'#160b0d'); g.addColorStop(1,'#0e0708');
   x.fillStyle=g; x.fillRect(0,0,W,H);
-  x.strokeStyle='#e4b34c'; x.lineWidth=8; x.strokeRect(40,40,W-80,H-80);
-  x.fillStyle='#e4b34c'; for(let i=0;i<14;i++){ x.beginPath(); x.arc(90+i*(W-180)/13,70,7,0,7); x.fill(); }
-  const cx=W/2, r=ratingFor(S.correct); x.textAlign='center';
-  x.fillStyle='#e4b34c'; x.font='600 32px "Barlow Condensed",sans-serif'; x.fillText('★  NOW SHOWING  ★', cx,172);
-  x.fillStyle='#fcebc0'; x.font='92px "Bungee",sans-serif'; x.fillText('PLOT', cx,300);
-  x.fillStyle='#ff4d8d'; x.fillText('TWISTED', cx,404);
-  x.fillStyle='#c9a978'; x.font='500 36px "Barlow",sans-serif'; x.fillText('Showing: '+S.cat.name, cx,502);
-  x.fillStyle='#fcebc0'; x.font='700 210px "Barlow Condensed",sans-serif'; x.fillText(String(S.score), cx,772);
-  x.fillStyle='#a97f2e'; x.font='600 30px "Barlow Condensed",sans-serif'; x.fillText('FINAL SCORE', cx,822);
-  x.fillStyle='#f4e6cf'; x.font='500 42px "Space Mono",monospace'; x.fillText(S.correct+' / '+S.qs.length+' correct', cx,912);
-  x.fillStyle='#e4b34c'; x.font='72px "Barlow",sans-serif'; x.fillText(r.stars, cx,1012);
-  x.fillStyle='#fcebc0'; x.font='700 48px "Barlow Condensed",sans-serif'; x.fillText(r.crit.toUpperCase(), cx,1084);
-  x.fillStyle='#c9a978'; x.font='italic 30px "Barlow",sans-serif'; x.fillText('Trust nobody. Especially the hints.', cx,1212);
-  x.fillStyle='#6b4c3a'; x.font='600 24px "Barlow Condensed",sans-serif'; x.fillText('A NOBODY CREATIVE PRODUCTION', cx,1282);
+  x.strokeStyle='#e4b34c'; x.lineWidth=8; roundRect(x,40,40,W-80,H-80,26); x.stroke();
+  x.textAlign='center';
+  x.fillStyle='#fcebc0'; for(let i=0;i<15;i++){ const bx=95+i*(W-190)/14; cdot(x,bx,96,8); cdot(x,bx,H-96,8); }
+  x.fillStyle='#e4b34c'; x.font='700 34px "Barlow Condensed",sans-serif'; x.fillText('★  NOW SHOWING  ★', cx,178);
+  x.font='92px "Bungee",sans-serif';
+  x.fillStyle='#fcebc0'; x.fillText('PLOT', cx,300);
+  x.save(); x.shadowColor='rgba(255,77,141,.75)'; x.shadowBlur=40; x.fillStyle='#ff4d8d'; x.fillText('TWISTED', cx,406); x.restore();
+  const px=110,pw=W-220,py=470,ph=420;
+  const sg=x.createLinearGradient(0,py,0,py+ph); sg.addColorStop(0,'#0a0f14'); sg.addColorStop(1,'#050708');
+  x.fillStyle=sg; roundRect(x,px,py,pw,ph,18); x.fill();
+  x.strokeStyle='#33404a'; x.lineWidth=3; roundRect(x,px,py,pw,ph,18); x.stroke();
+  x.fillStyle='#c9a978'; x.font='500 36px "Barlow",sans-serif'; x.fillText('Showing: '+S.cat.name, cx,py+72);
+  x.fillStyle='#fcebc0'; x.font='700 200px "Barlow Condensed",sans-serif'; x.fillText(String(S.score), cx,py+262);
+  x.fillStyle='#a97f2e'; x.font='700 30px "Barlow Condensed",sans-serif'; x.fillText('FINAL SCORE', cx,py+312);
+  x.fillStyle='#f4e6cf'; x.font='500 40px "Space Mono",monospace'; x.fillText(S.correct+' / '+S.qs.length+' correct', cx,py+382);
+  x.fillStyle='#e4b34c'; x.font='74px "Barlow",sans-serif'; x.fillText(r.stars, cx,1005);
+  x.fillStyle='#fcebc0'; x.font='700 50px "Barlow Condensed",sans-serif'; x.fillText(r.crit.toUpperCase(), cx,1076);
+  const n=S.results.length||5,sw=70,gap=16,tot=n*sw+(n-1)*gap,sx=cx-tot/2,sy=1120;
+  for(let i=0;i<n;i++){ const bx=sx+i*(sw+gap),res=S.results[i];
+    x.fillStyle = res===true?'#5ee08a':res===false?'#a3434a':'#7a1e22';
+    roundRect(x,bx,sy,sw,60,12); x.fill();
+    x.fillStyle='#2c0a0d'; roundRect(x,bx,sy+60,sw,8,3); x.fill(); }
+  x.fillStyle='#c9a978'; x.font='italic 30px "Barlow",sans-serif'; x.fillText('Trust nobody. Especially the hints.', cx,1258);
+  x.fillStyle='#6b4c3a'; x.font='700 24px "Barlow Condensed",sans-serif'; x.fillText('A NOBODY CREATIVE PRODUCTION', cx,1300);
   return await new Promise(res=>c.toBlob(res,'image/png'));
 }
 function fallbackCopy(t){ navigator.clipboard?.writeText(t).then(()=>toast("Score card copied"),()=>toast("Copy failed")); }
@@ -645,6 +685,7 @@ document.addEventListener('keydown',e=>{
 
 /* ============ BOOT ============ */
 renderBoard();
+applySettingsUI();
 if('serviceWorker' in navigator){ window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{})); }
 document.getElementById('exitOverlay').addEventListener('click',e=>{ if(e.target.id==='exitOverlay') closeExit(); });
 document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeExit(); });
