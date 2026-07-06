@@ -261,6 +261,27 @@
   .exit-card p{color:#c9a978;font-size:14.5px;line-height:1.45;margin-bottom:22px}
   .exit-card .row{display:flex;flex-direction:column;gap:10px}
   .exit-card .btn{width:100%}
+  a.btn{display:inline-flex;align-items:center;justify-content:center;text-decoration:none}
+  .about{max-width:480px;margin:18px auto 0;border:1px solid var(--velvet-lit);border-radius:12px;background:linear-gradient(180deg,#1a070a,#120607);padding:20px}
+  .about-h{font-family:'Barlow Condensed';font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--brass);font-size:18px;margin-bottom:8px}
+  .about p{color:#c9a978;font-size:14px;line-height:1.5;margin-bottom:10px}
+  .about-cta{display:flex;flex-direction:column;gap:10px;margin-top:14px}
+  .about-cta .btn{width:100%}
+  .about-foot{margin-top:14px;text-align:center;font-family:'Barlow Condensed';letter-spacing:.28em;text-transform:uppercase;font-size:10px;color:#6b4c3a}
+  .fb-form,.fb-done{max-width:480px;margin:0 auto}
+  .fb-lab{display:block;font-family:'Barlow Condensed';font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:13px;color:var(--brass);margin:14px 0 6px}
+  .fb-in{width:100%;background:#100607;border:2px solid var(--velvet-lit);border-radius:9px;color:var(--ink);font-family:'Barlow',sans-serif;font-size:16px;padding:12px 14px}
+  .fb-in:focus{outline:none;border-color:var(--brass)}
+  .hp{position:absolute;left:-9999px}
+  .fb-ticket{background:#f3ead6;color:#1c1310;border-radius:10px;padding:22px;text-align:center;font-family:'Space Mono';margin-bottom:14px;box-shadow:0 12px 30px rgba(0,0,0,.5)}
+  .fb-ticket-h{font-weight:700;letter-spacing:.14em;font-size:16px;margin-bottom:8px}
+  .fb-ticket p{font-size:13px;line-height:1.5;color:#5a4a38}
+  .install-bar{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:75;display:none;align-items:center;gap:10px;background:linear-gradient(180deg,#20090b,#120607);border:2px solid var(--brass);border-radius:14px;padding:12px 14px;box-shadow:0 12px 30px rgba(0,0,0,.5)}
+  .install-bar.show{display:flex;animation:fade .3s ease both}
+  .ib-ic{font-size:22px}
+  .ib-txt{flex:1;font-size:13.5px;color:var(--ink);line-height:1.3}
+  .ib-btn{font-family:'Barlow Condensed';font-weight:700;text-transform:uppercase;letter-spacing:.08em;background:linear-gradient(180deg,var(--brass),var(--brass-dim));color:#2a1206;border:none;border-radius:8px;padding:9px 16px;cursor:pointer;font-size:14px}
+  .ib-x{background:transparent;border:none;color:#9a7d6a;font-size:16px;cursor:pointer;padding:4px 6px}
 
   @media(prefers-reduced-motion:reduce){
     *{animation-duration:.01ms!important;transition-duration:.01ms!important}
@@ -354,7 +375,50 @@
         <button class="toggle" id="setSound" onclick="toggleSound()">ON</button>
       </div>
     </div>
+    <div class="about">
+      <div class="about-h">About the Show</div>
+      <p>Plot Twisted is a one-person production. I'm Ben — a social media marketer between full-time roles who started building things and accidentally shipped a movie trivia game.</p>
+      <p>It's free while the theater's small. If enough people show up and the projector bills come due, there may be a small ticket price down the line to keep the lights on.</p>
+      <div class="about-cta">
+        <a class="btn btn-primary" href="https://bencampbell.netlify.app/" target="_blank" rel="noopener noreferrer">See My Work →</a>
+        <button class="btn btn-ghost" onclick="showScreen('feedback')">🎟 Feedback & Clue Box</button>
+      </div>
+      <div class="about-foot">A Nobody Creative Production</div>
+    </div>
     <div class="back-wrap"><button class="btn btn-ghost" onclick="goLobby()">← Back to Lobby</button></div>
+  </section>
+
+  <!-- FEEDBACK -->
+  <section class="screen" id="feedback">
+    <div class="eyebrow">Feedback & Clue Box</div>
+    <h2 class="head">🎟 Drop a Note</h2>
+    <p class="subhead">Bugs, bad answers, or a clue you think is funnier.</p>
+    <form class="fb-form" name="feedback" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="fbForm" onsubmit="return submitFeedback(event)">
+      <input type="hidden" name="form-name" value="feedback">
+      <p class="hp"><label>Leave blank: <input name="bot-field"></label></p>
+      <label class="fb-lab">What's this about?</label>
+      <select class="fb-in" name="type" id="fbType" onchange="onFbType()">
+        <option>Bug</option><option>Wrong answer</option><option>Suggestion</option><option>Submit a clue</option><option>Other</option>
+      </select>
+      <div id="fbClue" hidden>
+        <label class="fb-lab">Category</label>
+        <select class="fb-in" name="clue_category"><option>Family</option><option>Superhero</option><option>SciFi</option><option>Fantasy</option><option>Emotional Damage</option><option>Streaming Hits</option></select>
+        <label class="fb-lab">The movie</label>
+        <input class="fb-in" name="clue_movie" placeholder="e.g. The Matrix Reloaded">
+        <label class="fb-lab">Your one-line clue</label>
+        <textarea class="fb-in" name="clue_text" rows="2" placeholder="Make it unhinged."></textarea>
+      </div>
+      <label class="fb-lab">Message</label>
+      <textarea class="fb-in" name="message" rows="3" placeholder="What's on your mind?"></textarea>
+      <label class="fb-lab">Contact (optional)</label>
+      <input class="fb-in" name="contact" placeholder="email or handle, if you want a reply">
+      <button class="btn btn-primary" type="submit" style="width:100%;margin-top:16px">Send It In →</button>
+    </form>
+    <div class="fb-done" id="fbDone" hidden>
+      <div class="fb-ticket"><div class="fb-ticket-h">🎟️ TICKET RECEIVED</div><p id="fbDoneMsg"></p></div>
+      <button class="btn btn-ghost" onclick="fbReset()" style="width:100%">Submit Another</button>
+    </div>
+    <div class="back-wrap"><button class="btn btn-ghost" onclick="showScreen('settings')">← Back to Settings</button></div>
   </section>
 
   <!-- THEATER -->
@@ -411,6 +475,13 @@
       <button class="btn btn-ghost" onclick="closeExit()">Stay for the show</button>
     </div>
   </div>
+</div>
+
+<div class="install-bar" id="installBar">
+  <span class="ib-ic" aria-hidden="true">🎬</span>
+  <span id="installText" class="ib-txt"></span>
+  <button id="installBtn" class="ib-btn" onclick="doInstall()">Install</button>
+  <button class="ib-x" onclick="dismissInstall()" aria-label="Dismiss">✕</button>
 </div>
 
 <div class="toast" id="toast"></div>
@@ -539,6 +610,7 @@ function variants(t){
 function buildPool(q){
   const out=new Set();
   variants(q.title).forEach(v=>out.add(v));
+  variants(baseTitle(words(q.title))).forEach(v=>out.add(v));
   const seg=q.title.split(/[:(]/)[0].trim();
   if(seg && seg.length>3 && seg!==q.title) variants(seg).forEach(v=>out.add(v));
   return [...out];
@@ -556,7 +628,10 @@ function isMatch(guess,pool){
 }
 
 /* ============ ANSWER FLOW ============ */
-function submitAnswer(){ if(S.locked)return; const guess=norm(S.typed); if(!guess){bump();return;} const q=S.qs[S.i]; if(isMatch(guess,buildPool(q))) win(q); else wrong(); }
+function words(t){ return t.toLowerCase().replace(/[^a-z0-9 ]/g,' ').replace(/\s+/g,' ').trim(); }
+function baseTitle(w){ let s=w,p; do{ p=s; s=s.replace(/\s+(part|volume|vol|chapter|episode|ch|pt)\s+(\d+|[ivxlc]+)$/,'').trim(); s=s.replace(/\s+\d+$/,'').trim(); s=s.replace(/\s+(ii|iii|iv|v|vi|vii|viii|ix|x)$/,'').trim(); }while(s!==p&&s.length>0); return s; }
+function isPrefixMatch(g,a){ if(g.length<5) return false; if(g===a) return true; if(a.startsWith(g+' ')) return true; const b=baseTitle(a); if(b.length>=5 && (g===b || b.startsWith(g+' '))) return true; return false; }
+function submitAnswer(){ if(S.locked)return; const raw=S.typed.trim(); if(!norm(raw)){bump();return;} const q=S.qs[S.i]; if(isMatch(norm(raw),buildPool(q)) || isPrefixMatch(words(raw),words(q.title))) win(q); else wrong(); }
 function win(q){
   S.locked=true; const gained=S.hintUsed?50:100; S.score+=gained; S.correct++; S.results[S.i]=true; sfxCorrect(); buzz(20); renderPips();
   const ms=document.getElementById('movieScreen'); ms.classList.add('correct'); ms.innerHTML='<div class="verdict">CORRECT!</div>';
@@ -684,8 +759,21 @@ document.addEventListener('keydown',e=>{
 });
 
 /* ============ BOOT ============ */
+function onFbType(){ document.getElementById('fbClue').hidden = (document.getElementById('fbType').value!=='Submit a clue'); }
+function submitFeedback(e){ e.preventDefault(); const form=document.getElementById('fbForm'); const body=new URLSearchParams(new FormData(form)).toString();
+  fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body}).then(r=>{ if(!r.ok) throw 0; fbSuccess(false); }).catch(()=>fbSuccess(true)); return false; }
+function fbSuccess(preview){ document.getElementById('fbForm').style.display='none'; document.getElementById('fbDone').hidden=false; document.getElementById('fbDoneMsg').textContent = preview ? 'Saved. This sends for real once the game is live on Netlify.' : 'Thanks for helping run the theater. I read every one.'; }
+function fbReset(){ const f=document.getElementById('fbForm'); f.reset(); f.style.display=''; document.getElementById('fbDone').hidden=true; document.getElementById('fbClue').hidden=true; }
+let deferredPrompt=null;
+window.addEventListener('beforeinstallprompt',e=>{ e.preventDefault(); deferredPrompt=e; maybeShowInstall('android'); });
+function isStandalone(){ try{ return matchMedia('(display-mode: standalone)').matches || navigator.standalone===true; }catch(_){ return false; } }
+function maybeShowInstall(kind){ if(isStandalone()||LS.get('pt_install_dismissed',false)) return; const bar=document.getElementById('installBar'),txt=document.getElementById('installText'),btn=document.getElementById('installBtn'); if(kind==='android'){ txt.textContent='Add Plot Twisted to your home screen'; btn.style.display=''; } else { txt.innerHTML='Install: tap Share, then “Add to Home Screen”'; btn.style.display='none'; } bar.classList.add('show'); }
+function doInstall(){ if(deferredPrompt){ deferredPrompt.prompt(); deferredPrompt.userChoice.finally(()=>{ deferredPrompt=null; dismissInstall(); }); } }
+function dismissInstall(){ document.getElementById('installBar').classList.remove('show'); LS.set('pt_install_dismissed',true); }
+function initInstall(){ if(isStandalone()) return; const ua=navigator.userAgent||''; const iOS=/iphone|ipad|ipod/i.test(ua)&&!/crios|fxios/i.test(ua); if(iOS) setTimeout(()=>maybeShowInstall('ios'),1600); }
 renderBoard();
 applySettingsUI();
+initInstall();
 if('serviceWorker' in navigator){ window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{})); }
 document.getElementById('exitOverlay').addEventListener('click',e=>{ if(e.target.id==='exitOverlay') closeExit(); });
 document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeExit(); });
