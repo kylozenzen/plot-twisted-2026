@@ -1,6 +1,6 @@
-const CACHE = 'plot-twisted-v8';
+const CACHE = 'plot-twisted-v9';
 const ASSETS = [
-  './', './index.html', './manifest.webmanifest',
+  './', './landing.html', './landing.css', './landing.js', './index.html', './manifest.webmanifest',
   './icon-192.png', './icon-512.png', './icon-maskable-512.png',
   './apple-touch-icon-180.png', './og-image.png'
 ];
@@ -21,6 +21,8 @@ self.addEventListener('fetch', e => {
       const copy = res.clone();
       caches.open(CACHE).then(c => { try { c.put(req, copy); } catch (_) {} });
       return res;
-    }).catch(() => caches.match('./index.html')))
+    }).catch(() => req.mode === 'navigate'
+      ? caches.match('./landing.html').then(page => page || caches.match('./index.html'))
+      : undefined))
   );
 });
