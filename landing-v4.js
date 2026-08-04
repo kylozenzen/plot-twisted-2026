@@ -130,10 +130,15 @@ installButton?.addEventListener("click", async () => {
     deferredInstallPrompt.prompt();
     const choice = await deferredInstallPrompt.userChoice;
     deferredInstallPrompt = null;
-    setInstallStatus(choice.outcome === "accepted"
-      ? "Installation started. Your ticket stub is becoming an app icon."
-      : "No problem—the game still works perfectly in your browser.");
-    updateInstallUI();
+
+    if (choice.outcome === "accepted") {
+      installButton.textContent = "Installation requested";
+      installButton.disabled = true;
+      setInstallStatus("Installation started. Your ticket stub is becoming an app icon.");
+    } else {
+      updateInstallUI();
+      setInstallStatus("No problem—the game still works perfectly in your browser.");
+    }
     return;
   }
 
