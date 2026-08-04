@@ -1,6 +1,6 @@
 const clues = [
-  { category: "SciFi", clue: "Cubicle guy takes pill and discovers reality is badly coded.", answer: "The Matrix" },
-  { category: "Superhero", clue: "Billionaire battles whip electrician while slowly becoming a toxic element.", answer: "Iron Man 2" },
+  { category: "Superhero", clue: "Billionaire builds a weapon in a cave, rebrands himself as the weapon, and calls it personal growth.", answer: "Iron Man" },
+  { category: "SciFi", clue: "Office worker learns reality is a screensaver and joins a leather-based resistance.", answer: "The Matrix" },
   { category: "Family", clue: "Magical family delays therapy until the house files a formal complaint.", answer: "Encanto" },
   { category: "Streaming Hits", clue: "Chef tries to heal trauma with sandwiches, yelling, and stainless steel.", answer: "The Bear" },
   { category: "Fantasy", clue: "Tiny hiking club returns cursed jewelry to its manufacturer.", answer: "The Lord of the Rings" }
