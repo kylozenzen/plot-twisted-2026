@@ -1,3 +1,24 @@
+const PLAYED_KEY = "pt_has_played";
+const HOME_BYPASS_KEY = "pt_home_bypass";
+
+(function routeReturningPlayers() {
+  try {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("home") === "1") {
+      sessionStorage.setItem(HOME_BYPASS_KEY, "1");
+      params.delete("home");
+      const query = params.toString();
+      const cleanUrl = `${window.location.pathname}${query ? `?${query}` : ""}${window.location.hash}`;
+      window.history.replaceState({}, "", cleanUrl);
+    }
+
+    const hasPlayed = localStorage.getItem(PLAYED_KEY) === "true";
+    const homeBypass = sessionStorage.getItem(HOME_BYPASS_KEY) === "1";
+    const standalone = window.matchMedia?.("(display-mode: standalone)").matches || window.navigator.standalone === true;
+    if (hasPlayed && !homeBypass && !standalone) window.location.replace("./play");
+  } catch (_) {}
+})();
+
 const clues = [
   { category: "Superhero", clue: "Billionaire builds a weapon in a cave, rebrands himself as the weapon, and calls it personal growth.", answer: "Iron Man" },
   { category: "SciFi", clue: "Office worker learns reality is a screensaver and joins a leather-based resistance.", answer: "The Matrix" },
@@ -20,6 +41,35 @@ const gamePreview = document.querySelector("[data-game-link]");
 const installButton = document.getElementById("installAppButton");
 const installStatus = document.getElementById("installStatus");
 const installCards = [...document.querySelectorAll("[data-install-platform]")];
+
+function rememberLandingForThisSession() {
+  try { sessionStorage.setItem(HOME_BYPASS_KEY, "1"); } catch (_) {}
+}
+
+document.querySelectorAll(".game-link").forEach((link) => {
+  link.addEventListener("click", rememberLandingForThisSession);
+});
+
+function makeLandingBetaChip(label) {
+  const chip = document.createElement("span");
+  chip.className = "landing-beta-chip";
+  chip.textContent = label;
+  return chip;
+}
+
+function addLandingBetaLabels() {
+  const navLogo = document.querySelector(".site-nav .nav-logo");
+  if (navLogo && !navLogo.querySelector(".landing-beta-chip")) navLogo.appendChild(makeLandingBetaChip("Beta"));
+
+  const heroEyebrow = document.querySelector(".hero-brandline .eyebrow");
+  if (heroEyebrow && !heroEyebrow.querySelector(".landing-beta-chip")) heroEyebrow.appendChild(makeLandingBetaChip("Now in beta"));
+
+  const installLabel = document.querySelector(".install-intro > .section-label");
+  if (installLabel && !installLabel.querySelector(".landing-beta-chip")) installLabel.appendChild(makeLandingBetaChip("Beta build"));
+
+  const cta = document.querySelector(".cta-inner");
+  if (cta && !cta.querySelector(":scope > .landing-beta-chip")) cta.prepend(makeLandingBetaChip("Now in beta"));
+}
 
 function showClue() {
   const current = clues[clueIndex];
@@ -48,6 +98,7 @@ nextButton?.addEventListener("click", (event) => {
 });
 
 function openGame() {
+  rememberLandingForThisSession();
   const target = gamePreview?.dataset.gameLink || "./play";
   window.location.assign(target);
 }
@@ -161,6 +212,7 @@ if ("IntersectionObserver" in window) {
 }
 
 document.getElementById("year").textContent = new Date().getFullYear();
+addLandingBetaLabels();
 updateInstallUI();
 
 if ("serviceWorker" in navigator) {
