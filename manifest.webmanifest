@@ -2,7 +2,7 @@
   "name": "Plot Twisted",
   "short_name": "Plot Twisted",
   "description": "The movie trivia game where the seats are your keyboard.",
-  "start_url": "./",
+  "start_url": "./play",
   "scope": "./",
   "display": "standalone",
   "orientation": "portrait",
