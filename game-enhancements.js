@@ -75,90 +75,14 @@
     return row;
   }
 
-  function buildSupportPanel() {
-    const panel = document.createElement('details');
-    panel.className = 'support-panel';
-    panel.innerHTML = `
-      <summary>Need support?</summary>
-      <div class="support-panel-body">
-        <p>Tell the projection booth what went wrong. Bug reports, install trouble, accessibility issues, and general help all land here.</p>
-        <form class="fb-form" name="support" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="supportForm">
-          <input type="hidden" name="form-name" value="support">
-          <p class="hp"><label>Leave blank: <input name="bot-field"></label></p>
-          <label class="fb-lab" for="supportType">What do you need help with?</label>
-          <select class="fb-in" name="type" id="supportType" required>
-            <option value="Gameplay problem">Gameplay problem</option>
-            <option value="Install or PWA">Install or PWA</option>
-            <option value="Accessibility">Accessibility</option>
-            <option value="Account or data question">Data or privacy question</option>
-            <option value="Other">Other</option>
-          </select>
-          <label class="fb-lab" for="supportMessage">What happened?</label>
-          <textarea class="fb-in" name="message" id="supportMessage" rows="4" placeholder="Include what you clicked, what you expected, and what the theater did instead." required></textarea>
-          <label class="fb-lab" for="supportContact">Contact (optional)</label>
-          <input class="fb-in" name="contact" id="supportContact" placeholder="Email or handle, if you want a reply">
-          <button class="btn btn-primary support-submit" type="submit">Send Support Ticket →</button>
-        </form>
-        <div class="fb-done" id="supportDone" hidden>
-          <div class="fb-ticket"><div class="fb-ticket-h">🎟️ SUPPORT TICKET RECEIVED</div><p id="supportDoneMessage">The projection booth has your note.</p></div>
-          <button class="btn btn-ghost support-reset" type="button">Send Another</button>
-        </div>
-      </div>`;
-    return panel;
-  }
-
   function addSettingsTools() {
     const settingsList = document.querySelector('#settings .settings-list');
-    if (!settingsList || document.getElementById('supportForm')) return;
+    if (!settingsList || settingsList.querySelector('.settings-action-row')) return;
 
     settingsList.append(
       settingsRow('Home Screen', 'Return to the Plot Twisted landing page', 'HOME', goHome),
       settingsRow('Share Game', 'Copy a clean link to send to another movie nerd', 'COPY LINK', copyShareLink)
     );
-
-    const panel = buildSupportPanel();
-    settingsList.after(panel);
-
-    const form = panel.querySelector('#supportForm');
-    const done = panel.querySelector('#supportDone');
-    const doneMessage = panel.querySelector('#supportDoneMessage');
-    const reset = panel.querySelector('.support-reset');
-    const submit = panel.querySelector('.support-submit');
-
-    form.addEventListener('submit', async (event) => {
-      event.preventDefault();
-      submit.disabled = true;
-      submit.textContent = 'Sending…';
-      const body = new URLSearchParams(new FormData(form)).toString();
-
-      try {
-        const response = await fetch('/', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body
-        });
-        if (!response.ok) throw new Error('Support submission failed');
-        form.hidden = true;
-        done.hidden = false;
-        doneMessage.textContent = 'The projection booth has your note. Add contact information if you would like a reply.';
-      } catch (_) {
-        submit.disabled = false;
-        submit.textContent = 'Try Sending Again';
-        done.hidden = false;
-        done.querySelector('.fb-ticket').classList.add('support-error');
-        doneMessage.textContent = 'The ticket printer jammed. Please try again in a moment.';
-      }
-    });
-
-    reset.addEventListener('click', () => {
-      form.reset();
-      form.hidden = false;
-      done.hidden = true;
-      done.querySelector('.fb-ticket').classList.remove('support-error');
-      submit.disabled = false;
-      submit.textContent = 'Send Support Ticket →';
-      panel.open = true;
-    });
   }
 
   function rememberCompletedRound() {

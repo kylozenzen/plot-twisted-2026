@@ -1,8 +1,8 @@
-const CACHE = 'plot-twisted-v16';
+const CACHE = 'plot-twisted-v17';
 const ASSETS = [
   './landing-v4.html', './landing-v2.css', './brand-icons.css', './landing-v3.css', './install.css', './landing-v4.js',
   './privacy.html', './privacy.css', './social-preview-v2.svg',
-  './game-enhancements.css', './game-enhancements.js', './forms.html',
+  './game-enhancements.css', './game-enhancements.js',
   './index.html', './manifest.webmanifest',
   './icon-192.png', './icon-512.png', './icon-maskable-512.png',
   './apple-touch-icon-180.png', './og-image.png'

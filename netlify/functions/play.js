@@ -1,3 +1,34 @@
+const clueOverrides = require('./clue-overrides');
+
+function applyClueOverrides(html) {
+  const prefix = 'const QUESTIONS = ';
+  const suffix = ';\nconst CAT_META =';
+  const start = html.indexOf(prefix);
+  const end = html.indexOf(suffix, start);
+
+  if (start === -1 || end === -1) return html;
+
+  try {
+    const jsonStart = start + prefix.length;
+    const questions = JSON.parse(html.slice(jsonStart, end));
+
+    Object.entries(clueOverrides).forEach(([category, categoryOverrides]) => {
+      const entries = questions[category];
+      if (!Array.isArray(entries)) return;
+
+      Object.entries(categoryOverrides).forEach(([title, clue]) => {
+        const match = entries.find((entry) => entry.title === title);
+        if (match) match.clue = clue;
+      });
+    });
+
+    return `${html.slice(0, jsonStart)}${JSON.stringify(questions)}${html.slice(end)}`;
+  } catch (error) {
+    console.error('Plot Twisted clue override failed', error);
+    return html;
+  }
+}
+
 exports.handler = async function handler(event) {
   try {
     const baseUrl = event.rawUrl || `https://${event.headers.host}/play`;
@@ -12,7 +43,7 @@ exports.handler = async function handler(event) {
       };
     }
 
-    let html = await response.text();
+    let html = applyClueOverrides(await response.text());
     if (!html.includes('game-enhancements.css')) {
       html = html.replace(
         '</head>',
