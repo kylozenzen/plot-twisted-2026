@@ -1,7 +1,7 @@
 const CACHE = 'plot-twisted-v13';
 const ASSETS = [
-  './landing-v2.html', './landing-v2.css', './landing-v2.js', './brand-icons.css',
-  './index.html', './manifest.webmanifest',
+  './landing-v3.html', './landing-v2.css', './brand-icons.css', './landing-v3.css', './landing-v3.js',
+  './social-preview.svg', './index.html', './manifest.webmanifest',
   './icon-192.png', './icon-512.png', './icon-maskable-512.png',
   './apple-touch-icon-180.png', './og-image.png'
 ];
@@ -27,7 +27,10 @@ self.addEventListener('fetch', event => {
   if (request.method !== 'GET') return;
 
   const url = new URL(request.url);
-  const isLandingAsset = /landing-v2\.(html|css|js)$/.test(url.pathname) || url.pathname.endsWith('/brand-icons.css');
+  const isLandingAsset = /landing-v3\.(html|css|js)$/.test(url.pathname)
+    || /landing-v2\.css$/.test(url.pathname)
+    || /brand-icons\.css$/.test(url.pathname)
+    || /social-preview\.svg$/.test(url.pathname);
 
   if (request.mode === 'navigate' || isLandingAsset) {
     event.respondWith(
@@ -37,9 +40,10 @@ self.addEventListener('fetch', event => {
         return response;
       }).catch(() => {
         if (request.mode === 'navigate') {
-          return url.pathname.endsWith('/index.html')
+          const isGame = url.pathname.endsWith('/play') || url.pathname.endsWith('/play/') || url.pathname.endsWith('/index.html');
+          return isGame
             ? caches.match('./index.html')
-            : caches.match('./landing-v2.html').then(page => page || caches.match('./index.html'));
+            : caches.match('./landing-v3.html').then(page => page || caches.match('./index.html'));
         }
         return caches.match(request);
       })
