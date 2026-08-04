@@ -1,0 +1,37 @@
+:root{--bg:#0d090a;--surface:#171113;--surface-2:#21171a;--border:#2d2225;--border-2:#49373c;--ink:#fff8ee;--ink-mid:#b9aaa0;--ink-muted:#806f68;--pink:#ff4d8d;--pink-soft:rgba(255,77,141,.14);--gold:#e4b34c;--font-display:"Space Grotesk",sans-serif;--font-body:"DM Sans",sans-serif;--font-mono:"Space Mono",monospace}
+*,*::before,*::after{box-sizing:border-box}
+html{background:var(--bg);scroll-behavior:smooth}
+body{margin:0;min-height:100vh;color:var(--ink);background:radial-gradient(circle at 15% 0%,rgba(255,77,141,.1),transparent 34rem),var(--bg);font-family:var(--font-body);line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.container{width:min(calc(100% - 40px),920px);margin:0 auto}
+.privacy-nav{position:sticky;top:0;z-index:10;border-bottom:1px solid var(--border);background:rgba(13,9,10,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.privacy-nav-inner{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.privacy-brand{display:inline-flex;align-items:center;gap:11px;font-family:var(--font-display);font-size:1.18rem;font-weight:700;letter-spacing:-.035em}
+.privacy-brand img{width:38px;height:38px;border-radius:10px;box-shadow:0 10px 26px rgba(255,77,141,.18)}
+.privacy-actions{display:flex;align-items:center;gap:12px}
+.privacy-link,.privacy-play{display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:0 17px;border-radius:999px;font-family:var(--font-display);font-size:.84rem;font-weight:700}
+.privacy-link{color:var(--ink-mid);border:1px solid var(--border-2)}
+.privacy-play{color:#fff;background:var(--pink)}
+.privacy-hero{padding:104px 0 58px}
+.privacy-eyebrow{color:var(--pink);font-family:var(--font-mono);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase}
+.privacy-hero h1{max-width:760px;margin:18px 0;font-family:var(--font-display);font-size:clamp(3rem,8vw,5.7rem);line-height:.98;letter-spacing:-.062em}
+.privacy-hero h1 span{color:var(--ink-muted)}
+.privacy-hero p{max-width:690px;margin:0;color:var(--ink-mid);font-size:1.08rem;font-weight:300}
+.privacy-date{display:inline-flex;margin-top:28px;padding:7px 11px;border:1px solid var(--border);border-radius:999px;color:var(--gold);background:var(--surface);font-family:var(--font-mono);font-size:.62rem;letter-spacing:.09em;text-transform:uppercase}
+.privacy-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0 64px}
+.summary-card{padding:22px;border:1px solid var(--border);border-radius:15px;background:var(--surface)}
+.summary-card strong{display:block;margin-bottom:6px;font-family:var(--font-display);font-size:1rem}
+.summary-card span{color:var(--ink-muted);font-size:.82rem;line-height:1.5}
+.policy{padding-bottom:100px}
+.policy-section{padding:34px 0;border-top:1px solid var(--border)}
+.policy-section h2{margin:0 0 14px;font-family:var(--font-display);font-size:1.55rem;letter-spacing:-.035em}
+.policy-section p{margin:0 0 14px;color:var(--ink-mid);font-weight:300}
+.policy-section p:last-child{margin-bottom:0}
+.policy-section ul{display:grid;gap:10px;margin:0;padding-left:22px;color:var(--ink-mid)}
+.policy-section strong{color:var(--ink)}
+.policy-section a{color:#ff8fb7;text-decoration:underline;text-decoration-color:rgba(255,143,183,.38);text-underline-offset:3px}
+.privacy-note{padding:20px 22px;border:1px solid rgba(228,179,76,.28);border-radius:14px;color:var(--ink-mid);background:rgba(228,179,76,.055)}
+.privacy-footer{padding:28px 0 42px;border-top:1px solid var(--border);color:var(--ink-muted);font-family:var(--font-mono);font-size:.61rem;letter-spacing:.07em;text-transform:uppercase}
+.privacy-footer-inner{display:flex;align-items:center;justify-content:space-between;gap:20px}
+@media(max-width:720px){.privacy-summary{grid-template-columns:1fr}.privacy-hero{padding-top:76px}.privacy-actions .privacy-link{display:none}}
+@media(max-width:480px){.container{width:min(calc(100% - 28px),920px)}.privacy-brand span{display:none}.privacy-hero h1{font-size:clamp(2.65rem,14vw,4rem)}.privacy-footer-inner{flex-direction:column;align-items:flex-start}}
