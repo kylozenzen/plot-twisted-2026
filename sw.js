@@ -1,7 +1,9 @@
-const CACHE = 'plot-twisted-v14';
+const CACHE = 'plot-twisted-v16';
 const ASSETS = [
-  './landing-v3.html', './landing-v2.css', './brand-icons.css', './landing-v3.css', './landing-v3.js',
-  './social-preview-v2.svg', './index.html', './manifest.webmanifest',
+  './landing-v4.html', './landing-v2.css', './brand-icons.css', './landing-v3.css', './install.css', './landing-v4.js',
+  './privacy.html', './privacy.css', './social-preview-v2.svg',
+  './game-enhancements.css', './game-enhancements.js', './forms.html',
+  './index.html', './manifest.webmanifest',
   './icon-192.png', './icon-512.png', './icon-maskable-512.png',
   './apple-touch-icon-180.png', './og-image.png'
 ];
@@ -27,12 +29,16 @@ self.addEventListener('fetch', event => {
   if (request.method !== 'GET') return;
 
   const url = new URL(request.url);
-  const isLandingAsset = /landing-v3\.(html|css|js)$/.test(url.pathname)
+  const isFreshAsset = /landing-v4\.(html|js)$/.test(url.pathname)
+    || /landing-v3\.css$/.test(url.pathname)
     || /landing-v2\.css$/.test(url.pathname)
     || /brand-icons\.css$/.test(url.pathname)
+    || /install\.css$/.test(url.pathname)
+    || /privacy\.(html|css)$/.test(url.pathname)
+    || /game-enhancements\.(css|js)$/.test(url.pathname)
     || /social-preview-v2\.svg$/.test(url.pathname);
 
-  if (request.mode === 'navigate' || isLandingAsset) {
+  if (request.mode === 'navigate' || isFreshAsset) {
     event.respondWith(
       fetch(request).then(response => {
         const copy = response.clone();
@@ -40,10 +46,14 @@ self.addEventListener('fetch', event => {
         return response;
       }).catch(() => {
         if (request.mode === 'navigate') {
-          const isGame = url.pathname.endsWith('/play') || url.pathname.endsWith('/play/') || url.pathname.endsWith('/index.html');
-          return isGame
-            ? caches.match('./index.html')
-            : caches.match('./landing-v3.html').then(page => page || caches.match('./index.html'));
+          return caches.match(request).then(cachedPage => {
+            if (cachedPage) return cachedPage;
+            const isGame = url.pathname.endsWith('/play') || url.pathname.endsWith('/play/') || url.pathname.endsWith('/index.html');
+            const isPrivacy = url.pathname.endsWith('/privacy') || url.pathname.endsWith('/privacy/') || url.pathname.endsWith('/privacy.html');
+            if (isGame) return caches.match('./index.html');
+            if (isPrivacy) return caches.match('./privacy.html');
+            return caches.match('./landing-v4.html').then(page => page || caches.match('./index.html'));
+          });
         }
         return caches.match(request);
       })
