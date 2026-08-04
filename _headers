@@ -1,0 +1,9 @@
+/social-preview.svg
+  Content-Type: image/svg+xml
+  Cache-Control: public, max-age=31536000, immutable
+
+/landing-v3.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+/landing-v3.js
+  Cache-Control: public, max-age=0, must-revalidate
