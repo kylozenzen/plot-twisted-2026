@@ -3,17 +3,4 @@
 #settings .settings-beta-wrap{display:flex;align-items:center;justify-content:center;gap:9px;margin-bottom:7px}
 #settings .settings-beta-wrap .eyebrow{margin:0}
 .settings-action-row .toggle{min-width:108px}
-.support-panel{max-width:480px;margin:14px auto 0;border:1px solid var(--velvet-lit);border-radius:12px;background:linear-gradient(180deg,#1a070a,#120607);overflow:hidden}
-.support-panel summary{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 18px;cursor:pointer;list-style:none;color:var(--bulb);font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
-.support-panel summary::-webkit-details-marker{display:none}
-.support-panel summary::after{content:'+';color:var(--brass);font-family:'Space Mono',monospace;font-size:20px}
-.support-panel[open] summary{border-bottom:1px solid var(--velvet-lit)}
-.support-panel[open] summary::after{content:'−'}
-.support-panel-body{padding:4px 18px 20px}
-.support-panel-body>p{margin:13px 0 2px;color:#9a7d6a;font-size:13.5px;line-height:1.5}
-.support-panel .fb-form,.support-panel .fb-done{max-width:none;margin:0}
-.support-panel .fb-ticket{margin-top:16px}
-.support-panel .support-submit{width:100%;margin-top:16px}
-.support-panel .support-reset{width:100%}
-.support-panel .support-error{border-color:#a3434a;color:#ffd1d4;background:rgba(163,67,74,.12)}
 @media(max-width:480px){#lobby .marquee .game-beta-chip{top:16px;right:14px}.settings-action-row{align-items:flex-start}.settings-action-row .toggle{min-width:96px}}
