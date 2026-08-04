@@ -1,5 +1,4 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
   <rect width="1200" height="630" fill="#0d090a"/>
-  <text x="600" y="290" text-anchor="middle" fill="#fff8ee" font-family="Arial, Helvetica, sans-serif" font-size="42" font-weight="800">Plot Twisted social card moved.</text>
-  <text x="600" y="350" text-anchor="middle" fill="#ff4d8d" font-family="Arial, Helvetica, sans-serif" font-size="24">Use social-preview-v2.svg</text>
+  <image href="https://plot-twisted.netlify.app/social-preview-v2.svg" x="0" y="0" width="1200" height="630" preserveAspectRatio="xMidYMid slice"/>
 </svg>
