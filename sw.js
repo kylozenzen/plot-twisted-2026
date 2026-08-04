@@ -1,7 +1,7 @@
-const CACHE = 'plot-twisted-v13';
+const CACHE = 'plot-twisted-v14';
 const ASSETS = [
   './landing-v3.html', './landing-v2.css', './brand-icons.css', './landing-v3.css', './landing-v3.js',
-  './social-preview.svg', './index.html', './manifest.webmanifest',
+  './social-preview-v2.svg', './index.html', './manifest.webmanifest',
   './icon-192.png', './icon-512.png', './icon-maskable-512.png',
   './apple-touch-icon-180.png', './og-image.png'
 ];
@@ -30,7 +30,7 @@ self.addEventListener('fetch', event => {
   const isLandingAsset = /landing-v3\.(html|css|js)$/.test(url.pathname)
     || /landing-v2\.css$/.test(url.pathname)
     || /brand-icons\.css$/.test(url.pathname)
-    || /social-preview\.svg$/.test(url.pathname);
+    || /social-preview-v2\.svg$/.test(url.pathname);
 
   if (request.mode === 'navigate' || isLandingAsset) {
     event.respondWith(
