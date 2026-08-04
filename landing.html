@@ -3,190 +3,258 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Plot Twisted — Movie Trivia, Told Badly</title>
-  <meta name="description" content="Guess the movie from one ridiculous plot summary. Six categories, five questions, and a theater full of terrible hints.">
-  <meta name="theme-color" content="#120708">
+  <title>Plot Twisted — Movie Plots, Twisted Beyond Recognition</title>
+  <meta name="description" content="Guess the movie from one ridiculous plot summary. Six categories, five-question rounds, and no account required.">
+  <meta name="theme-color" content="#0d090a">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Plot Twisted — Movie Trivia, Told Badly">
-  <meta property="og:description" content="Name the movie from one twisted clue. Trust nobody. Especially the hints.">
+  <meta property="og:title" content="Plot Twisted — Movie Plots, Twisted Beyond Recognition">
+  <meta property="og:description" content="Name the movie from one twisted clue. Five questions. No refunds.">
   <meta property="og:image" content="./og-image.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Plot Twisted — Movie Trivia, Told Badly">
-  <meta name="twitter:description" content="One twisted clue. Five questions. No refunds.">
+  <meta name="twitter:title" content="Plot Twisted — Movie Plots, Twisted Beyond Recognition">
+  <meta name="twitter:description" content="One ridiculous clue. One movie title. Try not to overthink it.">
   <meta name="twitter:image" content="./og-image.png">
   <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png">
   <link rel="apple-touch-icon" href="./apple-touch-icon-180.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./landing.css">
 </head>
 <body>
-  <header class="site-header">
-    <div class="wrap nav">
-      <a class="brand" href="#top" aria-label="Plot Twisted home">
-        <span class="brand-mark" aria-hidden="true"></span>
-        <span class="brand-name">Plot Twisted</span>
+  <nav class="site-nav" aria-label="Main navigation">
+    <div class="container nav-inner">
+      <a class="nav-logo" href="#top" aria-label="Plot Twisted home">
+        <span class="nav-logo-icon" aria-hidden="true"><span></span></span>
+        <span>Plot Twisted</span>
       </a>
-      <nav class="nav-links" aria-label="Main navigation">
-        <a href="#how">How it works</a>
+      <div class="nav-links">
+        <a href="#why">Why it works</a>
         <a href="#showings">Showings</a>
-        <a class="button button-primary button-small" href="./index.html">Play free <span aria-hidden="true">→</span></a>
-      </nav>
+        <a href="#how">How to play</a>
+      </div>
+      <a class="nav-cta" href="./index.html">Play free</a>
     </div>
-  </header>
+  </nav>
 
   <main id="top">
     <section class="hero">
-      <div class="wrap hero-grid">
-        <div class="hero-copy">
-          <div class="now-showing">Now showing</div>
-          <h1>Plot <span>Twisted</span></h1>
-          <p class="hero-lede"><strong>Movie trivia, told badly.</strong> Guess the film from one ridiculous plot summary before the theater starts judging you.</p>
+      <div class="container hero-inner">
+        <div class="hero-content">
+          <div class="eyebrow">A Nobody Creative production · Now playing</div>
+          <h1>Movie plots.<br><span class="muted">Twisted beyond recognition.</span></h1>
+          <p class="hero-sub">Guess the movie from one ridiculous summary. Five clues, six showings, and just enough forgiveness for your spelling.</p>
           <div class="hero-actions">
-            <a class="button button-primary" href="./index.html">Buy a free ticket <span aria-hidden="true">→</span></a>
-            <a class="button button-ghost" href="#try">Try a clue</a>
+            <a class="btn-primary" href="./index.html">
+              Start the show
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a class="btn-ghost" href="#why">See why it is different</a>
           </div>
-          <div class="hero-meta" aria-label="Game details">
-            <span>No account</span>
-            <span>Five-question rounds</span>
-            <span>Mobile friendly</span>
+          <div class="hero-trust" aria-label="Game highlights">
+            <span class="trust-badge">No account</span>
+            <span class="trust-badge">Five-question rounds</span>
+            <span class="trust-badge">Works on mobile</span>
           </div>
         </div>
 
-        <div class="ticket-stack" id="try">
-          <article class="teaser-card" aria-labelledby="teaser-title">
-            <div class="teaser-top">
-              <div>
-                <div class="eyebrow">Audience preview</div>
-                <strong id="teaser-title">Name that movie</strong>
+        <div class="hero-visual" id="demo" aria-label="Interactive Plot Twisted game preview">
+          <div class="mockup-wrap">
+            <div class="mockup-frame">
+              <div class="mockup-screen">
+                <div class="mockup-topbar">
+                  <span class="mockup-logo">Plot Twisted</span>
+                  <span class="mockup-score">Score <b id="demoScore">0</b></span>
+                </div>
+                <div class="mockup-meta">
+                  <span id="demoCategory">SciFi</span>
+                  <span>Seat 1 / 5</span>
+                </div>
+                <div class="mockup-body">
+                  <div class="movie-screen">
+                    <div class="screen-label">Now playing</div>
+                    <p id="clueText">Cubicle guy takes pill and discovers reality is badly coded.</p>
+                  </div>
+                  <div class="demo-answer" id="answerReveal" aria-live="polite">Name the movie</div>
+                  <div class="demo-actions">
+                    <button id="revealButton" type="button">Reveal</button>
+                    <button id="nextButton" type="button">New clue</button>
+                  </div>
+                  <div class="keyboard" aria-hidden="true">
+                    <div class="key-row"><span>Q</span><span>W</span><span>E</span><span>R</span><span>T</span><span>Y</span><span>U</span><span>I</span><span>O</span><span>P</span></div>
+                    <div class="key-row short"><span>A</span><span>S</span><span>D</span><span>F</span><span>G</span><span>H</span><span>J</span><span>K</span><span>L</span></div>
+                    <div class="key-row shorter"><span>Z</span><span>X</span><span>C</span><span>V</span><span>B</span><span>N</span><span>M</span></div>
+                    <div class="key-row controls"><span>Hint</span><span class="wide">Space</span><span class="enter">Enter</span></div>
+                  </div>
+                </div>
+                <div class="mockup-home"></div>
               </div>
-              <span class="rating">PG-13</span>
             </div>
-            <div class="clue-screen" aria-live="polite">
-              <p class="clue-text" id="clueText">Cubicle guy takes pill and discovers reality is badly coded.</p>
-            </div>
-            <div class="answer-reveal" id="answerReveal" aria-live="polite">&nbsp;</div>
-            <div class="teaser-actions">
-              <button class="button button-primary" id="revealButton" type="button">Reveal answer</button>
-              <button class="button button-ghost" id="nextButton" type="button">Next clue</button>
-            </div>
-            <div class="seat-row" aria-hidden="true">
-              <span class="seat-dot"></span><span class="seat-dot"></span><span class="seat-dot"></span><span class="seat-dot"></span><span class="seat-dot"></span>
-              <span class="seat-dot"></span><span class="seat-dot"></span><span class="seat-dot"></span><span class="seat-dot"></span><span class="seat-dot"></span>
-            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <div class="marquee-item"><span>Movie trivia</span><i>//</i> Bad summaries <i>//</i> Five clues <i>//</i> Six showings <i>//</i> Shareable receipts <i>//</i> No account <i>//</i> Free to play <i>//</i></div>
+        <div class="marquee-item"><span>Movie trivia</span><i>//</i> Bad summaries <i>//</i> Five clues <i>//</i> Six showings <i>//</i> Shareable receipts <i>//</i> No account <i>//</i> Free to play <i>//</i></div>
+      </div>
+    </div>
+
+    <section class="proof-strip" aria-label="Plot Twisted features">
+      <div class="container proof-grid">
+        <article class="proof-item">
+          <div class="proof-icon proof-icon-pink" aria-hidden="true">$0</div>
+          <div><strong>Free to play</strong><span>No subscription. No ticket fees.</span></div>
+        </article>
+        <div class="proof-divider"></div>
+        <article class="proof-item">
+          <div class="proof-icon proof-icon-gold" aria-hidden="true">5</div>
+          <div><strong>Quick rounds</strong><span>Five clues per showing.</span></div>
+        </article>
+        <div class="proof-divider"></div>
+        <article class="proof-item">
+          <div class="proof-icon proof-icon-green" aria-hidden="true">6</div>
+          <div><strong>Six categories</strong><span>Family to emotional damage.</span></div>
+        </article>
+        <div class="proof-divider"></div>
+        <article class="proof-item">
+          <div class="proof-icon proof-icon-pink" aria-hidden="true">PWA</div>
+          <div><strong>Installs like an app</strong><span>No app store required.</span></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="why">
+      <div class="container">
+        <div class="reveal">
+          <div class="section-label">The Plot Twisted formula</div>
+        </div>
+        <div class="manifesto-grid reveal">
+          <article class="manifesto-card">
+            <span class="manifesto-number">01</span>
+            <div class="manifesto-icon manifesto-icon-pink" aria-hidden="true">✦</div>
+            <h2>Bad summaries.<br>Very good movies.</h2>
+            <p>The clues tell the truth. Technically. They just explain beloved movies like a deeply confused coworker caught you near the microwave.</p>
+          </article>
+          <article class="manifesto-card">
+            <span class="manifesto-number">02</span>
+            <div class="manifesto-icon manifesto-icon-gold" aria-hidden="true">⌨</div>
+            <h2>The theater is<br>the interface.</h2>
+            <p>The seats become your keyboard. Tap on mobile or use the real keys on desktop without leaving the movie-night illusion.</p>
+          </article>
+          <article class="manifesto-card">
+            <span class="manifesto-number">03</span>
+            <div class="manifesto-icon manifesto-icon-green" aria-hidden="true">≈</div>
+            <h2>Close enough<br>still counts.</h2>
+            <p>Fuzzy matching handles small typos, missing articles, and sequel chaos. This is trivia, not a spelling bee with popcorn.</p>
+          </article>
+          <article class="manifesto-card">
+            <span class="manifesto-number">04</span>
+            <div class="manifesto-icon manifesto-icon-muted" aria-hidden="true">▤</div>
+            <h2>Every showing<br>ends with proof.</h2>
+            <p>Your final receipt includes the score, critic rating, high-score status, and a shareable card for extremely reasonable bragging.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section" id="how">
-      <div class="wrap">
-        <div class="section-head">
-          <div class="eyebrow">Your feature presentation</div>
-          <h2>Three steps. Zero respectable clues.</h2>
-          <p class="section-intro">Pick a showing, decode five deeply unserious summaries, and leave with a score receipt suitable for public bragging or private deletion.</p>
+    <section class="showings-section" id="showings">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div class="section-label">Now showing</div>
+          <h2>Pick your particular flavor of movie knowledge.</h2>
+          <p>Each showing pulls five random clues from a much larger library, so repeat visits rarely replay the same round.</p>
         </div>
-        <div class="how-grid">
-          <article class="how-card">
-            <span class="step-no">Scene 01</span>
-            <span class="how-icon" aria-hidden="true">🎟️</span>
+        <div class="showings-grid reveal">
+          <article class="showing-card">
+            <div class="showing-top"><span class="showing-emoji">🧸</span><span class="showing-rating">G</span></div>
+            <h3>Family</h3><p>The ones the entire row can quote, sing, or emotionally weaponize.</p>
+          </article>
+          <article class="showing-card">
+            <div class="showing-top"><span class="showing-emoji">🦸</span><span class="showing-rating">PG-13</span></div>
+            <h3>Superhero</h3><p>Capes, quips, origin stories, and cities with terrible insurance premiums.</p>
+          </article>
+          <article class="showing-card">
+            <div class="showing-top"><span class="showing-emoji">🚀</span><span class="showing-rating">PG-13</span></div>
+            <h3>SciFi</h3><p>Space, robots, timelines, and reality refusing to follow the onboarding guide.</p>
+          </article>
+          <article class="showing-card">
+            <div class="showing-top"><span class="showing-emoji">🐉</span><span class="showing-rating">PG-13</span></div>
+            <h3>Fantasy</h3><p>Wizards, rings, prophecies, and several avoidable hiking situations.</p>
+          </article>
+          <article class="showing-card">
+            <div class="showing-top"><span class="showing-emoji">💔</span><span class="showing-rating">R</span></div>
+            <h3>Emotional Damage</h3><p>The movies that looked harmless right before they ruined your entire evening.</p>
+          </article>
+          <article class="showing-card">
+            <div class="showing-top"><span class="showing-emoji">📱</span><span class="showing-rating new">NEW</span></div>
+            <h3>Streaming Hits</h3><p>What everyone watched, discussed, memed, and finished at 2:13 a.m.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="how-section" id="how">
+      <div class="container">
+        <div class="section-heading centered reveal">
+          <div class="section-label">Simple by design</div>
+          <h2>From lobby to receipt in three scenes.</h2>
+        </div>
+        <div class="steps-row reveal">
+          <article class="step">
+            <div class="step-circle">01</div>
             <h3>Pick a showing</h3>
-            <p>Choose a category or let the box office surprise you.</p>
+            <p>Choose a category or let Surprise Me handle the programming.</p>
           </article>
-          <article class="how-card">
-            <span class="step-no">Scene 02</span>
-            <span class="how-icon" aria-hidden="true">⌨️</span>
+          <article class="step">
+            <div class="step-circle">02</div>
             <h3>Name the movie</h3>
-            <p>Use the theater seats as your keyboard. Close enough spelling still counts.</p>
+            <p>Decode five twisted summaries using the on-screen seats or your keyboard.</p>
           </article>
-          <article class="how-card">
-            <span class="step-no">Scene 03</span>
-            <span class="how-icon" aria-hidden="true">🧾</span>
+          <article class="step">
+            <div class="step-circle">03</div>
             <h3>Keep the receipt</h3>
-            <p>Get a critic rating, chase a high score, and share your final card.</p>
+            <p>See your critic rating, chase a high score, and share the evidence.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section categories" id="showings">
-      <div class="wrap">
-        <div class="section-head">
-          <div class="eyebrow">At the box office</div>
-          <h2>Six showings. Hundreds of bad explanations.</h2>
-          <p class="section-intro">Every round pulls five random clues, so your rewatch rarely plays the same way twice.</p>
-        </div>
-        <div class="category-grid">
-          <article class="category-card" data-icon="🧸"><span class="category-rating">RATED G</span><h3>Family</h3><p>The ones the whole row can sing along to.</p></article>
-          <article class="category-card" data-icon="🦸"><span class="category-rating">RATED PG-13</span><h3>Superhero</h3><p>Capes, quips, and post-credit problems.</p></article>
-          <article class="category-card" data-icon="🚀"><span class="category-rating">RATED PG-13</span><h3>SciFi</h3><p>Space, robots, and reality refusing to sit still.</p></article>
-          <article class="category-card" data-icon="🐉"><span class="category-rating">RATED PG-13</span><h3>Fantasy</h3><p>Rings, wizards, and deeply unsafe quests.</p></article>
-          <article class="category-card" data-icon="💔"><span class="category-rating">RATED R</span><h3>Emotional Damage</h3><p>Bring tissues. The theater is not liable.</p></article>
-          <article class="category-card" data-icon="📱"><span class="category-rating">NEW RELEASE</span><h3>Streaming Hits</h3><p>Whatever you binged instead of sleeping.</p></article>
+    <section class="builder-section">
+      <div class="container">
+        <div class="builder-inner reveal">
+          <div class="builder-copy">
+            <div class="section-label">Built in public</div>
+            <h2>One marketer. One browser. An unreasonable number of clues.</h2>
+            <p>Plot Twisted is a Nobody Creative project by Ben Campbell, built while exploring what marketers can make when they stop waiting for a traditional product team to hand them permission.</p>
+          </div>
+          <a class="builder-btn" href="https://bencampbell.netlify.app/" target="_blank" rel="noopener noreferrer">See Ben's work <span aria-hidden="true">↗</span></a>
         </div>
       </div>
     </section>
 
-    <section class="section">
-      <div class="wrap">
-        <div class="section-head">
-          <div class="eyebrow">Built for the rewatch</div>
-          <h2>A tiny cinema with a lot going on.</h2>
-        </div>
-        <div class="feature-grid">
-          <article class="feature-card large">
-            <span class="feature-kicker">The whole theater is the interface</span>
-            <h3>The seats are your keyboard.</h3>
-            <p>Tap on mobile or type on desktop. Either way, your spelling gets a little grace.</p>
-          </article>
-          <article class="feature-card">
-            <span class="feature-kicker">Shareable scorecards</span>
-            <h3>Leave with proof.</h3>
-            <p>Every round ends with a receipt, critic rating, and downloadable score card.</p>
-          </article>
-          <article class="feature-card">
-            <span class="feature-kicker">Installable web game</span>
-            <h3>Keep it on the home screen.</h3>
-            <p>No app-store detour. Install the theater directly from your browser.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section creator">
-      <div class="wrap creator-grid">
-        <div class="creator-mark" aria-hidden="true"></div>
-        <div class="creator-copy">
-          <div class="eyebrow">Behind the curtain</div>
-          <h2>Made by one marketer who kept pressing “ship.”</h2>
-          <p>Plot Twisted is a Nobody Creative production built by Ben Campbell—a social media marketer making small, strange internet things while looking for the next full-time role.</p>
-          <p>No studio. No giant team. Just a movie obsession, a questionable clue bank, and a browser that has been asked to do a lot.</p>
-          <a class="button button-ghost" href="https://bencampbell.netlify.app/" target="_blank" rel="noopener noreferrer">See Ben's work <span aria-hidden="true">↗</span></a>
-        </div>
-      </div>
-    </section>
-
-    <section class="final-cta">
-      <div class="wrap">
-        <div class="final-cta-inner">
-          <div class="eyebrow">Doors are open</div>
-          <h2>Your free ticket is suspiciously non-refundable.</h2>
-          <p>Five clues. One score. Several moments where you absolutely knew the answer two seconds too late.</p>
-          <a class="button button-primary" href="./index.html">Start the show <span aria-hidden="true">→</span></a>
-        </div>
+    <section class="cta-section">
+      <div class="container cta-inner reveal">
+        <div class="beta-eyebrow"><span></span>Now playing · Free access · No waitlist</div>
+        <h2>Think you know movies?<br><span>That is adorable.</span></h2>
+        <p>Five clues stand between you and a receipt you may or may not want anyone to see.</p>
+        <a class="cta-button" href="./index.html">Start the show <span aria-hidden="true">→</span></a>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="wrap footer-inner">
-      <span>© <span id="year"></span> Nobody Creative · Trust nobody. Especially the hints.</span>
-      <div class="footer-links">
-        <a href="./index.html">Play</a>
-        <a href="https://bencampbell.netlify.app/" target="_blank" rel="noopener noreferrer">Creator</a>
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a class="nav-logo" href="#top"><span class="nav-logo-icon" aria-hidden="true"><span></span></span><span>Plot Twisted</span></a>
+        <p>Movie trivia for people who know the plot but apparently not when it is explained like that.</p>
       </div>
+      <div class="footer-col"><h4>Game</h4><a href="./index.html">Play now</a><a href="#showings">Showings</a><a href="#how">How it works</a></div>
+      <div class="footer-col"><h4>Creator</h4><a href="https://bencampbell.netlify.app/" target="_blank" rel="noopener noreferrer">Portfolio</a><a href="https://nobody-creative.beehiiv.com/" target="_blank" rel="noopener noreferrer">Nobody Creative</a></div>
     </div>
+    <div class="container footer-bottom"><span>© <span id="year"></span> Nobody Creative</span><span>Trust nobody. Especially the hints.</span></div>
   </footer>
 
   <script src="./landing.js"></script>
