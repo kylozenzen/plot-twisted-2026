@@ -44,6 +44,12 @@ exports.handler = async function handler(event) {
     }
 
     let html = applyClueOverrides(await response.text());
+    if (!html.includes('/.netlify/functions/analytics')) {
+      html = html.replace(
+        '</head>',
+        '  <script src="/.netlify/functions/analytics"></script>\n</head>'
+      );
+    }
     if (!html.includes('game-enhancements.css')) {
       html = html.replace(
         '</head>',
