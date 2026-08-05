@@ -1,6 +1,6 @@
-const CACHE = 'plot-twisted-v17';
+const CACHE = 'plot-twisted-v18';
 const ASSETS = [
-  './landing-v4.html', './landing-v2.css', './brand-icons.css', './landing-v3.css', './install.css', './landing-v4.js',
+  './landing-v4.html', './landing-v2.css', './brand-icons.css', './landing-v3.css', './install.css', './site-polish.css', './landing-v4.js',
   './privacy.html', './privacy.css', './social-preview-v2.svg',
   './game-enhancements.css', './game-enhancements.js',
   './index.html', './manifest.webmanifest',
@@ -34,6 +34,7 @@ self.addEventListener('fetch', event => {
     || /landing-v2\.css$/.test(url.pathname)
     || /brand-icons\.css$/.test(url.pathname)
     || /install\.css$/.test(url.pathname)
+    || /site-polish\.css$/.test(url.pathname)
     || /privacy\.(html|css)$/.test(url.pathname)
     || /game-enhancements\.(css|js)$/.test(url.pathname)
     || /social-preview-v2\.svg$/.test(url.pathname);
