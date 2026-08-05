@@ -1,5 +1,41 @@
 const PLAYED_KEY = "pt_has_played";
 const HOME_BYPASS_KEY = "pt_home_bypass";
+const pendingAnalytics = [];
+
+function trackAnalytics(name, parameters = {}) {
+  if (window.ptAnalytics?.track) {
+    window.ptAnalytics.track(name, parameters);
+    return;
+  }
+  pendingAnalytics.push([name, parameters]);
+}
+
+(function loadBetaAssets() {
+  if (!document.querySelector('link[href="./site-polish.css"]')) {
+    const polish = document.createElement("link");
+    polish.rel = "stylesheet";
+    polish.href = "./site-polish.css";
+    document.head.appendChild(polish);
+  }
+
+  const analytics = document.createElement("script");
+  analytics.src = "/.netlify/functions/analytics";
+  analytics.addEventListener("load", () => {
+    while (pendingAnalytics.length && window.ptAnalytics?.track) {
+      const [name, parameters] = pendingAnalytics.shift();
+      window.ptAnalytics.track(name, parameters);
+    }
+  });
+  document.head.appendChild(analytics);
+
+  const hero = document.querySelector(".hero");
+  if (hero && !hero.querySelector(".hero-atmosphere")) {
+    const atmosphere = document.createElement("div");
+    atmosphere.className = "hero-atmosphere";
+    atmosphere.setAttribute("aria-hidden", "true");
+    hero.prepend(atmosphere);
+  }
+})();
 
 (function routeReturningPlayers() {
   try {
@@ -46,8 +82,22 @@ function rememberLandingForThisSession() {
   try { sessionStorage.setItem(HOME_BYPASS_KEY, "1"); } catch (_) {}
 }
 
+function ctaLocation(link) {
+  if (link.closest(".site-nav")) return "navigation";
+  if (link.closest(".hero")) return "hero";
+  if (link.closest(".install-section")) return "install_section";
+  if (link.closest(".cta-section")) return "final_cta";
+  return "landing_page";
+}
+
 document.querySelectorAll(".game-link").forEach((link) => {
-  link.addEventListener("click", rememberLandingForThisSession);
+  link.addEventListener("click", () => {
+    rememberLandingForThisSession();
+    trackAnalytics("select_content", {
+      content_type: "game_entry",
+      content_id: `plot_twisted_${ctaLocation(link)}`
+    });
+  });
 });
 
 function makeLandingBetaChip(label) {
@@ -88,6 +138,10 @@ revealButton?.addEventListener("click", (event) => {
     revealButton.textContent = "Correct";
     demoScore += 100;
     scoreNode.textContent = demoScore;
+    trackAnalytics("select_content", {
+      content_type: "demo_clue",
+      content_id: `reveal_${clues[clueIndex].category.toLowerCase().replace(/\s+/g, "_")}`
+    });
   }
 });
 
@@ -95,10 +149,12 @@ nextButton?.addEventListener("click", (event) => {
   event.stopPropagation();
   clueIndex = (clueIndex + 1) % clues.length;
   showClue();
+  trackAnalytics("demo_next_clue", { game_category: clues[clueIndex].category });
 });
 
 function openGame() {
   rememberLandingForThisSession();
+  trackAnalytics("select_content", { content_type: "game_entry", content_id: "plot_twisted_phone_demo" });
   const target = gamePreview?.dataset.gameLink || "./play";
   window.location.assign(target);
 }
@@ -167,6 +223,7 @@ window.addEventListener("beforeinstallprompt", (event) => {
   event.preventDefault();
   deferredInstallPrompt = event;
   updateInstallUI();
+  trackAnalytics("pwa_install_available", { install_platform: detectInstallPlatform() });
 });
 
 window.addEventListener("appinstalled", () => {
@@ -176,8 +233,10 @@ window.addEventListener("appinstalled", () => {
 
 installButton?.addEventListener("click", async () => {
   if (isStandalone()) return;
+  const platform = detectInstallPlatform();
 
   if (deferredInstallPrompt) {
+    trackAnalytics("pwa_install_prompt", { install_platform: platform });
     deferredInstallPrompt.prompt();
     const choice = await deferredInstallPrompt.userChoice;
     deferredInstallPrompt = null;
@@ -189,11 +248,13 @@ installButton?.addEventListener("click", async () => {
     } else {
       updateInstallUI();
       setInstallStatus("No problem—the game still works perfectly in your browser.");
+      trackAnalytics("pwa_install_dismiss", { install_platform: platform });
     }
     return;
   }
 
-  highlightInstallCard(detectInstallPlatform(), true);
+  trackAnalytics("pwa_install_instructions", { install_platform: platform });
+  highlightInstallCard(platform, true);
 });
 
 const revealElements = document.querySelectorAll(".reveal");
