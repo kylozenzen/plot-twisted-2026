@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Privacy — Plot Twisted</title>
-  <meta name="description" content="How Plot Twisted handles local game data, optional feedback submissions, and third-party services.">
+  <meta name="description" content="How Plot Twisted handles local game data, optional analytics, feedback submissions, and third-party services.">
   <meta name="theme-color" content="#0d090a">
   <link rel="canonical" href="https://plot-twisted.netlify.app/privacy">
   <meta name="robots" content="index,follow">
@@ -14,6 +14,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=Space+Grotesk:wght@500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./privacy.css">
+  <script src="/.netlify/functions/analytics"></script>
 </head>
 <body>
   <nav class="privacy-nav" aria-label="Privacy page navigation">
@@ -34,8 +35,8 @@
       <div class="container">
         <div class="privacy-eyebrow">Privacy, without the legal jump scare</div>
         <h1>Your movie knowledge is judged. <span>Your personal data is not.</span></h1>
-        <p>Plot Twisted is a small browser game with no accounts, no ads, and no third-party analytics currently built into the game. This page explains what stays on your device, what is sent only when you choose to submit it, and which outside services help the site run.</p>
-        <div class="privacy-date">Effective August 4, 2026</div>
+        <p>Plot Twisted is a small browser game with no accounts or ads. This page explains what stays on your device, what is measured only with permission, what is sent when you submit feedback, and which outside services help the site run.</p>
+        <div class="privacy-date">Effective August 5, 2026</div>
       </div>
     </header>
 
@@ -43,7 +44,7 @@
       <section class="privacy-summary" aria-label="Privacy summary">
         <article class="summary-card"><strong>No account required</strong><span>You can play without providing a name, email address, or profile.</span></article>
         <article class="summary-card"><strong>Scores stay local</strong><span>Settings and high scores are stored in your browser on your device.</span></article>
-        <article class="summary-card"><strong>Feedback is optional</strong><span>Information leaves your browser only when you submit the feedback form.</span></article>
+        <article class="summary-card"><strong>Analytics is optional</strong><span>Google Analytics loads only after you allow anonymous usage measurement.</span></article>
       </section>
 
       <article class="policy">
@@ -53,14 +54,24 @@
           <ul>
             <li>Your keyboard-layout and sound settings.</li>
             <li>Your best scores by game category.</li>
+            <li>Whether you have completed a round, so returning visits can open the game directly.</li>
+            <li>Your analytics choice, so the site can continue respecting it.</li>
             <li>Cached game files that help the progressive web app load reliably and work like an installed app.</li>
           </ul>
           <p>This information stays in your browser. You can remove it by clearing Plot Twisted's site data in your browser settings or uninstalling the web app.</p>
         </section>
 
         <section class="policy-section">
+          <h2>Optional Google Analytics</h2>
+          <p>Plot Twisted uses Google Analytics 4 only after you choose “Allow analytics.” Until permission is granted, the Google Analytics tag is not loaded and no analytics information is sent to Google.</p>
+          <p>When allowed, Analytics may measure page views, general traffic source, browser and device category, approximate geographic region, install interactions, game-category starts, completed rounds, scores, shares, and feedback-form submission type.</p>
+          <p>Plot Twisted does not send your typed guesses, clue text, feedback message, proposed clue, contact information, or other free-text form fields to Analytics. Advertising storage, advertising user data, and ad personalization remain disabled.</p>
+          <p>You can review or change your choice using the “Analytics choices” control in the site footer. Declining analytics does not affect the game.</p>
+        </section>
+
+        <section class="policy-section">
           <h2>Information you choose to submit</h2>
-          <p>The in-game feedback form can collect the fields you choose to complete, including feedback type, message, proposed movie clue, category, movie title, and optional contact information.</p>
+          <p>The in-game Feedback & Clue Box can collect the fields you choose to complete, including feedback type, message, proposed movie clue, category, movie title, and optional contact information.</p>
           <p>Feedback submissions are delivered through Netlify Forms. Do not include sensitive personal information in a submission. Contact information is optional and is used only when a reply is appropriate.</p>
         </section>
 
@@ -68,16 +79,17 @@
           <h2>What Plot Twisted does not currently use</h2>
           <ul>
             <li>No player accounts or login system.</li>
-            <li>No advertising network or behavioral targeting.</li>
+            <li>No advertising network, behavioral advertising, or personalized ads.</li>
             <li>No payment processing.</li>
-            <li>No third-party analytics script in the current game build.</li>
             <li>No sale of personal information.</li>
+            <li>No analytics collection when permission is declined.</li>
           </ul>
         </section>
 
         <section class="policy-section">
           <h2>Third-party services</h2>
-          <p><strong>Netlify</strong> hosts the site, delivers files, and processes optional form submissions. Netlify may process technical request information as part of providing those services. You can review <a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener noreferrer">Netlify's privacy policy</a>.</p>
+          <p><strong>Netlify</strong> hosts the site, delivers files, runs lightweight site functions, and processes optional form submissions. Netlify may process technical request information as part of providing those services. You can review <a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener noreferrer">Netlify's privacy policy</a>.</p>
+          <p><strong>Google Analytics</strong> provides optional usage measurement after consent. You can review <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google's privacy policy</a>.</p>
           <p><strong>Google Fonts</strong> supplies the typefaces used by the game and landing page. When those fonts load, the browser may connect to Google's servers. You can review <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google's privacy policy</a>.</p>
         </section>
 
@@ -90,6 +102,8 @@
           <h2>Your choices</h2>
           <ul>
             <li>Play without installing the app.</li>
+            <li>Allow or decline optional analytics without changing game access.</li>
+            <li>Change your analytics choice through the footer control.</li>
             <li>Clear local settings and high scores through your browser's site-data controls.</li>
             <li>Skip the feedback form entirely.</li>
             <li>Request deletion of a prior feedback submission by using the feedback form again and including the same contact detail used in the original submission.</li>
@@ -98,11 +112,11 @@
 
         <section class="policy-section">
           <h2>Changes to this policy</h2>
-          <p>This page will be updated if Plot Twisted adds accounts, analytics, advertising, payments, or another feature that materially changes how information is handled. The effective date at the top will change when the policy changes.</p>
+          <p>This page will be updated if Plot Twisted adds accounts, advertising, payments, or another feature that materially changes how information is handled. The effective date at the top will change when the policy changes.</p>
         </section>
 
         <section class="policy-section">
-          <div class="privacy-note"><strong>Questions or deletion requests?</strong> Use the feedback option inside Plot Twisted and choose “Other.” Include enough information to identify the submission you are asking about, but do not send passwords, financial information, or other sensitive data.</div>
+          <div class="privacy-note"><strong>Questions or deletion requests?</strong> Use the Feedback & Clue Box inside Plot Twisted and choose “Other.” Include enough information to identify the submission you are asking about, but do not send passwords, financial information, or other sensitive data.</div>
         </section>
       </article>
     </div>
