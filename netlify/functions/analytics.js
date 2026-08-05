@@ -23,6 +23,16 @@ exports.handler = async function handler() {
       window.gtag = window.gtag || function gtag(){ window.dataLayer.push(arguments); };
     }
 
+    function updateConsent(analyticsStorage) {
+      if (!window.gtag) return;
+      window.gtag('consent', 'update', {
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+        analytics_storage: analyticsStorage
+      });
+    }
+
     function loadTag() {
       if (!MEASUREMENT_ID || tagLoaded) return;
       tagLoaded = true;
@@ -33,12 +43,7 @@ exports.handler = async function handler() {
         ad_personalization: 'denied',
         analytics_storage: 'denied'
       });
-      window.gtag('consent', 'update', {
-        ad_storage: 'denied',
-        ad_user_data: 'denied',
-        ad_personalization: 'denied',
-        analytics_storage: 'granted'
-      });
+      updateConsent('granted');
       window.gtag('js', new Date());
       window.gtag('config', MEASUREMENT_ID, {
         send_page_view: true,
@@ -81,6 +86,7 @@ exports.handler = async function handler() {
       });
       node.querySelector('.pt-consent-deny').addEventListener('click', () => {
         safeStorageSet('denied');
+        updateConsent('denied');
         node.hidden = true;
       });
       document.body.appendChild(node);
