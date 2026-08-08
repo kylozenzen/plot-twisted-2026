@@ -7,3 +7,15 @@
 
 /landing-v4.js
   Cache-Control: public, max-age=0, must-revalidate
+
+/index.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+/game.css
+  Cache-Control: public, max-age=0, must-revalidate
+
+/game.js
+  Cache-Control: public, max-age=0, must-revalidate
+
+/questions.json
+  Cache-Control: public, max-age=0, must-revalidate

@@ -1,6 +1,0 @@
-.game-beta-chip{display:inline-flex;align-items:center;justify-content:center;min-height:22px;padding:4px 8px;border:1px solid rgba(255,77,141,.72);border-radius:999px;color:#ff91b8;background:rgba(255,77,141,.12);font-family:'Space Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.12em;line-height:1;text-transform:uppercase;box-shadow:0 0 18px rgba(255,77,141,.12)}
-#lobby .marquee .game-beta-chip{position:absolute;top:18px;right:18px;z-index:3}
-#settings .settings-beta-wrap{display:flex;align-items:center;justify-content:center;gap:9px;margin-bottom:7px}
-#settings .settings-beta-wrap .eyebrow{margin:0}
-.settings-action-row .toggle{min-width:108px}
-@media(max-width:480px){#lobby .marquee .game-beta-chip{top:16px;right:14px}.settings-action-row{align-items:flex-start}.settings-action-row .toggle{min-width:96px}}
