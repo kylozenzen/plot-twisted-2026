@@ -1,67 +1,41 @@
 const clueOverrides = require('./clue-overrides');
 
-function applyClueOverrides(html) {
-  const prefix = 'const QUESTIONS = ';
-  const suffix = ';\nconst CAT_META =';
-  const start = html.indexOf(prefix);
-  const end = html.indexOf(suffix, start);
+function applyClueOverrides(questions) {
+  Object.entries(clueOverrides).forEach(([category, categoryOverrides]) => {
+    const entries = questions[category];
+    if (!Array.isArray(entries)) return;
 
-  if (start === -1 || end === -1) return html;
-
-  try {
-    const jsonStart = start + prefix.length;
-    const questions = JSON.parse(html.slice(jsonStart, end));
-
-    Object.entries(clueOverrides).forEach(([category, categoryOverrides]) => {
-      const entries = questions[category];
-      if (!Array.isArray(entries)) return;
-
-      Object.entries(categoryOverrides).forEach(([title, clue]) => {
-        const match = entries.find((entry) => entry.title === title);
-        if (match) match.clue = clue;
-      });
+    Object.entries(categoryOverrides).forEach(([title, clue]) => {
+      const match = entries.find((entry) => entry.title === title);
+      if (match) match.clue = clue;
     });
-
-    return `${html.slice(0, jsonStart)}${JSON.stringify(questions)}${html.slice(end)}`;
-  } catch (error) {
-    console.error('Plot Twisted clue override failed', error);
-    return html;
-  }
+  });
+  return questions;
 }
 
 exports.handler = async function handler(event) {
   try {
     const baseUrl = event.rawUrl || `https://${event.headers.host}/play`;
-    const sourceUrl = new URL('/index.html', baseUrl);
-    const response = await fetch(sourceUrl, { headers: { accept: 'text/html' } });
+    const htmlUrl = new URL('/index.html', baseUrl);
+    const questionsUrl = new URL('/questions.json', baseUrl);
 
-    if (!response.ok) {
+    const [htmlResponse, questionsResponse] = await Promise.all([
+      fetch(htmlUrl, { headers: { accept: 'text/html' } }),
+      fetch(questionsUrl, { headers: { accept: 'application/json' } })
+    ]);
+
+    if (!htmlResponse.ok || !questionsResponse.ok) {
       return {
-        statusCode: response.status,
+        statusCode: 502,
         headers: { 'Content-Type': 'text/plain; charset=utf-8' },
         body: 'The projection booth could not load the game.'
       };
     }
 
-    let html = applyClueOverrides(await response.text());
-    if (!html.includes('/.netlify/functions/analytics')) {
-      html = html.replace(
-        '</head>',
-        '  <script src="/.netlify/functions/analytics"></script>\n</head>'
-      );
-    }
-    if (!html.includes('game-enhancements.css')) {
-      html = html.replace(
-        '</head>',
-        '  <link rel="stylesheet" href="/game-enhancements.css">\n</head>'
-      );
-    }
-    if (!html.includes('game-enhancements.js')) {
-      html = html.replace(
-        '</body>',
-        '  <script src="/game-enhancements.js"></script>\n</body>'
-      );
-    }
+    const questions = applyClueOverrides(await questionsResponse.json());
+    let html = await htmlResponse.text();
+    const dataScript = `<script>window.PLOT_TWISTED_QUESTIONS=${JSON.stringify(questions).replace(/</g, '\\u003c')};</script>`;
+    html = html.replace('<script src="./game.js"></script>', `${dataScript}\n<script src="./game.js"></script>`);
 
     return {
       statusCode: 200,

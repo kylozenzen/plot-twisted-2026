@@ -1,11 +1,9 @@
-const CACHE = 'plot-twisted-v18';
+const CACHE = 'plot-twisted-v19';
 const ASSETS = [
   './landing-v4.html', './landing-v2.css', './brand-icons.css', './landing-v3.css', './install.css', './site-polish.css', './landing-v4.js',
   './privacy.html', './privacy.css', './social-preview-v2.svg',
-  './game-enhancements.css', './game-enhancements.js',
-  './index.html', './manifest.webmanifest',
-  './icon-192.png', './icon-512.png', './icon-maskable-512.png',
-  './apple-touch-icon-180.png', './og-image.png'
+  './index.html', './game.css', './game.js', './questions.json', './manifest.webmanifest',
+  './icon-192.png', './icon-512.png', './icon-maskable-512.png', './apple-touch-icon-180.png'
 ];
 
 self.addEventListener('install', event => {
@@ -36,7 +34,8 @@ self.addEventListener('fetch', event => {
     || /install\.css$/.test(url.pathname)
     || /site-polish\.css$/.test(url.pathname)
     || /privacy\.(html|css)$/.test(url.pathname)
-    || /game-enhancements\.(css|js)$/.test(url.pathname)
+    || /game\.(css|js)$/.test(url.pathname)
+    || /questions\.json$/.test(url.pathname)
     || /social-preview-v2\.svg$/.test(url.pathname);
 
   if (request.mode === 'navigate' || isFreshAsset) {

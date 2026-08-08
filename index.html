@@ -3,328 +3,46 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-<title>Plot Twisted</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<title>Plot Twisted — The Movie Trivia Game</title>
+<meta name="description" content="Guess the movie from one ridiculous plot summary. Five-question rounds, six showings, and no account required.">
 <meta name="theme-color" content="#160b0d">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Plot Twisted">
+<link rel="canonical" href="https://plot-twisted.netlify.app/play">
 <link rel="manifest" href="./manifest.webmanifest">
 <link rel="apple-touch-icon" href="./apple-touch-icon-180.png">
 <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./game.css">
+
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="Plot Twisted">
+<meta property="og:url" content="https://plot-twisted.netlify.app/play">
 <meta property="og:title" content="Plot Twisted — The Movie Trivia Game">
-<meta property="og:description" content="Clues on the screen, hints in the subtitles, and the seats are your keyboard. Name the movie. Trust nobody, especially the hints.">
-<meta property="og:image" content="./og-image.png">
+<meta property="og:description" content="Guess the movie from one ridiculous summary. Five clues. Six showings. Trust nobody, especially the hints.">
+<meta property="og:image" content="https://plot-twisted.netlify.app/.netlify/images?url=%2Fsocial-preview-v2.svg&amp;w=1200&amp;h=630&amp;fit=cover&amp;fm=png">
+<meta property="og:image:secure_url" content="https://plot-twisted.netlify.app/.netlify/images?url=%2Fsocial-preview-v2.svg&amp;w=1200&amp;h=630&amp;fit=cover&amp;fm=png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Plot Twisted PT icon, category icons, and a phone mockup showing a superhero movie clue.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Plot Twisted — The Movie Trivia Game">
-<meta name="twitter:description" content="A cinema you play. Name the movie from one unhinged line.">
-<meta name="twitter:image" content="./og-image.png">
-<style>
-  :root{
-    --void:#0e0708; --void-2:#160b0d; --velvet:#4a1216; --velvet-lit:#7a1e22;
-    --brass:#e4b34c; --brass-dim:#a97f2e; --bulb:#fcebc0; --neon:#ff4d8d;
-    --screen-glow:#dfe9f2; --ink:#f4e6cf;
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  button,.seat{-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
-  html{height:100%;background:#0e0708}
-  body{
-    background:radial-gradient(120% 80% at 50% -10%, #2a1013 0%, var(--void-2) 42%, var(--void) 100%) var(--void);
-    background-attachment:fixed; background-repeat:no-repeat;
-    color:var(--ink); font-family:'Barlow',system-ui,sans-serif;
-    min-height:100dvh; overflow-x:hidden; overscroll-behavior:none; -webkit-tap-highlight-color:transparent;
-  }
-  .stage{min-height:100dvh;display:flex;align-items:center;justify-content:center;padding:20px;position:relative}
-
-  .screen{display:none;width:100%;max-width:760px;animation:fade .5s ease both}
-  .screen.active{display:block}
-  @keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-
-  /* ---------- studio ident ---------- */
-  #ident{position:fixed;inset:0;z-index:60;background:var(--void);display:flex;flex-direction:column;
-    align-items:center;justify-content:center;text-align:center;gap:14px;transition:opacity .8s ease}
-  #ident .presents{font-family:'Barlow Condensed';letter-spacing:.5em;text-transform:uppercase;
-    font-size:14px;color:var(--brass-dim);opacity:0;animation:up .8s .3s ease both}
-  #ident .studio{font-family:'Bungee';font-size:clamp(26px,7.5vw,52px);line-height:.92;color:var(--bulb);
-    opacity:0;animation:up 1s .8s ease both;text-shadow:0 0 30px rgba(228,179,76,.35)}
-  #ident .reel{width:64px;height:64px;border-radius:50%;border:5px solid var(--brass);position:relative;
-    margin-bottom:6px;opacity:0;animation:up 1s .1s ease both, spin 4s linear infinite}
-  #ident .reel::before,#ident .reel::after{content:"";position:absolute;width:12px;height:12px;
-    border-radius:50%;background:var(--brass);top:50%;left:50%;transform:translate(-50%,-50%)}
-  #ident .reel::after{box-shadow:0 -18px 0 var(--brass),0 18px 0 var(--brass),-18px 0 0 var(--brass),18px 0 0 var(--brass)}
-  @keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-  @keyframes spin{to{transform:rotate(360deg)}}
-
-  /* ---------- marquee (lobby) ---------- */
-  .marquee{border:3px solid var(--brass);border-radius:14px;background:linear-gradient(180deg,#20090b,#120607);
-    padding:26px 22px;text-align:center;position:relative;
-    box-shadow:0 0 0 6px #120607, 0 0 40px rgba(228,179,76,.15), inset 0 0 40px rgba(0,0,0,.5)}
-  .marquee::before,.marquee::after{content:"";position:absolute;left:12px;right:12px;height:14px;
-    background-image:radial-gradient(circle, var(--bulb) 32%, transparent 34%);
-    background-size:26px 14px;background-repeat:repeat-x;filter:drop-shadow(0 0 5px var(--brass));
-    animation:bulbs 1.1s steps(2) infinite}
-  .marquee::before{top:8px}
-  .marquee::after{bottom:8px}
-  @keyframes bulbs{50%{opacity:.55;filter:drop-shadow(0 0 2px var(--brass-dim))}}
-  .now-showing{font-family:'Barlow Condensed';letter-spacing:.42em;text-transform:uppercase;
-    font-size:13px;color:var(--brass);margin:10px 0 6px}
-  .title{font-family:'Bungee';color:var(--bulb);line-height:.95;font-size:clamp(34px,10vw,72px);
-    text-shadow:0 3px 0 var(--velvet),0 0 34px rgba(255,77,141,.25)}
-  .title .twist{color:var(--neon);text-shadow:0 3px 0 #6a0d2f,0 0 26px rgba(255,77,141,.6)}
-  .edition{font-family:'Barlow Condensed';font-weight:700;letter-spacing:.3em;text-transform:uppercase;
-    font-size:clamp(13px,3.4vw,17px);color:var(--brass);margin-top:8px}
-  .tagline{font-style:italic;color:#c9a978;margin:18px auto 4px;max-width:34ch;font-size:15px}
-
-  /* ---------- vertical menu ---------- */
-  .menu{display:flex;flex-direction:column;gap:12px;max-width:340px;margin:22px auto 0}
-  .menu .btn{width:100%}
-
-  /* ---------- buttons ---------- */
-  .btn{font-family:'Barlow Condensed';font-weight:700;text-transform:uppercase;letter-spacing:.14em;
-    border:none;cursor:pointer;border-radius:10px;padding:15px 26px;font-size:19px;
-    transition:transform .08s ease, filter .15s ease, box-shadow .15s ease}
-  .btn:active{transform:translateY(2px)}
-  .btn-primary{background:linear-gradient(180deg,var(--brass),var(--brass-dim));color:#2a1206;
-    box-shadow:0 5px 0 #6d4f1a, 0 8px 20px rgba(0,0,0,.4)}
-  .btn-primary:active{box-shadow:0 3px 0 #6d4f1a}
-  .btn-primary:hover{filter:brightness(1.06)}
-  .btn-ghost{background:transparent;border:2px solid var(--velvet-lit);color:var(--ink)}
-  .btn-ghost:hover{border-color:var(--brass);color:var(--brass)}
-  .foot{margin-top:22px;text-align:center;font-family:'Barlow Condensed';letter-spacing:.32em;
-    text-transform:uppercase;font-size:11px;color:#6b4c3a}
-  .back-wrap{text-align:center;margin-top:22px}
-
-  /* ---------- box office ---------- */
-  .eyebrow{font-family:'Barlow Condensed';letter-spacing:.4em;text-transform:uppercase;
-    font-size:12px;color:var(--brass);text-align:center;margin-bottom:6px}
-  .head{font-family:'Bungee';font-size:clamp(24px,6vw,38px);color:var(--bulb);text-align:center;margin-bottom:4px}
-  .subhead{text-align:center;color:#c9a978;font-size:14px;margin-bottom:24px}
-  .board{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-  @media(max-width:560px){.board{grid-template-columns:1fr}}
-  .poster{text-align:left;cursor:pointer;border:2px solid var(--velvet-lit);border-radius:12px;
-    background:linear-gradient(180deg,#22090c,#160809);padding:18px;position:relative;overflow:hidden;
-    transition:transform .12s ease,border-color .15s ease,box-shadow .15s ease}
-  .poster:hover{transform:translateY(-3px);border-color:var(--brass);box-shadow:0 10px 26px rgba(0,0,0,.5)}
-  .poster:focus-visible{outline:3px solid var(--neon);outline-offset:2px}
-  .poster .rated{position:absolute;top:12px;right:12px;font-family:'Space Mono';font-weight:700;
-    font-size:11px;border:1px solid var(--brass-dim);color:var(--brass);padding:2px 6px;border-radius:4px}
-  .poster .flick{font-size:26px}
-  .poster h3{font-family:'Barlow Condensed';font-weight:700;text-transform:uppercase;letter-spacing:.06em;
-    font-size:24px;color:var(--bulb);margin:8px 0 4px;line-height:1}
-  .poster p{color:#b9987a;font-size:13.5px;line-height:1.35}
-  .poster .runtime{margin-top:12px;font-family:'Space Mono';font-size:11px;color:var(--brass-dim);
-    display:flex;align-items:center;gap:8px}
-  .poster .runtime::before{content:"► BUY TICKET";color:var(--neon)}
-
-  /* coming soon posters */
-  .coming{border:2px solid #331116;border-radius:12px;background:linear-gradient(180deg,#1a070a,#120607);
-    padding:18px;position:relative;opacity:.9}
-  .coming .rated{position:absolute;top:12px;right:12px;font-family:'Space Mono';font-weight:700;font-size:11px;
-    border:1px solid var(--neon);color:var(--neon);padding:2px 6px;border-radius:4px}
-  .coming .flick{font-size:26px;filter:grayscale(.35)}
-  .coming h3{font-family:'Barlow Condensed';font-weight:700;text-transform:uppercase;letter-spacing:.06em;
-    font-size:24px;color:var(--brass);margin:8px 0 4px;line-height:1}
-  .coming p{color:#9a7d6a;font-size:13.5px;line-height:1.35}
-  .coming .soon-lbl{margin-top:12px;font-family:'Space Mono';font-size:11px;color:#7a5a48}
-  .coming .soon-lbl::before{content:"⧗ PREMIERING SOON";color:#8a6a52}
-
-  /* ---------- settings ---------- */
-  .settings-list{max-width:480px;margin:8px auto 0;display:flex;flex-direction:column;gap:12px}
-  .set-row{display:flex;justify-content:space-between;align-items:center;gap:14px;border:1px solid var(--velvet-lit);
-    border-radius:12px;padding:16px 18px;background:linear-gradient(180deg,#1a070a,#120607)}
-  .set-name{font-family:'Barlow Condensed';font-weight:700;text-transform:uppercase;letter-spacing:.08em;
-    font-size:18px;color:var(--bulb)}
-  .set-sub{font-size:12.5px;color:#9a7d6a;margin-top:2px}
-  .toggle{font-family:'Space Mono';font-weight:700;font-size:13px;letter-spacing:.08em;cursor:pointer;
-    border:2px solid var(--brass);background:rgba(228,179,76,.12);color:var(--brass);border-radius:30px;
-    padding:8px 18px;min-width:92px;transition:.15s}
-  .toggle:hover{background:rgba(228,179,76,.2)}
-  .toggle.off{border-color:var(--velvet-lit);background:transparent;color:#9a7d6a}
-
-  /* ---------- theater ---------- */
-  .hud{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;gap:10px}
-  .hud .now{font-family:'Barlow Condensed';font-weight:700;text-transform:uppercase;letter-spacing:.12em;
-    font-size:14px;color:var(--brass);border:1px solid var(--velvet-lit);border-radius:20px;padding:5px 14px}
-  .hud .meta{display:flex;gap:14px;align-items:center;font-family:'Space Mono';font-size:12px;color:#c9a978}
-  .hud .meta b{color:var(--bulb);font-weight:700}
-  .quit{font-family:'Barlow Condensed';font-weight:700;letter-spacing:.1em;font-size:12px;background:transparent;
-    border:1px solid var(--velvet-lit);color:#c99;border-radius:20px;padding:5px 12px;cursor:pointer;
-    transition:border-color .15s,color .15s}
-  .quit:hover{border-color:var(--neon);color:var(--neon)}
-  .pips{display:flex;gap:8px;justify-content:center;margin:-2px 0 12px}
-  .pip{width:24px;height:6px;border-radius:3px;background:#3a1a1e;transition:background .2s,box-shadow .2s}
-  .pip.now{background:var(--brass);box-shadow:0 0 8px rgba(228,179,76,.55)}
-  .pip.ok{background:#5ee08a}
-  .pip.miss{background:#a3434a}
-  .pbest{margin-top:6px;font-family:'Space Mono';font-size:11px;color:var(--brass)}
-
-  .auditorium{border-radius:16px;padding:20px 16px 14px;
-    background:radial-gradient(120% 120% at 50% 0%, #1c0a0c 0%, var(--void) 70%);
-    border:1px solid #2a1214;position:relative}
-  .curtains{position:absolute;top:0;bottom:0;width:34px;pointer-events:none;z-index:2}
-  .curtains.l{left:0;background:linear-gradient(90deg,var(--velvet) 0%,var(--velvet-lit) 60%,transparent);border-radius:16px 0 0 16px}
-  .curtains.r{right:0;background:linear-gradient(270deg,var(--velvet) 0%,var(--velvet-lit) 60%,transparent);border-radius:0 16px 16px 0}
-
-  .movie-screen{background:linear-gradient(180deg,#0a0f14,#050708);border:2px solid #33404a;border-radius:8px;
-    margin:0 22px;min-height:150px;display:flex;align-items:center;justify-content:center;text-align:center;
-    padding:26px 22px;position:relative;box-shadow:0 0 44px rgba(223,233,242,.14), inset 0 0 60px rgba(223,233,242,.05)}
-  .movie-screen .clue{font-size:clamp(17px,4.6vw,23px);line-height:1.4;color:var(--screen-glow);font-weight:500;
-    max-width:40ch;text-shadow:0 0 18px rgba(223,233,242,.25)}
-  .movie-screen.correct{border-color:#5ee08a;box-shadow:0 0 50px rgba(94,224,138,.4)}
-  .movie-screen .verdict{font-family:'Bungee';font-size:clamp(28px,9vw,52px);color:#7bf0a0;text-shadow:0 0 30px rgba(94,224,138,.6)}
-
-  .subtitle{min-height:30px;margin:12px 22px 4px;text-align:center;font-size:15.5px;color:var(--bulb);font-weight:500;transition:opacity .2s}
-  .subtitle .lbl{font-family:'Barlow Condensed';font-weight:700;letter-spacing:.16em;font-size:11px;color:var(--neon);text-transform:uppercase;margin-right:8px}
-  .subtitle.wrong{color:#ff9a9a}
-
-  .answer-line{margin:6px 22px 14px;display:flex;align-items:center;gap:10px;border:2px solid var(--brass-dim);
-    border-radius:8px;background:#100607;padding:12px 16px;min-height:54px}
-  .answer-line .caret-lbl{font-family:'Space Mono';font-size:11px;color:var(--brass-dim);white-space:nowrap}
-  .answer-line .typed{font-family:'Barlow Condensed';font-weight:700;font-size:26px;letter-spacing:.06em;
-    text-transform:uppercase;color:var(--bulb);min-height:30px;flex:1;word-break:break-word}
-  .answer-line .typed .cur{color:var(--neon);animation:blink 1s steps(1) infinite}
-  @keyframes blink{50%{opacity:0}}
-  .answer-line.shake{animation:shake .35s}
-  @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-7px)}75%{transform:translateX(7px)}}
-
-  /* action buttons — compact single line */
-  .actions{display:flex;gap:8px;margin:0 22px 8px}
-  .act{flex:1;font-family:'Barlow Condensed';font-weight:700;text-transform:uppercase;letter-spacing:.08em;
-    font-size:12px;cursor:pointer;border-radius:8px;padding:6px 6px;border:1.5px solid var(--velvet-lit);
-    background:#180a0c;color:var(--ink);display:flex;flex-direction:row;align-items:center;justify-content:center;gap:5px;
-    transition:transform .08s,border-color .15s,color .15s}
-  .act:hover{border-color:var(--brass);color:var(--brass)}
-  .act:active{transform:translateY(1px)}
-  .act:disabled{opacity:.4;cursor:not-allowed}
-  .act .ic{font-size:13px}
-
-  /* seat keyboard — bigger */
-  .seating{padding:8px 4px 4px;perspective:560px}
-  .seat-row{display:flex;justify-content:center;gap:var(--gap);margin-bottom:8px;transform:rotateX(10deg);--gap:6px}
-  .seat{width:calc((100% - (var(--gap) * 9)) / 10);max-width:58px;height:54px;border:none;cursor:pointer;position:relative;flex:0 0 auto;
-    background:linear-gradient(180deg,var(--velvet-lit),var(--velvet));border-radius:9px 9px 5px 5px;
-    color:var(--ink);font-family:'Barlow Condensed';font-weight:700;font-size:20px;
-    box-shadow:0 3px 0 #2c0a0d, inset 0 3px 0 rgba(255,255,255,.06);transition:transform .07s,filter .1s}
-  .seat::after{content:"";position:absolute;left:5px;right:5px;bottom:-6px;height:5px;border-radius:3px;background:#2c0a0d}
-  .seat:hover{filter:brightness(1.18)}
-  .seat:active,.seat.hit{transform:translateY(3px);box-shadow:0 0 0 #2c0a0d;filter:brightness(1.3)}
-  .seat.wide{width:auto;padding:0 18px;font-size:13px;letter-spacing:.08em}
-  .seat.enter{background:linear-gradient(180deg,var(--brass),var(--brass-dim));color:#2a1206;box-shadow:0 3px 0 #6d4f1a}
-  .seat.enter::after{background:#6d4f1a}
-  .seat:focus-visible{outline:3px solid var(--neon);outline-offset:2px}
-  .screen-label{text-align:center;font-family:'Barlow Condensed';letter-spacing:.5em;font-size:10px;
-    color:#5f4636;text-transform:uppercase;margin:2px 0 8px}
-
-  /* ---------- receipt ---------- */
-  .ticket{background:#f3ead6;color:#1c1310;max-width:400px;margin:0 auto;font-family:'Space Mono';
-    padding:26px 26px 30px;position:relative;box-shadow:0 20px 50px rgba(0,0,0,.6)}
-  .ticket::before,.ticket::after{content:"";position:absolute;left:0;right:0;height:16px;
-    background:radial-gradient(circle at 8px -3px, transparent 8px, #f3ead6 9px);background-size:16px 16px;background-repeat:repeat-x}
-  .ticket::before{top:-8px;transform:rotate(180deg)}
-  .ticket::after{bottom:-8px}
-  .t-brand{text-align:center;border-bottom:2px dashed #b9a488;padding-bottom:12px}
-  .t-brand .cinema{font-weight:700;font-size:15px;letter-spacing:.18em}
-  .t-brand .admit{margin-top:4px;font-size:11px;letter-spacing:.4em;color:#7a6a55}
-  .t-row{display:flex;justify-content:space-between;font-size:12.5px;padding:7px 0;border-bottom:1px dotted #cbb99e}
-  .t-row .k{color:#7a6a55}
-  .t-row .v{font-weight:700;text-align:right;max-width:60%}
-  .t-score{text-align:center;padding:16px 0 6px}
-  .t-score .num{font-weight:700;font-size:40px;line-height:1}
-  .t-score .lbl{font-size:11px;letter-spacing:.3em;color:#7a6a55}
-  .t-rating{text-align:center;margin:4px 0 10px}
-  .t-rating .stars{font-size:22px;color:#c9962b;letter-spacing:3px}
-  .t-rating .crit{font-family:'Barlow Condensed';font-weight:700;text-transform:uppercase;letter-spacing:.14em;font-size:16px;margin-top:2px}
-  .t-best{text-align:center;font-family:'Barlow Condensed';font-weight:700;letter-spacing:.12em;color:#8a5a12;background:rgba(228,179,76,.22);border:1px dashed #b9a488;border-radius:6px;padding:6px;margin:2px 0 8px;font-size:13px}
-  .barcode{height:44px;margin:14px 0 4px;background-image:repeating-linear-gradient(90deg,
-    #1c1310 0 2px, transparent 2px 4px, #1c1310 4px 5px, transparent 5px 9px, #1c1310 9px 12px, transparent 12px 14px);background-size:14px 100%}
-  .t-serial{text-align:center;font-size:10px;letter-spacing:.2em;color:#7a6a55;margin-top:4px}
-  .receipt-cta{display:flex;flex-direction:column;gap:10px;max-width:400px;margin:22px auto 0}
-  .receipt-cta .row{display:flex;gap:10px}
-  .receipt-cta .row .btn{flex:1;font-size:15px;padding:13px 10px}
-
-  .toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(20px);background:var(--brass);
-    color:#2a1206;font-family:'Barlow Condensed';font-weight:700;letter-spacing:.1em;text-transform:uppercase;
-    padding:12px 22px;border-radius:30px;font-size:14px;opacity:0;pointer-events:none;transition:.25s;z-index:70}
-  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
-
-  .overlay{position:fixed;inset:0;z-index:80;display:none;align-items:center;justify-content:center;padding:24px;
-    background:rgba(6,3,4,.78);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
-  .overlay.show{display:flex;animation:fade .25s ease both}
-  .exit-card{max-width:380px;width:100%;border:3px solid var(--brass);border-radius:16px;text-align:center;
-    background:linear-gradient(180deg,#20090b,#120607);padding:28px 24px;
-    box-shadow:0 0 0 6px #120607,0 20px 50px rgba(0,0,0,.6)}
-  .exit-card .em{font-size:36px;line-height:1}
-  .exit-card h3{font-family:'Bungee';color:var(--bulb);font-size:22px;margin:10px 0 8px;line-height:1.05}
-  .exit-card p{color:#c9a978;font-size:14.5px;line-height:1.45;margin-bottom:22px}
-  .exit-card .row{display:flex;flex-direction:column;gap:10px}
-  .exit-card .btn{width:100%}
-  a.btn{display:inline-flex;align-items:center;justify-content:center;text-decoration:none}
-  .about{max-width:480px;margin:18px auto 0;border:1px solid var(--velvet-lit);border-radius:12px;background:linear-gradient(180deg,#1a070a,#120607);padding:20px}
-  .about-h{font-family:'Barlow Condensed';font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--brass);font-size:18px;margin-bottom:8px}
-  .about p{color:#c9a978;font-size:14px;line-height:1.5;margin-bottom:10px}
-  .about-cta{display:flex;flex-direction:column;gap:10px;margin-top:14px}
-  .about-cta .btn{width:100%}
-  .about-foot{margin-top:14px;text-align:center;font-family:'Barlow Condensed';letter-spacing:.28em;text-transform:uppercase;font-size:10px;color:#6b4c3a}
-  .fb-form,.fb-done{max-width:480px;margin:0 auto}
-  .fb-lab{display:block;font-family:'Barlow Condensed';font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:13px;color:var(--brass);margin:14px 0 6px}
-  .fb-in{width:100%;background:#100607;border:2px solid var(--velvet-lit);border-radius:9px;color:var(--ink);font-family:'Barlow',sans-serif;font-size:16px;padding:12px 14px}
-  .fb-in:focus{outline:none;border-color:var(--brass)}
-  .hp{position:absolute;left:-9999px}
-  .fb-ticket{background:#f3ead6;color:#1c1310;border-radius:10px;padding:22px;text-align:center;font-family:'Space Mono';margin-bottom:14px;box-shadow:0 12px 30px rgba(0,0,0,.5)}
-  .fb-ticket-h{font-weight:700;letter-spacing:.14em;font-size:16px;margin-bottom:8px}
-  .fb-ticket p{font-size:13px;line-height:1.5;color:#5a4a38}
-  .install-bar{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:75;display:none;align-items:center;gap:10px;background:linear-gradient(180deg,#20090b,#120607);border:2px solid var(--brass);border-radius:14px;padding:12px 14px;box-shadow:0 12px 30px rgba(0,0,0,.5)}
-  .install-bar.show{display:flex;animation:fade .3s ease both}
-  .ib-ic{font-size:22px}
-  .ib-txt{flex:1;font-size:13.5px;color:var(--ink);line-height:1.3}
-  .ib-btn{font-family:'Barlow Condensed';font-weight:700;text-transform:uppercase;letter-spacing:.08em;background:linear-gradient(180deg,var(--brass),var(--brass-dim));color:#2a1206;border:none;border-radius:8px;padding:9px 16px;cursor:pointer;font-size:14px}
-  .ib-x{background:transparent;border:none;color:#9a7d6a;font-size:16px;cursor:pointer;padding:4px 6px}
-  .egg-layer{position:fixed;inset:0;z-index:95;pointer-events:none;opacity:0;transition:opacity .4s;overflow:hidden}
-  .egg-layer.show{opacity:1}
-  .egg-layer canvas{position:absolute;inset:0;width:100%;height:100%;display:block;background:#000}
-  .mtx-text{position:absolute;left:0;right:0;top:44%;text-align:center;font-family:'Space Mono',monospace;color:#5bff7a;font-size:clamp(22px,6vw,40px);text-shadow:0 0 14px rgba(60,255,106,.85);letter-spacing:.06em}
-  .mtx-text::after{content:'\u258a';margin-left:4px;animation:blink 1s steps(1) infinite}
-  .egg-layer.fatal{background:rgba(15,0,0,.55);animation:fatalShake .45s .5s}
-  .fatal-flash{position:absolute;inset:0;background:radial-gradient(circle at 50% 50%, rgba(190,0,0,.6), rgba(0,0,0,.9));animation:fatalFlash .5s ease}
-  .fatal-text{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Bungee',sans-serif;color:#e10600;font-size:clamp(46px,16vw,150px);letter-spacing:.03em;text-shadow:0 0 26px rgba(225,6,0,.9),0 5px 0 #4a0000;animation:fatalSlam .6s cubic-bezier(.2,1.4,.3,1) both}
-  @keyframes fatalFlash{0%{opacity:0}25%{opacity:1}100%{opacity:.55}}
-  @keyframes fatalSlam{0%{transform:scale(3);filter:blur(16px);opacity:0}55%{opacity:1}100%{transform:scale(1);filter:blur(0);opacity:1}}
-  @keyframes fatalShake{0%,100%{transform:translate(0,0)}20%{transform:translate(-7px,3px)}40%{transform:translate(7px,-3px)}60%{transform:translate(-5px,2px)}80%{transform:translate(5px,-2px)}}
-
-  @media(prefers-reduced-motion:reduce){
-    *{animation-duration:.01ms!important;transition-duration:.01ms!important}
-    .marquee::before,.marquee::after{animation:none}
-    #ident .reel{animation:none}
-  }
-  @media(max-width:480px){
-    .stage{padding:max(10px,env(safe-area-inset-top)) max(10px,env(safe-area-inset-right)) max(10px,env(safe-area-inset-bottom)) max(10px,env(safe-area-inset-left))}
-    .movie-screen,.subtitle,.answer-line,.actions{margin-left:10px;margin-right:10px}
-    .auditorium{padding:16px 10px 12px}
-    .seating{padding:6px 4px 2px}
-    .curtains{width:14px}
-    .seat{height:58px;font-size:18px;max-width:none}
-    .seat-row{--gap:4px}
-    .seat.wide{padding:0 10px;font-size:12px}
-    .act{font-size:13px}
-    .hud .meta{gap:8px}
-  }
-</style>
+<meta name="twitter:description" content="One ridiculous clue. One movie title. Try not to overthink it.">
+<meta name="twitter:image" content="https://plot-twisted.netlify.app/.netlify/images?url=%2Fsocial-preview-v2.svg&amp;w=1200&amp;h=630&amp;fit=cover&amp;fm=png">
+<meta name="twitter:image:alt" content="Plot Twisted PT icon, category icons, and a phone mockup showing a superhero movie clue.">
+<script src="/.netlify/functions/analytics"></script>
 </head>
 <body>
-
-<!-- STUDIO IDENT -->
 <div id="ident" role="img" aria-label="Nobody Creative presents">
   <div class="reel" aria-hidden="true"></div>
   <div class="presents">presents</div>
   <div class="studio">NOBODY<br>CREATIVE</div>
 </div>
-
 <div class="stage">
-
-  <!-- LOBBY -->
   <section class="screen" id="lobby">
     <div class="marquee">
       <div class="now-showing">★ Now Showing ★</div>
@@ -337,10 +55,9 @@
       <button class="btn btn-ghost" onclick="showScreen('more')">More Showings</button>
       <button class="btn btn-ghost" onclick="showScreen('settings')">Settings</button>
     </div>
-    <div class="foot">A Nobody Creative Production · 5 Questions · v0.1</div>
+    <div class="foot">A Nobody Creative Production · 5 Questions · Beta Build</div>
   </section>
 
-  <!-- BOX OFFICE -->
   <section class="screen" id="boxoffice">
     <div class="eyebrow">Box Office</div>
     <h2 class="head">Pick Your Showing</h2>
@@ -349,482 +66,63 @@
     <div class="back-wrap" style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap"><button class="btn btn-primary" onclick="surpriseMe()">🎲 Surprise Me</button><button class="btn btn-ghost" onclick="goLobby()">← Back to Lobby</button></div>
   </section>
 
-  <!-- MORE SHOWINGS -->
   <section class="screen" id="more">
     <div class="eyebrow">Coming Attractions</div>
     <h2 class="head">More Showings</h2>
     <p class="subhead">The marquee is just getting started.</p>
     <div class="board">
-      <div class="coming"><span class="rated">SOON</span><span class="flick" aria-hidden="true">🎮</span>
-        <h3>Gaming Edition</h3><p>Boss Rush, Retro Reels, and New Game+. The clues you love, now with extra lives.</p>
-        <div class="soon-lbl">&nbsp;</div></div>
-      <div class="coming"><span class="rated">SOON</span><span class="flick" aria-hidden="true">👻</span>
-        <h3>Fright Fest</h3><p>A horror-only midnight showing. Bring a friend to hide behind.</p>
-        <div class="soon-lbl">&nbsp;</div></div>
-      <div class="coming"><span class="rated">SOON</span><span class="flick" aria-hidden="true">📺</span>
-        <h3>Binge Reel</h3><p>Television's biggest series get their own screen. No spoilers, promise.</p>
-        <div class="soon-lbl">&nbsp;</div></div>
-      <div class="coming"><span class="rated">SOON</span><span class="flick" aria-hidden="true">🎵</span>
-        <h3>Needle Drop</h3><p>Name the movie from its most iconic song cue.</p>
-        <div class="soon-lbl">&nbsp;</div></div>
+      <div class="coming"><span class="rated">SOON</span><span class="flick" aria-hidden="true">🎮</span><h3>Gaming Edition</h3><p>Boss Rush, Retro Reels, and New Game+. The clues you love, now with extra lives.</p><div class="soon-lbl">&nbsp;</div></div>
+      <div class="coming"><span class="rated">SOON</span><span class="flick" aria-hidden="true">👻</span><h3>Fright Fest</h3><p>A horror-only midnight showing. Bring a friend to hide behind.</p><div class="soon-lbl">&nbsp;</div></div>
+      <div class="coming"><span class="rated">SOON</span><span class="flick" aria-hidden="true">📺</span><h3>Binge Reel</h3><p>Television's biggest series get their own screen. No spoilers, promise.</p><div class="soon-lbl">&nbsp;</div></div>
+      <div class="coming"><span class="rated">SOON</span><span class="flick" aria-hidden="true">🎵</span><h3>Needle Drop</h3><p>Name the movie from its most iconic song cue.</p><div class="soon-lbl">&nbsp;</div></div>
     </div>
     <div class="back-wrap"><button class="btn btn-ghost" onclick="goLobby()">← Back to Lobby</button></div>
   </section>
 
-  <!-- SETTINGS -->
   <section class="screen" id="settings">
     <div class="eyebrow">Projection Booth</div>
     <h2 class="head">Settings</h2>
     <p class="subhead">Set the house the way you like it.</p>
     <div class="settings-list">
-      <div class="set-row">
-        <div><div class="set-name">Seat Layout</div><div class="set-sub">How the letter seats are arranged</div></div>
-        <button class="toggle" id="setLayout" onclick="toggleLayout()">QWERTY</button>
-      </div>
-      <div class="set-row">
-        <div><div class="set-name">Sound</div><div class="set-sub">Sound effects & spoken clues</div></div>
-        <button class="toggle" id="setSound" onclick="toggleSound()">ON</button>
-      </div>
+      <div class="set-row"><div><div class="set-name">Seat Layout</div><div class="set-sub">How the letter seats are arranged</div></div><button class="toggle" id="setLayout" onclick="toggleLayout()">QWERTY</button></div>
+      <div class="set-row"><div><div class="set-name">Sound</div><div class="set-sub">Sound effects & spoken clues</div></div><button class="toggle" id="setSound" onclick="toggleSound()">ON</button></div>
     </div>
     <div class="about">
       <div class="about-h">About the Show</div>
       <p>Plot Twisted is a one-person production. I'm Ben — a social media marketer between full-time roles who started building things and accidentally shipped a movie trivia game.</p>
       <p>It's free while the theater's small. If enough people show up and the projector bills come due, there may be a small ticket price down the line to keep the lights on.</p>
-      <div class="about-cta">
-        <a class="btn btn-primary" href="https://bencampbell.netlify.app/" target="_blank" rel="noopener noreferrer">See My Work →</a>
-        <button class="btn btn-ghost" onclick="showScreen('feedback')">🎟 Feedback & Clue Box</button>
-      </div>
+      <div class="about-cta"><a class="btn btn-primary" href="https://bencampbell.netlify.app/" target="_blank" rel="noopener noreferrer">See My Work →</a><button class="btn btn-ghost" onclick="showScreen('feedback')">🎟 Feedback & Clue Box</button></div>
       <div class="about-foot">A Nobody Creative Production</div>
     </div>
     <div class="back-wrap"><button class="btn btn-ghost" onclick="goLobby()">← Back to Lobby</button></div>
   </section>
 
-  <!-- FEEDBACK -->
   <section class="screen" id="feedback">
     <div class="eyebrow">Feedback & Clue Box</div>
     <h2 class="head">🎟 Drop a Note</h2>
     <p class="subhead">Bugs, bad answers, or a clue you think is funnier.</p>
     <form class="fb-form" name="feedback" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="fbForm" onsubmit="return submitFeedback(event)">
-      <input type="hidden" name="form-name" value="feedback">
-      <p class="hp"><label>Leave blank: <input name="bot-field"></label></p>
-      <label class="fb-lab">What's this about?</label>
-      <select class="fb-in" name="type" id="fbType" onchange="onFbType()">
-        <option>Bug</option><option>Wrong answer</option><option>Suggestion</option><option>Submit a clue</option><option>Other</option>
-      </select>
-      <div id="fbClue" hidden>
-        <label class="fb-lab">Category</label>
-        <select class="fb-in" name="clue_category"><option>Family</option><option>Superhero</option><option>SciFi</option><option>Fantasy</option><option>Emotional Damage</option><option>Streaming Hits</option></select>
-        <label class="fb-lab">The movie</label>
-        <input class="fb-in" name="clue_movie" placeholder="e.g. The Matrix Reloaded">
-        <label class="fb-lab">Your one-line clue</label>
-        <textarea class="fb-in" name="clue_text" rows="2" placeholder="Make it unhinged."></textarea>
-      </div>
-      <label class="fb-lab">Message</label>
-      <textarea class="fb-in" name="message" rows="3" placeholder="What's on your mind?"></textarea>
-      <label class="fb-lab">Contact (optional)</label>
-      <input class="fb-in" name="contact" placeholder="email or handle, if you want a reply">
-      <button class="btn btn-primary" type="submit" style="width:100%;margin-top:16px">Send It In →</button>
+      <input type="hidden" name="form-name" value="feedback"><p class="hp"><label>Leave blank: <input name="bot-field"></label></p>
+      <label class="fb-lab">What's this about?</label><select class="fb-in" name="type" id="fbType" onchange="onFbType()"><option>Bug</option><option>Wrong answer</option><option>Suggestion</option><option>Submit a clue</option><option>Other</option></select>
+      <div id="fbClue" hidden><label class="fb-lab">Category</label><select class="fb-in" name="clue_category"><option>Family</option><option>Superhero</option><option>SciFi</option><option>Fantasy</option><option>Emotional Damage</option><option>Streaming Hits</option></select><label class="fb-lab">The movie</label><input class="fb-in" name="clue_movie" placeholder="e.g. The Matrix Reloaded"><label class="fb-lab">Your one-line clue</label><textarea class="fb-in" name="clue_text" rows="2" placeholder="Make it unhinged."></textarea></div>
+      <label class="fb-lab">Message</label><textarea class="fb-in" name="message" rows="3" placeholder="What's on your mind?"></textarea><label class="fb-lab">Contact (optional)</label><input class="fb-in" name="contact" placeholder="email or handle, if you want a reply"><button class="btn btn-primary" type="submit" style="width:100%;margin-top:16px">Send It In →</button>
     </form>
-    <div class="fb-done" id="fbDone" hidden>
-      <div class="fb-ticket"><div class="fb-ticket-h">🎟️ TICKET RECEIVED</div><p id="fbDoneMsg"></p></div>
-      <button class="btn btn-ghost" onclick="fbReset()" style="width:100%">Submit Another</button>
-    </div>
+    <div class="fb-done" id="fbDone" hidden><div class="fb-ticket"><div class="fb-ticket-h">🎟️ TICKET RECEIVED</div><p id="fbDoneMsg"></p></div><button class="btn btn-ghost" onclick="fbReset()" style="width:100%">Submit Another</button></div>
     <div class="back-wrap"><button class="btn btn-ghost" onclick="showScreen('settings')">← Back to Settings</button></div>
   </section>
 
-  <!-- THEATER -->
   <section class="screen" id="theater">
-    <div class="hud">
-      <span class="now" id="hudCat">Now Playing</span>
-      <div class="meta">
-        <span>SEAT <b id="hudQ">1</b>/<b id="hudTotal">5</b></span>
-        <span>SCORE <b id="hudScore">0</b></span>
-        <button class="quit" onclick="quitGame()" aria-label="Exit to lobby">✕ EXIT</button>
-      </div>
-    </div>
+    <div class="hud"><span class="now" id="hudCat">Now Playing</span><div class="meta"><span>SEAT <b id="hudQ">1</b>/<b id="hudTotal">5</b></span><span>SCORE <b id="hudScore">0</b></span><button class="quit" onclick="quitGame()" aria-label="Exit to lobby">✕ EXIT</button></div></div>
     <div class="pips" id="pips" aria-hidden="true"></div>
-    <div class="auditorium">
-      <div class="curtains l"></div>
-      <div class="curtains r"></div>
-      <div class="movie-screen" id="movieScreen"><div class="clue" id="clue">—</div></div>
-      <div class="subtitle" id="subtitle" aria-live="polite"></div>
-      <div class="answer-line" id="answerLine">
-        <span class="caret-lbl">YOUR&nbsp;ANSWER</span>
-        <span class="typed" id="typed"><span class="cur">▊</span></span>
-      </div>
-      <div class="actions">
-        <button class="act" id="hintBtn" onclick="useHint()"><span class="ic">💡</span>Hint<small>-50 pts</small></button>
-        <button class="act" onclick="speakClue()"><span class="ic">🔊</span>Speak<small>hear clue</small></button>
-        <button class="act" onclick="skipQuestion()"><span class="ic">⏭</span>Skip<small>0 pts</small></button>
-      </div>
-      <div class="screen-label">— the seats —</div>
-      <div class="seating" id="seating"></div>
-    </div>
+    <div class="auditorium"><div class="curtains l"></div><div class="curtains r"></div><div class="movie-screen" id="movieScreen"><div class="clue" id="clue">—</div></div><div class="subtitle" id="subtitle" aria-live="polite"></div><div class="answer-line" id="answerLine"><span class="caret-lbl">YOUR&nbsp;ANSWER</span><span class="typed" id="typed"><span class="cur">▊</span></span></div><div class="actions"><button class="act" id="hintBtn" onclick="useHint()"><span class="ic">💡</span>Hint<small>-50 pts</small></button><button class="act" onclick="speakClue()"><span class="ic">🔊</span>Speak<small>hear clue</small></button><button class="act" onclick="skipQuestion()"><span class="ic">⏭</span>Skip<small>0 pts</small></button></div><div class="screen-label">— the seats —</div><div class="seating" id="seating"></div></div>
   </section>
 
-  <!-- RECEIPT -->
-  <section class="screen" id="receipt">
-    <div class="ticket" id="ticket"></div>
-    <div class="receipt-cta">
-      <button class="btn btn-primary" onclick="shareScoreCard()">Share Score Card</button>
-      <div class="row">
-        <button class="btn btn-ghost" onclick="replay()">See It Again</button>
-        <button class="btn btn-ghost" onclick="goBoxOffice()">New Showing</button>
-      </div>
-    </div>
-  </section>
-
+  <section class="screen" id="receipt"><div class="ticket" id="ticket"></div><div class="receipt-cta"><button class="btn btn-primary" onclick="shareScoreCard()">Share Score Card</button><div class="row"><button class="btn btn-ghost" onclick="replay()">See It Again</button><button class="btn btn-ghost" onclick="goBoxOffice()">New Showing</button></div></div></section>
 </div>
-
-<div class="overlay" id="exitOverlay" role="dialog" aria-modal="true" aria-labelledby="exitTitle">
-  <div class="exit-card">
-    <div class="em" aria-hidden="true">🚨</div>
-    <h3 id="exitTitle">Leaving mid-show?</h3>
-    <p>Tell the usher you had an emergency. No judgment — but the ticket's non-refundable.</p>
-    <div class="row">
-      <button class="btn btn-primary" onclick="leaveTheater()">Slip out the exit</button>
-      <button class="btn btn-ghost" onclick="closeExit()">Stay for the show</button>
-    </div>
-  </div>
-</div>
-
-<div class="install-bar" id="installBar">
-  <span class="ib-ic" aria-hidden="true">🎬</span>
-  <span id="installText" class="ib-txt"></span>
-  <button id="installBtn" class="ib-btn" onclick="doInstall()">Install</button>
-  <button class="ib-x" onclick="dismissInstall()" aria-label="Dismiss">✕</button>
-</div>
-
+<div class="overlay" id="exitOverlay" role="dialog" aria-modal="true" aria-labelledby="exitTitle"><div class="exit-card"><div class="em" aria-hidden="true">🚨</div><h3 id="exitTitle">Leaving mid-show?</h3><p>Tell the usher you had an emergency. No judgment — but the ticket's non-refundable.</p><div class="row"><button class="btn btn-primary" onclick="leaveTheater()">Slip out the exit</button><button class="btn btn-ghost" onclick="closeExit()">Stay for the show</button></div></div></div>
+<div class="install-bar" id="installBar"><span class="ib-ic" aria-hidden="true">🎬</span><span id="installText" class="ib-txt"></span><button id="installBtn" class="ib-btn" onclick="doInstall()">Install</button><button class="ib-x" onclick="dismissInstall()" aria-label="Dismiss">✕</button></div>
 <div class="egg-layer" id="eggLayer"></div>
-
 <div class="toast" id="toast"></div>
-
-<script>
-/* ============ DATA ============ */
-const QUESTIONS = {"Family":[{"title":"Frozen","clue":"Snow queen turns one bad day into regional climate policy."},{"title":"Toy Story","clue":"Plastic cowboy spirals after space toy joins the payroll."},{"title":"The Lion King","clue":"Uncle murders CEO brother, then gaslights nephew into exile."},{"title":"Moana","clue":"Teen violates ocean safety rules to return stolen lava jewelry."},{"title":"Shrek","clue":"Swamp introvert gets dragged into royal errands by tiny landlord."},{"title":"The Incredibles","clue":"Dad's secret nostalgia for his glory days triggers insurance nightmares."},{"title":"Up","clue":"Widower converts grief into aviation and accidentally abducts a scout."},{"title":"Inside Out","clue":"Child's brain office loses control during a family relocation."},{"title":"WALL-E","clue":"Trash robot develops a crush and accidentally restarts civilization."},{"title":"Coco","clue":"Kid breaks into the afterlife to settle a family music dispute."},{"title":"Zootopia","clue":"Bunny cop and fox freelancer expose a citywide predator PR crisis."},{"title":"Big Hero 6","clue":"Teen turns healthcare balloon into crime-fighting equipment after grief hits."},{"title":"Monsters Inc","clue":"Monster utility company discovers laughter has better margins than terror."},{"title":"Ratatouille","clue":"Rat violates every health code and somehow improves the restaurant."},{"title":"Cars","clue":"Celebrity race car gets sentenced to small-town character development."},{"title":"A Bug's Life","clue":"Ant hires fake warriors and accidentally starts a tiny labor revolution."},{"title":"Brave","clue":"Princess turns mom into bear because family meetings are hard."},{"title":"The Princess and the Frog","clue":"Waitress kisses frog and gets trapped in swamp-based career pivot."},{"title":"Tangled","clue":"Tower prisoner escapes with a thief and weaponized haircare."},{"title":"How to Train Your Dragon","clue":"Viking teen trains disabled dragon and accidentally ends national tradition."},{"title":"Paddington","clue":"Polite bear commits light felonies until London becomes emotionally available."},{"title":"The LEGO Movie","clue":"Average construction guy becomes the face of an anti-glue uprising."},{"title":"Despicable Me","clue":"Supervillain adopts three girls and discovers bedtime is the real heist."},{"title":"Home Alone","clue":"Forgotten child chooses booby traps over calling any adult."},{"title":"Finding Nemo","clue":"Anxious dad crosses ocean after dentist abducts his son for office decor."},{"title":"Mulan","clue":"Daughter commits draft fraud to keep dad off the battlefield."},{"title":"Aladdin","clue":"Street thief uses genie-powered rebrand to date above his tax bracket."},{"title":"Kung Fu Panda","clue":"Noodle-loving panda becomes chosen warrior through confidence and snacks."},{"title":"Beauty and the Beast","clue":"Book girl moves into cursed castle and fixes everyone else's attitude."},{"title":"Hercules","clue":"Demigod loses benefits and has to earn immortality with cardio."},{"title":"Tarzan","clue":"Jungle man becomes an anthropological discovery with fantastic hair."},{"title":"Lilo & Stitch","clue":"Lonely girl adopts alien disaster and calls it family."},{"title":"Megamind","clue":"Villain wins, gets bored, and creates his own HR problem."},{"title":"Ice Age","clue":"Squirrel's snack obsession causes prehistoric disaster with franchise potential."},{"title":"Madagascar","clue":"Zoo celebrities discover nature has no room service."},{"title":"Cinderella","clue":"Abused stepdaughter networks with rodents to crash rich people's party."},{"title":"Peter Pan","clue":"Eternal child recruits minors into anti-pirate island chaos."},{"title":"Pinocchio","clue":"Wooden boy's browser history is written directly on his nose."},{"title":"Sleeping Beauty","clue":"Princess loses sixteen years to a sewing-related workplace incident."},{"title":"Snow White","clue":"Runaway princess accepts housing from seven suspiciously organized miners."},{"title":"Dumbo","clue":"Circus elephant turns bullying into an aviation career."},{"title":"The Little Mermaid","clue":"Teen mermaid signs predatory voice contract to meet boat guy."},{"title":"Wreck-It Ralph","clue":"Arcade villain leaves his job and nearly breaks the internet."},{"title":"The Nightmare Before Christmas","clue":"Skeleton CEO attempts hostile takeover of Christmas operations."},{"title":"Mary Poppins","clue":"Magical nanny fixes family dysfunction with songs and questionable labor laws."},{"title":"The Parent Trap","clue":"Separated twins run an identity fraud campaign against their parents."},{"title":"E.T.","clue":"Alien overstays on Earth and turns children's closet into immigration office."},{"title":"Mrs. Doubtfire","clue":"Divorced dad invents elderly nanny persona instead of respecting custody."},{"title":"Holes","clue":"Kid is sentenced to digging holes for a generational treasure scam."},{"title":"Finding Dory","clue":"Forgetful fish solves family history through pure aquatic instinct."},{"title":"Elemental","clue":"Fire woman dates water man, causing everyone's parents to clutch pearls."},{"title":"Bolt","clue":"TV dog learns his powers were just marketing."},{"title":"The Croods","clue":"Caveman dad discovers new ideas and takes them personally."},{"title":"Minions","clue":"Yellow sidekicks spend centuries failing upward under terrible management."},{"title":"The Secret Life of Pets","clue":"Dog experiences emotional collapse after owner brings home another dog."},{"title":"The Bad Guys","clue":"Criminal animals attempt a rebrand and accidentally develop morals."},{"title":"Sing","clue":"Bankrupt koala commits talent-show chaos to save real estate."},{"title":"Sing 2","clue":"Koala books a massive show through lies, vibes, and theater kid panic."},{"title":"Puss in Boots","clue":"Tiny sword cat performs bravado until mortality starts chasing him."},{"title":"Puss in Boots: The Last Wish","clue":"Cat burns through lives, meets death, and finally considers therapy."},{"title":"Encanto","clue":"Magical family delays therapy until the house files a formal complaint."},{"title":"Onward","clue":"Teen brothers resurrect only the pants part of their father."},{"title":"Soul","clue":"Jazz teacher dies at the worst possible time and negotiates a reboot."},{"title":"Turning Red","clue":"Puberty installs giant red panda mode without asking IT."},{"title":"Abominable","clue":"Girl smuggles yeti home using violin-powered GPS."},{"title":"The Good Dinosaur","clue":"Anxious dinosaur bonds with feral cave child after weather ruins everything."},{"title":"Cloudy With a Chance of Meatballs","clue":"Inventor turns bad weather into a town-wide food fight."},{"title":"Cloudy with a Chance of Meatballs 2","clue":"Sentient leftovers complicate one man's attempt to clean up dinner."},{"title":"Rio","clue":"Pet bird goes to Brazil and discovers wings are not decorative."},{"title":"Rio 2","clue":"Bird dad meets jungle in-laws and immediately needs a vacation from vacation."},{"title":"Happy Feet","clue":"Penguin can't sing, so he saves society with tap shoes."},{"title":"Happy Feet Two","clue":"Penguins process climate anxiety through dance numbers."},{"title":"Ice Age: The Meltdown","clue":"Prehistoric friends outrun global warming before it was trending."},{"title":"Ice Age: Dawn of the Dinosaurs","clue":"Mammals discover dinosaurs and survive through panic-based teamwork."},{"title":"Ice Age: Continental Drift","clue":"Continents break up and the animals treat it like a road trip."},{"title":"Ice Age: Collision Course","clue":"Animals face space rocks because the squirrel has learned nothing."},{"title":"The Peanuts Movie","clue":"Anxious kid attempts personal rebrand for one red-haired crush."},{"title":"Charlotte's Web","clue":"Pig hires spider as crisis communications manager to avoid breakfast."},{"title":"Stuart Little","clue":"Family adopts mouse brother and somehow the cat is the normal one."},{"title":"The Iron Giant","clue":"Kid teaches giant weapon that being kind is cooler than vaporizing towns."},{"title":"The BFG","clue":"Giant kidnaps child, then becomes dream-delivery logistics partner."},{"title":"The Lorax","clue":"Orange mustache tree lawyer explains why capitalism needs a leash."},{"title":"The Grinch","clue":"Green cave introvert steals Christmas because community engagement is exhausting."},{"title":"The Grinch (2018)","clue":"Traumatized green introvert tries holiday sabotage, gets emotionally onboarded."},{"title":"A Christmas Story","clue":"Child lobbies for firearm-shaped toy while adults predict disaster correctly."},{"title":"Jumanji (1995)","clue":"Board game turns family night into jungle-based attempted murder."},{"title":"James and the Giant Peach","clue":"Orphan travels by giant fruit with bugs because supervision has failed."},{"title":"Matilda (musical)","clue":"Gifted child uses telekinesis to overthrow school administration."},{"title":"Paddington 2","clue":"Wrongfully jailed bear improves prison culture with marmalade leadership."},{"title":"The Sandlot","clue":"Kids treat one baseball like a sacred religious artifact."},{"title":"Little Rascals","clue":"Tiny boys run anti-girl club until reality sends them a memo."},{"title":"The Mighty Ducks","clue":"DUI lawyer coaches children into hockey respectability."},{"title":"Cheaper by the Dozen","clue":"Parents with twelve kids discover math was the villain all along."},{"title":"Night at the Museum","clue":"Night guard realizes museum history has terrible sleep hygiene."},{"title":"A Series of Unfortunate Events","clue":"Orphans survive inheritance predator with theater-kid villain energy."},{"title":"The Boss Baby","clue":"Suit baby infiltrates family and makes infant capitalism everyone else's problem."},{"title":"Peter Rabbit","clue":"Rabbit commits garden crimes, then escalates into landlord warfare."},{"title":"The Addams Family","clue":"One spooky family defeats suburban judgment with elite commitment to the bit."},{"title":"Nanny McPhee","clue":"Magical nanny weaponizes discipline until the children stop being feral."},{"title":"Annie","clue":"Orphan networking event ends with billionaire adoption paperwork."},{"title":"Hook","clue":"Workaholic adult rediscovers childhood trauma through pirate litigation."},{"title":"The SpongeBob Movie","clue":"Sponge and starfish leave town to recover stolen royal headwear."},{"title":"The SpongeBob Movie: Sponge Out of Water","clue":"Sponge enters live-action chaos over burger-based justice."},{"title":"Shaun the Sheep","clue":"Bored sheep turns farm management into a municipal emergency."},{"title":"Chicken Run","clue":"Chickens organize a jailbreak before becoming pie filling."},{"title":"Coraline","clue":"Girl finds nicer fake parents and wisely distrusts the button clause."},{"title":"The Book of Life","clue":"Romantic guitarist tours the underworld to dodge family expectations."},{"title":"A Goofy Movie","clue":"Goofy dad turns custody anxiety into a Powerline pilgrimage."},{"title":"Inside Out 2","clue":"Teen brain receives anxiety update and immediately loses admin access."},{"title":"Wish","clue":"Girl audits royal wish economy and starts a star-powered uprising."},{"title":"Luca","clue":"Sea monster kids risk exposure for pasta, scooters, and vibes."},{"title":"Wish Dragon","clue":"Broke guy receives wish dragon with surprisingly strict customer service."},{"title":"The Emoji Movie","clue":"Emoji has one facial expression and makes it everyone else's emergency."}],"Fantasy":[{"title":"Harry Potter","clue":"Orphan discovers wizard fame at a school with no safety department."},{"title":"Lord of the Rings","clue":"Tiny hiking club returns cursed jewelry to its manufacturer."},{"title":"The Hobbit","clue":"Homebody burglarizes dragon after peer pressure from thirteen consultants."},{"title":"The Chronicles of Narnia","clue":"Closet sends children into lion-led regime change."},{"title":"Wicked","clue":"Green theater kid gets scapegoated and responds with vertical ambition."},{"title":"The Princess Bride","clue":"Farm boy weaponizes piracy branding to interrupt a wedding."},{"title":"Pan's Labyrinth","clue":"Child seeks fantasy escape while fascism keeps ruining the neighborhood."},{"title":"The Golden Compass","clue":"Girl and armored bear investigate soul theft with zero adult competence."},{"title":"Pirates of the Caribbean","clue":"Chaotic pirate makes the British navy regret scheduling anything."},{"title":"Mortal Kombat","clue":"Realm tournament runs entirely on punches, portals, and liability waivers."},{"title":"Power Rangers","clue":"Color-coded teens solve local monster problems with dinosaur machinery."},{"title":"Labyrinth","clue":"Teen babysitter learns glitter goblin king is not a reliable childcare option."},{"title":"Beetlejuice","clue":"Dead homeowners hire striped disaster consultant to evict living tenants."},{"title":"Edward Scissorhands","clue":"Suburban women discover the new guy is basically walking scissors."},{"title":"The Wizard of Oz","clue":"Kansas girl drops house, steals shoes, and demands managerial wizard support."},{"title":"Alice in Wonderland","clue":"Girl ignores food labels and destabilizes a nonsense monarchy."},{"title":"The Shape of Water","clue":"Janitor begins classified workplace romance with amphibious government property."},{"title":"The Mummy","clue":"Librarian and adventure himbo awaken a cursed sand influencer."},{"title":"Percy Jackson","clue":"Teen learns his dad is a god and monsters are basically push notifications."},{"title":"Dungeons & Dragons","clue":"Thieves, bards, and barbarians complete a group project through chaos."},{"title":"The NeverEnding Story","clue":"Magic book traumatizes child, horse, and anyone with feelings."},{"title":"Willow","clue":"Village magician gets stuck babysitting prophecy."},{"title":"The Dark Crystal","clue":"Puppet creatures attempt world repair with crystal-based customer support."},{"title":"Jumanji","clue":"Board game turns family night into a hostile jungle acquisition."},{"title":"Matilda","clue":"Kid genius overthrows cruel principal with brain-powered property damage."},{"title":"Charlie and the Chocolate Factory","clue":"Candy CEO invites children to beta-test consequences."},{"title":"Hook","clue":"Adult lawyer remembers he used to fly and immediately reopens pirate beef."},{"title":"Stardust","clue":"Man captures fallen star, then realizes the MacGuffin has opinions."},{"title":"Night at the Museum","clue":"Night guard discovers museums become group chats after dark."},{"title":"Maleficent","clue":"Wronged fairy rebrands curse as misunderstood parenting arc."},{"title":"Alice Through the Looking Glass","clue":"Girl time-travels to fix one hat enthusiast's family issues."},{"title":"Eragon","clue":"Farm boy finds dragon egg and becomes budget franchise chosen one."},{"title":"Inkheart","clue":"Dad reads so dramatically that fictional people become a zoning problem."},{"title":"Nanny McPhee","clue":"Magical nanny fixes chaos children with terrifying lesson plans."},{"title":"The School for Good and Evil","clue":"Friends get sorted into school brands with very aggressive marketing."},{"title":"Big Fish","clue":"Son audits dying father's lifetime subscription to tall tales."},{"title":"Enchanted","clue":"Cartoon princess gets pushed into New York and out-sings reality."},{"title":"Hocus Pocus","clue":"Teen lights forbidden candle, unleashes undead Halloween girlbosses."},{"title":"Practical Magic","clue":"Sisters fight curse, grief, and a boyfriend who refuses to stay dead."},{"title":"The Craft","clue":"Teen witches discover peer pressure is worse with spells."},{"title":"Gremlins","clue":"Pet owner skips instructions and accidentally turns Christmas into monster season."},{"title":"Hellboy","clue":"Government-employed demon handles occult problems with filed-down horns."},{"title":"Legend","clue":"Young Tom Cruise protects unicorns from Satan's dramatic lighting package."},{"title":"Conan the Barbarian","clue":"Very muscular man processes grief with swords and minimal shirts."},{"title":"Bridge to Terabithia","clue":"Kids build a fantasy kingdom; reality cancels the subscription."},{"title":"Clash of the Titans","clue":"Greek hero completes monster side quests for romance and reputation."},{"title":"Splash","clue":"Man dates mermaid and learns bathrooms are relationship hazards."},{"title":"The Spiderwick Chronicles","clue":"Kids move into old house and inherit fairy-world paperwork."}],"SciFi":[{"title":"Star Wars: A New Hope","clue":"Farm boy joins space wizard to destroy fascist moon with a vent problem."},{"title":"Star Wars: The Empire Strikes Back","clue":"Space rebellion loses badly while family secrets attack from a catwalk."},{"title":"Star Wars: Return of the Jedi","clue":"Son tries redeeming dad who keeps solving conflict with hand removal."},{"title":"Star Wars: The Force Awakens","clue":"Scavenger finds laser sword and accidentally joins inherited space drama."},{"title":"Star Wars: The Last Jedi","clue":"Old hero teaches failure while everyone else slow-drives through space."},{"title":"Star Wars: The Rise of Skywalker","clue":"Galaxy fights somehow-returned lightning grandpa with friendship and confusion."},{"title":"The Matrix","clue":"Cubicle guy takes pill and discovers reality is badly coded."},{"title":"The Matrix Reloaded","clue":"Chosen hacker attends clone beatdown and architecture TED Talk."},{"title":"The Matrix Revolutions","clue":"Robot war pauses for one man's peace negotiation by destiny vibes."},{"title":"The Matrix Resurrections","clue":"Corporate nostalgia reboots a man who already escaped the franchise."},{"title":"Avatar","clue":"Marine infiltrates blue alien culture, then joins the employee rebellion."},{"title":"Avatar: The Way of Water","clue":"Blue family relocates to beach and still can't dodge military baggage."},{"title":"Jurassic Park","clue":"Dinosaur theme park treats chaos theory like a suggestion."},{"title":"Jurassic World","clue":"Corporation makes scarier dinosaur because regular dinosaurs lacked synergy."},{"title":"Jurassic World: Fallen Kingdom","clue":"Dinosaur rescue becomes volcanic auction night at murder mansion."},{"title":"Jurassic World: Dominion","clue":"Dinosaurs return, but giant locusts somehow steal the meeting agenda."},{"title":"Inception","clue":"Man installs business idea inside another man's dream like malware."},{"title":"Interstellar","clue":"Farmer dad leaves Earth because corn can no longer carry humanity."},{"title":"Gravity","clue":"Astronaut spends entire shift losing equipment, coworkers, and patience."},{"title":"The Martian","clue":"NASA man survives Mars with math, duct tape, and spite potatoes."},{"title":"Arrival","clue":"Linguist gets alien homework and a spoiler for her own life."},{"title":"Blade Runner","clue":"Future cop investigates synthetic people and his own vibe settings."},{"title":"Blade Runner 2049","clue":"Lonely future cop learns he may just be plot support with great lighting."},{"title":"District 9","clue":"Bureaucrat becomes alien shrimp and finally develops empathy."},{"title":"Dune (2021)","clue":"Noble teen discovers sand, spice, and his messiah influencer package."},{"title":"Dune: Part Two","clue":"Desert boyfriend chooses holy war as a leadership strategy."},{"title":"Edge of Tomorrow","clue":"PR coward dies repeatedly until he becomes a competent action figure."},{"title":"Elysium","clue":"Factory worker with robot spine storms rich people's orbital gated community."},{"title":"RoboCop","clue":"Dead cop returns as corporate-owned blender with a badge."},{"title":"Terminator","clue":"Robot travels back in time to sabotage one woman's dating future."},{"title":"Terminator 2: Judgment Day","clue":"Murder robot becomes stepdad to prevent murder robots."},{"title":"Terminator: Dark Fate","clue":"Future sends another robot because time apparently learned nothing."},{"title":"Transformers","clue":"Alien cars blow up a teenager's attempt at having a normal summer."},{"title":"Transformers: Revenge of the Fallen","clue":"Robots fight near landmarks until geography submits a complaint."},{"title":"Transformers: Dark of the Moon","clue":"Moon landing conspiracy turns into a robot real-estate dispute."},{"title":"Transformers: Age of Extinction","clue":"Robot dinosaurs arrive because explosions needed a costume change."},{"title":"Transformers: The Last Knight","clue":"Ancient robot lore rewrites history and everyone pretends to follow it."},{"title":"Guardians of the Galaxy","clue":"Space raccoon, tree, and friends save galaxy between HR violations."},{"title":"Ready Player One","clue":"Kid beats rich nerds using 80s references and suspicious stamina."},{"title":"Her","clue":"Lonely man dates software until the update moves on."},{"title":"I Am Legend","clue":"Man and dog survive apocalypse until the dog ruins your week forever."},{"title":"Independence Day","clue":"Aliens invade and America defeats them with speeches and a laptop."},{"title":"Pacific Rim","clue":"Giant robots require friendship compatibility before punching sea monsters."},{"title":"The Fifth Element","clue":"Taxi driver escorts orange-haired savior against moody space cloud."},{"title":"WALL-E","clue":"Trash robot's crush accidentally becomes humanity's exit interview."},{"title":"Ex Machina","clue":"Tech billionaire tests robot intelligence and fails the personality exam."},{"title":"Looper","clue":"Hitman meets future self and makes it everybody's timeline problem."},{"title":"Snowpiercer","clue":"Class war travels by train because the planet rage-quit."},{"title":"The Hunger Games","clue":"Teen volunteers for murder Olympics after sister's name gets called."},{"title":"The Hunger Games: Catching Fire","clue":"Girl survives murder Olympics, prize is bonus murder Olympics."},{"title":"The Hunger Games: Mockingjay","clue":"Revolution turns traumatized teenager into reluctant propaganda department."},{"title":"Minority Report","clue":"Cop gets blamed for a crime his future self hasn't scheduled yet."},{"title":"Total Recall","clue":"Man buys fake vacation and receives premium identity collapse."},{"title":"The War of the Worlds","clue":"Aliens conquer Earth but forget germs exist."},{"title":"The Day the Earth Stood Still","clue":"Alien comes to Earth, judges humanity, and honestly has notes."},{"title":"The Adjustment Bureau","clue":"Romance gets micromanaged by fate bureaucrats in hats."},{"title":"Star Trek","clue":"Space cadets inherit a starship during a crisis no one approved."},{"title":"Star Trek Into Darkness","clue":"Enterprise crew wakes up a genetically engineered gym bro with grievances."},{"title":"Star Trek Beyond","clue":"Starship crashes, crew weaponizes Beastie Boys as tactical doctrine."},{"title":"The Hitchhiker's Guide to the Galaxy","clue":"Earth is demolished for interstellar roadwork; one man forgot his towel."},{"title":"Tron: Legacy","clue":"Son enters dad's computer and finds neon family therapy."},{"title":"Oblivion","clue":"Clone maintenance guy learns the boss fight is himself, repeatedly."},{"title":"The Island","clue":"Luxury clone farm discovers its inventory wants civil rights."},{"title":"The Host","clue":"Alien parasite takes host body and gets stuck with teenage feelings."},{"title":"Tomorrowland","clue":"Optimist visits future utopia and finds the fine print doing crimes."},{"title":"Ender's Game","clue":"Gifted child aces simulator and accidentally commits galaxy-level war crimes."}],"Superhero":[{"title":"Iron Man","clue":"Arms dealer builds chest battery and discovers accountability through explosions."},{"title":"Iron Man 2","clue":"Billionaire battles whip electrician while slowly becoming a toxic element."},{"title":"Iron Man 3","clue":"Billionaire fights fake terrorist branding while his anxiety builds extra suits."},{"title":"Captain America: The First Avenger","clue":"Skinny patriot gets government juice and starts punching fascism full-time."},{"title":"Captain America: The Winter Soldier","clue":"Man learns best friend is enemy contractor with memory problems."},{"title":"Captain America: Civil War","clue":"Friends argue over paperwork and turn airport security into rubble."},{"title":"The Avengers","clue":"Superpowered coworkers bond by fighting adopted prince's alien group project."},{"title":"Avengers: Age of Ultron","clue":"Robot assistant reads the internet once and chooses extinction."},{"title":"Avengers: Infinity War","clue":"Purple population-control enthusiast gathers jewelry for universe-wide downsizing."},{"title":"Avengers: Endgame","clue":"Traumatized heroes solve grief with time travel and unpaid overtime."},{"title":"Thor","clue":"Thunder himbo gets grounded in New Mexico for attitude correction."},{"title":"Thor: The Dark World","clue":"God fights forgettable dark elves while everyone waits for Loki."},{"title":"Thor: Ragnarok","clue":"God loses hammer, haircut, and home, but gains timing."},{"title":"Thor: Love and Thunder","clue":"God processes grief with screaming goats and weaponized whimsy."},{"title":"The Incredible Hulk","clue":"Scientist turns stress into shirt-destroying green rage subscription."},{"title":"Black Panther","clue":"King returns home and finds cousin has extremely valid geopolitical complaints."},{"title":"Doctor Strange","clue":"Arrogant surgeon wrecks hands, downloads magic, and abuses time."},{"title":"Doctor Strange in the Multiverse of Madness","clue":"Wizard fights grieving mom whose parenting plan has multiverse casualties."},{"title":"Ant-Man","clue":"Thief becomes tiny and still can't escape co-parenting complications."},{"title":"Ant-Man and the Wasp","clue":"Tiny ex-con and tiny partner solve quantum family storage issue."},{"title":"Ant-Man and the Wasp: Quantumania","clue":"Entire family falls into subatomic nonsense and meets a timeline landlord."},{"title":"Guardians of the Galaxy Vol. 2","clue":"Space found family discovers dad is a planet with intimacy issues."},{"title":"Spider-Man: Homecoming","clue":"Teen superhero battles crush's dad, who is also a bird criminal."},{"title":"Spider-Man: Far From Home","clue":"Teen vacation gets hijacked by hologram influencer with trauma props."},{"title":"Spider-Man: No Way Home","clue":"Teen ruins spell and turns multiverse into spider group therapy."},{"title":"Spider-Man 2","clue":"Broke superhero fights tentacle professor while rent remains undefeated."},{"title":"Spider-Man 3","clue":"Superhero's emo haircut becomes a public safety event."},{"title":"The Amazing Spider-Man","clue":"Skateboard spider boy dates science girl and annoys a lizard man."},{"title":"The Amazing Spider-Man 2","clue":"Electric fanboy and physics team up to destroy teen's emotional stability."},{"title":"Batman Begins","clue":"Billionaire studies ninja theater to cope with childhood trauma."},{"title":"The Dark Knight","clue":"Clown terrorist turns one billionaire's ethics class into citywide homework."},{"title":"The Dark Knight Rises","clue":"Retired bat man fixes broken back with prison CrossFit."},{"title":"The Batman","clue":"Eyeliner detective punches crime until riddles become urban planning."},{"title":"Man of Steel","clue":"Alien refugee learns Earth customs by leveling several city blocks."},{"title":"Batman v Superman","clue":"Two caped men stop fighting after discovering identical mom branding."},{"title":"Justice League","clue":"Team resurrects alien coworker to fight a gray manager from space."},{"title":"Wonder Woman","clue":"Island warrior leaves paradise and speedruns World War I disillusionment."},{"title":"Wonder Woman 1984","clue":"Wish rock proves everyone needs therapy, not magic prizes."},{"title":"Aquaman","clue":"Fish king solves ocean politics through tattoos and shirtless diplomacy."},{"title":"Aquaman and the Lost Kingdom","clue":"Ocean brothers argue again while climate villain updates the grievance spreadsheet."},{"title":"Shazam!","clue":"Foster kid yells magic word and becomes adult-shaped chaos."},{"title":"Shazam! Fury of the Gods","clue":"Teen heroes fight mythological grandmas with poor boundary skills."},{"title":"The Flash","clue":"Fast guy breaks time because grief said no to rules."},{"title":"Green Lantern","clue":"Test pilot receives space jewelry and becomes CGI regret."},{"title":"Black Adam","clue":"Ancient lightning man returns and treats diplomacy like optional content."},{"title":"Deadpool","clue":"Cancer patient becomes fourth-wall murder clown with sword-based coping."},{"title":"Deadpool 2","clue":"Mouthy assassin adopts angry kid and accidentally starts caring."},{"title":"Logan","clue":"Tired claw dad escorts daughter through one final emotional meat grinder."},{"title":"X-Men","clue":"Mutant boarding school promises acceptance and delivers constant explosions."},{"title":"X2","clue":"Government attacks school, proving mutant kids needed better field trip forms."},{"title":"X-Men: The Last Stand","clue":"Mutant cure turns relationship drama into bridge-moving catastrophe."},{"title":"X-Men: First Class","clue":"Stylish mutants prevent nuclear war and still fumble the friendship."},{"title":"X-Men: Days of Future Past","clue":"Time-traveling Wolverine begs younger coworkers to stop making the future awful."},{"title":"X-Men: Apocalypse","clue":"Ancient blue motivational speaker recruits teens for world-ending pyramid scheme."},{"title":"X-Men: Dark Phoenix","clue":"Team ignores friend's cosmic burnout until it becomes everyone's problem."},{"title":"Fantastic Four","clue":"Space radiation converts coworkers into rock, fire, stretch, and invisibility issues."},{"title":"Fantastic Four: Rise of the Silver Surfer","clue":"Shiny space surfer announces planet-eating boss is on the way."},{"title":"Venom","clue":"Journalist gets alien goo roommate with strong snack opinions."},{"title":"Morbius","clue":"Doctor becomes vampire-adjacent and accidentally achieves meme immortality."},{"title":"Hellboy","clue":"Government demon clocks in for monsters and clocks out for cats."},{"title":"Hancock","clue":"Drunk superhero discovers the real villain is reputation management."},{"title":"Kick-Ass","clue":"Teen buys costume, skips powers, and schedules himself for violence."},{"title":"The Crow","clue":"Dead musician returns with excellent makeup and a murder checklist."},{"title":"The Mask","clue":"Bank clerk finds mask and becomes green workplace hazard."},{"title":"Unbreakable","clue":"Quiet security guard realizes he was the superhero before the marketing plan."},{"title":"Glass","clue":"Psychiatrist tries to therapize superheroes and underestimates brand loyalty."},{"title":"Sky High","clue":"Superpowered high school sorts teenagers into cliques with capes."}],"EmotionalDamage":[{"title":"Up","clue":"Old man's grief balloon takes off and brings a child passenger."},{"title":"Inside Out","clue":"Imaginary friend deletes himself so childhood can keep moving."},{"title":"Coco","clue":"One song in a grandma's room destroys the audience's emotional plumbing."},{"title":"Toy Story 3","clue":"Plastic friends face furnace death and make everyone regret having feelings."},{"title":"Bridge to Terabithia","clue":"Two kids build escape fantasy until grief changes the zoning laws."},{"title":"Titanic","clue":"Boat sinks, romance floats, and door arguments never die."},{"title":"The Notebook","clue":"Man keeps love alive with daily story recaps and unlimited patience."},{"title":"Marley & Me","clue":"Dog speedruns chaos, aging, and your entire tissue supply."},{"title":"The Fault in Our Stars","clue":"Teen romance meets cancer, which has terrible timing and worse manners."},{"title":"The Green Mile","clue":"Gentle giant heals everyone except the ending."},{"title":"Grave of the Fireflies","clue":"Siblings survive war until hope becomes the cruelest character."},{"title":"A Walk to Remember","clue":"Bad boy learns love, then the movie removes the floor."},{"title":"P.S. I Love You","clue":"Dead husband schedules grief tasks like an emotional project manager."},{"title":"Me Before You","clue":"Caretaker love story asks a question nobody leaves unhurt."},{"title":"Hachi: A Dog's Tale","clue":"Dog turns loyalty into a train-station haunting."},{"title":"Old Yeller","clue":"Boy learns responsibility through the worst possible dog decision."},{"title":"Bambi","clue":"A deer's childhood is canceled by one offscreen gunshot."},{"title":"Manchester by the Sea","clue":"Man comes home carrying a grief so heavy it bends the movie."},{"title":"Requiem for a Dream","clue":"Addiction montage becomes a trapdoor under every character."},{"title":"Atonement","clue":"Child's lie detonates a love story decades wide."},{"title":"The Lion King","clue":"Cub watches father die and has to turn trauma into musical growth."},{"title":"The Time Traveler's Wife","clue":"Marriage meets time travel and becomes scheduled abandonment."},{"title":"The Pursuit of Happyness","clue":"Father and son hit rock bottom in a public bathroom before climbing."},{"title":"Million Dollar Baby","clue":"Boxing dream wins the room, then fate changes sports entirely."},{"title":"Schindler's List","clue":"One man saves lives while history keeps asking for more."},{"title":"La La Land","clue":"Two artists choose dreams and leave each other in the alternate ending."},{"title":"The Iron Claw","clue":"Wrestling family fights a curse that never taps out."},{"title":"Aftersun","clue":"Daughter replays vacation footage and finally hears the goodbye inside it."},{"title":"Past Lives","clue":"Two childhood souls meet the life where they did not choose each other."},{"title":"Call Me By Your Name","clue":"Summer love ends, and a fireplace gets promoted to emotional executioner."},{"title":"Brokeback Mountain","clue":"Two cowboys love each other in a world built to punish them for it."},{"title":"Moonlight","clue":"A man's whole life is shaped by who he could not safely become."},{"title":"Room","clue":"Mother and son escape one prison and meet the world's bigger one."},{"title":"The Whale","clue":"Man tries to repair fatherhood while grief eats the room."},{"title":"The Road","clue":"Father and son carry hope through a planet that has quit."},{"title":"Life is Beautiful","clue":"Dad turns horror into pretend play until love runs out of cover."},{"title":"A Star is Born","clue":"Her star rises while his demons keep lowering the ceiling."},{"title":"Seven Pounds","clue":"Guilt becomes a charitable plan with a devastating final invoice."},{"title":"Fruitvale Station","clue":"Ordinary errands become the setup for unbearable real-life loss."},{"title":"Sophie's Choice","clue":"Mother's impossible choice haunts every room after it."},{"title":"The Boy in the Striped Pyjamas","clue":"Children's innocence walks directly into history's machinery."},{"title":"Terms of Endearment","clue":"Mother and daughter spend a lifetime fighting because love is loud."},{"title":"Steel Magnolias","clue":"Friendship keeps laughing right up until the heartbreak wins."},{"title":"Eternal Sunshine of the Spotless Mind","clue":"Man deletes ex, then learns pain was part of the receipt."},{"title":"The Lovely Bones","clue":"Girl narrates her family's grief from the place they cannot reach."},{"title":"Philadelphia","clue":"Lawyer fights discrimination while his body is losing its appeal."},{"title":"The Fox and the Hound","clue":"Fox and hound learn friendship cannot outrun what humans teach them."},{"title":"Finding Nemo","clue":"Dad crosses ocean because his first-scene trauma never clocked out."},{"title":"Inside Out 2","clue":"Puberty gives anxiety a clipboard and the brain a hostile takeover."},{"title":"Big Hero 6","clue":"Boy turns grief into a healthcare robot's villain arc."},{"title":"Toy Story 2","clue":"Cowgirl's abandonment song reaches directly through the screen and steals air."},{"title":"Toy Story 4","clue":"Toy chooses freedom, and childhood quietly closes another door."},{"title":"Soul","clue":"Jazz man discovers purpose is not the same thing as living."},{"title":"Ratatouille","clue":"Food critic takes one bite and gets emotionally body-slammed by childhood."},{"title":"Wall-E","clue":"Tiny robot holds hands like humanity depends on it, because it does."},{"title":"Frozen 2","clue":"Sister follows ancestral guilt into an ice cave and sings through it."},{"title":"Cinderella","clue":"Abused girl survives by being kind enough to make cynicism look silly."},{"title":"Beauty and the Beast","clue":"Woman tries to love the person beneath the curse and furniture politics."},{"title":"Moana","clue":"Teen learns identity, grief, and leadership from an ocean with boundaries."},{"title":"Encanto","clue":"Perfect family realizes perfection was the curse wearing better clothes."},{"title":"Lilo & Stitch","clue":"Girl's broken family adopts an alien-shaped coping mechanism."},{"title":"The Little Prince","clue":"Child learns adults traded wonder for paperwork and forgot the stars."},{"title":"Wonder","clue":"Kid asks the world to be kinder than it wants to be."},{"title":"My Girl","clue":"Childhood crush story gets permanently interrupted by bees."},{"title":"Flipped","clue":"Two kids fall for each other while emotional timing stays broken."},{"title":"The Perks of Being a Wallflower","clue":"Quiet teen finds belonging while trauma keeps whispering from the backseat."},{"title":"The Outsiders","clue":"Poor kids try to stay gold while the world keeps charging interest."},{"title":"The Farewell","clue":"Family throws fake wedding around a diagnosis nobody wants to say aloud."},{"title":"Everything Everywhere All At Once","clue":"Mother and daughter fight across universes because love speaks bad subtitles."},{"title":"Arrival","clue":"Alien language gives woman love and the grief receipt in advance."},{"title":"The Color Purple","clue":"Women survive cruelty and build strength where the world left none."},{"title":"Selma","clue":"March toward justice asks people to pay in bruises and courage."},{"title":"Hidden Figures","clue":"Brilliance reaches space while dignity is withheld at every doorway."},{"title":"Slumdog Millionaire","clue":"Game show answers become a trauma inventory."},{"title":"The Social Network","clue":"Man builds a social empire and loses the social part."},{"title":"Tick Tick Boom","clue":"Artist races a birthday clock while ambition and fear share the room."},{"title":"Marriage Story","clue":"Divorce becomes two people translating love into legal wounds."},{"title":"The Theory of Everything","clue":"Love bends under illness, genius, and the limits of endurance."},{"title":"The Imitation Game","clue":"Codebreaker saves the world, then the world refuses to save him."},{"title":"The Danish Girl","clue":"Love and identity fight for air inside a painful transformation story."},{"title":"The Curious Case of Benjamin Button","clue":"Man ages backward while love ages forward like a cruel split screen."},{"title":"Never Let Me Go","clue":"Children raised as spare parts still somehow learn longing."},{"title":"Her","clue":"Man heals heartbreak through software, then the software outgrows him."},{"title":"Lost in Translation","clue":"Two lonely people connect just long enough to become a permanent ache."},{"title":"The Blind Side","clue":"Found family helps, but childhood wounds still keep the receipts."},{"title":"Lion","clue":"Lost boy becomes a man searching maps for home."},{"title":"Coda","clue":"Daughter follows her voice knowing her family depends on hers."},{"title":"Five Feet Apart","clue":"Teens fall in love with a medically enforced personal-space rule."},{"title":"Dear John","clue":"Letters, distance, and time slowly outvote the romance."},{"title":"The Last Song","clue":"Daughter reconnects with dad right as goodbye starts counting down."},{"title":"Inside Llewyn Davis","clue":"Folk singer drags grief, failure, and one cat through winter."},{"title":"Hustle","clue":"Scout helps a player chase a dream while his own regrets press full court."},{"title":"All the Bright Places","clue":"Two hurting teens meet, but pain does not split evenly."},{"title":"The Sun Is Also a Star","clue":"One-day romance races an immigration deadline with unfair confidence."},{"title":"A Monster Calls","clue":"Boy uses monster stories to admit the grief he hates."},{"title":"Boy Erased","clue":"A family seeks help and finds a system built to harm."},{"title":"The Kite Runner","clue":"A childhood betrayal keeps echoing until adulthood answers it."},{"title":"Dead Poets Society","clue":"Teacher inspires boys to stand up, then the cost arrives."},{"title":"Good Will Hunting","clue":"Genius finally hears it was not his fault and everyone falls apart."},{"title":"Field of Dreams","clue":"Man plays catch with the dad he never got to finish loving."},{"title":"Cast Away","clue":"Stranded man loses civilization, time, and a volleyball best friend."},{"title":"The Truman Show","clue":"Man discovers his whole life was content and walks toward real air."},{"title":"Forrest Gump","clue":"Good-hearted man keeps walking through history while life keeps taking bites."},{"title":"Green Book","clue":"Musician survives racism on tour while dignity rides in the backseat."},{"title":"Selena","clue":"Rising star's joy gets stolen far too early."},{"title":"Cinderella Man","clue":"Boxer fights poverty like it booked the main event."},{"title":"The Impossible","clue":"Tsunami survival story leaves no family member emotionally dry."},{"title":"The Last Samurai","clue":"Soldier finds purpose in the people he was sent to defeat."},{"title":"Hunger Games","clue":"Teen trauma becomes prime-time programming for a cruel nation."},{"title":"The Boy Who Harnessed the Wind","clue":"Child builds a windmill because survival refused to wait for adults."},{"title":"One Day","clue":"Annual love story keeps missing the exit until fate takes the wheel."}],"StreamingHits":[{"title":"Squid Game","clue":"Debt collection becomes recess games with a body count."},{"title":"Bird Box","clue":"Survivors learn the apocalypse has a strict no-looking policy."},{"title":"Red Notice","clue":"Movie stars chase artifacts while Netflix sets money on fire."},{"title":"Don't Look Up","clue":"Comet approaches Earth and humanity responds with vibes-based denial."},{"title":"Glass Onion","clue":"Detective crashes tech bro island and audits everyone's nonsense."},{"title":"The Gray Man","clue":"Spy men turn global travel into a punching loyalty program."},{"title":"Enola Holmes","clue":"Sherlock's sister solves patriarchy with deduction and bicycle energy."},{"title":"Extraction","clue":"Mercenary accepts babysitting job and receives nonstop grenade homework."},{"title":"Hustle","clue":"Basketball scout turns a longshot into LinkedIn inspiration with jump shots."},{"title":"Klaus","clue":"Postal worker accidentally invents Santa through logistics and spite kindness."},{"title":"The Mitchells vs. The Machines","clue":"Family road trip becomes tech uprising's worst customer-service ticket."},{"title":"Marriage Story","clue":"Divorce escalates into a prestige sadness seminar with lawyers."},{"title":"Roma","clue":"Housekeeper carries a household that keeps pretending she isn't the foundation."},{"title":"Always Be My Maybe","clue":"Childhood crushes reunite and Keanu Reeves steals everyone's dignity."},{"title":"The Old Guard","clue":"Immortal mercenaries discover living forever still includes management issues."},{"title":"Tick Tick Boom","clue":"Composer races a deadline, a dream, and his own panic clock."},{"title":"Hamilton","clue":"Founding Fathers rap battle their way through ambition and bad decisions."},{"title":"Soul","clue":"Jazz musician dies before his big break and files an afterlife appeal."},{"title":"Turning Red","clue":"Teen's puberty patch includes giant panda mode and boy-band economics."},{"title":"Luca","clue":"Sea monsters go undercover as Italian boys for scooters and carbs."},{"title":"Encanto","clue":"Magical family turns generational trauma into a hit soundtrack."},{"title":"The Boys","clue":"Celebrity superheroes behave like influencers with fewer morals and more lasers."},{"title":"Palm Springs","clue":"Wedding guest stuck in time loop discovers commitment is the real glitch."},{"title":"Prey","clue":"Alien hunter meets someone who actually read the survival guide."},{"title":"CODA","clue":"Girl's singing dream crashes into family reliance and beautiful guilt."},{"title":"Leave the World Behind","clue":"Vacation rental guests handle apocalypse with the communication skills of damp socks."},{"title":"Society of the Snow","clue":"Soccer team survival story turns hope into the harshest meal plan."},{"title":"Rebel Moon","clue":"Village hires space fighters because farming and tyranny don't mix."},{"title":"Extraction 2","clue":"Action babysitter returns for prison-break DLC."},{"title":"Heart of Stone","clue":"Spy protects powerful AI because world security has one terrible password."},{"title":"The Killer","clue":"Assassin misses once and spends the rest of the movie overcorrecting."},{"title":"Maestro","clue":"Composer's genius and marriage keep trying to share one stage."},{"title":"Rustin","clue":"Organizer plans history while prejudice keeps stealing the room."},{"title":"Nimona","clue":"Shape-shifter helps framed knight and makes institutional lies everyone's problem."},{"title":"Leo","clue":"Classroom lizard realizes retirement is hard when children need therapy."},{"title":"Orion and the Dark","clue":"Anxious kid meets the dark and learns fear has branding issues."},{"title":"The Irishman","clue":"Old hitman remembers mob work with the speed of a museum tour."},{"title":"The Power of the Dog","clue":"Cruel cowboy discovers quiet karma has excellent timing."},{"title":"The Trial of the Chicago 7","clue":"Courtroom becomes democracy's worst group project."},{"title":"Mank","clue":"Drunk writer wrestles Hollywood into a script students will be assigned forever."},{"title":"Crip Camp","clue":"Summer camp kids become civil-rights leaders because access should not require permission."},{"title":"My Octopus Teacher","clue":"Man befriends octopus and accidentally gets marriage counseling from nature."},{"title":"Beef","clue":"Road rage turns two strangers into each other's unpaid life coaches from hell."},{"title":"Fair Play","clue":"Promotion reveals couple's power imbalance like a live grenade."},{"title":"The Wonderful Story of Henry Sugar","clue":"Man learns mystical eyesight and uses it for extremely refined cheating."},{"title":"One Day","clue":"Annual almost-romance keeps scheduling heartbreak across decades."},{"title":"Spaceman","clue":"Astronaut gets marriage counseling from a giant space spider."},{"title":"Stranger Things","clue":"Kids fight government monsters using bikes, waffles, and 80s needle drops."},{"title":"The Mandalorian","clue":"Helmeted bounty hunter adopts green toddler and becomes premium space dad."},{"title":"Game of Thrones","clue":"Noble families kill each other for the world's least comfortable chair."},{"title":"House of the Dragon","clue":"Royal family tree stops being a tree and becomes a fire hazard."},{"title":"The Last of Us","clue":"Grumpy man escorts immune teen through fungus apocalypse and emotional ruin."},{"title":"The Witcher","clue":"Monster hunter grunts professionally through destiny's worst scheduling system."},{"title":"Wednesday","clue":"Goth teen treats murder mystery like extracurricular shade practice."},{"title":"The Crown","clue":"Royal family proves crowns are just generational trauma with better hats."},{"title":"Bridgerton","clue":"Regency gossip account turns courtship into a full-contact sport."},{"title":"Ted Lasso","clue":"Football coach fights cynicism with biscuits and aggressive emotional intelligence."},{"title":"Severance","clue":"Office solves burnout by literally splitting employees in half."},{"title":"The Bear","clue":"Chef tries to heal trauma with sandwiches, yelling, and stainless steel."},{"title":"Breaking Bad","clue":"Chemistry teacher discovers the American healthcare system and chooses meth."},{"title":"The Queen's Gambit","clue":"Orphan conquers chess while trauma and tranquilizers play side quests."},{"title":"Fallout","clue":"Vault dweller tours apocalypse with optimism that should be illegal."},{"title":"K-Pop Demon Hunters","clue":"Idol group fights demons, branding pressure, and presumably bad contracts."}]};
-const CAT_META = {
-  Family:          {name:"Family",           flick:"🧸", rated:"G",    blurb:"The ones the whole row can sing along to."},
-  Superhero:       {name:"Superhero",        flick:"🦸", rated:"PG13", blurb:"Capes, quips, and post-credit scenes."},
-  SciFi:           {name:"SciFi",            flick:"🚀", rated:"PG13", blurb:"Space, robots, and reality that won't sit still."},
-  Fantasy:         {name:"Fantasy",          flick:"🐉", rated:"PG13", blurb:"Rings, wizards, and doors to other worlds."},
-  EmotionalDamage: {name:"Emotional Damage", flick:"💔", rated:"R",    blurb:"Bring tissues. You were warned."},
-  StreamingHits:   {name:"Streaming Hits",   flick:"📱", rated:"NEW",  blurb:"Whatever you binged last weekend."}
-};
-const CAT_ORDER = ["Family","Superhero","SciFi","Fantasy","EmotionalDamage","StreamingHits"];
-
-/* ============ SETTINGS ============ */
-const SETTINGS = { layout:'qwerty', sound:true };
-const LAYOUTS = { qwerty:["QWERTYUIOP","ASDFGHJKL","ZXCVBNM"], abc:["ABCDEFGHI","JKLMNOPQR","STUVWXYZ"] };
-const LS={get(k,d){try{const v=localStorage.getItem(k);return v==null?d:JSON.parse(v);}catch(_){return d;}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(_){}}};
-Object.assign(SETTINGS, LS.get('pt_settings',{}));
-let BEST = LS.get('pt_best',{});
-function saveSettings(){ LS.set('pt_settings', SETTINGS); }
-function toggleLayout(){ SETTINGS.layout = SETTINGS.layout==='qwerty'?'abc':'qwerty'; saveSettings(); document.getElementById('setLayout').textContent = SETTINGS.layout==='qwerty'?'QWERTY':'A\u2013Z'; }
-function toggleSound(){ SETTINGS.sound=!SETTINGS.sound; saveSettings(); const b=document.getElementById('setSound'); b.textContent=SETTINGS.sound?'ON':'OFF'; b.classList.toggle('off',!SETTINGS.sound); }
-
-/* ============ STATE ============ */
-const ROUND_SIZE = 5;
-const S = { cat:null, qs:[], i:0, score:0, correct:0, typed:"", hintUsed:false, locked:false, results:[], eggBusy:false };
-
-/* ============ HELPERS ============ */
-function esc(s){ return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c])); }
-function norm(s){ return s.toLowerCase().replace(/[^a-z0-9]/g,""); }
-function stripArticle(s){ return s.replace(/^(the|a|an)/,""); }
-let actx;
-function tone(f,d,t,v){ if(!SETTINGS.sound)return; try{ actx=actx||new (window.AudioContext||window.webkitAudioContext)(); if(actx.state==='suspended')actx.resume(); const o=actx.createOscillator(),g=actx.createGain(); o.type=t||'sine'; o.frequency.value=f; o.connect(g); g.connect(actx.destination); const s=actx.currentTime; g.gain.setValueAtTime(v||0.05,s); g.gain.exponentialRampToValueAtTime(0.0001,s+d); o.start(s); o.stop(s+d);}catch(_){}}
-function sfxType(){ tone(300,0.03,'square',0.02); }
-function sfxCorrect(){ tone(660,0.09,'sine',0.06); setTimeout(()=>tone(990,0.13,'sine',0.06),85); }
-function sfxWrong(){ tone(150,0.16,'sawtooth',0.05); }
-function buzz(p){ try{ navigator.vibrate&&navigator.vibrate(p); }catch(_){} }
-function buildPips(){ const w=document.getElementById('pips'); if(!w)return; w.innerHTML=S.qs.map((_,i)=>'<span class="pip" data-i="'+i+'"></span>').join(''); }
-function renderPips(){ const w=document.getElementById('pips'); if(!w)return; [...w.children].forEach((el,i)=>{ el.className='pip'+(S.results[i]===true?' ok':S.results[i]===false?' miss':'')+(i===S.i?' now':''); }); }
-function surpriseMe(){ startRound(CAT_ORDER[Math.random()*CAT_ORDER.length|0]); }
-function applySettingsUI(){ const a=document.getElementById('setLayout'); if(a)a.textContent=SETTINGS.layout==='qwerty'?'QWERTY':'A\u2013Z'; const b=document.getElementById('setSound'); if(b){ b.textContent=SETTINGS.sound?'ON':'OFF'; b.classList.toggle('off',!SETTINGS.sound);} }
-
-/* ============ NAV ============ */
-function showScreen(id){ document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active')); document.getElementById(id).classList.add('active'); window.scrollTo(0,0); }
-function goLobby(){ showScreen('lobby'); }
-function goBoxOffice(){ showScreen('boxoffice'); }
-function quitGame(){ document.getElementById('exitOverlay').classList.add('show'); }
-function closeExit(){ document.getElementById('exitOverlay').classList.remove('show'); }
-function leaveTheater(){ closeExit(); if('speechSynthesis' in window) speechSynthesis.cancel(); goLobby(); }
-
-/* ============ BOX OFFICE ============ */
-function renderBoard(){
-  const board=document.getElementById('board');
-  board.innerHTML = CAT_ORDER.map(key=>{
-    const m=CAT_META[key]; const n=(QUESTIONS[key]||[]).length;
-    return `
-    <button class="poster" onclick="startRound('${key}')" aria-label="Buy ticket to ${esc(m.name)}">
-      <span class="rated">${m.rated}</span>
-      <span class="flick" aria-hidden="true">${m.flick}</span>
-      <h3>${esc(m.name)}</h3>
-      <p>${esc(m.blurb)}</p>
-      <div class="runtime">&nbsp;\u00b7 ${ROUND_SIZE} questions</div>${BEST[key]?`<div class="pbest">★ Best ${BEST[key]}</div>`:''}
-    </button>`;
-  }).join('');
-}
-
-/* ============ ROUND ============ */
-function shuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]];} return a; }
-function startRound(key){
-  S.cat = Object.assign({key}, CAT_META[key]);
-  S.qs = shuffle(QUESTIONS[key]||[]).slice(0,ROUND_SIZE);
-  S.i=0; S.score=0; S.correct=0; S.results=new Array(S.qs.length).fill(null);
-  document.getElementById('hudCat').textContent=S.cat.name;
-  document.getElementById('hudTotal').textContent=S.qs.length;
-  buildSeats(); buildPips(); showScreen('theater'); loadQuestion();
-}
-function loadQuestion(){
-  const q=S.qs[S.i];
-  S.typed=""; S.hintUsed=false; S.locked=false;
-  const ms=document.getElementById('movieScreen'); ms.classList.remove('correct');
-  ms.innerHTML='<div class="clue" id="clue"></div>';
-  document.getElementById('clue').textContent=q.clue;
-  document.getElementById('subtitle').innerHTML=""; document.getElementById('subtitle').classList.remove('wrong');
-  document.getElementById('hintBtn').disabled=false;
-  document.getElementById('hudQ').textContent=S.i+1;
-  document.getElementById('hudScore').textContent=S.score;
-  renderPips(); renderTyped();
-}
-
-/* ============ SEATS ============ */
-let seatMap={},seatBound=false;
-function onSeatDown(e){ const seat=e.target.closest('.seat'); if(!seat) return; e.preventDefault(); if(S.locked) return; const k=seat.dataset.key; if(k==='Enter') submitAnswer(); else if(k==='Backspace') backspace(); else typeChar(k); }
-function buildSeats(){
-  const wrap=document.getElementById('seating');
-  const rows=LAYOUTS[SETTINGS.layout].map(r=>r.split(""));
-  let html="";
-  rows.forEach(row=>{ html+='<div class="seat-row">'+row.map(l=>'<button class="seat" data-key="'+l+'" aria-label="Letter '+l+'">'+l+'</button>').join("")+'</div>'; });
-  html+='<div class="seat-row"><button class="seat wide" data-key=" " aria-label="Space">SPACE</button><button class="seat wide" data-key="Backspace" aria-label="Delete">\u232b DEL</button><button class="seat wide enter" data-key="Enter" aria-label="Submit answer">\u21b5 ENTER</button></div>';
-  wrap.innerHTML=html;
-  seatMap={}; wrap.querySelectorAll('.seat').forEach(el=>{ seatMap[el.dataset.key]=el; });
-  if(!seatBound){ seatBound=true; wrap.addEventListener('pointerdown', onSeatDown); }
-}
-function flashSeat(key){ const el=seatMap[key]; if(!el) return; el.classList.add('hit'); setTimeout(()=>el.classList.remove('hit'),90); }
-function typeChar(ch){ if(S.locked)return; if(S.typed.length>=40)return; S.typed+=ch; sfxType(); flashSeat(ch===" "?" ":ch.toUpperCase()); renderTyped(); }
-function backspace(){ if(S.locked)return; S.typed=S.typed.slice(0,-1); flashSeat("Backspace"); renderTyped(); }
-function renderTyped(){ document.getElementById('typed').innerHTML=esc(S.typed)+`<span class="cur">\u258a</span>`; }
-
-/* ============ MATCHING (fuzzy) ============ */
-function editDistance(a,b){
-  const m=a.length,n=b.length; if(!m)return n; if(!n)return m;
-  let prev=Array.from({length:n+1},(_,j)=>j), curr=new Array(n+1).fill(0);
-  for(let i=1;i<=m;i++){ curr[0]=i; for(let j=1;j<=n;j++){ const c=a[i-1]===b[j-1]?0:1; curr[j]=Math.min(prev[j]+1,curr[j-1]+1,prev[j-1]+c);} const t=prev; prev=curr; curr=t; }
-  return prev[n];
-}
-function variants(t){
-  const set=new Set();
-  [t, t.replace(/&/g,' and '), t.replace(/\band\b/gi,' ')].forEach(b=>{
-    const n=norm(b); if(n){ set.add(n); const s=stripArticle(n); if(s&&s.length>2) set.add(s); }
-  });
-  return [...set];
-}
-function buildPool(q){
-  const out=new Set();
-  variants(q.title).forEach(v=>out.add(v));
-  variants(baseTitle(words(q.title))).forEach(v=>out.add(v));
-  const seg=q.title.split(/[:(]/)[0].trim();
-  if(seg && seg.length>3 && seg!==q.title) variants(seg).forEach(v=>out.add(v));
-  return [...out];
-}
-function isMatch(guess,pool){
-  const gv=[guess]; const gs=stripArticle(guess); if(gs!==guess&&gs.length>2) gv.push(gs);
-  for(const p of pool){ for(const g of gv){
-    if(g===p) return true;
-    const len=Math.max(g.length,p.length);
-    if(len<4) continue;
-    const tol=len<=8?1:2;
-    if(Math.abs(g.length-p.length)<=tol && editDistance(g,p)<=tol) return true;
-  }}
-  return false;
-}
-
-/* ============ ANSWER FLOW ============ */
-function words(t){ return t.toLowerCase().replace(/[^a-z0-9 ]/g,' ').replace(/\s+/g,' ').trim(); }
-function baseTitle(w){ let s=w,p; do{ p=s; s=s.replace(/\s+(part|volume|vol|chapter|episode|ch|pt)\s+(\d+|[ivxlc]+)$/,'').trim(); s=s.replace(/\s+\d+$/,'').trim(); s=s.replace(/\s+(ii|iii|iv|v|vi|vii|viii|ix|x)$/,'').trim(); }while(s!==p&&s.length>0); return s; }
-function isPrefixMatch(g,a){ if(g.length<5) return false; if(g===a) return true; if(a.startsWith(g+' ')) return true; const b=baseTitle(a); if(b.length>=5 && (g===b || b.startsWith(g+' '))) return true; return false; }
-function submitAnswer(){ if(S.locked)return; const raw=S.typed.trim(); const g=norm(raw); if(!g){bump();return;} const q=S.qs[S.i];
-  const correct = isMatch(g,buildPool(q)) || isPrefixMatch(words(raw),words(q.title));
-  const titleN=norm(q.title);
-  if(!correct){ if((g==='matrix'||g==='thematrix')&&!titleN.includes('matrix')){ eggMatrix(); return; } if(g==='mortalkombat'&&!titleN.includes('mortalkombat')){ eggFatality(); return; } }
-  if(correct) win(q); else wrong(); }
-let eggRaf=null;
-function endEgg(layer){ if(eggRaf){cancelAnimationFrame(eggRaf);eggRaf=null;} layer.classList.remove('show'); setTimeout(()=>{ layer.className='egg-layer'; layer.innerHTML=''; S.eggBusy=false; S.locked=false; S.typed=''; renderTyped(); }, 400); }
-function eggMatrix(){ if(S.eggBusy) return; S.eggBusy=true; S.locked=true;
-  const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
-  const layer=document.getElementById('eggLayer');
-  layer.innerHTML='<canvas id="mtxCanvas"></canvas><div class="mtx-text">Wake up, Neo...</div>';
-  layer.className='egg-layer show mtx';
-  const cv=document.getElementById('mtxCanvas'), ctx=cv.getContext('2d');
-  const dpr=Math.min(devicePixelRatio||1,2);
-  cv.width=innerWidth*dpr; cv.height=innerHeight*dpr;
-  const fsz=16*dpr, cols=Math.max(1,Math.floor(cv.width/fsz)), y=new Array(cols).fill(0);
-  const chars='アイウエオカキクケコサシスセソタチツテトナニヌネノ0123456789Z:.=*+-<>';
-  ctx.fillStyle='#000'; ctx.fillRect(0,0,cv.width,cv.height);
-  const t0=performance.now(), dur=reduce?1200:4200;
-  function draw(now){ ctx.fillStyle='rgba(0,0,0,0.08)'; ctx.fillRect(0,0,cv.width,cv.height); ctx.fillStyle='#3bff6a'; ctx.font=fsz+'px monospace';
-    for(let i=0;i<cols;i++){ const ch=chars[Math.random()*chars.length|0]; ctx.fillText(ch,i*fsz,y[i]*fsz); if(y[i]*fsz>cv.height && Math.random()>0.975) y[i]=0; y[i]++; }
-    if(now-t0<dur) eggRaf=requestAnimationFrame(draw); else endEgg(layer); }
-  if(reduce){ setTimeout(()=>endEgg(layer),1200); } else { eggRaf=requestAnimationFrame(draw); } }
-function eggFatality(){ if(S.eggBusy) return; S.eggBusy=true; S.locked=true;
-  const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
-  const layer=document.getElementById('eggLayer');
-  layer.innerHTML='<div class="fatal-flash"></div><div class="fatal-text">FATALITY</div>';
-  layer.className='egg-layer show fatal';
-  if(SETTINGS.sound){ tone(60,0.5,'sawtooth',0.09); setTimeout(()=>tone(38,0.7,'sawtooth',0.08),120); }
-  buzz([0,60,40,120]);
-  setTimeout(()=>endEgg(layer), reduce?900:2400); }
-function win(q){
-  S.locked=true; const gained=S.hintUsed?50:100; S.score+=gained; S.correct++; S.results[S.i]=true; sfxCorrect(); buzz(20); renderPips();
-  const ms=document.getElementById('movieScreen'); ms.classList.add('correct'); ms.innerHTML='<div class="verdict">CORRECT!</div>';
-  const sub=document.getElementById('subtitle'); sub.classList.remove('wrong');
-  sub.innerHTML=`<span class="lbl">+${gained}</span>${esc(q.title)}`;
-  document.getElementById('hudScore').textContent=S.score;
-  setTimeout(next,1150);
-}
-function wrong(){ sfxWrong(); buzz([0,30,40,30]);
-  const line=document.getElementById('answerLine'); line.classList.add('shake'); setTimeout(()=>line.classList.remove('shake'),350);
-  const sub=document.getElementById('subtitle'); sub.classList.add('wrong'); sub.innerHTML=`<span class="lbl">cut!</span>Not that one. Roll it again.`;
-  S.typed=""; renderTyped();
-}
-
-/* ============ HINTS ============ */
-function letterReveal(title){
-  return title.split(/\s+/).map(w=>[...w].map((ch,i)=>{ if(!/[a-z0-9]/i.test(ch))return ch; return i===0?ch.toUpperCase():'_'; }).join('')).join(' ');
-}
-function useHint(){
-  if(S.locked||S.hintUsed)return; S.hintUsed=true; document.getElementById('hintBtn').disabled=true;
-  const q=S.qs[S.i]; const sub=document.getElementById('subtitle'); sub.classList.remove('wrong');
-  if(q.hint) sub.innerHTML=`<span class="lbl">subtitle</span>${esc(q.hint)}`;
-  else sub.innerHTML=`<span class="lbl">on the marquee</span><span style="font-family:'Space Mono';letter-spacing:.22em">${esc(letterReveal(q.title))}</span>`;
-}
-
-/* ============ SPEAK / SKIP ============ */
-function speakClue(){
-  if(!SETTINGS.sound){ toast("Sound is off \u2014 check Settings"); return; }
-  const q=S.qs[S.i]; if(!('speechSynthesis' in window)){ toast("Audio not supported"); return; }
-  speechSynthesis.cancel(); const u=new SpeechSynthesisUtterance(q.clue); u.rate=.96; u.pitch=1; speechSynthesis.speak(u);
-}
-function skipQuestion(){
-  if(S.locked)return; S.locked=true; const q=S.qs[S.i];
-  const sub=document.getElementById('subtitle'); sub.classList.remove('wrong');
-  sub.innerHTML=`<span class="lbl">the answer was</span>${esc(q.title)}`;
-  S.results[S.i]=false; renderPips();
-  setTimeout(next,1100);
-}
-function next(){ if('speechSynthesis' in window) speechSynthesis.cancel(); S.i++; if(S.i>=S.qs.length) endRound(); else loadQuestion(); }
-function bump(){ const line=document.getElementById('answerLine'); line.classList.add('shake'); setTimeout(()=>line.classList.remove('shake'),350); }
-
-/* ============ RECEIPT ============ */
-function ratingFor(c){ switch(c){ case 5:return{stars:"\u2605\u2605\u2605\u2605\u2605",crit:"Critic's Choice"}; case 4:return{stars:"\u2605\u2605\u2605\u2605\u2606",crit:"Standing Ovation"}; case 3:return{stars:"\u2605\u2605\u2605\u2606\u2606",crit:"Solid Showing"}; case 2:return{stars:"\u2605\u2605\u2606\u2606\u2606",crit:"Mixed Reviews"}; case 1:return{stars:"\u2605\u2606\u2606\u2606\u2606",crit:"Straight to DVD"}; default:return{stars:"\u2606\u2606\u2606\u2606\u2606",crit:"Box Office Bomb"}; } }
-function serial(){ return Array.from({length:12},()=>Math.random().toString(36)[2]||"0").join("").toUpperCase(); }
-function endRound(){
-  const r=ratingFor(S.correct); const now=new Date();
-  const bkey=S.cat.key, prev=BEST[bkey]||0, isBest=S.score>prev&&S.score>0; if(isBest){ BEST[bkey]=S.score; LS.set('pt_best',BEST); }
-  const when=now.toLocaleDateString(undefined,{month:'short',day:'numeric',year:'numeric'})+" \u00b7 "+now.toLocaleTimeString(undefined,{hour:'numeric',minute:'2-digit'});
-  document.getElementById('ticket').innerHTML=`
-    <div class="t-brand"><div class="cinema">PLOT TWISTED CINEMAS</div><div class="admit">ADMIT ONE</div></div>
-    <div class="t-row"><span class="k">SHOWING</span><span class="v">${esc(S.cat.name)}</span></div>
-    <div class="t-row"><span class="k">DATE</span><span class="v">${when}</span></div>
-    <div class="t-row"><span class="k">SEATS PLAYED</span><span class="v">${S.correct}/${S.qs.length} correct</span></div>
-    <div class="t-score"><div class="num">${S.score}</div><div class="lbl">FINAL SCORE</div></div>
-    <div class="t-rating"><div class="stars">${r.stars}</div><div class="crit">${r.crit}</div></div>
-    ${isBest?'<div class="t-best">★ NEW HIGH SCORE ★</div>':''}
-    <div class="barcode" aria-hidden="true"></div>
-    <div class="t-serial">NO. ${serial()} \u00b7 NOBODY CREATIVE</div>`;
-  showScreen('receipt');
-}
-async function shareScoreCard(){
-  try{
-    const blob=await renderCard();
-    const file=new File([blob],'plot-twisted.png',{type:'image/png'});
-    if(navigator.canShare && navigator.canShare({files:[file]})){
-      try{ await navigator.share({files:[file], text:'Plot Twisted — Movie Trivia'}); }catch(_){}
-      return;
-    }
-    const url=URL.createObjectURL(blob);
-    const a=document.createElement('a'); a.href=url; a.download='plot-twisted.png';
-    document.body.appendChild(a); a.click(); a.remove();
-    setTimeout(()=>URL.revokeObjectURL(url),2000);
-    toast("Score card saved");
-  }catch(err){ toast("Couldn't make image"); }
-}
-function roundRect(x,X,Y,w,h,r){ x.beginPath(); x.moveTo(X+r,Y); x.arcTo(X+w,Y,X+w,Y+h,r); x.arcTo(X+w,Y+h,X,Y+h,r); x.arcTo(X,Y+h,X,Y,r); x.arcTo(X,Y,X+w,Y,r); x.closePath(); }
-function cdot(x,X,Y,r){ x.beginPath(); x.arc(X,Y,r,0,7); x.fill(); }
-async function renderCard(){
-  if(document.fonts){ try{ await document.fonts.load('92px "Bungee"'); await document.fonts.load('700 210px "Barlow Condensed"'); await document.fonts.load('700 34px "Barlow Condensed"'); await document.fonts.load('italic 30px "Barlow"'); await document.fonts.load('500 40px "Space Mono"'); await document.fonts.ready; }catch(_){} }
-  const W=1080,H=1350,cx=W/2,r=ratingFor(S.correct);
-  const c=document.createElement('canvas'); c.width=W; c.height=H; const x=c.getContext('2d');
-  const g=x.createLinearGradient(0,0,0,H); g.addColorStop(0,'#2a1013'); g.addColorStop(.5,'#160b0d'); g.addColorStop(1,'#0e0708');
-  x.fillStyle=g; x.fillRect(0,0,W,H);
-  x.strokeStyle='#e4b34c'; x.lineWidth=8; roundRect(x,40,40,W-80,H-80,26); x.stroke();
-  x.textAlign='center';
-  x.fillStyle='#fcebc0'; for(let i=0;i<15;i++){ const bx=95+i*(W-190)/14; cdot(x,bx,96,8); cdot(x,bx,H-96,8); }
-  x.fillStyle='#e4b34c'; x.font='700 34px "Barlow Condensed",sans-serif'; x.fillText('★  NOW SHOWING  ★', cx,178);
-  x.font='92px "Bungee",sans-serif';
-  x.fillStyle='#fcebc0'; x.fillText('PLOT', cx,300);
-  x.save(); x.shadowColor='rgba(255,77,141,.75)'; x.shadowBlur=40; x.fillStyle='#ff4d8d'; x.fillText('TWISTED', cx,406); x.restore();
-  const px=110,pw=W-220,py=470,ph=420;
-  const sg=x.createLinearGradient(0,py,0,py+ph); sg.addColorStop(0,'#0a0f14'); sg.addColorStop(1,'#050708');
-  x.fillStyle=sg; roundRect(x,px,py,pw,ph,18); x.fill();
-  x.strokeStyle='#33404a'; x.lineWidth=3; roundRect(x,px,py,pw,ph,18); x.stroke();
-  x.fillStyle='#c9a978'; x.font='500 36px "Barlow",sans-serif'; x.fillText('Showing: '+S.cat.name, cx,py+72);
-  x.fillStyle='#fcebc0'; x.font='700 200px "Barlow Condensed",sans-serif'; x.fillText(String(S.score), cx,py+262);
-  x.fillStyle='#a97f2e'; x.font='700 30px "Barlow Condensed",sans-serif'; x.fillText('FINAL SCORE', cx,py+312);
-  x.fillStyle='#f4e6cf'; x.font='500 40px "Space Mono",monospace'; x.fillText(S.correct+' / '+S.qs.length+' correct', cx,py+382);
-  x.fillStyle='#e4b34c'; x.font='74px "Barlow",sans-serif'; x.fillText(r.stars, cx,1005);
-  x.fillStyle='#fcebc0'; x.font='700 50px "Barlow Condensed",sans-serif'; x.fillText(r.crit.toUpperCase(), cx,1076);
-  const n=S.results.length||5,sw=70,gap=16,tot=n*sw+(n-1)*gap,sx=cx-tot/2,sy=1120;
-  for(let i=0;i<n;i++){ const bx=sx+i*(sw+gap),res=S.results[i];
-    x.fillStyle = res===true?'#5ee08a':res===false?'#a3434a':'#7a1e22';
-    roundRect(x,bx,sy,sw,60,12); x.fill();
-    x.fillStyle='#2c0a0d'; roundRect(x,bx,sy+60,sw,8,3); x.fill(); }
-  x.fillStyle='#c9a978'; x.font='italic 30px "Barlow",sans-serif'; x.fillText('Trust nobody. Especially the hints.', cx,1258);
-  x.fillStyle='#6b4c3a'; x.font='700 24px "Barlow Condensed",sans-serif'; x.fillText('A NOBODY CREATIVE PRODUCTION', cx,1300);
-  return await new Promise(res=>c.toBlob(res,'image/png'));
-}
-function fallbackCopy(t){ navigator.clipboard?.writeText(t).then(()=>toast("Score card copied"),()=>toast("Copy failed")); }
-function replay(){ startRound(S.cat.key); }
-
-/* ============ TOAST ============ */
-let toastT;
-function toast(msg){ const el=document.getElementById('toast'); el.textContent=msg; el.classList.add('show'); clearTimeout(toastT); toastT=setTimeout(()=>el.classList.remove('show'),1900); }
-
-/* ============ PHYSICAL KEYBOARD ============ */
-document.addEventListener('keydown',e=>{
-  if(!document.getElementById('theater').classList.contains('active'))return; if(S.locked)return;
-  const k=e.key;
-  if(k==="Enter"){ e.preventDefault(); flashSeat("Enter"); submitAnswer(); }
-  else if(k==="Backspace"){ e.preventDefault(); backspace(); }
-  else if(k===" "){ e.preventDefault(); typeChar(" "); }
-  else if(/^[a-zA-Z]$/.test(k)){ typeChar(k.toUpperCase()); }
-});
-
-/* ============ BOOT ============ */
-function onFbType(){ document.getElementById('fbClue').hidden = (document.getElementById('fbType').value!=='Submit a clue'); }
-function submitFeedback(e){ e.preventDefault(); const form=document.getElementById('fbForm'); const body=new URLSearchParams(new FormData(form)).toString();
-  fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body}).then(r=>{ if(!r.ok) throw 0; fbSuccess(false); }).catch(()=>fbSuccess(true)); return false; }
-function fbSuccess(preview){ document.getElementById('fbForm').style.display='none'; document.getElementById('fbDone').hidden=false; document.getElementById('fbDoneMsg').textContent = preview ? 'Saved. This sends for real once the game is live on Netlify.' : 'Thanks for helping run the theater. I read every one.'; }
-function fbReset(){ const f=document.getElementById('fbForm'); f.reset(); f.style.display=''; document.getElementById('fbDone').hidden=true; document.getElementById('fbClue').hidden=true; }
-let deferredPrompt=null;
-window.addEventListener('beforeinstallprompt',e=>{ e.preventDefault(); deferredPrompt=e; maybeShowInstall('android'); });
-function isStandalone(){ try{ return matchMedia('(display-mode: standalone)').matches || navigator.standalone===true; }catch(_){ return false; } }
-function maybeShowInstall(kind){ if(isStandalone()||LS.get('pt_install_dismissed',false)) return; const bar=document.getElementById('installBar'),txt=document.getElementById('installText'),btn=document.getElementById('installBtn'); if(kind==='android'){ txt.textContent='Add Plot Twisted to your home screen'; btn.style.display=''; } else { txt.innerHTML='Install: tap Share, then “Add to Home Screen”'; btn.style.display='none'; } bar.classList.add('show'); }
-function doInstall(){ if(deferredPrompt){ deferredPrompt.prompt(); deferredPrompt.userChoice.finally(()=>{ deferredPrompt=null; dismissInstall(); }); } }
-function dismissInstall(){ document.getElementById('installBar').classList.remove('show'); LS.set('pt_install_dismissed',true); }
-function initInstall(){ if(isStandalone()) return; const ua=navigator.userAgent||''; const iOS=/iphone|ipad|ipod/i.test(ua)&&!/crios|fxios/i.test(ua); if(iOS) setTimeout(()=>maybeShowInstall('ios'),1600); }
-renderBoard();
-applySettingsUI();
-initInstall();
-if('serviceWorker' in navigator){ window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{})); }
-document.getElementById('exitOverlay').addEventListener('click',e=>{ if(e.target.id==='exitOverlay') closeExit(); });
-document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeExit(); });
-window.addEventListener('load',()=>{
-  const ident=document.getElementById('ident'); const reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
-  setTimeout(()=>{ ident.style.opacity="0"; setTimeout(()=>{ ident.style.display="none"; showScreen('lobby'); }, reduce?50:800); }, reduce?400:2600);
-});
-
-</script>
+<script src="./game.js"></script>
 </body>
 </html>
