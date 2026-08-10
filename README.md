@@ -2,7 +2,25 @@
 
 **Movie plots, twisted beyond recognition.** Plot Twisted is a browser-based movie trivia game from Nobody Creative. Players get a deliberately ridiculous plot summary, type the movie title, and work through five-question showings across multiple categories.
 
-**Live:** https://plot-twisted.netlify.app
+**Live:** https://plot-twisted.netlify.app/
+
+## Production architecture
+
+Plot Twisted is intentionally a static site. The production URL must stay boring and predictable:
+
+| Route | Source | Notes |
+| --- | --- | --- |
+| `/` | `index.html` | Canonical game URL. Netlify serves this file directly; there is no root redirect, rewrite, or renderer function. |
+| `/play` | 301 → `/` | Legacy compatibility only. |
+| `/privacy` | `privacy.html` | Privacy policy. |
+
+`game.js` loads `questions.json` in the browser. There is no server-side game renderer and no server-side clue override layer.
+
+### Routing guardrail
+
+**Do not put `/` behind a Netlify Function or add a root rule to `_redirects`.** `index.html` is the root document and is intentionally served as a static file. This keeps browser navigation, social crawlers, canonical metadata, and the PWA pointed at the same URL.
+
+`netlify.toml` pins the publish directory to the repository root. `scripts/validate-social-preview.py` and the `Validate social preview` GitHub Action enforce the routing and metadata contract on pull requests and pushes to `main`.
 
 ## What is live
 
@@ -14,70 +32,48 @@
 - Optional analytics and Netlify feedback form
 - No account required
 
-## Routes
-
-| Route | Source | Notes |
-| --- | --- | --- |
-| `/` | `landing-v4.html` | Marketing / launch page, rewritten by Netlify |
-| `/play` | `netlify/functions/play.js` → `index.html` | Injects question data and clue overrides before returning the game HTML |
-| `/privacy` | `privacy.html` | Privacy policy |
-
-Route rules live in `_redirects`.
-
 ## Production files
 
-### Landing page
-- `landing-v4.html` — current landing page markup
-- `landing-v4.js` — landing interactions, install UI, demo behavior
-- `landing-v2.css` — primary landing styles
-- `landing-v3.css` — current landing overrides
-- `brand-icons.css` — shared brand icon styling
-- `install.css` — install/PWA UI styles
-
-The versioned names are historical, but these files are **currently active**. Do not archive them solely because the names look old.
-
 ### Game
-- `index.html` — game shell and social metadata for `/play`
+- `index.html` — canonical game shell and social metadata at `/`
 - `game.css` — game UI
-- `game.js` — game logic
-- `questions.json` — question library
-- `netlify/functions/play.js` — `/play` renderer
-- `netlify/functions/clue-overrides.js` — server-side clue overrides
+- `game.js` — game logic and client-side question loading
+- `questions.json` — canonical question library
 
 ### Site / PWA
-- `manifest.webmanifest` — PWA manifest
-- `sw.js` — service worker and offline cache
-- `icon-192.png`, `icon-512.png`, `icon-maskable-512.png`, `apple-touch-icon-180.png` — app and browser icons
-- `_headers` — Netlify cache/content headers
-- `_redirects` — Netlify routing
-- `netlify/functions/analytics.js` — consent-aware analytics loader
+- `manifest.webmanifest` — PWA manifest; start URL and scope are `/`
+- `sw.js` — offline/runtime cache; social preview artwork is deliberately not cached by the service worker
+- `icon-192.png`, `icon-512.png`, `icon-maskable-512.png`, `apple-touch-icon-180.png` — app/browser icons
+- `_headers` — Netlify headers for static files
+- `_redirects` — legacy `/play` and privacy routing only; never add a root rule
+- `netlify.toml` — explicit Netlify publish/functions directories
+- `netlify/functions/analytics.js` — consent-aware analytics loader; the only production Netlify Function
+
+### Social preview
+
+The canonical Open Graph/Twitter card is a direct static PNG at:
+
+`/assets/social/plot-twisted-share-8e257690.png`
+
+The filename is content-addressed so the asset can safely use immutable caching without reusing an old social-crawler cache entry. `index.html` points directly to this absolute PNG URL. There is no image transformation endpoint and no query-string cache versioning.
 
 ### Privacy
 - `privacy.html`
 - `privacy.css`
 
-## Social previews
+### Historical landing assets
 
-Both `/` and `/play` use the same direct PNG asset for Open Graph and Twitter/X metadata:
+`landing-v4.html`, its JS, and landing CSS files are retained for reference, but they are not routed to `/` and are not part of the canonical game entry point. Do not infer production routing from their versioned filenames.
 
-`https://plot-twisted.netlify.app/icon-512.png?v=20260810`
+## Validation
 
-This intentionally avoids depending on an SVG-to-PNG transformation endpoint during social-crawler requests. The query version can be bumped when the preview asset changes to help bypass cached unfurls.
+Run:
 
-## Archive
+```bash
+python scripts/validate-social-preview.py
+```
 
-Files in `archive/` are retained for reference but are not part of the active production dependency graph.
-
-- `archive/social-preview-v2.svg` — previous social preview source that relied on Netlify image transformation
-- `archive/site-polish.css` — unused polish stylesheet from an earlier landing-page pass
-
-## Service worker note
-
-Whenever an active cached asset is renamed, moved, or removed, update the `ASSETS` list in `sw.js` and bump the cache version. Otherwise existing PWA installs can keep stale files or fail during service-worker installation.
-
-## Deployment
-
-The site is deployed on Netlify from this repository. There is no build step; the project is primarily static HTML/CSS/JS plus Netlify Functions.
+The check fails if the root is routed through `_redirects`, the removed renderer functions return, the social metadata points at a stale/ transformed URL, the PNG is missing or has the wrong dimensions, the service worker caches social artwork, or Netlify's publish directory is no longer pinned to the repository root.
 
 ## Built by
 
