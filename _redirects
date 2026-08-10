@@ -2,4 +2,4 @@
 /play/ / 301!
 /privacy /privacy.html 200!
 /privacy/ /privacy.html 200!
-/ /.netlify/functions/play 200!
+/ /index.html 200!
