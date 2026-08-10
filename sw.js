@@ -1,8 +1,8 @@
-const CACHE = 'plot-twisted-v21';
+const CACHE = 'plot-twisted-v22';
 const ASSETS = [
   './privacy.html', './privacy.css',
   './index.html', './game.css', './game.js', './questions.json', './manifest.webmanifest',
-  './icon-192.png', './icon-512.png', './icon-maskable-512.png', './apple-touch-icon-180.png', './social-preview.png'
+  './icon-192.png', './icon-512.png', './icon-maskable-512.png', './apple-touch-icon-180.png'
 ];
 
 self.addEventListener('install', event => {
@@ -28,8 +28,7 @@ self.addEventListener('fetch', event => {
   const url = new URL(request.url);
   const isFreshAsset = /privacy\.(html|css)$/.test(url.pathname)
     || /game\.(css|js)$/.test(url.pathname)
-    || /questions\.json$/.test(url.pathname)
-    || /social-preview\.png$/.test(url.pathname);
+    || /questions\.json$/.test(url.pathname);
 
   if (request.mode === 'navigate' || isFreshAsset) {
     event.respondWith(

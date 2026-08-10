@@ -1,4 +1,7 @@
-/social-preview.png
+/
+  Cache-Control: public, max-age=0, must-revalidate
+
+/assets/social/plot-twisted-share-8e257690.png
   Content-Type: image/png
   Cache-Control: public, max-age=31536000, immutable
 
