@@ -1,5 +1,5 @@
-/play /.netlify/functions/play 200!
-/play/ /.netlify/functions/play 200!
+/play / 301!
+/play/ / 301!
 /privacy /privacy.html 200!
 /privacy/ /privacy.html 200!
-/ /.netlify/functions/play?view=landing 200!
+/ /.netlify/functions/play 200!
