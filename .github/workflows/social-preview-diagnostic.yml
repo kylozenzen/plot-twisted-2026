@@ -1,0 +1,50 @@
+name: Social Preview Diagnostic
+
+on:
+  push:
+    branches:
+      - agent/social-preview-spec-pass
+  workflow_dispatch:
+
+jobs:
+  inspect-production:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch production HTML as LinkedIn crawler
+        shell: bash
+        run: |
+          set -euxo pipefail
+          URL='https://plot-twisted.netlify.app/'
+          curl -L --fail-with-body -A 'LinkedInBot/1.0' -D page-headers.txt "$URL" -o page.html
+          echo '=== PAGE RESPONSE HEADERS ==='
+          cat page-headers.txt
+          echo '=== SOCIAL META TAGS ==='
+          grep -Eio '<(meta|link)[^>]+(og:|twitter:|canonical)[^>]*>' page.html || true
+          echo '=== ICON REFERENCES IN HEAD ==='
+          sed -n '/<head>/,/<\/head>/p' page.html | grep -Ei 'icon|apple-touch' || true
+
+      - name: Fetch production share image as LinkedIn crawler
+        shell: bash
+        run: |
+          set -euxo pipefail
+          IMG='https://plot-twisted.netlify.app/plot-twisted-share.png'
+          curl -L --fail-with-body -A 'LinkedInBot/1.0' -D image-headers.txt "$IMG" -o share.png
+          echo '=== IMAGE RESPONSE HEADERS ==='
+          cat image-headers.txt
+          echo '=== IMAGE FILE ==='
+          file share.png
+          sha256sum share.png
+          python3 - <<'PY'
+          import struct
+          p='share.png'
+          with open(p,'rb') as f:
+              sig=f.read(8)
+              assert sig == b'\x89PNG\r\n\x1a\n', sig
+              length=struct.unpack('>I', f.read(4))[0]
+              typ=f.read(4)
+              assert typ == b'IHDR', typ
+              data=f.read(length)
+              w,h,bit_depth,color_type,comp,flt,interlace=struct.unpack('>IIBBBBB', data)
+          print(f'PNG width={w} height={h} bit_depth={bit_depth} color_type={color_type}')
+          print('color_type 2=truecolor RGB, 3=indexed palette, 6=truecolor RGBA')
+          PY
