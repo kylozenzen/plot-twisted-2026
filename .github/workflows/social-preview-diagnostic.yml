@@ -16,19 +16,37 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: agent/social-preview-spec-pass
-      - name: Convert share image to truecolor RGB PNG
+      - name: Rasterize fresh truecolor RGB share image
         shell: bash
         run: |
+          set -euxo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq librsvg2-bin
           python3 -m pip install --quiet pillow
+          python3 - <<'PY'
+          from pathlib import Path
+          src = Path('archive/social-preview-v2.svg').read_text()
+          src = src.replace('https://plot-twisted.netlify.app/icon-192.png', 'icon-192.png')
+          Path('social-preview-source.svg').write_text(src)
+          PY
+          rsvg-convert -w 1200 -h 630 social-preview-source.svg -o plot-twisted-share.png
           python3 - <<'PY'
           from PIL import Image
           p='plot-twisted-share.png'
-          im=Image.open(p).convert('RGB')
+          im=Image.open(p)
+          im.load()
           assert im.size == (1200, 630), im.size
+          im=im.convert('RGB')
           im.save(p, format='PNG', optimize=True)
-          print('saved', p, im.size, im.mode)
+          check=Image.open(p)
+          check.load()
+          assert check.size == (1200, 630)
+          assert check.mode == 'RGB', check.mode
+          print('validated', p, check.size, check.mode)
           PY
+          rm social-preview-source.svg
           file plot-twisted-share.png
+          ls -lh plot-twisted-share.png
       - name: Commit converted image
         shell: bash
         run: |
