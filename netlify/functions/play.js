@@ -33,7 +33,7 @@ function applyPageMetadata(html) {
 exports.handler = async function handler(event) {
   try {
     const baseUrl = event.rawUrl || `https://${event.headers.host}/`;
-    const htmlUrl = new URL('/index.html', baseUrl);
+    const htmlUrl = new URL('/game.html', baseUrl);
     const questionsUrl = new URL('/questions.json', baseUrl);
 
     const [htmlResponse, questionsResponse] = await Promise.all([

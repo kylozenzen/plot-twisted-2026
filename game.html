@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>Plot Twisted — The Movie Trivia Game</title>
+<meta name="description" content="Guess the movie from one ridiculous plot summary. Five-question rounds, six showings, and no account required.">
+<meta name="theme-color" content="#160b0d">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Plot Twisted">
+<link rel="canonical" href="https://plot-twisted.netlify.app/">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="apple-touch-icon" href="./apple-touch-icon-180.png">
+<link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./game.css">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Plot Twisted">
+<meta property="og:url" content="https://plot-twisted.netlify.app/">
+<meta property="og:title" content="Plot Twisted — The Movie Trivia Game">
+<meta property="og:description" content="Guess the movie from one ridiculous summary. Five clues. Six showings. Trust nobody, especially the hints.">
+<meta property="og:image" content="https://plot-twisted.netlify.app/social-preview.png?v=20260810-2308">
+<meta property="og:image:secure_url" content="https://plot-twisted.netlify.app/social-preview.png?v=20260810-2308">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Plot Twisted movie trivia social card with the game branding, category icons, and a phone mockup showing a twisted movie clue.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Plot Twisted — The Movie Trivia Game">
+<meta name="twitter:description" content="One ridiculous clue. One movie title. Try not to overthink it.">
+<meta name="twitter:image" content="https://plot-twisted.netlify.app/social-preview.png?v=20260810-2308">
+<meta name="twitter:image:alt" content="Plot Twisted movie trivia social card with the game branding, category icons, and a phone mockup showing a twisted movie clue.">
+<script src="/.netlify/functions/analytics"></script>
+</head>
+<body>
+<div id="ident" role="img" aria-label="Nobody Creative presents">
+  <div class="reel" aria-hidden="true"></div>
+  <div class="presents">presents</div>
+  <div class="studio">NOBODY<br>CREATIVE</div>
+</div>
+<div class="stage">
+  <section class="screen" id="lobby">
+    <div class="marquee">
+      <div class="now-showing">★ Now Showing ★</div>
+      <h1 class="title">PLOT<br><span class="twist">TWISTED</span></h1>
+      <div class="edition">The Movie Trivia Game</div>
+      <p class="tagline">Trust nobody. Especially the hints.</p>
+    </div>
+    <div class="menu">
+      <button class="btn btn-primary" onclick="goBoxOffice()">Buy Tickets →</button>
+      <button class="btn btn-ghost" onclick="showScreen('more')">More Showings</button>
+      <button class="btn btn-ghost" onclick="showScreen('settings')">Settings</button>
+    </div>
+    <div class="foot">A Nobody Creative Production · 5 Questions · Beta Build</div>
+  </section>
+
+  <section class="screen" id="boxoffice">
+    <div class="eyebrow">Box Office</div>
+    <h2 class="head">Pick Your Showing</h2>
+    <p class="subhead">One ticket. Five questions. No refunds.</p>
+    <div class="board" id="board"></div>
+    <div class="back-wrap" style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap"><button class="btn btn-primary" onclick="surpriseMe()">🎲 Surprise Me</button><button class="btn btn-ghost" onclick="goLobby()">← Back to Lobby</button></div>
+  </section>
+
+  <section class="screen" id="more">
+    <div class="eyebrow">Coming Attractions</div>
+    <h2 class="head">More Showings</h2>
+    <p class="subhead">The marquee is just getting started.</p>
+    <div class="board">
+      <div class="coming"><span class="rated">SOON</span><span class="flick" aria-hidden="true">🎮</span><h3>Gaming Edition</h3><p>Boss Rush, Retro Reels, and New Game+. The clues you love, now with extra lives.</p><div class="soon-lbl">&nbsp;</div></div>
+      <div class="coming"><span class="rated">SOON</span><span class="flick" aria-hidden="true">👻</span><h3>Fright Fest</h3><p>A horror-only midnight showing. Bring a friend to hide behind.</p><div class="soon-lbl">&nbsp;</div></div>
+      <div class="coming"><span class="rated">SOON</span><span class="flick" aria-hidden="true">📺</span><h3>Binge Reel</h3><p>Television's biggest series get their own screen. No spoilers, promise.</p><div class="soon-lbl">&nbsp;</div></div>
+      <div class="coming"><span class="rated">SOON</span><span class="flick" aria-hidden="true">🎵</span><h3>Needle Drop</h3><p>Name the movie from its most iconic song cue.</p><div class="soon-lbl">&nbsp;</div></div>
+    </div>
+    <div class="back-wrap"><button class="btn btn-ghost" onclick="goLobby()">← Back to Lobby</button></div>
+  </section>
+
+  <section class="screen" id="settings">
+    <div class="eyebrow">Projection Booth</div>
+    <h2 class="head">Settings</h2>
+    <p class="subhead">Set the house the way you like it.</p>
+    <div class="settings-list">
+      <div class="set-row"><div><div class="set-name">Seat Layout</div><div class="set-sub">How the letter seats are arranged</div></div><button class="toggle" id="setLayout" onclick="toggleLayout()">QWERTY</button></div>
+      <div class="set-row"><div><div class="set-name">Sound</div><div class="set-sub">Sound effects & spoken clues</div></div><button class="toggle" id="setSound" onclick="toggleSound()">ON</button></div>
+    </div>
+    <div class="about">
+      <div class="about-h">About the Show</div>
+      <p>Plot Twisted is a one-person production. I'm Ben — a social media marketer between full-time roles who started building things and accidentally shipped a movie trivia game.</p>
+      <p>It's free while the theater's small. If enough people show up and the projector bills come due, there may be a small ticket price down the line to keep the lights on.</p>
+      <div class="about-cta"><a class="btn btn-primary" href="https://bencampbell.netlify.app/" target="_blank" rel="noopener noreferrer">See My Work →</a><button class="btn btn-ghost" onclick="showScreen('feedback')">🎟 Feedback & Clue Box</button></div>
+      <div class="about-foot">A Nobody Creative Production</div>
+    </div>
+    <div class="back-wrap"><button class="btn btn-ghost" onclick="goLobby()">← Back to Lobby</button></div>
+  </section>
+
+  <section class="screen" id="feedback">
+    <div class="eyebrow">Feedback & Clue Box</div>
+    <h2 class="head">🎟 Drop a Note</h2>
+    <p class="subhead">Bugs, bad answers, or a clue you think is funnier.</p>
+    <form class="fb-form" name="feedback" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="fbForm" onsubmit="return submitFeedback(event)">
+      <input type="hidden" name="form-name" value="feedback"><p class="hp"><label>Leave blank: <input name="bot-field"></label></p>
+      <label class="fb-lab">What's this about?</label><select class="fb-in" name="type" id="fbType" onchange="onFbType()"><option>Bug</option><option>Wrong answer</option><option>Suggestion</option><option>Submit a clue</option><option>Other</option></select>
+      <div id="fbClue" hidden><label class="fb-lab">Category</label><select class="fb-in" name="clue_category"><option>Family</option><option>Superhero</option><option>SciFi</option><option>Fantasy</option><option>Emotional Damage</option><option>Streaming Hits</option></select><label class="fb-lab">The movie</label><input class="fb-in" name="clue_movie" placeholder="e.g. The Matrix Reloaded"><label class="fb-lab">Your one-line clue</label><textarea class="fb-in" name="clue_text" rows="2" placeholder="Make it unhinged."></textarea></div>
+      <label class="fb-lab">Message</label><textarea class="fb-in" name="message" rows="3" placeholder="What's on your mind?"></textarea><label class="fb-lab">Contact (optional)</label><input class="fb-in" name="contact" placeholder="email or handle, if you want a reply"><button class="btn btn-primary" type="submit" style="width:100%;margin-top:16px">Send It In →</button>
+    </form>
+    <div class="fb-done" id="fbDone" hidden><div class="fb-ticket"><div class="fb-ticket-h">🎟️ TICKET RECEIVED</div><p id="fbDoneMsg"></p></div><button class="btn btn-ghost" onclick="fbReset()" style="width:100%">Submit Another</button></div>
+    <div class="back-wrap"><button class="btn btn-ghost" onclick="showScreen('settings')">← Back to Settings</button></div>
+  </section>
+
+  <section class="screen" id="theater">
+    <div class="hud"><span class="now" id="hudCat">Now Playing</span><div class="meta"><span>SEAT <b id="hudQ">1</b>/<b id="hudTotal">5</b></span><span>SCORE <b id="hudScore">0</b></span><button class="quit" onclick="quitGame()" aria-label="Exit to lobby">✕ EXIT</button></div></div>
+    <div class="pips" id="pips" aria-hidden="true"></div>
+    <div class="auditorium"><div class="curtains l"></div><div class="curtains r"></div><div class="movie-screen" id="movieScreen"><div class="clue" id="clue">—</div></div><div class="subtitle" id="subtitle" aria-live="polite"></div><div class="answer-line" id="answerLine"><span class="caret-lbl">YOUR&nbsp;ANSWER</span><span class="typed" id="typed"><span class="cur">▊</span></span></div><div class="actions"><button class="act" id="hintBtn" onclick="useHint()"><span class="ic">💡</span>Hint<small>-50 pts</small></button><button class="act" onclick="speakClue()"><span class="ic">🔊</span>Speak<small>hear clue</small></button><button class="act" onclick="skipQuestion()"><span class="ic">⏭</span>Skip<small>0 pts</small></button></div><div class="screen-label">— the seats —</div><div class="seating" id="seating"></div></div>
+  </section>
+
+  <section class="screen" id="receipt"><div class="ticket" id="ticket"></div><div class="receipt-cta"><button class="btn btn-primary" onclick="shareScoreCard()">Share Score Card</button><div class="row"><button class="btn btn-ghost" onclick="replay()">See It Again</button><button class="btn btn-ghost" onclick="goBoxOffice()">New Showing</button></div></div></section>
+</div>
+<div class="overlay" id="exitOverlay" role="dialog" aria-modal="true" aria-labelledby="exitTitle"><div class="exit-card"><div class="em" aria-hidden="true">🚨</div><h3 id="exitTitle">Leaving mid-show?</h3><p>Tell the usher you had an emergency. No judgment — but the ticket's non-refundable.</p><div class="row"><button class="btn btn-primary" onclick="leaveTheater()">Slip out the exit</button><button class="btn btn-ghost" onclick="closeExit()">Stay for the show</button></div></div></div>
+<div class="install-bar" id="installBar"><span class="ib-ic" aria-hidden="true">🎬</span><span id="installText" class="ib-txt"></span><button id="installBtn" class="ib-btn" onclick="doInstall()">Install</button><button class="ib-x" onclick="dismissInstall()" aria-label="Dismiss">✕</button></div>
+<div class="egg-layer" id="eggLayer"></div>
+<div class="toast" id="toast"></div>
+<script src="./game.js"></script>
+</body>
+</html>
