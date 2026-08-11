@@ -1,7 +1,7 @@
 const clueOverrides = require('./clue-overrides');
 
 const SITE_URL = 'https://plot-twisted.netlify.app/';
-const SOCIAL_IMAGE = 'https://plot-twisted.netlify.app/social-preview.png?v=20260810c';
+const SOCIAL_IMAGE = 'https://plot-twisted.netlify.app/social-preview.png?v=20260810-2308';
 const SOCIAL_ALT = 'Plot Twisted movie trivia social card with the game branding, category icons, and a phone mockup showing a twisted movie clue.';
 
 function applyClueOverrides(questions) {
