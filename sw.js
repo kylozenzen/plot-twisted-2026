@@ -1,8 +1,8 @@
-const CACHE = 'plot-twisted-v22';
+const CACHE = 'plot-twisted-v23';
 const ASSETS = [
-  './landing-v4.html', './landing-v2.css', './brand-icons.css', './landing-v3.css', './install.css', './landing-v4.js',
+  './index.html', './landing-v4.html', './landing-v2.css', './brand-icons.css', './landing-v3.css', './install.css', './landing-v4.js',
   './privacy.html', './privacy.css',
-  './index.html', './game.css', './game.js', './questions.json', './manifest.webmanifest',
+  './game.html', './game.css', './game.js', './questions.json', './manifest.webmanifest',
   './icon-192.png', './icon-512.png', './icon-maskable-512.png', './apple-touch-icon-180.png', './social-preview.png'
 ];
 
@@ -33,7 +33,7 @@ self.addEventListener('fetch', event => {
     || /brand-icons\.css$/.test(url.pathname)
     || /install\.css$/.test(url.pathname)
     || /privacy\.(html|css)$/.test(url.pathname)
-    || /game\.(css|js)$/.test(url.pathname)
+    || /game\.(html|css|js)$/.test(url.pathname)
     || /questions\.json$/.test(url.pathname)
     || /social-preview\.png$/.test(url.pathname);
 
@@ -47,11 +47,11 @@ self.addEventListener('fetch', event => {
         if (request.mode === 'navigate') {
           return caches.match(request).then(cachedPage => {
             if (cachedPage) return cachedPage;
-            const isGame = url.pathname.endsWith('/play') || url.pathname.endsWith('/play/') || url.pathname.endsWith('/index.html');
+            const isGame = url.pathname.endsWith('/play') || url.pathname.endsWith('/play/') || url.pathname.endsWith('/game.html');
             const isPrivacy = url.pathname.endsWith('/privacy') || url.pathname.endsWith('/privacy/') || url.pathname.endsWith('/privacy.html');
-            if (isGame) return caches.match('./index.html');
+            if (isGame) return caches.match('./game.html');
             if (isPrivacy) return caches.match('./privacy.html');
-            return caches.match('./landing-v4.html').then(page => page || caches.match('./index.html'));
+            return caches.match('./index.html').then(page => page || caches.match('./landing-v4.html'));
           });
         }
         return caches.match(request);
