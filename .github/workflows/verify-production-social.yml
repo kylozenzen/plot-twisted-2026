@@ -1,0 +1,57 @@
+name: Verify Production Social Preview
+
+on:
+  push:
+    branches:
+      - agent/verify-production-social
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verify production crawler response
+        shell: bash
+        run: |
+          set -euxo pipefail
+          python3 -m pip install --quiet pillow
+          PAGE='https://plot-twisted.netlify.app/'
+          IMAGE='https://plot-twisted.netlify.app/plot-twisted-share.png'
+          EXPECTED='1389e8bc3667c3240c02cbe5dc5595ffb87e4988d05d2f9f466072bb2e71bba4'
+
+          # Give the production deploy time to propagate, but fail rather than guess.
+          matched=0
+          for attempt in $(seq 1 18); do
+            echo "=== attempt $attempt ==="
+            curl -L --fail-with-body -A 'LinkedInBot/1.0' -D page-headers.txt "$PAGE" -o page.html
+            curl -L --fail-with-body -A 'LinkedInBot/1.0' -D image-headers.txt "$IMAGE" -o share.png
+            actual=$(sha256sum share.png | cut -d' ' -f1)
+            echo "production image sha256=$actual"
+            if [ "$actual" = "$EXPECTED" ]; then
+              matched=1
+              break
+            fi
+            sleep 10
+          done
+          test "$matched" = 1
+
+          echo '=== PAGE HEADERS ==='
+          cat page-headers.txt
+          echo '=== SOCIAL META ==='
+          grep -Eio '<(meta|link)[^>]+(og:|twitter:|canonical)[^>]*>' page.html
+          grep -F '<meta property="og:image" content="https://plot-twisted.netlify.app/plot-twisted-share.png">' page.html
+          grep -F '<meta name="twitter:card" content="summary_large_image">' page.html
+          grep -F '<meta name="twitter:image" content="https://plot-twisted.netlify.app/plot-twisted-share.png">' page.html
+
+          echo '=== IMAGE HEADERS ==='
+          cat image-headers.txt
+          grep -qi '^content-type: image/png' image-headers.txt
+
+          python3 - <<'PY'
+          from PIL import Image
+          im=Image.open('share.png')
+          im.load()
+          print('production image:', im.size, im.mode, im.format)
+          assert im.size == (1200, 630)
+          assert im.mode == 'RGB'
+          assert im.format == 'PNG'
+          PY
