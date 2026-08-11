@@ -1,0 +1,58 @@
+name: Apply social v2 URL
+
+on:
+  push:
+    branches:
+      - agent/social-share-v2-cache-reset
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    if: ${{ !contains(github.event.head_commit.message, '[social-v2-applied]') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/social-share-v2-cache-reset
+      - name: Replace only social image pathname
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          old = 'plot-twisted-share.png'
+          new = 'plot-twisted-share-v2.png'
+          expected = {
+              'index.html': 3,
+              'game.html': 3,
+              'landing-v4.html': 3,
+              'netlify/functions/play.js': 1,
+              '_headers': 1,
+          }
+
+          for filename, count in expected.items():
+              path = Path(filename)
+              text = path.read_text()
+              actual = text.count(old)
+              if actual != count:
+                  raise SystemExit(f'{filename}: expected {count} old references, found {actual}')
+              updated = text.replace(old, new)
+              if old in updated:
+                  raise SystemExit(f'{filename}: stale reference remains')
+              path.write_text(updated)
+              print(f'{filename}: replaced {actual}')
+          PY
+
+          git diff --check
+          git diff -- index.html game.html landing-v4.html netlify/functions/play.js _headers
+
+      - name: Commit exact replacements
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add index.html game.html landing-v4.html netlify/functions/play.js _headers
+          git commit -m 'Point social metadata at v2 share URL [social-v2-applied]'
+          git push origin HEAD:agent/social-share-v2-cache-reset
