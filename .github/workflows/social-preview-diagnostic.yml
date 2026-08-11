@@ -4,9 +4,40 @@ on:
   push:
     branches:
       - agent/social-preview-spec-pass
-  workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
+  convert-image:
+    if: ${{ !contains(github.event.head_commit.message, '[rgb-converted]') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/social-preview-spec-pass
+      - name: Convert share image to truecolor RGB PNG
+        shell: bash
+        run: |
+          python3 -m pip install --quiet pillow
+          python3 - <<'PY'
+          from PIL import Image
+          p='plot-twisted-share.png'
+          im=Image.open(p).convert('RGB')
+          assert im.size == (1200, 630), im.size
+          im.save(p, format='PNG', optimize=True)
+          print('saved', p, im.size, im.mode)
+          PY
+          file plot-twisted-share.png
+      - name: Commit converted image
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add plot-twisted-share.png
+          git commit -m 'Convert social preview to RGB [rgb-converted]'
+          git push origin HEAD:agent/social-preview-spec-pass
+
   inspect-production:
     runs-on: ubuntu-latest
     steps:
@@ -20,8 +51,6 @@ jobs:
           cat page-headers.txt
           echo '=== SOCIAL META TAGS ==='
           grep -Eio '<(meta|link)[^>]+(og:|twitter:|canonical)[^>]*>' page.html || true
-          echo '=== ICON REFERENCES IN HEAD ==='
-          sed -n '/<head>/,/<\/head>/p' page.html | grep -Ei 'icon|apple-touch' || true
 
       - name: Fetch production share image as LinkedIn crawler
         shell: bash
@@ -31,20 +60,15 @@ jobs:
           curl -L --fail-with-body -A 'LinkedInBot/1.0' -D image-headers.txt "$IMG" -o share.png
           echo '=== IMAGE RESPONSE HEADERS ==='
           cat image-headers.txt
-          echo '=== IMAGE FILE ==='
           file share.png
           sha256sum share.png
           python3 - <<'PY'
           import struct
-          p='share.png'
-          with open(p,'rb') as f:
-              sig=f.read(8)
-              assert sig == b'\x89PNG\r\n\x1a\n', sig
+          with open('share.png','rb') as f:
+              assert f.read(8) == b'\x89PNG\r\n\x1a\n'
               length=struct.unpack('>I', f.read(4))[0]
-              typ=f.read(4)
-              assert typ == b'IHDR', typ
+              assert f.read(4) == b'IHDR'
               data=f.read(length)
-              w,h,bit_depth,color_type,comp,flt,interlace=struct.unpack('>IIBBBBB', data)
+          w,h,bit_depth,color_type,comp,flt,interlace=struct.unpack('>IIBBBBB', data)
           print(f'PNG width={w} height={h} bit_depth={bit_depth} color_type={color_type}')
-          print('color_type 2=truecolor RGB, 3=indexed palette, 6=truecolor RGBA')
           PY
