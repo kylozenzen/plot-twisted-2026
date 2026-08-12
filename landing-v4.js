@@ -60,7 +60,9 @@ const clues = [
   { category: "SciFi", clue: "Office worker learns reality is a screensaver and joins a leather-based resistance.", answer: "The Matrix" },
   { category: "Family", clue: "Magical family delays therapy until the house files a formal complaint.", answer: "Encanto" },
   { category: "Streaming Hits", clue: "Chef tries to heal trauma with sandwiches, yelling, and stainless steel.", answer: "The Bear" },
-  { category: "Fantasy", clue: "Tiny hiking club returns cursed jewelry to its manufacturer.", answer: "The Lord of the Rings" }
+  { category: "Fantasy", clue: "Tiny hiking club returns cursed jewelry to its manufacturer.", answer: "The Lord of the Rings" },
+  { category: "Horror", clue: "Small-town mayor protects summer revenue by ignoring a very bitey tourism problem.", answer: "Jaws" },
+  { category: "Classics", clue: "Teen damages the family timeline and must make his parents attracted to each other again.", answer: "Back to the Future" }
 ];
 
 let clueIndex = 0;

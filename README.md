@@ -6,7 +6,7 @@
 
 ## What is live
 
-- Six movie categories with randomized five-question rounds
+- Eight movie categories with randomized five-question rounds
 - Fuzzy answer matching and hints
 - Keyboard-style theater interface on desktop and mobile
 - Shareable end-of-round receipts
@@ -40,7 +40,7 @@ The versioned names are historical, but these files are **currently active**. Do
 - `index.html` — game shell and social metadata for `/play`
 - `game.css` — game UI
 - `game.js` — game logic
-- `questions.json` — question library
+- `questions.json` — question library, including 80 Horror clues and 80 Classics clues balanced across the 1960s–1990s
 - `netlify/functions/play.js` — `/play` renderer
 - `netlify/functions/clue-overrides.js` — server-side clue overrides
 
