@@ -1,28 +1,30 @@
-/plot-twisted-share-v2.png
+/assets/images/social-share.png
   Content-Type: image/png
   Cache-Control: public, max-age=0, must-revalidate
 
-/icon-512.png
-  Content-Type: image/png
+/assets/images/icon-192.png
   Cache-Control: public, max-age=31536000, immutable
 
-/landing-v4.html
+/assets/images/icon-512.png
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/images/icon-maskable-512.png
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/images/apple-touch-icon-180.png
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/css/*
   Cache-Control: public, max-age=0, must-revalidate
 
-/landing-v4.js
+/assets/js/*
+  Cache-Control: public, max-age=0, must-revalidate
+
+/assets/data/*
   Cache-Control: public, max-age=0, must-revalidate
 
 /index.html
   Cache-Control: public, max-age=0, must-revalidate
 
 /game.html
-  Cache-Control: public, max-age=0, must-revalidate
-
-/game.css
-  Cache-Control: public, max-age=0, must-revalidate
-
-/game.js
-  Cache-Control: public, max-age=0, must-revalidate
-
-/questions.json
   Cache-Control: public, max-age=0, must-revalidate

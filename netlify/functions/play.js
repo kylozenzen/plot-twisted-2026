@@ -1,7 +1,7 @@
 const clueOverrides = require('./clue-overrides');
 
 const SITE_URL = 'https://plot-twisted.netlify.app/';
-const SOCIAL_IMAGE = 'https://plot-twisted.netlify.app/plot-twisted-share-v2.png';
+const SOCIAL_IMAGE = 'https://plot-twisted.netlify.app/assets/images/social-share.png';
 const SOCIAL_ALT = 'Plot Twisted movie trivia social card with the game branding, category icons, and a phone mockup showing a twisted movie clue.';
 
 function applyClueOverrides(questions) {
@@ -34,7 +34,7 @@ exports.handler = async function handler(event) {
   try {
     const baseUrl = event.rawUrl || `https://${event.headers.host}/`;
     const htmlUrl = new URL('/game.html', baseUrl);
-    const questionsUrl = new URL('/questions.json', baseUrl);
+    const questionsUrl = new URL('/assets/data/questions.json', baseUrl);
 
     const [htmlResponse, questionsResponse] = await Promise.all([
       fetch(htmlUrl, { headers: { accept: 'text/html' } }),
@@ -52,7 +52,7 @@ exports.handler = async function handler(event) {
     const questions = applyClueOverrides(await questionsResponse.json());
     let html = applyPageMetadata(await htmlResponse.text());
     const dataScript = `<script>window.PLOT_TWISTED_QUESTIONS=${JSON.stringify(questions).replace(/</g, '\\u003c')};</script>`;
-    html = html.replace('<script src="./game.js"></script>', `${dataScript}\n<script src="./game.js"></script>`);
+    html = html.replace('<script src="./assets/js/game.js"></script>', `${dataScript}\n<script src="./assets/js/game.js"></script>`);
 
     return {
       statusCode: 200,

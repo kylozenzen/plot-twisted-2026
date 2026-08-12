@@ -2,7 +2,7 @@ let QUESTIONS = window.PLOT_TWISTED_QUESTIONS || {};
 
 async function loadQuestions() {
   if (Object.keys(QUESTIONS).length) return;
-  const response = await fetch('/questions.json', { cache: 'no-cache' });
+  const response = await fetch('/assets/data/questions.json', { cache: 'no-cache' });
   if (!response.ok) throw new Error(`Question library failed to load (${response.status})`);
   QUESTIONS = await response.json();
 }

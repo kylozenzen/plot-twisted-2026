@@ -10,14 +10,7 @@ function trackAnalytics(name, parameters = {}) {
   pendingAnalytics.push([name, parameters]);
 }
 
-(function loadBetaAssets() {
-  if (!document.querySelector('link[href="./site-polish.css"]')) {
-    const polish = document.createElement("link");
-    polish.rel = "stylesheet";
-    polish.href = "./site-polish.css";
-    document.head.appendChild(polish);
-  }
-
+(function loadAnalytics() {
   const analytics = document.createElement("script");
   analytics.src = "/.netlify/functions/analytics";
   analytics.addEventListener("load", () => {
