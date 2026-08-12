@@ -1882,5 +1882,649 @@
       "title": "K-Pop Demon Hunters",
       "clue": "Idol group fights demons, branding pressure, and presumably bad contracts."
     }
+  ],
+  "Horror": [
+    {
+      "title": "Dracula (1931)",
+      "clue": "Foreign aristocrat relocates to London and makes terrible eye contact with everyone's neck."
+    },
+    {
+      "title": "Frankenstein (1931)",
+      "clue": "Doctor assembles a man from spare parts, then acts shocked when onboarding goes badly."
+    },
+    {
+      "title": "Bride of Frankenstein",
+      "clue": "Lonely science project receives an arranged marriage with literally electric chemistry."
+    },
+    {
+      "title": "The Wolf Man",
+      "clue": "Man visits home, gets bitten, and develops a very aggressive lunar calendar."
+    },
+    {
+      "title": "Cat People",
+      "clue": "Woman suspects intimacy may turn her into a panther, which complicates date night."
+    },
+    {
+      "title": "Creature from the Black Lagoon",
+      "clue": "Scientists invade a lagoon and object when the local resident becomes territorial."
+    },
+    {
+      "title": "Invasion of the Body Snatchers (1956)",
+      "clue": "Doctor discovers everyone in town has been replaced by coworkers with perfect attendance."
+    },
+    {
+      "title": "House on Haunted Hill",
+      "clue": "Millionaire offers strangers cash to survive one deeply nonrefundable overnight stay."
+    },
+    {
+      "title": "The Haunting",
+      "clue": "Researchers spend the night in a mansion that takes passive aggression structurally."
+    },
+    {
+      "title": "Peeping Tom",
+      "clue": "Aspiring filmmaker turns fear into footage and gives method acting a felony count."
+    },
+    {
+      "title": "Psycho",
+      "clue": "Traveler chooses a budget motel where management has serious mother-related staffing issues."
+    },
+    {
+      "title": "Eyes Without a Face",
+      "clue": "Surgeon treats his daughter's accident like an extremely unethical transplant startup."
+    },
+    {
+      "title": "The Birds",
+      "clue": "Coastal town learns the sky has unionized against humanity."
+    },
+    {
+      "title": "Night of the Living Dead",
+      "clue": "Strangers barricade a farmhouse and immediately make teamwork harder than zombies do."
+    },
+    {
+      "title": "Rosemary's Baby",
+      "clue": "Young wife discovers her neighbors are running the worst prenatal support group imaginable."
+    },
+    {
+      "title": "The Exorcist",
+      "clue": "Priests attempt emergency tech support for a child with a demonic operating system."
+    },
+    {
+      "title": "The Texas Chain Saw Massacre",
+      "clue": "Road trip ends at a family dinner where the host really commits to power tools."
+    },
+    {
+      "title": "Jaws",
+      "clue": "Small-town mayor protects summer revenue by ignoring a very bitey tourism problem."
+    },
+    {
+      "title": "The Omen",
+      "clue": "Diplomat slowly suspects his adopted child may be upper management in hell."
+    },
+    {
+      "title": "Carrie",
+      "clue": "Bullied teen brings telekinesis to prom and gives everyone a night to remember."
+    },
+    {
+      "title": "Suspiria",
+      "clue": "Dancer enrolls at a school where faculty meetings involve witchcraft and murder."
+    },
+    {
+      "title": "Halloween",
+      "clue": "Babysitter's quiet shift is ruined by a masked man with excellent cardio."
+    },
+    {
+      "title": "Dawn of the Dead",
+      "clue": "Mall shoppers continue consuming long after death makes the metaphor obvious."
+    },
+    {
+      "title": "Alien",
+      "clue": "Space truckers answer a distress call and violate every quarantine rule in the manual."
+    },
+    {
+      "title": "The Shining",
+      "clue": "Writer accepts a remote hotel job and lets cabin fever become a family management style."
+    },
+    {
+      "title": "Friday the 13th",
+      "clue": "Camp counselors discover reopening a murder lake was weak strategic planning."
+    },
+    {
+      "title": "The Evil Dead",
+      "clue": "Friends read one cursed book aloud because literacy apparently needed consequences."
+    },
+    {
+      "title": "The Thing",
+      "clue": "Polar researchers learn their coworker could be anyone, including the dog, and trust collapses."
+    },
+    {
+      "title": "Poltergeist",
+      "clue": "Suburban family finds their television has added a very haunted children's channel."
+    },
+    {
+      "title": "A Nightmare on Elm Street",
+      "clue": "Teenagers discover sleep now comes with a striped workplace hazard."
+    },
+    {
+      "title": "Gremlins",
+      "clue": "Teen ignores three pet-care instructions and turns Christmas into a municipal emergency."
+    },
+    {
+      "title": "The Fly",
+      "clue": "Scientist rushes teleportation testing and accidentally merges his resume with an insect."
+    },
+    {
+      "title": "Aliens",
+      "clue": "Corporate rescue mission brings enough firepower to make the first bad idea much louder."
+    },
+    {
+      "title": "Hellraiser",
+      "clue": "Man opens a luxury puzzle box and receives an aggressively permanent spa appointment."
+    },
+    {
+      "title": "Child's Play",
+      "clue": "Mother buys a discount doll and gets a tiny serial killer with batteries included."
+    },
+    {
+      "title": "The Lost Boys",
+      "clue": "New kid joins beach-town nightlife and finds the dress code is eternal."
+    },
+    {
+      "title": "Beetlejuice",
+      "clue": "Dead couple hires a freelance bio-exorcist and immediately regrets the contractor."
+    },
+    {
+      "title": "Pet Sematary",
+      "clue": "Grieving father discovers resurrection has the worst return policy imaginable."
+    },
+    {
+      "title": "Misery",
+      "clue": "Writer meets his biggest fan and learns reader engagement can become unlawful confinement."
+    },
+    {
+      "title": "The Silence of the Lambs",
+      "clue": "Trainee interviews a gourmet murderer for career advice on catching another murderer."
+    },
+    {
+      "title": "Candyman",
+      "clue": "Graduate research project proves repeating urban legends in mirrors is poor methodology."
+    },
+    {
+      "title": "Scream",
+      "clue": "Teenagers try surviving a killer who has done the horror-movie homework."
+    },
+    {
+      "title": "The Blair Witch Project",
+      "clue": "Three filmmakers lose the map, the plot, and eventually the entire weekend."
+    },
+    {
+      "title": "The Sixth Sense",
+      "clue": "Child therapist misses one fairly important detail about his current employment status."
+    },
+    {
+      "title": "The Ring",
+      "clue": "Journalist watches a suspicious tape and receives the world's most hostile seven-day free trial."
+    },
+    {
+      "title": "Final Destination",
+      "clue": "Teen cheats a disaster, so fate begins balancing the spreadsheet creatively."
+    },
+    {
+      "title": "28 Days Later",
+      "clue": "Bike courier wakes from a coma to discover rage has gone fully viral."
+    },
+    {
+      "title": "Saw",
+      "clue": "Two strangers wake in a bathroom and receive performance reviews from a puppet."
+    },
+    {
+      "title": "Shaun of the Dead",
+      "clue": "Retail worker treats the zombie apocalypse as relationship counseling with pub breaks."
+    },
+    {
+      "title": "The Grudge",
+      "clue": "Home-care job includes a house, a curse, and absolutely no useful benefits package."
+    },
+    {
+      "title": "The Descent",
+      "clue": "Friends choose recreational cave trauma and discover something worse than the group chat."
+    },
+    {
+      "title": "Hostel",
+      "clue": "Backpackers follow a travel recommendation with aggressively nonrefundable consequences."
+    },
+    {
+      "title": "The Hills Have Eyes",
+      "clue": "Family road trip detours through a desert community with hostile hospitality."
+    },
+    {
+      "title": "Paranormal Activity",
+      "clue": "Couple documents a nighttime haunting instead of moving, sleeping elsewhere, or making one good choice."
+    },
+    {
+      "title": "[REC]",
+      "clue": "Reporter follows firefighters into an apartment building where breaking news refuses to stay dead."
+    },
+    {
+      "title": "The Mist",
+      "clue": "Shoppers hide from monsters while one customer makes the group project much, much worse."
+    },
+    {
+      "title": "The Strangers",
+      "clue": "Couple's isolated getaway gets interrupted by masked visitors who skipped doorbell etiquette."
+    },
+    {
+      "title": "Orphan",
+      "clue": "Family adopts a child and discovers the paperwork missed several extremely adult details."
+    },
+    {
+      "title": "Drag Me to Hell",
+      "clue": "Loan officer denies an extension and receives supernatural collections activity."
+    },
+    {
+      "title": "Insidious",
+      "clue": "Family moves houses, then learns the haunting has excellent forwarding service."
+    },
+    {
+      "title": "Sinister",
+      "clue": "Writer finds home movies and somehow keeps pressing play."
+    },
+    {
+      "title": "The Cabin in the Woods",
+      "clue": "College getaway becomes a horror simulation run by exhausted office workers."
+    },
+    {
+      "title": "The Conjuring",
+      "clue": "Paranormal consultants inspect a farmhouse where every room has a different HR violation."
+    },
+    {
+      "title": "The Babadook",
+      "clue": "Mysterious children's book turns grief into the least soothing bedtime story ever."
+    },
+    {
+      "title": "It Follows",
+      "clue": "Teen receives a supernatural problem that walks slowly and never stops following up."
+    },
+    {
+      "title": "The Witch",
+      "clue": "Puritan family blames the woods while their goat quietly builds a personal brand."
+    },
+    {
+      "title": "Train to Busan",
+      "clue": "Absent dad attempts one train ride while zombies destroy the quiet-car policy."
+    },
+    {
+      "title": "Get Out",
+      "clue": "Weekend with a girlfriend's parents becomes a deeply literal lesson in stolen identity."
+    },
+    {
+      "title": "It (2017)",
+      "clue": "Children form a club because local adults keep outsourcing clown problems."
+    },
+    {
+      "title": "Hereditary",
+      "clue": "Family grief exposes an inherited plan with terrible benefits and worse management."
+    },
+    {
+      "title": "A Quiet Place",
+      "clue": "Family raises children where stepping on a toy is a fatal parenting mistake."
+    },
+    {
+      "title": "Us",
+      "clue": "Family vacation is interrupted by matching visitors with scissors and unresolved national symbolism."
+    },
+    {
+      "title": "Midsommar",
+      "clue": "Grad student brings a dying relationship to a festival with no clear checkout time."
+    },
+    {
+      "title": "Ready or Not",
+      "clue": "Bride joins family game night and learns rich people take hide-and-seek personally."
+    },
+    {
+      "title": "The Invisible Man (2020)",
+      "clue": "Woman escapes an abusive genius who continues gaslighting her from literally nowhere."
+    },
+    {
+      "title": "Nope",
+      "clue": "Horse trainers discover the sky is hungry and try turning it into premium footage."
+    },
+    {
+      "title": "Barbarian",
+      "clue": "Traveler finds a double-booked rental and somehow the basement is not the biggest red flag."
+    },
+    {
+      "title": "Talk to Me",
+      "clue": "Teenagers use a haunted hand as party entertainment because phones were apparently too safe."
+    },
+    {
+      "title": "The Substance",
+      "clue": "Celebrity tries a premium self-improvement injection and gets trapped in a hostile brand extension."
+    },
+    {
+      "title": "Sinners",
+      "clue": "Twin brothers open a juke joint and accidentally attract customers with a blood-only cover charge."
+    }
+  ],
+  "Classics": [
+    {
+      "title": "Psycho",
+      "clue": "Woman disappears after choosing a roadside motel with very involved management."
+    },
+    {
+      "title": "The Apartment",
+      "clue": "Office worker loans his home to executives and learns promotions have a terrible cleaning fee."
+    },
+    {
+      "title": "West Side Story",
+      "clue": "Street gangs process neighborhood tension through balletic scheduling conflicts."
+    },
+    {
+      "title": "Lawrence of Arabia",
+      "clue": "British officer crosses a desert, remakes himself, and develops a complicated relationship with legend."
+    },
+    {
+      "title": "To Kill a Mockingbird",
+      "clue": "Small-town lawyer asks a jury to do the bare minimum and learns decency is still unpopular."
+    },
+    {
+      "title": "Dr. No",
+      "clue": "Secret agent visits Jamaica and finds the island hospitality includes nuclear sabotage."
+    },
+    {
+      "title": "The Great Escape",
+      "clue": "Prisoners turn captivity into an engineering project with motorcycles and very strict deadlines."
+    },
+    {
+      "title": "Mary Poppins",
+      "clue": "Nanny arrives by umbrella and restructures a family through songs and mild sorcery."
+    },
+    {
+      "title": "Goldfinger",
+      "clue": "Spy investigates a gold enthusiast whose business plan involves irradiating the competition."
+    },
+    {
+      "title": "The Sound of Music",
+      "clue": "Nun teaches children harmony while fascism makes the family vacation suddenly urgent."
+    },
+    {
+      "title": "Doctor Zhivago",
+      "clue": "Poet attempts romance while revolution keeps rescheduling everyone's life."
+    },
+    {
+      "title": "The Good, the Bad and the Ugly",
+      "clue": "Three men pursue buried money and make eye contact last longer than some marriages."
+    },
+    {
+      "title": "Bonnie and Clyde",
+      "clue": "Young couple turns bank robbery into a romantic road trip with poor retirement planning."
+    },
+    {
+      "title": "The Graduate",
+      "clue": "Aimless college graduate begins an affair with one generation and dates the next."
+    },
+    {
+      "title": "2001: A Space Odyssey",
+      "clue": "Humanity finds a mysterious slab, goes to space, and loses an argument with a calm red light."
+    },
+    {
+      "title": "Planet of the Apes",
+      "clue": "Astronaut lands on a strange planet and misses several enormous geographic clues."
+    },
+    {
+      "title": "Night of the Living Dead",
+      "clue": "Farmhouse roommates attempt emergency democracy while the dead wait outside."
+    },
+    {
+      "title": "Rosemary's Baby",
+      "clue": "Newlywed discovers her apartment building offers aggressively involved prenatal care."
+    },
+    {
+      "title": "Butch Cassidy and the Sundance Kid",
+      "clue": "Two charming outlaws respond to a shrinking job market by moving their crime startup abroad."
+    },
+    {
+      "title": "Easy Rider",
+      "clue": "Motorcyclists chase freedom across America and discover hospitality varies wildly."
+    },
+    {
+      "title": "The Godfather",
+      "clue": "Crime-family wedding becomes orientation for the son who insisted he was not joining the business."
+    },
+    {
+      "title": "The Godfather Part II",
+      "clue": "Father builds an empire while his son discovers succession is mostly betrayal with nicer suits."
+    },
+    {
+      "title": "The Exorcist",
+      "clue": "A mother's medical referral chain eventually escalates to two priests and a window."
+    },
+    {
+      "title": "Jaws",
+      "clue": "Island police chief tries closing the beach while capitalism keeps reopening the shark buffet."
+    },
+    {
+      "title": "Star Wars: A New Hope",
+      "clue": "Farm boy joins a space wizard to destroy a fascist moon with a ventilation problem."
+    },
+    {
+      "title": "Rocky",
+      "clue": "Debt collector receives one unlikely promotion and celebrates by punching refrigerated meat."
+    },
+    {
+      "title": "One Flew Over the Cuckoo's Nest",
+      "clue": "New patient challenges hospital management and learns the complaint process is medically aggressive."
+    },
+    {
+      "title": "Taxi Driver",
+      "clue": "Lonely cabbie patrols nightlife until isolation becomes a very alarming personal project."
+    },
+    {
+      "title": "Alien",
+      "clue": "Commercial crew brings one unauthorized passenger aboard and destroys the team-retreat atmosphere."
+    },
+    {
+      "title": "Grease",
+      "clue": "Teenagers rebuild their personalities over summer romance and several school-wide musical interruptions."
+    },
+    {
+      "title": "Superman",
+      "clue": "Small-town journalist hides impossible qualifications behind glasses and excellent workplace posture."
+    },
+    {
+      "title": "Saturday Night Fever",
+      "clue": "Hardware-store employee uses the dance floor as his only available career ladder."
+    },
+    {
+      "title": "Close Encounters of the Third Kind",
+      "clue": "Utility worker abandons normal life after the sky gives him a mashed-potato-based assignment."
+    },
+    {
+      "title": "Apocalypse Now",
+      "clue": "Officer travels upriver for one termination meeting while war consumes the entire agenda."
+    },
+    {
+      "title": "Chinatown",
+      "clue": "Private detective investigates an affair and finds municipal water has a horrifying family plan."
+    },
+    {
+      "title": "Willy Wonka & the Chocolate Factory",
+      "clue": "Candy executive invites children to tour his factory and lets workplace hazards handle succession."
+    },
+    {
+      "title": "The Sting",
+      "clue": "Two con artists build an elaborate fake business to improve one gangster's customer experience."
+    },
+    {
+      "title": "Blazing Saddles",
+      "clue": "Town hires a sheriff as a political stunt and accidentally gets competent leadership."
+    },
+    {
+      "title": "Monty Python and the Holy Grail",
+      "clue": "King conducts a poorly funded recruiting tour while coconuts cover the transportation budget."
+    },
+    {
+      "title": "Halloween",
+      "clue": "Masked hometown alumnus returns for one extremely antisocial holiday tradition."
+    },
+    {
+      "title": "Star Wars: The Empire Strikes Back",
+      "clue": "Space rebellion loses its office, its vehicles, and one deeply inconvenient family secret."
+    },
+    {
+      "title": "Raiders of the Lost Ark",
+      "clue": "Professor races fascists to a sacred artifact whose security system already works perfectly."
+    },
+    {
+      "title": "E.T. the Extra-Terrestrial",
+      "clue": "Children hide an undocumented houseguest who improves bicycles and devastates phone bills."
+    },
+    {
+      "title": "Back to the Future",
+      "clue": "Teen damages the family timeline and must make his parents attracted to each other again."
+    },
+    {
+      "title": "Top Gun",
+      "clue": "Elite pilots turn national defense into volleyball, nicknames, and one dangerous workplace rivalry."
+    },
+    {
+      "title": "Ghostbusters",
+      "clue": "Three academics lose university funding and pivot directly into paranormal pest control."
+    },
+    {
+      "title": "The Breakfast Club",
+      "clue": "Five students spend one Saturday discovering school labels have terrible data quality."
+    },
+    {
+      "title": "Ferris Bueller's Day Off",
+      "clue": "Teen skips school so successfully that an entire city becomes his extracurricular activity."
+    },
+    {
+      "title": "Die Hard",
+      "clue": "Off-duty cop attends an office party and becomes the building's unpaid security department."
+    },
+    {
+      "title": "Aliens",
+      "clue": "Traumatized survivor returns to the problem with soldiers, forklifts, and improved boundaries."
+    },
+    {
+      "title": "The Terminator",
+      "clue": "Future sends a murder robot to stop one waitress from eventually becoming management."
+    },
+    {
+      "title": "The Shining",
+      "clue": "Family accepts winter lodging package whose amenities include isolation and axe-based conflict resolution."
+    },
+    {
+      "title": "Blade Runner",
+      "clue": "Detective conducts retirement interviews for employees who insist they are people."
+    },
+    {
+      "title": "Beverly Hills Cop",
+      "clue": "Detroit detective visits California and treats every jurisdictional boundary as a suggestion."
+    },
+    {
+      "title": "Dirty Dancing",
+      "clue": "Vacationer discovers class conflict, first love, and the structural importance of lift practice."
+    },
+    {
+      "title": "When Harry Met Sally",
+      "clue": "Two friends spend twelve years debating whether the relationship tab should remain open."
+    },
+    {
+      "title": "The Princess Bride",
+      "clue": "Farm boy adopts a pirate brand to interrupt a prince's highly questionable wedding."
+    },
+    {
+      "title": "The Karate Kid",
+      "clue": "Teen learns home maintenance is secretly martial-arts onboarding."
+    },
+    {
+      "title": "The Goonies",
+      "clue": "Children respond to foreclosure by following a pirate's extremely informal financial plan."
+    },
+    {
+      "title": "Airplane!",
+      "clue": "Traumatized pilot boards one flight and discovers every employee is committed to the wrong joke."
+    },
+    {
+      "title": "Titanic",
+      "clue": "Luxury cruise promises modern safety, hits old ice, and creates a permanent debate about furniture capacity."
+    },
+    {
+      "title": "Jurassic Park",
+      "clue": "Billionaire beta-tests a dinosaur resort before hiring a competent safety team."
+    },
+    {
+      "title": "Forrest Gump",
+      "clue": "Polite runner wanders through American history while waiting for one person to call back."
+    },
+    {
+      "title": "The Shawshank Redemption",
+      "clue": "Banker spends decades improving prison operations while quietly planning an unauthorized exit."
+    },
+    {
+      "title": "Pulp Fiction",
+      "clue": "Criminal coworkers discuss fast food while several timelines misplace a briefcase."
+    },
+    {
+      "title": "The Lion King",
+      "clue": "Prince avoids succession planning until one musical ghost schedules a performance review."
+    },
+    {
+      "title": "The Matrix",
+      "clue": "Office worker discovers reality is software and immediately changes the dress code."
+    },
+    {
+      "title": "Terminator 2: Judgment Day",
+      "clue": "Former murder robot returns as childcare while a newer model pursues aggressive automation."
+    },
+    {
+      "title": "The Silence of the Lambs",
+      "clue": "FBI trainee trades personal stories with a cannibal to solve somebody else's murder project."
+    },
+    {
+      "title": "Goodfellas",
+      "clue": "Kid achieves his dream career in organized crime and discovers the pension plan is paranoia."
+    },
+    {
+      "title": "Home Alone",
+      "clue": "Family forgets one child, who responds by turning home security into performance art."
+    },
+    {
+      "title": "Toy Story",
+      "clue": "Cowboy experiences professional jealousy when a flashy new hire believes his own résumé."
+    },
+    {
+      "title": "Saving Private Ryan",
+      "clue": "Military team crosses a war zone to complete one very expensive family-return request."
+    },
+    {
+      "title": "The Sixth Sense",
+      "clue": "Child sees dead people while his therapist overlooks one major credentialing issue."
+    },
+    {
+      "title": "Men in Black",
+      "clue": "Police recruit learns immigration enforcement includes aliens, memory wipes, and excellent tailoring."
+    },
+    {
+      "title": "Independence Day",
+      "clue": "Humanity responds to alien invasion with one speech, one laptop, and extremely optimistic compatibility."
+    },
+    {
+      "title": "Pretty Woman",
+      "clue": "Business arrangement becomes romance after retail employees provide the villain origin story."
+    },
+    {
+      "title": "Groundhog Day",
+      "clue": "Weatherman repeats one workday until personal growth finally clears quality assurance."
+    },
+    {
+      "title": "The Truman Show",
+      "clue": "Man discovers his entire life is sponsored content and exits before the finale can stop him."
+    },
+    {
+      "title": "Clueless",
+      "clue": "Teen treats matchmaking as community service and eventually audits her own emotional inventory."
+    }
   ]
 }

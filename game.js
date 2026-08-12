@@ -8,14 +8,16 @@ async function loadQuestions() {
 }
 
 const CAT_META = {
-  Family:          {name:"Family",           flick:"🧸", rated:"G",    blurb:"The ones the whole row can sing along to."},
-  Superhero:       {name:"Superhero",        flick:"🦸", rated:"PG13", blurb:"Capes, quips, and post-credit scenes."},
-  SciFi:           {name:"SciFi",            flick:"🚀", rated:"PG13", blurb:"Space, robots, and reality that won't sit still."},
-  Fantasy:         {name:"Fantasy",          flick:"🐉", rated:"PG13", blurb:"Rings, wizards, and doors to other worlds."},
-  EmotionalDamage: {name:"Emotional Damage", flick:"💔", rated:"R",    blurb:"Bring tissues. You were warned."},
-  StreamingHits:   {name:"Streaming Hits",   flick:"📱", rated:"NEW",  blurb:"Whatever you binged last weekend."}
+  Family:          {name:"Family",           flick:"🧸", rated:"G",     blurb:"The ones the whole row can sing along to."},
+  Superhero:       {name:"Superhero",        flick:"🦸", rated:"PG13",  blurb:"Capes, quips, and post-credit scenes."},
+  SciFi:           {name:"SciFi",            flick:"🚀", rated:"PG13",  blurb:"Space, robots, and reality that won't sit still."},
+  Fantasy:         {name:"Fantasy",          flick:"🐉", rated:"PG13",  blurb:"Rings, wizards, and doors to other worlds."},
+  Horror:          {name:"Horror",           flick:"🔪", rated:"R",     blurb:"Slashers, spirits, and choices nobody should make."},
+  Classics:        {name:"Classics",         flick:"🎞️", rated:"60–99", blurb:"Four decades of movies everyone swears you have seen."},
+  EmotionalDamage: {name:"Emotional Damage", flick:"💔", rated:"R",     blurb:"Bring tissues. You were warned."},
+  StreamingHits:   {name:"Streaming Hits",   flick:"📱", rated:"NEW",   blurb:"Whatever you binged last weekend."}
 };
-const CAT_ORDER = ["Family","Superhero","SciFi","Fantasy","EmotionalDamage","StreamingHits"];
+const CAT_ORDER = ["Family","Superhero","SciFi","Fantasy","Horror","Classics","EmotionalDamage","StreamingHits"];
 const SETTINGS = { layout:'qwerty', sound:true };
 const LAYOUTS = { qwerty:["QWERTYUIOP","ASDFGHJKL","ZXCVBNM"], abc:["ABCDEFGHI","JKLMNOPQR","STUVWXYZ"] };
 const LS={get(k,d){try{const v=localStorage.getItem(k);return v==null?d:JSON.parse(v);}catch(_){return d;}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(_){}}};
