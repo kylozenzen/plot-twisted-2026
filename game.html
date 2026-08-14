@@ -44,16 +44,30 @@
 </div>
 <div class="stage">
   <section class="screen" id="lobby">
-    <div class="marquee">
-      <div class="now-showing">★ Now Showing ★</div>
-      <h1 class="title">PLOT<br><span class="twist">TWISTED</span></h1>
-      <div class="edition">The Movie Trivia Game</div>
-      <p class="tagline">Trust nobody. Especially the hints.</p>
-    </div>
-    <div class="menu">
-      <button class="btn btn-primary" onclick="goBoxOffice()">Buy Tickets →</button>
-      <button class="btn btn-ghost" onclick="showScreen('more')">More Showings</button>
-      <button class="btn btn-ghost" onclick="showScreen('settings')">Settings</button>
+    <div class="lobby-shell">
+      <div class="marquee">
+        <div class="now-showing">★ Now Showing ★</div>
+        <h1 class="title">PLOT<br><span class="twist">TWISTED</span></h1>
+        <div class="edition">The Movie Trivia Game</div>
+        <p class="tagline">Trust nobody. Especially the hints.</p>
+      </div>
+      <aside class="lobby-boxoffice" aria-label="Main menu">
+        <div class="lobby-boxoffice-copy">
+          <div class="lobby-kicker">Box Office</div>
+          <h2>Tonight's Program</h2>
+          <p>Choose a showing, take your seat, and explain why that clue was technically accurate.</p>
+        </div>
+        <div class="menu">
+          <button class="btn btn-primary" onclick="goBoxOffice()">Buy Tickets →</button>
+          <button class="btn btn-ghost" onclick="showScreen('more')">More Showings</button>
+          <button class="btn btn-ghost" onclick="showScreen('settings')">Settings</button>
+        </div>
+        <div class="lobby-details" aria-label="Game details">
+          <span><b>6</b> showings</span>
+          <span><b>5</b> clues</span>
+          <span><b>0</b> accounts</span>
+        </div>
+      </aside>
     </div>
     <div class="foot">A Nobody Creative Production · 5 Questions · Beta Build</div>
   </section>
@@ -114,10 +128,10 @@
   <section class="screen" id="theater">
     <div class="hud"><span class="now" id="hudCat">Now Playing</span><div class="meta"><span>SEAT <b id="hudQ">1</b>/<b id="hudTotal">5</b></span><span>SCORE <b id="hudScore">0</b></span><button class="quit" onclick="quitGame()" aria-label="Exit to lobby">✕ EXIT</button></div></div>
     <div class="pips" id="pips" aria-hidden="true"></div>
-    <div class="auditorium"><div class="curtains l"></div><div class="curtains r"></div><div class="movie-screen" id="movieScreen"><div class="clue" id="clue">—</div></div><div class="subtitle" id="subtitle" aria-live="polite"></div><div class="answer-line" id="answerLine"><span class="caret-lbl">YOUR&nbsp;ANSWER</span><span class="typed" id="typed"><span class="cur">▊</span></span></div><div class="actions"><button class="act" id="hintBtn" onclick="useHint()"><span class="ic">💡</span>Hint<small>-50 pts</small></button><button class="act" onclick="speakClue()"><span class="ic">🔊</span>Speak<small>hear clue</small></button><button class="act" onclick="skipQuestion()"><span class="ic">⏭</span>Skip<small>0 pts</small></button></div><div class="screen-label">— the seats —</div><div class="seating" id="seating"></div></div>
+    <div class="auditorium"><div class="curtains l"></div><div class="curtains r"></div><div class="movie-screen" id="movieScreen"><div class="clue" id="clue">—</div></div><div class="subtitle" id="subtitle" aria-live="polite"></div><div class="answer-line" id="answerLine"><span class="caret-lbl">YOUR&nbsp;ANSWER</span><span class="typed" id="typed"><span class="cur">▊</span></span></div><div class="actions"><button class="act" id="hintBtn" onclick="useHint()"><span class="ic">💡</span>Hint<small>-50 pts</small></button><button class="act" onclick="speakClue()"><span class="ic">🔊</span>Speak<small>hear clue</small></button><button class="act" onclick="skipQuestion()"><span class="ic">⏭</span>Skip<small>0 pts</small></button></div><div class="screen-label">— the seats —</div><div class="seating" id="seating"></div><div class="desktop-keyboard-tip" aria-hidden="true"><span>Type to answer</span><i></i><span>Enter to submit</span><i></i><span>Backspace to edit</span></div></div>
   </section>
 
-  <section class="screen" id="receipt"><div class="ticket" id="ticket"></div><div class="receipt-cta"><button class="btn btn-primary" onclick="shareScoreCard()">Share Score Card</button><div class="row"><button class="btn btn-ghost" onclick="replay()">See It Again</button><button class="btn btn-ghost" onclick="goBoxOffice()">New Showing</button></div></div></section>
+  <section class="screen" id="receipt"><div class="receipt-layout"><div class="ticket" id="ticket"></div><div class="receipt-side"><div class="eyebrow">The Credits</div><h2 class="head">Keep the Receipt</h2><p class="receipt-copy">Save the evidence, chase a cleaner five-star review, or head back to the box office for another showing.</p><div class="receipt-cta"><button class="btn btn-primary" onclick="shareScoreCard()">Share Score Card</button><div class="row"><button class="btn btn-ghost" onclick="replay()">See It Again</button><button class="btn btn-ghost" onclick="goBoxOffice()">New Showing</button></div></div></div></div></section>
 </div>
 <div class="overlay" id="exitOverlay" role="dialog" aria-modal="true" aria-labelledby="exitTitle"><div class="exit-card"><div class="em" aria-hidden="true">🚨</div><h3 id="exitTitle">Leaving mid-show?</h3><p>Tell the usher you had an emergency. No judgment — but the ticket's non-refundable.</p><div class="row"><button class="btn btn-primary" onclick="leaveTheater()">Slip out the exit</button><button class="btn btn-ghost" onclick="closeExit()">Stay for the show</button></div></div></div>
 <div class="install-bar" id="installBar"><span class="ib-ic" aria-hidden="true">🎬</span><span id="installText" class="ib-txt"></span><button id="installBtn" class="ib-btn" onclick="doInstall()">Install</button><button class="ib-x" onclick="dismissInstall()" aria-label="Dismiss">✕</button></div>
