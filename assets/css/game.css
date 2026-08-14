@@ -79,6 +79,8 @@ body{
 .game-beta-chip{display:inline-flex;align-items:center;justify-content:center;min-height:22px;padding:4px 8px;border:1px solid rgba(255,77,141,.72);border-radius:999px;color:#ff91b8;background:rgba(255,77,141,.12);font-family:'Space Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.12em;line-height:1;text-transform:uppercase;box-shadow:0 0 18px rgba(255,77,141,.12)}#lobby .marquee .game-beta-chip{position:absolute;top:18px;right:18px;z-index:3}#settings .settings-beta-wrap{display:flex;align-items:center;justify-content:center;gap:9px;margin-bottom:7px}#settings .settings-beta-wrap .eyebrow{margin:0}.settings-action-row .toggle{min-width:108px}
 @media(min-width:960px){
   .stage{padding:32px}
+  body.gameplay-active{height:100dvh;overflow:hidden}
+  body.gameplay-active .stage{height:100dvh;min-height:100dvh}
   #lobby,#boxoffice,#more,#theater,#receipt{max-width:1120px}
   .lobby-shell{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(300px,.75fr);gap:24px;align-items:stretch}
   #lobby .marquee{min-height:520px;padding:46px 34px;display:flex;flex-direction:column;align-items:center;justify-content:center}
@@ -108,10 +110,7 @@ body{
   #theater .answer-line .typed{font-size:29px}
   #theater .actions{max-width:620px;margin:0 auto 12px;gap:10px}
   #theater .act{padding:8px;font-size:13px}
-  #theater .seating{max-width:920px;margin:0 auto;padding:12px 4px 4px}
-  #theater .seat-row{--gap:8px;margin-bottom:10px}
-  #theater .seat{max-width:76px;height:62px;font-size:22px}
-  #theater .seat.wide{padding:0 30px;font-size:14px}
+  #theater .seating,#theater .screen-label{display:none}
   #theater .desktop-keyboard-tip{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:10px;font-family:'Space Mono';font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#6d5140}
   #theater .desktop-keyboard-tip i{width:3px;height:3px;border-radius:50%;background:var(--brass-dim)}
   #receipt .receipt-layout{display:grid;grid-template-columns:minmax(360px,400px) minmax(0,430px);gap:84px;align-items:center;justify-content:center}
