@@ -1,4 +1,4 @@
-const CACHE = 'plot-twisted-v24';
+const CACHE = 'plot-twisted-v26';
 const ASSETS = [
   './index.html', './game.html', './privacy.html', './manifest.webmanifest',
   './assets/css/landing.css', './assets/css/game.css', './assets/css/privacy.css',

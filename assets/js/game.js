@@ -40,7 +40,7 @@ function buildPips(){ const w=document.getElementById('pips'); if(!w)return; w.i
 function renderPips(){ const w=document.getElementById('pips'); if(!w)return; [...w.children].forEach((el,i)=>{ el.className='pip'+(S.results[i]===true?' ok':S.results[i]===false?' miss':'')+(i===S.i?' now':''); }); }
 function surpriseMe(){ startRound(CAT_ORDER[Math.random()*CAT_ORDER.length|0]); }
 function applySettingsUI(){ const a=document.getElementById('setLayout'); if(a)a.textContent=SETTINGS.layout==='qwerty'?'QWERTY':'A\u2013Z'; const b=document.getElementById('setSound'); if(b){ b.textContent=SETTINGS.sound?'ON':'OFF'; b.classList.toggle('off',!SETTINGS.sound);} }
-function showScreen(id){ document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active')); document.getElementById(id).classList.add('active'); window.scrollTo(0,0); }
+function showScreen(id){ document.body.classList.toggle('gameplay-active',id==='theater'); document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active')); document.getElementById(id).classList.add('active'); window.scrollTo(0,0); }
 function goLobby(){ showScreen('lobby'); }
 function goBoxOffice(){ showScreen('boxoffice'); }
 function quitGame(){ document.getElementById('exitOverlay').classList.add('show'); }
