@@ -1,6 +1,6 @@
 /* Focused responsive patch: full-width desktop screens + compact 2-column mobile categories. */
 @media(min-width:960px){
-  .stage{padding:28px clamp(28px,3vw,64px)}
+  .stage{padding:24px clamp(28px,3vw,64px)}
   #lobby,#boxoffice,#more,#settings,#feedback,#theater,#receipt{width:100%;max-width:none}
 
   #boxoffice .board{grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
@@ -29,7 +29,63 @@
   #settings .about-cta .btn{flex:1}
 
   #feedback .fb-form,#feedback .fb-done{max-width:960px}
-  #theater .movie-screen .clue{max-width:60ch}
+
+  /* Desktop theater: use the viewport vertically instead of floating as a wide strip. */
+  #theater.active{
+    height:min(920px,calc(100dvh - 48px));
+    display:grid;
+    grid-template-rows:auto auto minmax(0,1fr);
+    align-content:stretch;
+  }
+  #theater .hud{margin-bottom:8px}
+  #theater .pips{margin:0 0 10px}
+  #theater .auditorium{
+    min-height:0;
+    height:100%;
+    padding:30px 52px 20px;
+    display:grid;
+    grid-template-rows:minmax(280px,1fr) minmax(30px,auto) auto auto auto;
+    gap:12px;
+    align-content:stretch;
+  }
+  #theater .movie-screen{
+    min-height:0;
+    height:100%;
+    margin:0 clamp(36px,5vw,88px);
+    padding:42px clamp(32px,4vw,72px);
+  }
+  #theater .movie-screen .clue{
+    max-width:48ch;
+    font-size:clamp(26px,2.05vw,34px);
+    line-height:1.38;
+  }
+  #theater .subtitle{
+    width:min(960px,calc(100% - 144px));
+    max-width:960px;
+    margin:0 auto;
+    min-height:30px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  #theater .answer-line{
+    width:min(960px,calc(100% - 144px));
+    max-width:960px;
+    margin:0 auto;
+  }
+  #theater .actions{
+    width:min(720px,calc(100% - 144px));
+    max-width:720px;
+    margin:0 auto;
+  }
+  #theater .desktop-keyboard-tip{margin:0 0 2px}
+}
+
+@media(min-width:960px) and (max-height:720px){
+  #theater.active{height:calc(100dvh - 32px)}
+  #theater .auditorium{padding-top:20px;gap:8px}
+  #theater .movie-screen{padding-top:28px;padding-bottom:28px}
+  #theater .movie-screen .clue{font-size:clamp(23px,1.9vw,30px)}
 }
 
 @media(max-width:959px){
