@@ -22,6 +22,14 @@
 
   const style = document.createElement('style');
   style.textContent = `
+    #theater .movie-screen.skipped {
+      border-color:#b7353d;
+      box-shadow:0 0 50px rgba(183,53,61,.35);
+    }
+    #theater .movie-screen.skipped .verdict {
+      color:#ff646d;
+      text-shadow:0 0 30px rgba(183,53,61,.55);
+    }
     @media (max-width: 959px) {
       #theater .actions .act:nth-child(2) { display:none; }
       #theater .actions { gap:10px; }
@@ -44,14 +52,6 @@
         height:62px;
         padding:0 8px;
         font-size:14px;
-      }
-      #theater .movie-screen.skipped {
-        border-color:#b7353d;
-        box-shadow:0 0 50px rgba(183,53,61,.35);
-      }
-      #theater .movie-screen.skipped .verdict {
-        color:#ff646d;
-        text-shadow:0 0 30px rgba(183,53,61,.55);
       }
       .pt-mobile-result {
         position:absolute;
@@ -90,6 +90,15 @@
         line-height:1.05;
         color:var(--bulb);
       }
+      .pt-mobile-result.skip .pt-mobile-result-title {
+        font-family:'Barlow Condensed',sans-serif;
+        font-weight:700;
+        text-transform:uppercase;
+        letter-spacing:.08em;
+        font-size:18px;
+        line-height:1.2;
+        color:var(--brass);
+      }
       .pt-mobile-result-movie {
         font-family:'Barlow Condensed',sans-serif;
         font-weight:700;
@@ -123,15 +132,105 @@
       }
       .pt-mobile-result-continue:active { transform:translateY(2px); box-shadow:0 2px 0 #6d4f1a; }
     }
+
+    /* Desktop keeps the seats hidden, so the result panel lands on the screen itself. */
+    @media (min-width: 960px) {
+      #theater .movie-screen .pt-mobile-result {
+        position:absolute;
+        inset:0;
+        z-index:12;
+        display:none;
+        overflow:auto;
+        padding:16px 26px;
+        border-radius:6px;
+        background:linear-gradient(180deg,#0a0f14,#050708);
+        box-shadow:inset 0 0 70px rgba(223,233,242,.05);
+      }
+      #theater .movie-screen .pt-mobile-result.show { display:flex; animation:fade .2s ease both; }
+      #theater .movie-screen .pt-mobile-result-card {
+        margin:auto;
+        width:min(100%,520px);
+        text-align:center;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        gap:7px;
+      }
+      #theater .movie-screen .pt-mobile-result-kicker {
+        font-family:'Space Mono',monospace;
+        font-size:11px;
+        letter-spacing:.22em;
+        text-transform:uppercase;
+        color:var(--brass);
+      }
+      #theater .movie-screen .pt-mobile-result.skip .pt-mobile-result-kicker { color:#ff7078; }
+      #theater .movie-screen .pt-mobile-result-title {
+        font-family:'Bungee',sans-serif;
+        font-size:clamp(24px,2.2vw,32px);
+        line-height:1.05;
+        color:var(--bulb);
+      }
+      #theater .movie-screen .pt-mobile-result.skip .pt-mobile-result-title {
+        font-family:'Barlow Condensed',sans-serif;
+        font-weight:700;
+        text-transform:uppercase;
+        letter-spacing:.08em;
+        font-size:clamp(19px,1.8vw,24px);
+        line-height:1.2;
+        color:var(--brass);
+      }
+      #theater .movie-screen .pt-mobile-result-movie {
+        font-family:'Barlow Condensed',sans-serif;
+        font-weight:700;
+        text-transform:uppercase;
+        letter-spacing:.08em;
+        color:var(--brass);
+        font-size:16px;
+        line-height:1.15;
+      }
+      #theater .movie-screen .pt-mobile-result-copy {
+        color:#d8c2aa;
+        font-size:15px;
+        line-height:1.4;
+        max-width:56ch;
+      }
+      #theater .movie-screen .pt-mobile-result-continue {
+        width:auto;
+        min-width:220px;
+        margin-top:6px;
+        min-height:42px;
+        padding:0 26px;
+        border:none;
+        border-radius:9px;
+        cursor:pointer;
+        font-family:'Barlow Condensed',sans-serif;
+        font-weight:700;
+        font-size:16px;
+        letter-spacing:.12em;
+        text-transform:uppercase;
+        background:linear-gradient(180deg,var(--brass),var(--brass-dim));
+        color:#2a1206;
+        box-shadow:0 4px 0 #6d4f1a;
+      }
+      #theater .movie-screen .pt-mobile-result-continue:hover { filter:brightness(1.08); }
+      #theater .movie-screen .pt-mobile-result-continue:active { transform:translateY(2px); box-shadow:0 2px 0 #6d4f1a; }
+    }
   `;
   document.head.appendChild(style);
 
+  // Mobile hangs the panel over the seats; desktop hides the seats, so it sits on the screen.
+  function overlayHost() {
+    return document.getElementById(isMobile() ? 'seating' : 'movieScreen');
+  }
+
   function ensureOverlay() {
-    if (!isMobile()) return null;
-    const seating = document.getElementById('seating');
-    if (!seating) return null;
-    let overlay = seating.querySelector('.pt-mobile-result');
-    if (overlay) return overlay;
+    const host = overlayHost();
+    if (!host) return null;
+    let overlay = document.querySelector('#theater .pt-mobile-result');
+    if (overlay) {
+      if (overlay.parentElement !== host) host.appendChild(overlay);
+      return overlay;
+    }
 
     overlay = document.createElement('div');
     overlay.className = 'pt-mobile-result';
@@ -150,26 +249,38 @@
       hideOverlay();
       next();
     });
-    seating.appendChild(overlay);
+    host.appendChild(overlay);
     return overlay;
   }
 
+  // Crossing the breakpoint mid-result would strand the panel in a hidden host.
+  const breakpoint = window.matchMedia(MOBILE_QUERY);
+  const rehostOverlay = () => {
+    const overlay = document.querySelector('#theater .pt-mobile-result');
+    if (overlay && overlay.classList.contains('show')) ensureOverlay();
+  };
+  if (breakpoint.addEventListener) breakpoint.addEventListener('change', rehostOverlay);
+  else if (breakpoint.addListener) breakpoint.addListener(rehostOverlay);
+
   function hideOverlay() {
-    const overlay = document.querySelector('#seating .pt-mobile-result');
+    const overlay = document.querySelector('#theater .pt-mobile-result');
     if (!overlay) return;
     overlay.classList.remove('show', 'skip', 'correct');
   }
 
   function showOverlay({ type, kicker, title, movie, copy }) {
     const overlay = ensureOverlay();
-    if (!overlay) return;
+    if (!overlay) return false;
     overlay.classList.remove('skip', 'correct');
     overlay.classList.add(type, 'show');
     overlay.querySelector('.pt-mobile-result-kicker').textContent = kicker;
     overlay.querySelector('.pt-mobile-result-title').textContent = title;
-    overlay.querySelector('.pt-mobile-result-movie').textContent = movie || '';
+    const movieLine = overlay.querySelector('.pt-mobile-result-movie');
+    movieLine.textContent = movie || '';
+    movieLine.hidden = !movie;
     overlay.querySelector('.pt-mobile-result-copy').textContent = copy;
     overlay.querySelector('.pt-mobile-result-continue').focus({ preventScroll:true });
+    return true;
   }
 
   const originalBuildSeats = buildSeats;
@@ -192,9 +303,7 @@
     return originalLoadQuestion.apply(this, arguments);
   };
 
-  const originalWin = win;
   win = function mobilePolishWin(q) {
-    if (!isMobile()) return originalWin.apply(this, arguments);
     if (S.locked) return;
 
     S.locked = true;
@@ -216,18 +325,17 @@
     sub.innerHTML = `<span class="lbl">+${gained}</span>${esc(q.title)}`;
     document.getElementById('hudScore').textContent = S.score;
 
-    showOverlay({
+    const shown = showOverlay({
       type:'correct',
       kicker:'★ Nice work ★',
       title:`+${gained} PTS`,
       movie:q.title,
       copy:pick(PRAISE)
     });
+    if (!shown) setTimeout(next, 1150);
   };
 
-  const originalSkip = skipQuestion;
   skipQuestion = function mobilePolishSkip() {
-    if (!isMobile()) return originalSkip.apply(this, arguments);
     if (S.locked) return;
 
     S.locked = true;
@@ -244,12 +352,12 @@
     sub.classList.remove('wrong');
     sub.innerHTML = '<span class="lbl">0 pts</span>No shame. Mostly.';
 
-    showOverlay({
+    const shown = showOverlay({
       type:'skip',
-      kicker:'The answer was',
-      title:'SKIPPED',
-      movie:q.title,
+      kicker:'SKIPPED',
+      title:q.title,
       copy:pick(SKIP_ROASTS)
     });
+    if (!shown) setTimeout(next, 1100);
   };
 })();
