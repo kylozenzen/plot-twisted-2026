@@ -1,0 +1,168 @@
+/* Responsive expansion pass layered after the core game stylesheet. */
+
+@media (min-width: 960px) {
+  .stage {
+    padding: 32px clamp(32px, 4vw, 72px);
+  }
+
+  #lobby,
+  #boxoffice,
+  #more,
+  #settings,
+  #feedback,
+  #theater,
+  #receipt {
+    max-width: min(1440px, calc(100vw - 64px));
+  }
+
+  #lobby .lobby-shell {
+    grid-template-columns: minmax(0, 2fr) minmax(360px, .72fr);
+    gap: 32px;
+  }
+
+  #boxoffice .board {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  #boxoffice .poster {
+    min-height: 220px;
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #boxoffice .poster .runtime {
+    margin-top: auto;
+    padding-top: 18px;
+  }
+
+  #settings.active {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 28px;
+    align-items: start;
+  }
+
+  #settings > .settings-beta-wrap,
+  #settings > .eyebrow,
+  #settings > .head,
+  #settings > .subhead,
+  #settings > .back-wrap {
+    grid-column: 1 / -1;
+  }
+
+  #settings .settings-list,
+  #settings .about {
+    width: 100%;
+    max-width: none;
+    margin: 8px 0 0;
+  }
+
+  #settings .settings-list {
+    gap: 14px;
+  }
+
+  #settings .set-row {
+    min-height: 84px;
+    padding: 20px 22px;
+  }
+
+  #settings .about {
+    min-height: 100%;
+    padding: 24px;
+  }
+
+  #settings .about-cta {
+    flex-direction: row;
+  }
+
+  #settings .about-cta .btn {
+    flex: 1;
+  }
+
+  #feedback .fb-form,
+  #feedback .fb-done {
+    max-width: 760px;
+  }
+
+  #theater .movie-screen {
+    margin-left: clamp(72px, 8vw, 130px);
+    margin-right: clamp(72px, 8vw, 130px);
+  }
+
+  #theater .movie-screen .clue {
+    max-width: 48ch;
+  }
+
+  #receipt .receipt-layout {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+}
+
+/* Keep the ticket board genuinely mobile, but preserve two-up browsing. */
+@media (max-width: 959px) {
+  #boxoffice .board {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  #boxoffice .poster {
+    min-width: 0;
+    min-height: 178px;
+    padding: 14px 12px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #boxoffice .poster .rated {
+    top: 10px;
+    right: 10px;
+    font-size: 9px;
+  }
+
+  #boxoffice .poster .flick {
+    font-size: 23px;
+  }
+
+  #boxoffice .poster h3 {
+    margin-top: 7px;
+    font-size: 20px;
+  }
+
+  #boxoffice .poster p {
+    font-size: 12px;
+    line-height: 1.3;
+  }
+
+  #boxoffice .poster .runtime {
+    margin-top: auto;
+    padding-top: 10px;
+    font-size: 9px;
+    gap: 4px;
+  }
+
+  #boxoffice .poster .runtime::before {
+    content: "► PLAY";
+  }
+}
+
+@media (max-width: 380px) {
+  #boxoffice .board {
+    gap: 8px;
+  }
+
+  #boxoffice .poster {
+    min-height: 172px;
+    padding: 12px 10px;
+  }
+
+  #boxoffice .poster h3 {
+    font-size: 18px;
+  }
+
+  #boxoffice .poster p {
+    font-size: 11.5px;
+  }
+}
