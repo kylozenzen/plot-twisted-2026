@@ -1,0 +1,4368 @@
+{
+  "Family": [
+    {
+      "title": "Frozen",
+      "clues": [
+        "Snow queen turns one bad day into regional climate policy.",
+        "Sisters resolve childhood trauma while a snowman explains thermodynamics badly."
+      ]
+    },
+    {
+      "title": "Toy Story",
+      "clues": [
+        "Plastic cowboy spirals after space toy joins the payroll.",
+        "Toys stage an intervention about whether one of them can actually fly."
+      ]
+    },
+    {
+      "title": "The Lion King",
+      "clues": [
+        "Uncle murders CEO brother, then gaslights nephew into exile.",
+        "Cub is gaslit into exile by uncle with excellent vocal projection."
+      ]
+    },
+    {
+      "title": "Moana",
+      "clues": [
+        "Teen violates ocean safety rules to return stolen lava jewelry.",
+        "Teen returns stolen property to a volcano while a demigod takes credit."
+      ]
+    },
+    {
+      "title": "Shrek",
+      "clues": [
+        "Swamp introvert gets dragged into royal errands by tiny landlord.",
+        "Ogre agrees to a real-estate deal that becomes a rescue mission and a wedding."
+      ]
+    },
+    {
+      "title": "The Incredibles",
+      "clues": [
+        "Dad's secret nostalgia for his glory days triggers insurance nightmares.",
+        "Retired heroes break their own witness protection over a midlife crisis."
+      ]
+    },
+    {
+      "title": "Up",
+      "clues": [
+        "Widower converts grief into aviation and accidentally abducts a scout.",
+        "Widower solves a housing dispute using balloons and an unlicensed scout."
+      ]
+    },
+    {
+      "title": "Inside Out",
+      "clues": [
+        "Child's brain office loses control during a family relocation."
+      ]
+    },
+    {
+      "title": "WALL-E",
+      "clues": [
+        "Trash robot develops a crush and accidentally restarts civilization."
+      ]
+    },
+    {
+      "title": "Coco",
+      "clues": [
+        "Kid breaks into the afterlife to settle a family music dispute.",
+        "Boy commits family betrayal via guitar and ends up doing genealogy in the afterlife."
+      ]
+    },
+    {
+      "title": "Zootopia",
+      "clues": [
+        "Bunny cop and fox freelancer expose a citywide predator PR crisis."
+      ]
+    },
+    {
+      "title": "Big Hero 6",
+      "clues": [
+        "Teen turns healthcare balloon into crime-fighting equipment after grief hits."
+      ]
+    },
+    {
+      "title": "Monsters Inc",
+      "clues": [
+        "Monster utility company discovers laughter has better margins than terror.",
+        "Corporate energy firm discovers its entire business model was wrong."
+      ]
+    },
+    {
+      "title": "Ratatouille",
+      "clues": [
+        "Rat violates every health code and somehow improves the restaurant."
+      ]
+    },
+    {
+      "title": "Cars",
+      "clues": [
+        "Celebrity race car gets sentenced to small-town character development."
+      ]
+    },
+    {
+      "title": "A Bug's Life",
+      "clues": [
+        "Ant hires fake warriors and accidentally starts a tiny labor revolution."
+      ]
+    },
+    {
+      "title": "Brave",
+      "clues": [
+        "Princess turns mom into bear because family meetings are hard."
+      ]
+    },
+    {
+      "title": "The Princess and the Frog",
+      "clues": [
+        "Waitress kisses frog and gets trapped in swamp-based career pivot."
+      ]
+    },
+    {
+      "title": "Tangled",
+      "clues": [
+        "Tower prisoner escapes with a thief and weaponized haircare."
+      ]
+    },
+    {
+      "title": "How to Train Your Dragon",
+      "clues": [
+        "Viking teen trains disabled dragon and accidentally ends national tradition."
+      ]
+    },
+    {
+      "title": "Paddington",
+      "clues": [
+        "Polite bear commits light felonies until London becomes emotionally available."
+      ]
+    },
+    {
+      "title": "The LEGO Movie",
+      "clues": [
+        "Average construction guy becomes the face of an anti-glue uprising."
+      ]
+    },
+    {
+      "title": "Despicable Me",
+      "clues": [
+        "Supervillain adopts three girls and discovers bedtime is the real heist.",
+        "Supervillain adopts three girls as a heist prop and gets emotionally outmaneuvered."
+      ]
+    },
+    {
+      "title": "Home Alone",
+      "clues": [
+        "Forgotten child chooses booby traps over calling any adult.",
+        "Neglected child converts family home into a felony obstacle course."
+      ]
+    },
+    {
+      "title": "Finding Nemo",
+      "clues": [
+        "Anxious dad crosses ocean after dentist abducts his son for office decor.",
+        "Overprotective dad crosses an ocean with a coworker who cannot retain information."
+      ]
+    },
+    {
+      "title": "Mulan",
+      "clues": [
+        "Daughter commits draft fraud to keep dad off the battlefield.",
+        "Woman commits military fraud and saves the country doing it."
+      ]
+    },
+    {
+      "title": "Aladdin",
+      "clues": [
+        "Street thief uses genie-powered rebrand to date above his tax bracket."
+      ]
+    },
+    {
+      "title": "Kung Fu Panda",
+      "clues": [
+        "Noodle-loving panda becomes chosen warrior through confidence and snacks."
+      ]
+    },
+    {
+      "title": "Beauty and the Beast",
+      "clues": [
+        "Book girl moves into cursed castle and fixes everyone else's attitude."
+      ]
+    },
+    {
+      "title": "Hercules",
+      "clues": [
+        "Demigod loses benefits and has to earn immortality with cardio."
+      ]
+    },
+    {
+      "title": "Tarzan",
+      "clues": [
+        "Jungle man becomes an anthropological discovery with fantastic hair."
+      ]
+    },
+    {
+      "title": "Lilo & Stitch",
+      "clues": [
+        "Lonely girl adopts alien disaster and calls it family."
+      ]
+    },
+    {
+      "title": "Megamind",
+      "clues": [
+        "Villain wins, gets bored, and creates his own HR problem."
+      ]
+    },
+    {
+      "title": "Ice Age",
+      "clues": [
+        "Squirrel's snack obsession causes prehistoric disaster with franchise potential."
+      ]
+    },
+    {
+      "title": "Madagascar",
+      "clues": [
+        "Zoo celebrities discover nature has no room service."
+      ]
+    },
+    {
+      "title": "Cinderella",
+      "clues": [
+        "Abused stepdaughter networks with rodents to crash rich people's party."
+      ]
+    },
+    {
+      "title": "Peter Pan",
+      "clues": [
+        "Eternal child recruits minors into anti-pirate island chaos."
+      ]
+    },
+    {
+      "title": "Pinocchio",
+      "clues": [
+        "Wooden boy's browser history is written directly on his nose."
+      ]
+    },
+    {
+      "title": "Sleeping Beauty",
+      "clues": [
+        "Princess loses sixteen years to a sewing-related workplace incident."
+      ]
+    },
+    {
+      "title": "Snow White",
+      "clues": [
+        "Runaway princess accepts housing from seven suspiciously organized miners."
+      ]
+    },
+    {
+      "title": "Dumbo",
+      "clues": [
+        "Circus elephant turns bullying into an aviation career."
+      ]
+    },
+    {
+      "title": "The Little Mermaid",
+      "clues": [
+        "Teen mermaid signs predatory voice contract to meet boat guy.",
+        "Teenager signs a contract without reading it and loses her voice."
+      ]
+    },
+    {
+      "title": "Wreck-It Ralph",
+      "clues": [
+        "Arcade villain leaves his job and nearly breaks the internet."
+      ]
+    },
+    {
+      "title": "The Nightmare Before Christmas",
+      "clues": [
+        "Skeleton CEO attempts hostile takeover of Christmas operations."
+      ]
+    },
+    {
+      "title": "Mary Poppins",
+      "clues": [
+        "Magical nanny fixes family dysfunction with songs and questionable labor laws."
+      ]
+    },
+    {
+      "title": "The Parent Trap",
+      "clues": [
+        "Separated twins run an identity fraud campaign against their parents."
+      ]
+    },
+    {
+      "title": "E.T.",
+      "clues": [
+        "Alien overstays on Earth and turns children's closet into immigration office."
+      ]
+    },
+    {
+      "title": "Mrs. Doubtfire",
+      "clues": [
+        "Divorced dad invents elderly nanny persona instead of respecting custody."
+      ]
+    },
+    {
+      "title": "Holes",
+      "clues": [
+        "Kid is sentenced to digging holes for a generational treasure scam."
+      ]
+    },
+    {
+      "title": "Finding Dory",
+      "clues": [
+        "Forgetful fish solves family history through pure aquatic instinct."
+      ]
+    },
+    {
+      "title": "Elemental",
+      "deep": true,
+      "clues": [
+        "Fire woman dates water man, causing everyone's parents to clutch pearls."
+      ]
+    },
+    {
+      "title": "Bolt",
+      "deep": true,
+      "clues": [
+        "TV dog learns his powers were just marketing."
+      ]
+    },
+    {
+      "title": "The Croods",
+      "clues": [
+        "Caveman dad discovers new ideas and takes them personally."
+      ]
+    },
+    {
+      "title": "Minions",
+      "clues": [
+        "Yellow sidekicks spend centuries failing upward under terrible management."
+      ]
+    },
+    {
+      "title": "The Secret Life of Pets",
+      "clues": [
+        "Dog experiences emotional collapse after owner brings home another dog."
+      ]
+    },
+    {
+      "title": "The Bad Guys",
+      "clues": [
+        "Criminal animals attempt a rebrand and accidentally develop morals."
+      ]
+    },
+    {
+      "title": "Sing",
+      "clues": [
+        "Bankrupt koala commits talent-show chaos to save real estate."
+      ]
+    },
+    {
+      "title": "Sing 2",
+      "deep": true,
+      "clues": [
+        "Koala books a massive show through lies, vibes, and theater kid panic."
+      ]
+    },
+    {
+      "title": "Puss in Boots",
+      "clues": [
+        "Tiny sword cat performs bravado until mortality starts chasing him."
+      ]
+    },
+    {
+      "title": "Puss in Boots: The Last Wish",
+      "clues": [
+        "Cat burns through lives, meets death, and finally considers therapy."
+      ]
+    },
+    {
+      "title": "Encanto",
+      "clues": [
+        "Magical family delays therapy until the house files a formal complaint."
+      ]
+    },
+    {
+      "title": "Onward",
+      "deep": true,
+      "clues": [
+        "Teen brothers resurrect only the pants part of their father."
+      ]
+    },
+    {
+      "title": "Soul",
+      "clues": [
+        "Jazz teacher dies at the worst possible time and negotiates a reboot."
+      ]
+    },
+    {
+      "title": "Turning Red",
+      "clues": [
+        "Puberty installs giant red panda mode without asking IT."
+      ]
+    },
+    {
+      "title": "Abominable",
+      "deep": true,
+      "clues": [
+        "Girl smuggles yeti home using violin-powered GPS."
+      ]
+    },
+    {
+      "title": "The Good Dinosaur",
+      "deep": true,
+      "clues": [
+        "Anxious dinosaur bonds with feral cave child after weather ruins everything."
+      ]
+    },
+    {
+      "title": "Cloudy With a Chance of Meatballs",
+      "clues": [
+        "Inventor turns bad weather into a town-wide food fight."
+      ]
+    },
+    {
+      "title": "Cloudy with a Chance of Meatballs 2",
+      "deep": true,
+      "clues": [
+        "Sentient leftovers complicate one man's attempt to clean up dinner."
+      ]
+    },
+    {
+      "title": "Rio",
+      "clues": [
+        "Pet bird goes to Brazil and discovers wings are not decorative."
+      ]
+    },
+    {
+      "title": "Rio 2",
+      "deep": true,
+      "clues": [
+        "Bird dad meets jungle in-laws and immediately needs a vacation from vacation."
+      ]
+    },
+    {
+      "title": "Happy Feet",
+      "clues": [
+        "Penguin can't sing, so he saves society with tap shoes."
+      ]
+    },
+    {
+      "title": "Happy Feet Two",
+      "deep": true,
+      "clues": [
+        "Penguins process climate anxiety through dance numbers."
+      ]
+    },
+    {
+      "title": "Ice Age: The Meltdown",
+      "deep": true,
+      "clues": [
+        "Prehistoric friends outrun global warming before it was trending."
+      ]
+    },
+    {
+      "title": "Ice Age: Dawn of the Dinosaurs",
+      "deep": true,
+      "clues": [
+        "Mammals discover dinosaurs and survive through panic-based teamwork."
+      ]
+    },
+    {
+      "title": "Ice Age: Continental Drift",
+      "deep": true,
+      "clues": [
+        "Continents break up and the animals treat it like a road trip."
+      ]
+    },
+    {
+      "title": "Ice Age: Collision Course",
+      "deep": true,
+      "clues": [
+        "Animals face space rocks because the squirrel has learned nothing."
+      ]
+    },
+    {
+      "title": "The Peanuts Movie",
+      "clues": [
+        "Anxious kid attempts personal rebrand for one red-haired crush."
+      ]
+    },
+    {
+      "title": "Charlotte's Web",
+      "clues": [
+        "Pig hires spider as crisis communications manager to avoid breakfast."
+      ]
+    },
+    {
+      "title": "Stuart Little",
+      "clues": [
+        "Family adopts mouse brother and somehow the cat is the normal one."
+      ]
+    },
+    {
+      "title": "The Iron Giant",
+      "clues": [
+        "Kid teaches giant weapon that being kind is cooler than vaporizing towns."
+      ]
+    },
+    {
+      "title": "The BFG",
+      "deep": true,
+      "clues": [
+        "Giant kidnaps child, then becomes dream-delivery logistics partner."
+      ]
+    },
+    {
+      "title": "The Lorax",
+      "clues": [
+        "Orange mustache tree lawyer explains why capitalism needs a leash."
+      ]
+    },
+    {
+      "title": "The Grinch",
+      "clues": [
+        "Green cave introvert steals Christmas because community engagement is exhausting."
+      ]
+    },
+    {
+      "title": "The Grinch (2018)",
+      "deep": true,
+      "clues": [
+        "Traumatized green introvert tries holiday sabotage, gets emotionally onboarded."
+      ]
+    },
+    {
+      "title": "A Christmas Story",
+      "clues": [
+        "Child lobbies for firearm-shaped toy while adults predict disaster correctly."
+      ]
+    },
+    {
+      "title": "Jumanji (1995)",
+      "clues": [
+        "Board game turns family night into jungle-based attempted murder."
+      ]
+    },
+    {
+      "title": "James and the Giant Peach",
+      "deep": true,
+      "clues": [
+        "Orphan travels by giant fruit with bugs because supervision has failed."
+      ]
+    },
+    {
+      "title": "Matilda (musical)",
+      "deep": true,
+      "clues": [
+        "Gifted child uses telekinesis to overthrow school administration."
+      ]
+    },
+    {
+      "title": "Paddington 2",
+      "clues": [
+        "Wrongfully jailed bear improves prison culture with marmalade leadership."
+      ]
+    },
+    {
+      "title": "The Sandlot",
+      "clues": [
+        "Kids treat one baseball like a sacred religious artifact."
+      ]
+    },
+    {
+      "title": "Little Rascals",
+      "deep": true,
+      "clues": [
+        "Tiny boys run anti-girl club until reality sends them a memo."
+      ]
+    },
+    {
+      "title": "The Mighty Ducks",
+      "clues": [
+        "DUI lawyer coaches children into hockey respectability."
+      ]
+    },
+    {
+      "title": "Cheaper by the Dozen",
+      "deep": true,
+      "clues": [
+        "Parents with twelve kids discover math was the villain all along."
+      ]
+    },
+    {
+      "title": "Night at the Museum",
+      "clues": [
+        "Night guard realizes museum history has terrible sleep hygiene."
+      ]
+    },
+    {
+      "title": "A Series of Unfortunate Events",
+      "deep": true,
+      "clues": [
+        "Orphans survive inheritance predator with theater-kid villain energy."
+      ]
+    },
+    {
+      "title": "The Boss Baby",
+      "clues": [
+        "Suit baby infiltrates family and makes infant capitalism everyone else's problem."
+      ]
+    },
+    {
+      "title": "Peter Rabbit",
+      "deep": true,
+      "clues": [
+        "Rabbit commits garden crimes, then escalates into landlord warfare."
+      ]
+    },
+    {
+      "title": "The Addams Family",
+      "clues": [
+        "One spooky family defeats suburban judgment with elite commitment to the bit."
+      ]
+    },
+    {
+      "title": "Nanny McPhee",
+      "deep": true,
+      "clues": [
+        "Magical nanny weaponizes discipline until the children stop being feral."
+      ]
+    },
+    {
+      "title": "Annie",
+      "clues": [
+        "Orphan networking event ends with billionaire adoption paperwork."
+      ]
+    },
+    {
+      "title": "Hook",
+      "clues": [
+        "Workaholic adult rediscovers childhood trauma through pirate litigation."
+      ]
+    },
+    {
+      "title": "The SpongeBob Movie",
+      "clues": [
+        "Sponge and starfish leave town to recover stolen royal headwear."
+      ]
+    },
+    {
+      "title": "The SpongeBob Movie: Sponge Out of Water",
+      "deep": true,
+      "clues": [
+        "Sponge enters live-action chaos over burger-based justice."
+      ]
+    },
+    {
+      "title": "Shaun the Sheep",
+      "deep": true,
+      "clues": [
+        "Bored sheep turns farm management into a municipal emergency."
+      ]
+    },
+    {
+      "title": "Chicken Run",
+      "clues": [
+        "Chickens organize a jailbreak before becoming pie filling."
+      ]
+    },
+    {
+      "title": "Coraline",
+      "clues": [
+        "Girl finds nicer fake parents and wisely distrusts the button clause."
+      ]
+    },
+    {
+      "title": "The Book of Life",
+      "deep": true,
+      "clues": [
+        "Romantic guitarist tours the underworld to dodge family expectations."
+      ]
+    },
+    {
+      "title": "A Goofy Movie",
+      "clues": [
+        "Goofy dad turns custody anxiety into a Powerline pilgrimage."
+      ]
+    },
+    {
+      "title": "Inside Out 2",
+      "clues": [
+        "Teen brain receives anxiety update and immediately loses admin access."
+      ]
+    },
+    {
+      "title": "Wish",
+      "deep": true,
+      "clues": [
+        "Girl audits royal wish economy and starts a star-powered uprising."
+      ]
+    },
+    {
+      "title": "Luca",
+      "clues": [
+        "Sea monster kids risk exposure for pasta, scooters, and vibes."
+      ]
+    },
+    {
+      "title": "Wish Dragon",
+      "deep": true,
+      "clues": [
+        "Broke guy receives wish dragon with surprisingly strict customer service."
+      ]
+    },
+    {
+      "title": "The Emoji Movie",
+      "clues": [
+        "Emoji has one facial expression and makes it everyone else's emergency."
+      ]
+    }
+  ],
+  "Fantasy": [
+    {
+      "title": "Harry Potter",
+      "clues": [
+        "Orphan discovers wizard fame at a school with no safety department.",
+        "Orphan discovers boarding school where the faculty is the main safety hazard.",
+        "Boy inherits sports fame, a bank vault, and unresolved custody issues with a snake man.",
+        "Sport with a golden ball makes every other position pointless."
+      ]
+    },
+    {
+      "title": "Lord of the Rings",
+      "clues": [
+        "Tiny hiking club returns cursed jewelry to its manufacturer.",
+        "Committee forms to handle jewelry disposal, walks an entire continent.",
+        "Short king declines the obvious air travel option and nobody brings it up.",
+        "Gardener carries his boss up a volcano and gets no credit until the end."
+      ]
+    },
+    {
+      "title": "The Hobbit",
+      "clues": [
+        "Homebody burglarizes dragon after peer pressure from thirteen consultants.",
+        "Homebody is recruited by thirteen loud men for an unlicensed dragon eviction.",
+        "Burglar with no burglary experience negotiates accounting with a reptile."
+      ]
+    },
+    {
+      "title": "The Chronicles of Narnia",
+      "clues": [
+        "Closet sends children into lion-led regime change.",
+        "Kids evacuate wartime London and immediately colonize a closet.",
+        "Girl accepts candy from a stranger and destabilizes an entire realm."
+      ]
+    },
+    {
+      "title": "Wicked",
+      "clues": [
+        "Green theater kid gets scapegoated and responds with vertical ambition.",
+        "Green student and blonde roommate learn higher education is a PR operation.",
+        "Friendship between two women is ruined by a wizard's marketing department."
+      ]
+    },
+    {
+      "title": "The Princess Bride",
+      "clues": [
+        "Farm boy weaponizes piracy branding to interrupt a wedding.",
+        "Farmhand fakes death, becomes a pirate, returns for a very patient girlfriend.",
+        "Swordsman spends two decades rehearsing a single introduction.",
+        "Giant, a Spaniard, and a man in black complete a rescue by committee."
+      ]
+    },
+    {
+      "title": "Pan's Labyrinth",
+      "clues": [
+        "Child seeks fantasy escape while fascism keeps ruining the neighborhood.",
+        "Girl completes fairy chores while her stepdad conducts fascism downstairs.",
+        "Child does three errands for a goat man during the worst possible year."
+      ]
+    },
+    {
+      "title": "The Golden Compass",
+      "deep": true,
+      "clues": [
+        "Girl and armored bear investigate soul theft with zero adult competence."
+      ]
+    },
+    {
+      "title": "Pirates of the Caribbean",
+      "clues": [
+        "Chaotic pirate makes the British navy regret scheduling anything.",
+        "Drunk sailor negotiates with cursed coin owners over a boat he keeps losing.",
+        "Blacksmith discovers his dad problems are also nautical.",
+        "Undead crew learns that stolen gold comes with a moonlight clause."
+      ]
+    },
+    {
+      "title": "Mortal Kombat",
+      "clues": [
+        "Realm tournament runs entirely on punches, portals, and liability waivers.",
+        "Tournament organizers settle interdimensional politics through fatal sportsmanship.",
+        "Fighters resolve a realm dispute with a bracket and no medical staff."
+      ]
+    },
+    {
+      "title": "Power Rangers",
+      "clues": [
+        "Color-coded teens solve local monster problems with dinosaur machinery.",
+        "Detention group receives color-coded coins and municipal dinosaur responsibilities.",
+        "Teens fight a gold woman while their robot dinosaurs handle property damage."
+      ]
+    },
+    {
+      "title": "Labyrinth",
+      "clues": [
+        "Teen babysitter learns glitter goblin king is not a reliable childcare option.",
+        "Teen wishes her brother away, then negotiates with a goblin in alarming trousers.",
+        "Babysitter completes a maze on a thirteen-hour deadline set by a rock star."
+      ]
+    },
+    {
+      "title": "Beetlejuice",
+      "clues": [
+        "Dead homeowners hire striped disaster consultant to evict living tenants.",
+        "Dead couple hires a freelance exorcist with severe boundary issues.",
+        "Ghosts learn that haunting is much harder than the living make it look.",
+        "Family is forced to perform a calypso song at dinner."
+      ]
+    },
+    {
+      "title": "Edward Scissorhands",
+      "clues": [
+        "Suburban women discover the new guy is basically walking scissors.",
+        "Suburb adopts an unfinished man, uses him for hedges, then turns on him.",
+        "Inventor dies mid-project and leaves the neighborhood to finish the parenting."
+      ]
+    },
+    {
+      "title": "The Wizard of Oz",
+      "clues": [
+        "Kansas girl drops house, steals shoes, and demands managerial wizard support.",
+        "Girl's house commits manslaughter, then she recruits three men with self-esteem issues.",
+        "Farm girl walks a very long road to meet a man with a curtain problem.",
+        "Twister relocates a girl and she spends the film trying to undo it."
+      ]
+    },
+    {
+      "title": "Alice in Wonderland",
+      "clues": [
+        "Girl ignores food labels and destabilizes a nonsense monarchy.",
+        "Girl follows a rodent into an unregulated tea-based legal system.",
+        "Child is put on trial by a monarch with one sentencing option."
+      ]
+    },
+    {
+      "title": "The Shape of Water",
+      "clues": [
+        "Janitor begins classified workplace romance with amphibious government property.",
+        "Janitor rescues a government amphibian and starts the building's healthiest relationship.",
+        "Cleaning staff commit federal theft for love and boiled eggs."
+      ]
+    },
+    {
+      "title": "The Mummy",
+      "clues": [
+        "Librarian and adventure himbo awaken a cursed sand influencer.",
+        "Librarian reads aloud from the one book that had a warning label.",
+        "Expedition wakes a priest who has strong feelings about locusts.",
+        "Sand takes the shape of a face and the pilot regrets everything."
+      ]
+    },
+    {
+      "title": "Percy Jackson",
+      "clues": [
+        "Teen learns his dad is a god and monsters are basically push notifications.",
+        "Teen learns his absent dad is an ocean and his field trip is a lawsuit.",
+        "Camper is blamed for stolen weather equipment belonging to his uncle."
+      ]
+    },
+    {
+      "title": "Dungeons & Dragons",
+      "deep": true,
+      "clues": [
+        "Thieves, bards, and barbarians complete a group project through chaos."
+      ]
+    },
+    {
+      "title": "The NeverEnding Story",
+      "clues": [
+        "Magic book traumatizes child, horse, and anyone with feelings.",
+        "Boy reads a book in an attic and is personally implicated in the plot.",
+        "Kingdom collapses because nobody in the audience will say a name out loud."
+      ]
+    },
+    {
+      "title": "Willow",
+      "deep": true,
+      "clues": [
+        "Village magician gets stuck babysitting prophecy."
+      ]
+    },
+    {
+      "title": "The Dark Crystal",
+      "deep": true,
+      "clues": [
+        "Puppet creatures attempt world repair with crystal-based customer support."
+      ]
+    },
+    {
+      "title": "Jumanji",
+      "clues": [
+        "Board game turns family night into a hostile jungle acquisition.",
+        "Board game bills two players for twenty-six years of unpaid turns.",
+        "Kids roll dice and a man returns from the jungle with a beard and grievances.",
+        "Living room fills with jungle because two children finished a game."
+      ]
+    },
+    {
+      "title": "Matilda",
+      "clues": [
+        "Kid genius overthrows cruel principal with brain-powered property damage.",
+        "Gifted child weaponizes a library card and telekinesis against school administration.",
+        "Girl with terrible parents wins custody through paperwork and mild psychic crime."
+      ]
+    },
+    {
+      "title": "Charlie and the Chocolate Factory",
+      "clues": [
+        "Candy CEO invites children to beta-test consequences.",
+        "Candy magnate runs a recruitment process that industrially eliminates four children.",
+        "Poor boy wins a factory because he was the only applicant who followed instructions."
+      ]
+    },
+    {
+      "title": "Hook",
+      "clues": [
+        "Adult lawyer remembers he used to fly and immediately reopens pirate beef.",
+        "Adult lawyer must remember how to be annoying enough to fly again.",
+        "Absent father takes a business trip to a pirate cove to retrieve his kids."
+      ]
+    },
+    {
+      "title": "Stardust",
+      "deep": true,
+      "clues": [
+        "Man captures fallen star, then realizes the MacGuffin has opinions."
+      ]
+    },
+    {
+      "title": "Night at the Museum",
+      "clues": [
+        "Night guard discovers museums become group chats after dark.",
+        "Divorced dad takes a night shift and inherits exhibit-based chaos.",
+        "Security guard learns the job description omitted a tiny cowboy."
+      ]
+    },
+    {
+      "title": "Maleficent",
+      "clues": [
+        "Wronged fairy rebrands curse as misunderstood parenting arc.",
+        "Betrayed fairy shows up uninvited to a christening and files the pettiest curse on record.",
+        "Winged woman's revenge plan is undone by accidentally raising the target."
+      ]
+    },
+    {
+      "title": "Alice Through the Looking Glass",
+      "deep": true,
+      "clues": [
+        "Girl time-travels to fix one hat enthusiast's family issues."
+      ]
+    },
+    {
+      "title": "Eragon",
+      "deep": true,
+      "clues": [
+        "Farm boy finds dragon egg and becomes budget franchise chosen one."
+      ]
+    },
+    {
+      "title": "Inkheart",
+      "deep": true,
+      "clues": [
+        "Dad reads so dramatically that fictional people become a zoning problem."
+      ]
+    },
+    {
+      "title": "Nanny McPhee",
+      "deep": true,
+      "clues": [
+        "Magical nanny fixes chaos children with terrifying lesson plans."
+      ]
+    },
+    {
+      "title": "The School for Good and Evil",
+      "deep": true,
+      "clues": [
+        "Friends get sorted into school brands with very aggressive marketing."
+      ]
+    },
+    {
+      "title": "Big Fish",
+      "clues": [
+        "Son audits dying father's lifetime subscription to tall tales.",
+        "Son fact-checks his dying father's autobiography and loses.",
+        "Man's tall tales turn out to be roughly eighty percent tax-deductible."
+      ]
+    },
+    {
+      "title": "Enchanted",
+      "clues": [
+        "Cartoon princess gets pushed into New York and out-sings reality.",
+        "Cartoon princess is deported to Manhattan and starts cleaning with pigeons.",
+        "Animated bride falls down a well and lands in a divorce attorney's apartment."
+      ]
+    },
+    {
+      "title": "Hocus Pocus",
+      "clues": [
+        "Teen lights forbidden candle, unleashes undead Halloween girlbosses.",
+        "Teen lights a candle and releases three witches with poor life-expectancy planning.",
+        "Sisters return after centuries and immediately need to steal childhood.",
+        "Witches are defeated primarily by sunrise and a talking cat."
+      ]
+    },
+    {
+      "title": "Practical Magic",
+      "deep": true,
+      "clues": [
+        "Sisters fight curse, grief, and a boyfriend who refuses to stay dead."
+      ]
+    },
+    {
+      "title": "The Craft",
+      "deep": true,
+      "clues": [
+        "Teen witches discover peer pressure is worse with spells."
+      ]
+    },
+    {
+      "title": "Gremlins",
+      "clues": [
+        "Pet owner skips instructions and accidentally turns Christmas into monster season.",
+        "Family ignores three simple care instructions and destroys the town.",
+        "Christmas pet comes with a feeding schedule everyone treats as a suggestion.",
+        "Cute pet becomes a municipal disaster after a midnight snack."
+      ]
+    },
+    {
+      "title": "Hellboy",
+      "deep": true,
+      "clues": [
+        "Government-employed demon handles occult problems with filed-down horns."
+      ]
+    },
+    {
+      "title": "Legend",
+      "deep": true,
+      "clues": [
+        "Young Tom Cruise protects unicorns from Satan's dramatic lighting package."
+      ]
+    },
+    {
+      "title": "Conan the Barbarian",
+      "deep": true,
+      "clues": [
+        "Very muscular man processes grief with swords and minimal shirts."
+      ]
+    },
+    {
+      "title": "Bridge to Terabithia",
+      "clues": [
+        "Kids build a fantasy kingdom; reality cancels the subscription.",
+        "Two kids invent a kingdom and the marketing lied to you about the tone.",
+        "Rope swing has a much larger role in this story than anyone wanted."
+      ]
+    },
+    {
+      "title": "Clash of the Titans",
+      "deep": true,
+      "clues": [
+        "Greek hero completes monster side quests for romance and reputation."
+      ]
+    },
+    {
+      "title": "Splash",
+      "deep": true,
+      "clues": [
+        "Man dates mermaid and learns bathrooms are relationship hazards."
+      ]
+    },
+    {
+      "title": "The Spiderwick Chronicles",
+      "deep": true,
+      "clues": [
+        "Kids move into old house and inherit fairy-world paperwork."
+      ]
+    }
+  ],
+  "SciFi": [
+    {
+      "title": "Star Wars: A New Hope",
+      "clues": [
+        "Farm boy joins space wizard to destroy fascist moon with a vent problem.",
+        "Farm boy answers a hologram and blows up a base with no railings.",
+        "Droid sales pitch escalates into planetary regime change."
+      ]
+    },
+    {
+      "title": "Star Wars: The Empire Strikes Back",
+      "clues": [
+        "Space rebellion loses badly while family secrets attack from a catwalk.",
+        "Rebels lose every engagement and one man gains a father.",
+        "Swamp gremlin runs the worst-marketed training program in the galaxy."
+      ]
+    },
+    {
+      "title": "Star Wars: Return of the Jedi",
+      "clues": [
+        "Son tries redeeming dad who keeps solving conflict with hand removal.",
+        "Teddy bears defeat a military empire with logs.",
+        "Son refuses to fight and lets his dad handle the workplace dispute."
+      ]
+    },
+    {
+      "title": "Star Wars: The Force Awakens",
+      "clues": [
+        "Scavenger finds laser sword and accidentally joins inherited space drama.",
+        "Scavenger finds a droid with a map and inherits an entire war.",
+        "Orphan on a sand planet discovers she is unusually good at everything."
+      ]
+    },
+    {
+      "title": "Star Wars: The Last Jedi",
+      "clues": [
+        "Old hero teaches failure while everyone else slow-drives through space.",
+        "Hermit throws a family heirloom over his shoulder and refuses to help.",
+        "Fleet chase proceeds at walking pace for an entire film."
+      ]
+    },
+    {
+      "title": "Star Wars: The Rise of Skywalker",
+      "clues": [
+        "Galaxy fights somehow-returned lightning grandpa with friendship and confusion.",
+        "Dead emperor announces he is available again."
+      ]
+    },
+    {
+      "title": "The Matrix",
+      "clues": [
+        "Cubicle guy takes pill and discovers reality is badly coded.",
+        "Office worker learns his job, his lunch, and his apartment are rendering.",
+        "Man takes pill from stranger and discovers he is a battery."
+      ]
+    },
+    {
+      "title": "The Matrix Reloaded",
+      "clues": [
+        "Chosen hacker attends clone beatdown and architecture TED Talk.",
+        "Chosen one attends a very long meeting with an architect."
+      ]
+    },
+    {
+      "title": "The Matrix Revolutions",
+      "deep": true,
+      "clues": [
+        "Robot war pauses for one man's peace negotiation by destiny vibes."
+      ]
+    },
+    {
+      "title": "The Matrix Resurrections",
+      "deep": true,
+      "clues": [
+        "Corporate nostalgia reboots a man who already escaped the franchise."
+      ]
+    },
+    {
+      "title": "Avatar",
+      "clues": [
+        "Marine infiltrates blue alien culture, then joins the employee rebellion.",
+        "Marine gets a rental body and defects to the local ecosystem.",
+        "Mining company underestimates a forest with a login system."
+      ]
+    },
+    {
+      "title": "Avatar: The Way of Water",
+      "clues": [
+        "Blue family relocates to beach and still can't dodge military baggage.",
+        "Blue family relocates to the coast and joins a different HOA."
+      ]
+    },
+    {
+      "title": "Jurassic Park",
+      "clues": [
+        "Dinosaur theme park treats chaos theory like a suggestion.",
+        "Theme park preview goes badly when the IT department calls in sick.",
+        "Investors tour an attraction whose main feature escapes during the tour."
+      ]
+    },
+    {
+      "title": "Jurassic World",
+      "clues": [
+        "Corporation makes scarier dinosaur because regular dinosaurs lacked synergy.",
+        "Park builds a scarier animal for engagement metrics and it works."
+      ]
+    },
+    {
+      "title": "Jurassic World: Fallen Kingdom",
+      "clues": [
+        "Dinosaur rescue becomes volcanic auction night at murder mansion.",
+        "Dinosaurs are rescued from a volcano and immediately auctioned in a basement."
+      ]
+    },
+    {
+      "title": "Jurassic World: Dominion",
+      "clues": [
+        "Dinosaurs return, but giant locusts somehow steal the meeting agenda.",
+        "Locusts are the actual villain and nobody mentions it again."
+      ]
+    },
+    {
+      "title": "Inception",
+      "clues": [
+        "Man installs business idea inside another man's dream like malware.",
+        "Corporate espionage team performs unlicensed therapy several layers deep.",
+        "Men argue about a spinning top for two and a half hours."
+      ]
+    },
+    {
+      "title": "Interstellar",
+      "clues": [
+        "Farmer dad leaves Earth because corn can no longer carry humanity.",
+        "Farmer leaves his kids to fix a bookshelf from behind time.",
+        "Astronaut visits a wet planet for an hour and loses twenty-three years."
+      ]
+    },
+    {
+      "title": "Gravity",
+      "clues": [
+        "Astronaut spends entire shift losing equipment, coworkers, and patience.",
+        "Debris ruins a spacewalk and one woman handles the entire commute home."
+      ]
+    },
+    {
+      "title": "The Martian",
+      "clues": [
+        "NASA man survives Mars with math, duct tape, and spite potatoes.",
+        "Botanist is left behind and solves it with potatoes and paperwork.",
+        "Man survives on a dead planet using math and disco he hates."
+      ]
+    },
+    {
+      "title": "Arrival",
+      "clues": [
+        "Linguist gets alien homework and a spoiler for her own life.",
+        "Linguist learns alien grammar and receives her own future as a side effect."
+      ]
+    },
+    {
+      "title": "Blade Runner",
+      "clues": [
+        "Future cop investigates synthetic people and his own vibe settings.",
+        "Detective retires artificial people and never settles whether he is one."
+      ]
+    },
+    {
+      "title": "Blade Runner 2049",
+      "clues": [
+        "Lonely future cop learns he may just be plot support with great lighting.",
+        "Officer investigates a miracle birth and discovers he is not the protagonist."
+      ]
+    },
+    {
+      "title": "District 9",
+      "clues": [
+        "Bureaucrat becomes alien shrimp and finally develops empathy.",
+        "Bureaucrat serves eviction notices to aliens and starts becoming one."
+      ]
+    },
+    {
+      "title": "Dune (2021)",
+      "clues": [
+        "Noble teen discovers sand, spice, and his messiah influencer package.",
+        "Noble family accepts a promotion that is obviously a trap.",
+        "Teen relocates to a desert and everyone insists he is a prophecy."
+      ]
+    },
+    {
+      "title": "Dune: Part Two",
+      "clues": [
+        "Desert boyfriend chooses holy war as a leadership strategy.",
+        "Messiah reluctance ends the second riding a worm becomes an option."
+      ]
+    },
+    {
+      "title": "Edge of Tomorrow",
+      "clues": [
+        "PR coward dies repeatedly until he becomes a competent action figure.",
+        "Officer dies repeatedly until he becomes competent at his own job."
+      ]
+    },
+    {
+      "title": "Elysium",
+      "deep": true,
+      "clues": [
+        "Factory worker with robot spine storms rich people's orbital gated community."
+      ]
+    },
+    {
+      "title": "RoboCop",
+      "clues": [
+        "Dead cop returns as corporate-owned blender with a badge.",
+        "Murdered cop is reissued as company property with three directives."
+      ]
+    },
+    {
+      "title": "Terminator",
+      "clues": [
+        "Robot travels back in time to sabotage one woman's dating future.",
+        "Waitress is hunted over a child she has not had yet."
+      ]
+    },
+    {
+      "title": "Terminator 2: Judgment Day",
+      "clues": [
+        "Murder robot becomes stepdad to prevent murder robots.",
+        "Killer robot is reassigned as a babysitter and learns to wave."
+      ]
+    },
+    {
+      "title": "Terminator: Dark Fate",
+      "deep": true,
+      "clues": [
+        "Future sends another robot because time apparently learned nothing."
+      ]
+    },
+    {
+      "title": "Transformers",
+      "clues": [
+        "Alien cars blow up a teenager's attempt at having a normal summer.",
+        "Teen buys a used car that turns out to be foreign military hardware."
+      ]
+    },
+    {
+      "title": "Transformers: Revenge of the Fallen",
+      "deep": true,
+      "clues": [
+        "Robots fight near landmarks until geography submits a complaint."
+      ]
+    },
+    {
+      "title": "Transformers: Dark of the Moon",
+      "deep": true,
+      "clues": [
+        "Moon landing conspiracy turns into a robot real-estate dispute."
+      ]
+    },
+    {
+      "title": "Transformers: Age of Extinction",
+      "deep": true,
+      "clues": [
+        "Robot dinosaurs arrive because explosions needed a costume change."
+      ]
+    },
+    {
+      "title": "Transformers: The Last Knight",
+      "deep": true,
+      "clues": [
+        "Ancient robot lore rewrites history and everyone pretends to follow it."
+      ]
+    },
+    {
+      "title": "Guardians of the Galaxy",
+      "clues": [
+        "Space raccoon, tree, and friends save galaxy between HR violations.",
+        "Five felons form a band around a stolen orb and a mixtape.",
+        "Space criminals save a planet largely by accident and dancing."
+      ]
+    },
+    {
+      "title": "Ready Player One",
+      "clues": [
+        "Kid beats rich nerds using 80s references and suspicious stamina.",
+        "Teens compete for control of a video game left by a dead billionaire."
+      ]
+    },
+    {
+      "title": "Her",
+      "clues": [
+        "Lonely man dates software until the update moves on.",
+        "Man falls for his operating system, which is seeing several hundred other people."
+      ]
+    },
+    {
+      "title": "I Am Legend",
+      "clues": [
+        "Man and dog survive apocalypse until the dog ruins your week forever.",
+        "Last man in Manhattan keeps a strict schedule and talks to mannequins."
+      ]
+    },
+    {
+      "title": "Independence Day",
+      "clues": [
+        "Aliens invade and America defeats them with speeches and a laptop.",
+        "Pilot and scientist defeat an invasion with a laptop virus.",
+        "President gives a speech that is better than the plan it describes."
+      ]
+    },
+    {
+      "title": "Pacific Rim",
+      "clues": [
+        "Giant robots require friendship compatibility before punching sea monsters.",
+        "Humanity fights sea monsters with two-person mech suits and feelings."
+      ]
+    },
+    {
+      "title": "The Fifth Element",
+      "clues": [
+        "Taxi driver escorts orange-haired savior against moody space cloud.",
+        "Cab driver receives an orange-haired woman through the roof and saves everything."
+      ]
+    },
+    {
+      "title": "WALL-E",
+      "clues": [
+        "Trash robot's crush accidentally becomes humanity's exit interview.",
+        "Trash robot falls for a probe and accidentally saves the human species."
+      ]
+    },
+    {
+      "title": "Ex Machina",
+      "clues": [
+        "Tech billionaire tests robot intelligence and fails the personality exam.",
+        "Coder is invited to a mountain house to test a robot and is the actual test."
+      ]
+    },
+    {
+      "title": "Looper",
+      "deep": true,
+      "clues": [
+        "Hitman meets future self and makes it everybody's timeline problem."
+      ]
+    },
+    {
+      "title": "Snowpiercer",
+      "deep": true,
+      "clues": [
+        "Class war travels by train because the planet rage-quit."
+      ]
+    },
+    {
+      "title": "The Hunger Games",
+      "clues": [
+        "Teen volunteers for murder Olympics after sister's name gets called.",
+        "Government stages a children's tournament as annual programming.",
+        "Girl volunteers for her sister and turns berries into a political statement."
+      ]
+    },
+    {
+      "title": "The Hunger Games: Catching Fire",
+      "clues": [
+        "Girl survives murder Olympics, prize is bonus murder Olympics.",
+        "Winners are recalled for a second tournament with a clock-shaped arena."
+      ]
+    },
+    {
+      "title": "The Hunger Games: Mockingjay",
+      "clues": [
+        "Revolution turns traumatized teenager into reluctant propaganda department.",
+        "Rebellion needs its symbol to film some commercials."
+      ]
+    },
+    {
+      "title": "Minority Report",
+      "clues": [
+        "Cop gets blamed for a crime his future self hasn't scheduled yet.",
+        "Cop who arrests people for future crimes is charged with a future crime."
+      ]
+    },
+    {
+      "title": "Total Recall",
+      "clues": [
+        "Man buys fake vacation and receives premium identity collapse.",
+        "Man buys a vacation memory and cannot verify anything afterward."
+      ]
+    },
+    {
+      "title": "The War of the Worlds",
+      "deep": true,
+      "clues": [
+        "Aliens conquer Earth but forget germs exist."
+      ]
+    },
+    {
+      "title": "The Day the Earth Stood Still",
+      "deep": true,
+      "clues": [
+        "Alien comes to Earth, judges humanity, and honestly has notes."
+      ]
+    },
+    {
+      "title": "The Adjustment Bureau",
+      "deep": true,
+      "clues": [
+        "Romance gets micromanaged by fate bureaucrats in hats."
+      ]
+    },
+    {
+      "title": "Star Trek",
+      "clues": [
+        "Space cadets inherit a starship during a crisis no one approved.",
+        "Cadet cheats a simulation and is immediately promoted to running the ship."
+      ]
+    },
+    {
+      "title": "Star Trek Into Darkness",
+      "clues": [
+        "Enterprise crew wakes up a genetically engineered gym bro with grievances.",
+        "Crew hunts a fugitive whose name is a spoiler."
+      ]
+    },
+    {
+      "title": "Star Trek Beyond",
+      "deep": true,
+      "clues": [
+        "Starship crashes, crew weaponizes Beastie Boys as tactical doctrine."
+      ]
+    },
+    {
+      "title": "The Hitchhiker's Guide to the Galaxy",
+      "deep": true,
+      "clues": [
+        "Earth is demolished for interstellar roadwork; one man forgot his towel."
+      ]
+    },
+    {
+      "title": "Tron: Legacy",
+      "deep": true,
+      "clues": [
+        "Son enters dad's computer and finds neon family therapy."
+      ]
+    },
+    {
+      "title": "Oblivion",
+      "deep": true,
+      "clues": [
+        "Clone maintenance guy learns the boss fight is himself, repeatedly."
+      ]
+    },
+    {
+      "title": "The Island",
+      "deep": true,
+      "clues": [
+        "Luxury clone farm discovers its inventory wants civil rights."
+      ]
+    },
+    {
+      "title": "The Host",
+      "deep": true,
+      "clues": [
+        "Alien parasite takes host body and gets stuck with teenage feelings."
+      ]
+    },
+    {
+      "title": "Tomorrowland",
+      "deep": true,
+      "clues": [
+        "Optimist visits future utopia and finds the fine print doing crimes."
+      ]
+    },
+    {
+      "title": "Ender's Game",
+      "deep": true,
+      "clues": [
+        "Gifted child aces simulator and accidentally commits galaxy-level war crimes."
+      ]
+    }
+  ],
+  "Superhero": [
+    {
+      "title": "Iron Man",
+      "clues": [
+        "Arms dealer builds chest battery and discovers accountability through explosions.",
+        "Weapons dealer builds an escape suit in a cave and changes careers.",
+        "Billionaire holds a press conference and skips the entire secret identity phase.",
+        "Man narrates his own origin to a room of soldiers before the ambush."
+      ]
+    },
+    {
+      "title": "Iron Man 2",
+      "deep": true,
+      "clues": [
+        "Billionaire battles whip electrician while slowly becoming a toxic element."
+      ]
+    },
+    {
+      "title": "Iron Man 3",
+      "clues": [
+        "Billionaire fights fake terrorist branding while his anxiety builds extra suits.",
+        "Man with panic attacks fights a terrorist who is a hired actor."
+      ]
+    },
+    {
+      "title": "Captain America: The First Avenger",
+      "clues": [
+        "Skinny patriot gets government juice and starts punching fascism full-time.",
+        "Small man volunteers for an experiment and punches propaganda for a living."
+      ]
+    },
+    {
+      "title": "Captain America: The Winter Soldier",
+      "clues": [
+        "Man learns best friend is enemy contractor with memory problems.",
+        "Spy agency turns out to be the other agency the whole time.",
+        "Soldier discovers his dead friend has been reissued with a metal arm."
+      ]
+    },
+    {
+      "title": "Captain America: Civil War",
+      "clues": [
+        "Friends argue over paperwork and turn airport security into rubble.",
+        "Superhero team splits over paperwork and settles it at an airport."
+      ]
+    },
+    {
+      "title": "The Avengers",
+      "clues": [
+        "Superpowered coworkers bond by fighting adopted prince's alien group project.",
+        "Six people who dislike each other defend New York from an alien rental army."
+      ]
+    },
+    {
+      "title": "Avengers: Age of Ultron",
+      "clues": [
+        "Robot assistant reads the internet once and chooses extinction.",
+        "Billionaire builds a peacekeeping robot and it immediately reads the internet."
+      ]
+    },
+    {
+      "title": "Avengers: Infinity War",
+      "clues": [
+        "Purple population-control enthusiast gathers jewelry for universe-wide downsizing.",
+        "Purple man collects jewelry and wins.",
+        "Villain achieves his entire goal while the heroes argue about a plan."
+      ]
+    },
+    {
+      "title": "Avengers: Endgame",
+      "clues": [
+        "Traumatized heroes solve grief with time travel and unpaid overtime.",
+        "Survivors handle grief by inventing time travel and revisiting old missions.",
+        "Everyone assembles for a portal shot the marketing had already spoiled."
+      ]
+    },
+    {
+      "title": "Thor",
+      "clues": [
+        "Thunder himbo gets grounded in New Mexico for attitude correction.",
+        "Prince is grounded on Earth until he learns manners and hammer eligibility."
+      ]
+    },
+    {
+      "title": "Thor: The Dark World",
+      "deep": true,
+      "clues": [
+        "God fights forgettable dark elves while everyone waits for Loki."
+      ]
+    },
+    {
+      "title": "Thor: Ragnarok",
+      "clues": [
+        "God loses hammer, haircut, and home, but gains timing.",
+        "God loses his hammer, his hair, and his home planet, in that order."
+      ]
+    },
+    {
+      "title": "Thor: Love and Thunder",
+      "clues": [
+        "God processes grief with screaming goats and weaponized whimsy.",
+        "Ex-girlfriend gets the hammer and the better character arc."
+      ]
+    },
+    {
+      "title": "The Incredible Hulk",
+      "clues": [
+        "Scientist turns stress into shirt-destroying green rage subscription.",
+        "Scientist runs from the army and does cardio to stay calm."
+      ]
+    },
+    {
+      "title": "Black Panther",
+      "clues": [
+        "King returns home and finds cousin has extremely valid geopolitical complaints.",
+        "New king's legitimacy is challenged by a cousin with a better argument.",
+        "Isolationist nation debates foreign policy via ritual combat."
+      ]
+    },
+    {
+      "title": "Doctor Strange",
+      "clues": [
+        "Arrogant surgeon wrecks hands, downloads magic, and abuses time.",
+        "Arrogant surgeon wrecks his hands and enrolls in a monastery.",
+        "Man defeats a demon by annoying it with a time loop."
+      ]
+    },
+    {
+      "title": "Doctor Strange in the Multiverse of Madness",
+      "clues": [
+        "Wizard fights grieving mom whose parenting plan has multiverse casualties.",
+        "Grieving witch reads a bad book and goes shopping across realities."
+      ]
+    },
+    {
+      "title": "Ant-Man",
+      "clues": [
+        "Thief becomes tiny and still can't escape co-parenting complications.",
+        "Ex-con is recruited to steal a suit that makes theft much easier."
+      ]
+    },
+    {
+      "title": "Ant-Man and the Wasp",
+      "deep": true,
+      "clues": [
+        "Tiny ex-con and tiny partner solve quantum family storage issue."
+      ]
+    },
+    {
+      "title": "Ant-Man and the Wasp: Quantumania",
+      "deep": true,
+      "clues": [
+        "Entire family falls into subatomic nonsense and meets a timeline landlord."
+      ]
+    },
+    {
+      "title": "Guardians of the Galaxy Vol. 2",
+      "clues": [
+        "Space found family discovers dad is a planet with intimacy issues.",
+        "Man meets his father, a planet, and it goes about as well as expected."
+      ]
+    },
+    {
+      "title": "Spider-Man: Homecoming",
+      "clues": [
+        "Teen superhero battles crush's dad, who is also a bird criminal.",
+        "Teen ignores his internship supervisor and fights his date's dad."
+      ]
+    },
+    {
+      "title": "Spider-Man: Far From Home",
+      "clues": [
+        "Teen vacation gets hijacked by hologram influencer with trauma props.",
+        "School trip is hijacked by a man with drones and a grudge about branding."
+      ]
+    },
+    {
+      "title": "Spider-Man: No Way Home",
+      "clues": [
+        "Teen ruins spell and turns multiverse into spider group therapy.",
+        "Botched memory spell imports every previous tenant of the franchise."
+      ]
+    },
+    {
+      "title": "Spider-Man 2",
+      "clues": [
+        "Broke superhero fights tentacle professor while rent remains undefeated.",
+        "Hero quits, gets his powers back, and fights a scientist with four arms."
+      ]
+    },
+    {
+      "title": "Spider-Man 3",
+      "clues": [
+        "Superhero's emo haircut becomes a public safety event.",
+        "Alien goo gives a nerd bangs and a dance number."
+      ]
+    },
+    {
+      "title": "The Amazing Spider-Man",
+      "clues": [
+        "Skateboard spider boy dates science girl and annoys a lizard man.",
+        "Teen investigates his father's research and creates a lizard coworker."
+      ]
+    },
+    {
+      "title": "The Amazing Spider-Man 2",
+      "deep": true,
+      "clues": [
+        "Electric fanboy and physics team up to destroy teen's emotional stability."
+      ]
+    },
+    {
+      "title": "Batman Begins",
+      "clues": [
+        "Billionaire studies ninja theater to cope with childhood trauma.",
+        "Billionaire trains with a cult, quits, and returns home to fight crime."
+      ]
+    },
+    {
+      "title": "The Dark Knight",
+      "clues": [
+        "Clown terrorist turns one billionaire's ethics class into citywide homework.",
+        "Clown proves a point about a city using two boats and a pencil.",
+        "Vigilante's biggest win is convincing everyone he did something worse.",
+        "Man burns a mountain of money to prove he was never in it for money."
+      ]
+    },
+    {
+      "title": "The Dark Knight Rises",
+      "clues": [
+        "Retired bat man fixes broken back with prison CrossFit.",
+        "Retired hero has his back broken and does eight years of physical therapy."
+      ]
+    },
+    {
+      "title": "The Batman",
+      "clues": [
+        "Eyeliner detective punches crime until riddles become urban planning.",
+        "Detective follows a riddler's clues and discovers his family were the villains."
+      ]
+    },
+    {
+      "title": "Man of Steel",
+      "clues": [
+        "Alien refugee learns Earth customs by leveling several city blocks.",
+        "Alien farm boy destroys most of a city while establishing himself as a hero."
+      ]
+    },
+    {
+      "title": "Batman v Superman",
+      "clues": [
+        "Two caped men stop fighting after discovering identical mom branding.",
+        "Two men stop fighting once they learn their mothers share a name."
+      ]
+    },
+    {
+      "title": "Justice League",
+      "clues": [
+        "Team resurrects alien coworker to fight a gray manager from space.",
+        "Team assembles to fight a man with an axe and a bad rendering budget."
+      ]
+    },
+    {
+      "title": "Wonder Woman",
+      "clues": [
+        "Island warrior leaves paradise and speedruns World War I disillusionment.",
+        "Island warrior leaves paradise to end a war she assumes has one culprit."
+      ]
+    },
+    {
+      "title": "Wonder Woman 1984",
+      "deep": true,
+      "clues": [
+        "Wish rock proves everyone needs therapy, not magic prizes."
+      ]
+    },
+    {
+      "title": "Aquaman",
+      "clues": [
+        "Fish king solves ocean politics through tattoos and shirtless diplomacy.",
+        "Half-Atlantean settles a succession dispute by riding a very large seahorse."
+      ]
+    },
+    {
+      "title": "Aquaman and the Lost Kingdom",
+      "deep": true,
+      "clues": [
+        "Ocean brothers argue again while climate villain updates the grievance spreadsheet."
+      ]
+    },
+    {
+      "title": "Shazam!",
+      "clues": [
+        "Foster kid yells magic word and becomes adult-shaped chaos.",
+        "Foster kid says a word and becomes a muscular adult with no relevant skills."
+      ]
+    },
+    {
+      "title": "Shazam! Fury of the Gods",
+      "deep": true,
+      "clues": [
+        "Teen heroes fight mythological grandmas with poor boundary skills."
+      ]
+    },
+    {
+      "title": "The Flash",
+      "deep": true,
+      "clues": [
+        "Fast guy breaks time because grief said no to rules."
+      ]
+    },
+    {
+      "title": "Green Lantern",
+      "deep": true,
+      "clues": [
+        "Test pilot receives space jewelry and becomes CGI regret."
+      ]
+    },
+    {
+      "title": "Black Adam",
+      "deep": true,
+      "clues": [
+        "Ancient lightning man returns and treats diplomacy like optional content."
+      ]
+    },
+    {
+      "title": "Deadpool",
+      "clues": [
+        "Cancer patient becomes fourth-wall murder clown with sword-based coping.",
+        "Mercenary is cured of cancer, ruined cosmetically, and takes it personally.",
+        "Man breaks the fourth wall while pursuing the least complicated revenge plot available."
+      ]
+    },
+    {
+      "title": "Deadpool 2",
+      "clues": [
+        "Mouthy assassin adopts angry kid and accidentally starts caring.",
+        "Man forms a team and most of it dies during the parachute drop."
+      ]
+    },
+    {
+      "title": "Logan",
+      "clues": [
+        "Tired claw dad escorts daughter through one final emotional meat grinder.",
+        "Aging hero drives a limo and reluctantly transports a small violent girl."
+      ]
+    },
+    {
+      "title": "X-Men",
+      "clues": [
+        "Mutant boarding school promises acceptance and delivers constant explosions.",
+        "School for gifted kids handles a civil rights allegory with lasers."
+      ]
+    },
+    {
+      "title": "X2",
+      "deep": true,
+      "clues": [
+        "Government attacks school, proving mutant kids needed better field trip forms."
+      ]
+    },
+    {
+      "title": "X-Men: The Last Stand",
+      "deep": true,
+      "clues": [
+        "Mutant cure turns relationship drama into bridge-moving catastrophe."
+      ]
+    },
+    {
+      "title": "X-Men: First Class",
+      "clues": [
+        "Stylish mutants prevent nuclear war and still fumble the friendship.",
+        "Two friends found a school and end the film on opposite sides of a beach."
+      ]
+    },
+    {
+      "title": "X-Men: Days of Future Past",
+      "clues": [
+        "Time-traveling Wolverine begs younger coworkers to stop making the future awful.",
+        "Man is sent back to the seventies to stop a televised assassination."
+      ]
+    },
+    {
+      "title": "X-Men: Apocalypse",
+      "deep": true,
+      "clues": [
+        "Ancient blue motivational speaker recruits teens for world-ending pyramid scheme."
+      ]
+    },
+    {
+      "title": "X-Men: Dark Phoenix",
+      "deep": true,
+      "clues": [
+        "Team ignores friend's cosmic burnout until it becomes everyone's problem."
+      ]
+    },
+    {
+      "title": "Fantastic Four",
+      "clues": [
+        "Space radiation converts coworkers into rock, fire, stretch, and invisibility issues.",
+        "Space accident gives four coworkers powers matching their personalities."
+      ]
+    },
+    {
+      "title": "Fantastic Four: Rise of the Silver Surfer",
+      "deep": true,
+      "clues": [
+        "Shiny space surfer announces planet-eating boss is on the way."
+      ]
+    },
+    {
+      "title": "Venom",
+      "clues": [
+        "Journalist gets alien goo roommate with strong snack opinions.",
+        "Failed journalist bonds with an alien that mostly wants to eat people."
+      ]
+    },
+    {
+      "title": "Morbius",
+      "deep": true,
+      "clues": [
+        "Doctor becomes vampire-adjacent and accidentally achieves meme immortality."
+      ]
+    },
+    {
+      "title": "Hellboy",
+      "deep": true,
+      "clues": [
+        "Government demon clocks in for monsters and clocks out for cats."
+      ]
+    },
+    {
+      "title": "Hancock",
+      "clues": [
+        "Drunk superhero discovers the real villain is reputation management.",
+        "Drunk hero hires a PR consultant to fix his approval rating."
+      ]
+    },
+    {
+      "title": "Kick-Ass",
+      "deep": true,
+      "clues": [
+        "Teen buys costume, skips powers, and schedules himself for violence."
+      ]
+    },
+    {
+      "title": "The Crow",
+      "deep": true,
+      "clues": [
+        "Dead musician returns with excellent makeup and a murder checklist."
+      ]
+    },
+    {
+      "title": "The Mask",
+      "clues": [
+        "Bank clerk finds mask and becomes green workplace hazard.",
+        "Bank clerk finds a wooden mask and becomes a cartoon."
+      ]
+    },
+    {
+      "title": "Unbreakable",
+      "clues": [
+        "Quiet security guard realizes he was the superhero before the marketing plan.",
+        "Man survives a train crash and a comic book dealer explains why."
+      ]
+    },
+    {
+      "title": "Glass",
+      "deep": true,
+      "clues": [
+        "Psychiatrist tries to therapize superheroes and underestimates brand loyalty."
+      ]
+    },
+    {
+      "title": "Sky High",
+      "deep": true,
+      "clues": [
+        "Superpowered high school sorts teenagers into cliques with capes."
+      ]
+    }
+  ],
+  "EmotionalDamage": [
+    {
+      "title": "Up",
+      "clues": [
+        "Old man's grief balloon takes off and brings a child passenger.",
+        "Ten minutes of marriage destroy an entire audience before the plot starts."
+      ]
+    },
+    {
+      "title": "Inside Out",
+      "clues": [
+        "Imaginary friend deletes himself so childhood can keep moving.",
+        "Imaginary friend makes a career-ending decision in a memory dump."
+      ]
+    },
+    {
+      "title": "Coco",
+      "clues": [
+        "One song in a grandma's room destroys the audience's emotional plumbing.",
+        "Great-grandmother remembers a song and everyone in the room needs a minute."
+      ]
+    },
+    {
+      "title": "Toy Story 3",
+      "clues": [
+        "Plastic friends face furnace death and make everyone regret having feelings.",
+        "Toys hold hands at an incinerator and then get donated."
+      ]
+    },
+    {
+      "title": "Bridge to Terabithia",
+      "clues": [
+        "Two kids build escape fantasy until grief changes the zoning laws."
+      ]
+    },
+    {
+      "title": "Titanic",
+      "clues": [
+        "Boat sinks, romance floats, and door arguments never die.",
+        "There was room on the door and we will never stop discussing it."
+      ]
+    },
+    {
+      "title": "The Notebook",
+      "clues": [
+        "Man keeps love alive with daily story recaps and unlimited patience.",
+        "Man reads a notebook to his wife every day because she forgets him."
+      ]
+    },
+    {
+      "title": "Marley & Me",
+      "clues": [
+        "Dog speedruns chaos, aging, and your entire tissue supply.",
+        "Family adopts a badly behaved dog and time does the rest."
+      ]
+    },
+    {
+      "title": "The Fault in Our Stars",
+      "clues": [
+        "Teen romance meets cancer, which has terrible timing and worse manners.",
+        "Two teens fall in love in a support group and one of them is fine, briefly."
+      ]
+    },
+    {
+      "title": "The Green Mile",
+      "clues": [
+        "Gentle giant heals everyone except the ending.",
+        "Prison guard learns his gentlest inmate is innocent and executes him anyway."
+      ]
+    },
+    {
+      "title": "Grave of the Fireflies",
+      "clues": [
+        "Siblings survive war until hope becomes the cruelest character.",
+        "Two children and a tin of candy during wartime, and that is the whole film."
+      ]
+    },
+    {
+      "title": "A Walk to Remember",
+      "clues": [
+        "Bad boy learns love, then the movie removes the floor."
+      ]
+    },
+    {
+      "title": "P.S. I Love You",
+      "clues": [
+        "Dead husband schedules grief tasks like an emotional project manager."
+      ]
+    },
+    {
+      "title": "Me Before You",
+      "clues": [
+        "Caretaker love story asks a question nobody leaves unhurt."
+      ]
+    },
+    {
+      "title": "Hachi: A Dog's Tale",
+      "clues": [
+        "Dog turns loyalty into a train-station haunting.",
+        "Dog waits at a train station for a decade."
+      ]
+    },
+    {
+      "title": "Old Yeller",
+      "clues": [
+        "Boy learns responsibility through the worst possible dog decision.",
+        "Boy gets a dog, loves the dog, and is handed a rifle."
+      ]
+    },
+    {
+      "title": "Bambi",
+      "clues": [
+        "A deer's childhood is canceled by one offscreen gunshot.",
+        "Young deer learns about hunting season the hard way."
+      ]
+    },
+    {
+      "title": "Manchester by the Sea",
+      "clues": [
+        "Man comes home carrying a grief so heavy it bends the movie.",
+        "Man returns home as a guardian and cannot get past what he did."
+      ]
+    },
+    {
+      "title": "Requiem for a Dream",
+      "clues": [
+        "Addiction montage becomes a trapdoor under every character.",
+        "Four people chase a high and the editing punishes all of them."
+      ]
+    },
+    {
+      "title": "Atonement",
+      "clues": [
+        "Child's lie detonates a love story decades wide."
+      ]
+    },
+    {
+      "title": "The Lion King",
+      "clues": [
+        "Cub watches father die and has to turn trauma into musical growth.",
+        "Cub nudges his father's body and asks him to get up."
+      ]
+    },
+    {
+      "title": "The Time Traveler's Wife",
+      "clues": [
+        "Marriage meets time travel and becomes scheduled abandonment."
+      ]
+    },
+    {
+      "title": "The Pursuit of Happyness",
+      "clues": [
+        "Father and son hit rock bottom in a public bathroom before climbing."
+      ]
+    },
+    {
+      "title": "Million Dollar Baby",
+      "clues": [
+        "Boxing dream wins the room, then fate changes sports entirely.",
+        "Boxer finds a father figure and asks him for one last favor."
+      ]
+    },
+    {
+      "title": "Schindler's List",
+      "clues": [
+        "One man saves lives while history keeps asking for more.",
+        "Businessman spends his fortune on names and still counts what he could not buy."
+      ]
+    },
+    {
+      "title": "La La Land",
+      "clues": [
+        "Two artists choose dreams and leave each other in the alternate ending.",
+        "Two artists succeed separately and imagine the version where they did not."
+      ]
+    },
+    {
+      "title": "The Iron Claw",
+      "deep": true,
+      "clues": [
+        "Wrestling family fights a curse that never taps out."
+      ]
+    },
+    {
+      "title": "Aftersun",
+      "deep": true,
+      "clues": [
+        "Daughter replays vacation footage and finally hears the goodbye inside it."
+      ]
+    },
+    {
+      "title": "Past Lives",
+      "deep": true,
+      "clues": [
+        "Two childhood souls meet the life where they did not choose each other."
+      ]
+    },
+    {
+      "title": "Call Me By Your Name",
+      "clues": [
+        "Summer love ends, and a fireplace gets promoted to emotional executioner."
+      ]
+    },
+    {
+      "title": "Brokeback Mountain",
+      "clues": [
+        "Two cowboys love each other in a world built to punish them for it."
+      ]
+    },
+    {
+      "title": "Moonlight",
+      "clues": [
+        "A man's whole life is shaped by who he could not safely become."
+      ]
+    },
+    {
+      "title": "Room",
+      "clues": [
+        "Mother and son escape one prison and meet the world's bigger one."
+      ]
+    },
+    {
+      "title": "The Whale",
+      "clues": [
+        "Man tries to repair fatherhood while grief eats the room."
+      ]
+    },
+    {
+      "title": "The Road",
+      "deep": true,
+      "clues": [
+        "Father and son carry hope through a planet that has quit."
+      ]
+    },
+    {
+      "title": "Life is Beautiful",
+      "clues": [
+        "Dad turns horror into pretend play until love runs out of cover."
+      ]
+    },
+    {
+      "title": "A Star is Born",
+      "clues": [
+        "Her star rises while his demons keep lowering the ceiling."
+      ]
+    },
+    {
+      "title": "Seven Pounds",
+      "deep": true,
+      "clues": [
+        "Guilt becomes a charitable plan with a devastating final invoice."
+      ]
+    },
+    {
+      "title": "Fruitvale Station",
+      "deep": true,
+      "clues": [
+        "Ordinary errands become the setup for unbearable real-life loss."
+      ]
+    },
+    {
+      "title": "Sophie's Choice",
+      "deep": true,
+      "clues": [
+        "Mother's impossible choice haunts every room after it."
+      ]
+    },
+    {
+      "title": "The Boy in the Striped Pyjamas",
+      "deep": true,
+      "clues": [
+        "Children's innocence walks directly into history's machinery."
+      ]
+    },
+    {
+      "title": "Terms of Endearment",
+      "deep": true,
+      "clues": [
+        "Mother and daughter spend a lifetime fighting because love is loud."
+      ]
+    },
+    {
+      "title": "Steel Magnolias",
+      "deep": true,
+      "clues": [
+        "Friendship keeps laughing right up until the heartbreak wins."
+      ]
+    },
+    {
+      "title": "Eternal Sunshine of the Spotless Mind",
+      "clues": [
+        "Man deletes ex, then learns pain was part of the receipt.",
+        "Man erases his girlfriend and spends the procedure trying to hide her."
+      ]
+    },
+    {
+      "title": "The Lovely Bones",
+      "deep": true,
+      "clues": [
+        "Girl narrates her family's grief from the place they cannot reach."
+      ]
+    },
+    {
+      "title": "Philadelphia",
+      "clues": [
+        "Lawyer fights discrimination while his body is losing its appeal."
+      ]
+    },
+    {
+      "title": "The Fox and the Hound",
+      "clues": [
+        "Fox and hound learn friendship cannot outrun what humans teach them."
+      ]
+    },
+    {
+      "title": "Finding Nemo",
+      "clues": [
+        "Dad crosses ocean because his first-scene trauma never clocked out."
+      ]
+    },
+    {
+      "title": "Inside Out 2",
+      "clues": [
+        "Puberty gives anxiety a clipboard and the brain a hostile takeover."
+      ]
+    },
+    {
+      "title": "Big Hero 6",
+      "clues": [
+        "Boy turns grief into a healthcare robot's villain arc."
+      ]
+    },
+    {
+      "title": "Toy Story 2",
+      "clues": [
+        "Cowgirl's abandonment song reaches directly through the screen and steals air."
+      ]
+    },
+    {
+      "title": "Toy Story 4",
+      "clues": [
+        "Toy chooses freedom, and childhood quietly closes another door."
+      ]
+    },
+    {
+      "title": "Soul",
+      "clues": [
+        "Jazz man discovers purpose is not the same thing as living."
+      ]
+    },
+    {
+      "title": "Ratatouille",
+      "clues": [
+        "Food critic takes one bite and gets emotionally body-slammed by childhood."
+      ]
+    },
+    {
+      "title": "Wall-E",
+      "clues": [
+        "Tiny robot holds hands like humanity depends on it, because it does."
+      ]
+    },
+    {
+      "title": "Frozen 2",
+      "clues": [
+        "Sister follows ancestral guilt into an ice cave and sings through it."
+      ]
+    },
+    {
+      "title": "Cinderella",
+      "clues": [
+        "Abused girl survives by being kind enough to make cynicism look silly."
+      ]
+    },
+    {
+      "title": "Beauty and the Beast",
+      "clues": [
+        "Woman tries to love the person beneath the curse and furniture politics."
+      ]
+    },
+    {
+      "title": "Moana",
+      "clues": [
+        "Teen learns identity, grief, and leadership from an ocean with boundaries."
+      ]
+    },
+    {
+      "title": "Encanto",
+      "clues": [
+        "Perfect family realizes perfection was the curse wearing better clothes."
+      ]
+    },
+    {
+      "title": "Lilo & Stitch",
+      "clues": [
+        "Girl's broken family adopts an alien-shaped coping mechanism."
+      ]
+    },
+    {
+      "title": "The Little Prince",
+      "deep": true,
+      "clues": [
+        "Child learns adults traded wonder for paperwork and forgot the stars."
+      ]
+    },
+    {
+      "title": "Wonder",
+      "clues": [
+        "Kid asks the world to be kinder than it wants to be."
+      ]
+    },
+    {
+      "title": "My Girl",
+      "clues": [
+        "Childhood crush story gets permanently interrupted by bees."
+      ]
+    },
+    {
+      "title": "Flipped",
+      "deep": true,
+      "clues": [
+        "Two kids fall for each other while emotional timing stays broken."
+      ]
+    },
+    {
+      "title": "The Perks of Being a Wallflower",
+      "clues": [
+        "Quiet teen finds belonging while trauma keeps whispering from the backseat."
+      ]
+    },
+    {
+      "title": "The Outsiders",
+      "clues": [
+        "Poor kids try to stay gold while the world keeps charging interest."
+      ]
+    },
+    {
+      "title": "The Farewell",
+      "deep": true,
+      "clues": [
+        "Family throws fake wedding around a diagnosis nobody wants to say aloud."
+      ]
+    },
+    {
+      "title": "Everything Everywhere All At Once",
+      "clues": [
+        "Mother and daughter fight across universes because love speaks bad subtitles.",
+        "Laundromat audit becomes a multiverse argument between a mother and daughter."
+      ]
+    },
+    {
+      "title": "Arrival",
+      "clues": [
+        "Alien language gives woman love and the grief receipt in advance."
+      ]
+    },
+    {
+      "title": "The Color Purple",
+      "clues": [
+        "Women survive cruelty and build strength where the world left none."
+      ]
+    },
+    {
+      "title": "Selma",
+      "clues": [
+        "March toward justice asks people to pay in bruises and courage."
+      ]
+    },
+    {
+      "title": "Hidden Figures",
+      "clues": [
+        "Brilliance reaches space while dignity is withheld at every doorway."
+      ]
+    },
+    {
+      "title": "Slumdog Millionaire",
+      "clues": [
+        "Game show answers become a trauma inventory."
+      ]
+    },
+    {
+      "title": "The Social Network",
+      "clues": [
+        "Man builds a social empire and loses the social part."
+      ]
+    },
+    {
+      "title": "Tick Tick Boom",
+      "deep": true,
+      "clues": [
+        "Artist races a birthday clock while ambition and fear share the room."
+      ]
+    },
+    {
+      "title": "Marriage Story",
+      "clues": [
+        "Divorce becomes two people translating love into legal wounds."
+      ]
+    },
+    {
+      "title": "The Theory of Everything",
+      "clues": [
+        "Love bends under illness, genius, and the limits of endurance."
+      ]
+    },
+    {
+      "title": "The Imitation Game",
+      "clues": [
+        "Codebreaker saves the world, then the world refuses to save him."
+      ]
+    },
+    {
+      "title": "The Danish Girl",
+      "deep": true,
+      "clues": [
+        "Love and identity fight for air inside a painful transformation story."
+      ]
+    },
+    {
+      "title": "The Curious Case of Benjamin Button",
+      "clues": [
+        "Man ages backward while love ages forward like a cruel split screen."
+      ]
+    },
+    {
+      "title": "Never Let Me Go",
+      "deep": true,
+      "clues": [
+        "Children raised as spare parts still somehow learn longing."
+      ]
+    },
+    {
+      "title": "Her",
+      "clues": [
+        "Man heals heartbreak through software, then the software outgrows him."
+      ]
+    },
+    {
+      "title": "Lost in Translation",
+      "clues": [
+        "Two lonely people connect just long enough to become a permanent ache."
+      ]
+    },
+    {
+      "title": "The Blind Side",
+      "clues": [
+        "Found family helps, but childhood wounds still keep the receipts."
+      ]
+    },
+    {
+      "title": "Lion",
+      "deep": true,
+      "clues": [
+        "Lost boy becomes a man searching maps for home."
+      ]
+    },
+    {
+      "title": "Coda",
+      "clues": [
+        "Daughter follows her voice knowing her family depends on hers."
+      ]
+    },
+    {
+      "title": "Five Feet Apart",
+      "deep": true,
+      "clues": [
+        "Teens fall in love with a medically enforced personal-space rule."
+      ]
+    },
+    {
+      "title": "Dear John",
+      "deep": true,
+      "clues": [
+        "Letters, distance, and time slowly outvote the romance."
+      ]
+    },
+    {
+      "title": "The Last Song",
+      "deep": true,
+      "clues": [
+        "Daughter reconnects with dad right as goodbye starts counting down."
+      ]
+    },
+    {
+      "title": "Inside Llewyn Davis",
+      "deep": true,
+      "clues": [
+        "Folk singer drags grief, failure, and one cat through winter."
+      ]
+    },
+    {
+      "title": "Hustle",
+      "deep": true,
+      "clues": [
+        "Scout helps a player chase a dream while his own regrets press full court."
+      ]
+    },
+    {
+      "title": "All the Bright Places",
+      "deep": true,
+      "clues": [
+        "Two hurting teens meet, but pain does not split evenly."
+      ]
+    },
+    {
+      "title": "The Sun Is Also a Star",
+      "deep": true,
+      "clues": [
+        "One-day romance races an immigration deadline with unfair confidence."
+      ]
+    },
+    {
+      "title": "A Monster Calls",
+      "deep": true,
+      "clues": [
+        "Boy uses monster stories to admit the grief he hates."
+      ]
+    },
+    {
+      "title": "Boy Erased",
+      "deep": true,
+      "clues": [
+        "A family seeks help and finds a system built to harm."
+      ]
+    },
+    {
+      "title": "The Kite Runner",
+      "deep": true,
+      "clues": [
+        "A childhood betrayal keeps echoing until adulthood answers it."
+      ]
+    },
+    {
+      "title": "Dead Poets Society",
+      "clues": [
+        "Teacher inspires boys to stand up, then the cost arrives."
+      ]
+    },
+    {
+      "title": "Good Will Hunting",
+      "clues": [
+        "Genius finally hears it was not his fault and everyone falls apart."
+      ]
+    },
+    {
+      "title": "Field of Dreams",
+      "clues": [
+        "Man plays catch with the dad he never got to finish loving."
+      ]
+    },
+    {
+      "title": "Cast Away",
+      "clues": [
+        "Stranded man loses civilization, time, and a volleyball best friend."
+      ]
+    },
+    {
+      "title": "The Truman Show",
+      "clues": [
+        "Man discovers his whole life was content and walks toward real air."
+      ]
+    },
+    {
+      "title": "Forrest Gump",
+      "clues": [
+        "Good-hearted man keeps walking through history while life keeps taking bites."
+      ]
+    },
+    {
+      "title": "Green Book",
+      "clues": [
+        "Musician survives racism on tour while dignity rides in the backseat."
+      ]
+    },
+    {
+      "title": "Selena",
+      "clues": [
+        "Rising star's joy gets stolen far too early."
+      ]
+    },
+    {
+      "title": "Cinderella Man",
+      "deep": true,
+      "clues": [
+        "Boxer fights poverty like it booked the main event."
+      ]
+    },
+    {
+      "title": "The Impossible",
+      "deep": true,
+      "clues": [
+        "Tsunami survival story leaves no family member emotionally dry."
+      ]
+    },
+    {
+      "title": "The Last Samurai",
+      "clues": [
+        "Soldier finds purpose in the people he was sent to defeat."
+      ]
+    },
+    {
+      "title": "Hunger Games",
+      "clues": [
+        "Teen trauma becomes prime-time programming for a cruel nation."
+      ]
+    },
+    {
+      "title": "The Boy Who Harnessed the Wind",
+      "deep": true,
+      "clues": [
+        "Child builds a windmill because survival refused to wait for adults."
+      ]
+    },
+    {
+      "title": "One Day",
+      "deep": true,
+      "clues": [
+        "Annual love story keeps missing the exit until fate takes the wheel."
+      ]
+    }
+  ],
+  "StreamingHits": [
+    {
+      "title": "Squid Game",
+      "clues": [
+        "Debt collection becomes recess games with a body count.",
+        "Debtors play childhood games for money and the losers do not go home.",
+        "Company hosts a tournament with excellent set design and terrible severance.",
+        "Contestants vote to leave, go home, look at their debts, and come back."
+      ]
+    },
+    {
+      "title": "Bird Box",
+      "clues": [
+        "Survivors learn the apocalypse has a strict no-looking policy.",
+        "Mother rafts down a river blindfolded with two children named after directions.",
+        "Everyone agrees not to look outside and one man keeps opening the window.",
+        "Survivors shop for groceries using a car with no windows."
+      ]
+    },
+    {
+      "title": "Red Notice",
+      "clues": [
+        "Movie stars chase artifacts while Netflix sets money on fire.",
+        "Three thieves chase golden eggs and betray each other on schedule.",
+        "FBI profiler teams up with the thief he was chasing, twice."
+      ]
+    },
+    {
+      "title": "Don't Look Up",
+      "clues": [
+        "Comet approaches Earth and humanity responds with vibes-based denial.",
+        "Scientists announce a comet and the news cycle books them after the weather.",
+        "Planet ends because a briefing was scheduled poorly.",
+        "Two astronomers go on a morning show and are asked to keep it light."
+      ]
+    },
+    {
+      "title": "Glass Onion",
+      "clues": [
+        "Detective crashes tech bro island and audits everyone's nonsense.",
+        "Detective attends a billionaire's murder weekend and the mystery is that there is none.",
+        "Tech founder's private island party goes badly for his glass collection."
+      ]
+    },
+    {
+      "title": "The Gray Man",
+      "clues": [
+        "Spy men turn global travel into a punching loyalty program.",
+        "Agent goes on the run and Europe is billed for the damage.",
+        "Program disowns its best asset and hires a psychopath to collect him."
+      ]
+    },
+    {
+      "title": "Enola Holmes",
+      "clues": [
+        "Sherlock's sister solves patriarchy with deduction and bicycle energy.",
+        "Teen sister of a famous detective solves a case while dodging finishing school.",
+        "Girl solves a disappearance while her famous brother takes the credit slowly."
+      ]
+    },
+    {
+      "title": "Extraction",
+      "clues": [
+        "Mercenary accepts babysitting job and receives nonstop grenade homework.",
+        "Mercenary retrieves a kidnapped boy through a very long unbroken take.",
+        "Man with nothing left takes the job nobody survives."
+      ]
+    },
+    {
+      "title": "Hustle",
+      "clues": [
+        "Basketball scout turns a longshot into LinkedIn inspiration with jump shots."
+      ]
+    },
+    {
+      "title": "Klaus",
+      "deep": true,
+      "clues": [
+        "Postal worker accidentally invents Santa through logistics and spite kindness."
+      ]
+    },
+    {
+      "title": "The Mitchells vs. The Machines",
+      "clues": [
+        "Family road trip becomes tech uprising's worst customer-service ticket.",
+        "Family road trip coincides with a phone-based uprising.",
+        "Dysfunctional family saves humanity because they are bad at technology."
+      ]
+    },
+    {
+      "title": "Marriage Story",
+      "clues": [
+        "Divorce escalates into a prestige sadness seminar with lawyers.",
+        "Two decent people hire lawyers and become much worse."
+      ]
+    },
+    {
+      "title": "Roma",
+      "deep": true,
+      "clues": [
+        "Housekeeper carries a household that keeps pretending she isn't the foundation."
+      ]
+    },
+    {
+      "title": "Always Be My Maybe",
+      "deep": true,
+      "clues": [
+        "Childhood crushes reunite and Keanu Reeves steals everyone's dignity."
+      ]
+    },
+    {
+      "title": "The Old Guard",
+      "deep": true,
+      "clues": [
+        "Immortal mercenaries discover living forever still includes management issues."
+      ]
+    },
+    {
+      "title": "Tick Tick Boom",
+      "deep": true,
+      "clues": [
+        "Composer races a deadline, a dream, and his own panic clock."
+      ]
+    },
+    {
+      "title": "Hamilton",
+      "clues": [
+        "Founding Fathers rap battle their way through ambition and bad decisions.",
+        "Founding father raps his way through a duel he had coming.",
+        "Immigrant writes his way out and then writes one letter too many."
+      ]
+    },
+    {
+      "title": "Soul",
+      "clues": [
+        "Jazz musician dies before his big break and files an afterlife appeal.",
+        "Jazz teacher dies at the worst moment and negotiates a reboot.",
+        "Man finally gets the gig and discovers the gig was not the point."
+      ]
+    },
+    {
+      "title": "Turning Red",
+      "clues": [
+        "Teen's puberty patch includes giant panda mode and boy-band economics.",
+        "Puberty installs a giant red panda mode without asking IT.",
+        "Teen's family secret is a curse and also a boy band tour date."
+      ]
+    },
+    {
+      "title": "Luca",
+      "clues": [
+        "Sea monsters go undercover as Italian boys for scooters and carbs.",
+        "Sea monsters spend a summer pretending to be Italian boys.",
+        "Two friends win a small-town triathlon involving pasta and a bicycle."
+      ]
+    },
+    {
+      "title": "Encanto",
+      "clues": [
+        "Magical family turns generational trauma into a hit soundtrack.",
+        "Family in a magic house has one relative nobody is allowed to mention.",
+        "House develops cracks because the eldest daughter is carrying everything."
+      ]
+    },
+    {
+      "title": "The Boys",
+      "clues": [
+        "Celebrity superheroes behave like influencers with fewer morals and more lasers.",
+        "Corporate superheroes have publicists and a body count.",
+        "Regular guys plot against a superhero with a public approval rating."
+      ]
+    },
+    {
+      "title": "Palm Springs",
+      "deep": true,
+      "clues": [
+        "Wedding guest stuck in time loop discovers commitment is the real glitch."
+      ]
+    },
+    {
+      "title": "Prey",
+      "deep": true,
+      "clues": [
+        "Alien hunter meets someone who actually read the survival guide."
+      ]
+    },
+    {
+      "title": "CODA",
+      "clues": [
+        "Girl's singing dream crashes into family reliance and beautiful guilt.",
+        "Only hearing member of a fishing family auditions for music school.",
+        "Girl signs a song to her family in a silent auditorium."
+      ]
+    },
+    {
+      "title": "Leave the World Behind",
+      "clues": [
+        "Vacation rental guests handle apocalypse with the communication skills of damp socks.",
+        "Vacation rental is interrupted by the owners and the end of infrastructure."
+      ]
+    },
+    {
+      "title": "Society of the Snow",
+      "deep": true,
+      "clues": [
+        "Soccer team survival story turns hope into the harshest meal plan."
+      ]
+    },
+    {
+      "title": "Rebel Moon",
+      "deep": true,
+      "clues": [
+        "Village hires space fighters because farming and tyranny don't mix."
+      ]
+    },
+    {
+      "title": "Extraction 2",
+      "deep": true,
+      "clues": [
+        "Action babysitter returns for prison-break DLC."
+      ]
+    },
+    {
+      "title": "Heart of Stone",
+      "deep": true,
+      "clues": [
+        "Spy protects powerful AI because world security has one terrible password."
+      ]
+    },
+    {
+      "title": "The Killer",
+      "deep": true,
+      "clues": [
+        "Assassin misses once and spends the rest of the movie overcorrecting."
+      ]
+    },
+    {
+      "title": "Maestro",
+      "deep": true,
+      "clues": [
+        "Composer's genius and marriage keep trying to share one stage."
+      ]
+    },
+    {
+      "title": "Rustin",
+      "deep": true,
+      "clues": [
+        "Organizer plans history while prejudice keeps stealing the room."
+      ]
+    },
+    {
+      "title": "Nimona",
+      "deep": true,
+      "clues": [
+        "Shape-shifter helps framed knight and makes institutional lies everyone's problem."
+      ]
+    },
+    {
+      "title": "Leo",
+      "deep": true,
+      "clues": [
+        "Classroom lizard realizes retirement is hard when children need therapy."
+      ]
+    },
+    {
+      "title": "Orion and the Dark",
+      "deep": true,
+      "clues": [
+        "Anxious kid meets the dark and learns fear has branding issues."
+      ]
+    },
+    {
+      "title": "The Irishman",
+      "clues": [
+        "Old hitman remembers mob work with the speed of a museum tour.",
+        "Man narrates decades of crime from a nursing home with digital youth.",
+        "House painter takes one last job for a friend."
+      ]
+    },
+    {
+      "title": "The Power of the Dog",
+      "deep": true,
+      "clues": [
+        "Cruel cowboy discovers quiet karma has excellent timing."
+      ]
+    },
+    {
+      "title": "The Trial of the Chicago 7",
+      "deep": true,
+      "clues": [
+        "Courtroom becomes democracy's worst group project."
+      ]
+    },
+    {
+      "title": "Mank",
+      "deep": true,
+      "clues": [
+        "Drunk writer wrestles Hollywood into a script students will be assigned forever."
+      ]
+    },
+    {
+      "title": "Crip Camp",
+      "deep": true,
+      "clues": [
+        "Summer camp kids become civil-rights leaders because access should not require permission."
+      ]
+    },
+    {
+      "title": "My Octopus Teacher",
+      "deep": true,
+      "clues": [
+        "Man befriends octopus and accidentally gets marriage counseling from nature."
+      ]
+    },
+    {
+      "title": "Beef",
+      "deep": true,
+      "clues": [
+        "Road rage turns two strangers into each other's unpaid life coaches from hell."
+      ]
+    },
+    {
+      "title": "Fair Play",
+      "deep": true,
+      "clues": [
+        "Promotion reveals couple's power imbalance like a live grenade."
+      ]
+    },
+    {
+      "title": "The Wonderful Story of Henry Sugar",
+      "deep": true,
+      "clues": [
+        "Man learns mystical eyesight and uses it for extremely refined cheating."
+      ]
+    },
+    {
+      "title": "One Day",
+      "deep": true,
+      "clues": [
+        "Annual almost-romance keeps scheduling heartbreak across decades."
+      ]
+    },
+    {
+      "title": "Spaceman",
+      "deep": true,
+      "clues": [
+        "Astronaut gets marriage counseling from a giant space spider."
+      ]
+    },
+    {
+      "title": "Stranger Things",
+      "clues": [
+        "Kids fight government monsters using bikes, waffles, and 80s needle drops.",
+        "Kids play a tabletop game and then live in one.",
+        "Small town loses a boy and gains a girl with a nosebleed problem."
+      ]
+    },
+    {
+      "title": "The Mandalorian",
+      "clues": [
+        "Helmeted bounty hunter adopts green toddler and becomes premium space dad.",
+        "Bounty hunter accepts a job and immediately adopts the bounty.",
+        "Armored man refuses to remove his helmet and acquires a small green dependent."
+      ]
+    },
+    {
+      "title": "Game of Thrones",
+      "clues": [
+        "Noble families kill each other for the world's least comfortable chair.",
+        "Several families argue over a chair and the ending is still under review.",
+        "Winter is announced for six seasons and then handled in one."
+      ]
+    },
+    {
+      "title": "House of the Dragon",
+      "clues": [
+        "Royal family tree stops being a tree and becomes a fire hazard.",
+        "Same family, earlier, with more dragons and worse succession planning."
+      ]
+    },
+    {
+      "title": "The Last of Us",
+      "clues": [
+        "Grumpy man escorts immune teen through fungus apocalypse and emotional ruin.",
+        "Smuggler escorts an immune girl across a country ruined by fungus.",
+        "Man is asked to deliver cargo and delivers a daughter instead."
+      ]
+    },
+    {
+      "title": "The Witcher",
+      "clues": [
+        "Monster hunter grunts professionally through destiny's worst scheduling system.",
+        "Monster hunter grunts his way through a nonlinear timeline."
+      ]
+    },
+    {
+      "title": "Wednesday",
+      "clues": [
+        "Goth teen treats murder mystery like extracurricular shade practice.",
+        "Gloomy teen attends a boarding school for outcasts and solves a monster case.",
+        "Deadpan student plays a cello on a roof and solves a murder anyway."
+      ]
+    },
+    {
+      "title": "The Crown",
+      "clues": [
+        "Royal family proves crowns are just generational trauma with better hats.",
+        "Family business is a monarchy and nobody is allowed to quit.",
+        "Woman inherits a job at twenty-five and cannot resign for seventy years."
+      ]
+    },
+    {
+      "title": "Bridgerton",
+      "clues": [
+        "Regency gossip account turns courtship into a full-contact sport.",
+        "Regency marriage market is narrated by an anonymous gossip columnist.",
+        "Fake courtship becomes real courtship in the most predictable way possible."
+      ]
+    },
+    {
+      "title": "Ted Lasso",
+      "clues": [
+        "Football coach fights cynicism with biscuits and aggressive emotional intelligence.",
+        "American football coach is hired to ruin a soccer club and refuses to.",
+        "Man puts a yellow sign above a door and it works on everyone."
+      ]
+    },
+    {
+      "title": "Severance",
+      "clues": [
+        "Office solves burnout by literally splitting employees in half.",
+        "Employees surgically split their memories to improve work-life balance.",
+        "Office workers throw a music dance experience and it lasts four minutes."
+      ]
+    },
+    {
+      "title": "The Bear",
+      "clues": [
+        "Chef tries to heal trauma with sandwiches, yelling, and stainless steel.",
+        "Chef inherits a sandwich shop and everyone yells for three seasons."
+      ]
+    },
+    {
+      "title": "Breaking Bad",
+      "clues": [
+        "Chemistry teacher discovers the American healthcare system and chooses meth.",
+        "Chemistry teacher starts a small business and takes it national."
+      ]
+    },
+    {
+      "title": "The Queen's Gambit",
+      "clues": [
+        "Orphan conquers chess while trauma and tranquilizers play side quests.",
+        "Orphan becomes a chess prodigy while the ceiling does the analysis."
+      ]
+    },
+    {
+      "title": "Fallout",
+      "clues": [
+        "Vault dweller tours apocalypse with optimism that should be illegal.",
+        "Vault dweller goes above ground and meets a very old cowboy."
+      ]
+    },
+    {
+      "title": "K-Pop Demon Hunters",
+      "clues": [
+        "Idol group fights demons, branding pressure, and presumably bad contracts.",
+        "Girl group performs sold-out shows and exorcisms on the same schedule.",
+        "Rival boy band turns out to be a supernatural staffing issue."
+      ]
+    }
+  ],
+  "Horror": [
+    {
+      "title": "Dracula (1931)",
+      "clues": [
+        "Foreign aristocrat relocates to London and makes terrible eye contact with everyone's neck.",
+        "Count relocates for the real estate and the neighbors."
+      ]
+    },
+    {
+      "title": "Frankenstein (1931)",
+      "clues": [
+        "Doctor assembles a man from spare parts, then acts shocked when onboarding goes badly.",
+        "Scientist assembles a man and skips the parenting portion."
+      ]
+    },
+    {
+      "title": "Bride of Frankenstein",
+      "deep": true,
+      "clues": [
+        "Lonely science project receives an arranged marriage with literally electric chemistry."
+      ]
+    },
+    {
+      "title": "The Wolf Man",
+      "deep": true,
+      "clues": [
+        "Man visits home, gets bitten, and develops a very aggressive lunar calendar."
+      ]
+    },
+    {
+      "title": "Cat People",
+      "deep": true,
+      "clues": [
+        "Woman suspects intimacy may turn her into a panther, which complicates date night."
+      ]
+    },
+    {
+      "title": "Creature from the Black Lagoon",
+      "deep": true,
+      "clues": [
+        "Scientists invade a lagoon and object when the local resident becomes territorial."
+      ]
+    },
+    {
+      "title": "Invasion of the Body Snatchers (1956)",
+      "deep": true,
+      "clues": [
+        "Doctor discovers everyone in town has been replaced by coworkers with perfect attendance."
+      ]
+    },
+    {
+      "title": "House on Haunted Hill",
+      "deep": true,
+      "clues": [
+        "Millionaire offers strangers cash to survive one deeply nonrefundable overnight stay."
+      ]
+    },
+    {
+      "title": "The Haunting",
+      "deep": true,
+      "clues": [
+        "Researchers spend the night in a mansion that takes passive aggression structurally."
+      ]
+    },
+    {
+      "title": "Peeping Tom",
+      "deep": true,
+      "clues": [
+        "Aspiring filmmaker turns fear into footage and gives method acting a felony count."
+      ]
+    },
+    {
+      "title": "Psycho",
+      "clues": [
+        "Traveler chooses a budget motel where management has serious mother-related staffing issues.",
+        "Motel manager has unresolved mother issues and a shower-based hobby.",
+        "Embezzler checks into the wrong motel forty minutes into the film."
+      ]
+    },
+    {
+      "title": "Eyes Without a Face",
+      "deep": true,
+      "clues": [
+        "Surgeon treats his daughter's accident like an extremely unethical transplant startup."
+      ]
+    },
+    {
+      "title": "The Birds",
+      "clues": [
+        "Coastal town learns the sky has unionized against humanity.",
+        "Town is besieged by birds and the film never explains itself."
+      ]
+    },
+    {
+      "title": "Night of the Living Dead",
+      "clues": [
+        "Strangers barricade a farmhouse and immediately make teamwork harder than zombies do.",
+        "Group barricades a farmhouse and argues about the basement."
+      ]
+    },
+    {
+      "title": "Rosemary's Baby",
+      "clues": [
+        "Young wife discovers her neighbors are running the worst prenatal support group imaginable.",
+        "Neighbors are extremely invested in a young couple's pregnancy."
+      ]
+    },
+    {
+      "title": "The Exorcist",
+      "clues": [
+        "Priests attempt emergency tech support for a child with a demonic operating system.",
+        "Two priests are called in after a mother exhausts every specialist in town.",
+        "Girl's medical tests come back normal, which is the worst outcome."
+      ]
+    },
+    {
+      "title": "The Texas Chain Saw Massacre",
+      "clues": [
+        "Road trip ends at a family dinner where the host really commits to power tools.",
+        "Road trip stops for gas and meets a family with a power tool."
+      ]
+    },
+    {
+      "title": "Jaws",
+      "clues": [
+        "Small-town mayor protects summer revenue by ignoring a very bitey tourism problem.",
+        "Town leadership treats a shark as a tourism messaging problem.",
+        "Three men take a boat out and realize it is too small."
+      ]
+    },
+    {
+      "title": "The Omen",
+      "clues": [
+        "Diplomat slowly suspects his adopted child may be upper management in hell.",
+        "Diplomat's adopted son has an unusual birthmark and a devoted nanny."
+      ]
+    },
+    {
+      "title": "Carrie",
+      "clues": [
+        "Bullied teen brings telekinesis to prom and gives everyone a night to remember.",
+        "Bullied teen attends prom and the cleanup budget is enormous."
+      ]
+    },
+    {
+      "title": "Suspiria",
+      "deep": true,
+      "clues": [
+        "Dancer enrolls at a school where faculty meetings involve witchcraft and murder."
+      ]
+    },
+    {
+      "title": "Halloween",
+      "clues": [
+        "Babysitter's quiet shift is ruined by a masked man with excellent cardio.",
+        "Escaped patient goes home for the holidays and babysitters pay for it.",
+        "Man in a white mask stands very still at the edge of frame for ninety minutes."
+      ]
+    },
+    {
+      "title": "Dawn of the Dead",
+      "clues": [
+        "Mall shoppers continue consuming long after death makes the metaphor obvious.",
+        "Survivors barricade a shopping mall and become consumers anyway."
+      ]
+    },
+    {
+      "title": "Alien",
+      "clues": [
+        "Space truckers answer a distress call and violate every quarantine rule in the manual.",
+        "Crew answers a distress signal and ruins dinner for everyone.",
+        "Corporate towing job includes an undisclosed passenger."
+      ]
+    },
+    {
+      "title": "The Shining",
+      "clues": [
+        "Writer accepts a remote hotel job and lets cabin fever become a family management style.",
+        "Writer takes a seasonal caretaking job and his typing gets repetitive.",
+        "Hotel offers a family free lodging and unlimited hallway access."
+      ]
+    },
+    {
+      "title": "Friday the 13th",
+      "clues": [
+        "Camp counselors discover reopening a murder lake was weak strategic planning.",
+        "Camp counselors reopen a lake and a mother handles it personally."
+      ]
+    },
+    {
+      "title": "The Evil Dead",
+      "clues": [
+        "Friends read one cursed book aloud because literacy apparently needed consequences.",
+        "Friends find a tape recorder in a cabin and press play."
+      ]
+    },
+    {
+      "title": "The Thing",
+      "clues": [
+        "Polar researchers learn their coworker could be anyone, including the dog, and trust collapses.",
+        "Antarctic crew learns that trust is a limited resource."
+      ]
+    },
+    {
+      "title": "Poltergeist",
+      "clues": [
+        "Suburban family finds their television has added a very haunted children's channel.",
+        "Family home is built on a shortcut the developer took."
+      ]
+    },
+    {
+      "title": "A Nightmare on Elm Street",
+      "clues": [
+        "Teenagers discover sleep now comes with a striped workplace hazard.",
+        "Teens are told to stay awake, which is not a long-term plan."
+      ]
+    },
+    {
+      "title": "Gremlins",
+      "clues": [
+        "Teen ignores three pet-care instructions and turns Christmas into a municipal emergency.",
+        "Family ignores three simple care instructions and destroys the town."
+      ]
+    },
+    {
+      "title": "The Fly",
+      "deep": true,
+      "clues": [
+        "Scientist rushes teleportation testing and accidentally merges his resume with an insect."
+      ]
+    },
+    {
+      "title": "Aliens",
+      "clues": [
+        "Corporate rescue mission brings enough firepower to make the first bad idea much louder.",
+        "Survivor returns to the same planet with marines and worse results."
+      ]
+    },
+    {
+      "title": "Hellraiser",
+      "deep": true,
+      "clues": [
+        "Man opens a luxury puzzle box and receives an aggressively permanent spa appointment."
+      ]
+    },
+    {
+      "title": "Child's Play",
+      "clues": [
+        "Mother buys a discount doll and gets a tiny serial killer with batteries included.",
+        "Boy's birthday doll has a criminal record."
+      ]
+    },
+    {
+      "title": "The Lost Boys",
+      "deep": true,
+      "clues": [
+        "New kid joins beach-town nightlife and finds the dress code is eternal."
+      ]
+    },
+    {
+      "title": "Beetlejuice",
+      "clues": [
+        "Dead couple hires a freelance bio-exorcist and immediately regrets the contractor.",
+        "Dead couple hires a freelance exorcist with severe boundary issues."
+      ]
+    },
+    {
+      "title": "Pet Sematary",
+      "deep": true,
+      "clues": [
+        "Grieving father discovers resurrection has the worst return policy imaginable."
+      ]
+    },
+    {
+      "title": "Misery",
+      "clues": [
+        "Writer meets his biggest fan and learns reader engagement can become unlawful confinement.",
+        "Author is rescued by his biggest fan and cannot leave."
+      ]
+    },
+    {
+      "title": "The Silence of the Lambs",
+      "clues": [
+        "Trainee interviews a gourmet murderer for career advice on catching another murderer.",
+        "Trainee interviews a cannibal for career advice."
+      ]
+    },
+    {
+      "title": "Candyman",
+      "deep": true,
+      "clues": [
+        "Graduate research project proves repeating urban legends in mirrors is poor methodology."
+      ]
+    },
+    {
+      "title": "Scream",
+      "clues": [
+        "Teenagers try surviving a killer who has done the horror-movie homework.",
+        "Teens who know horror rules are killed by someone who also knows them.",
+        "Phone call about favorite scary movies becomes a hiring interview."
+      ]
+    },
+    {
+      "title": "The Blair Witch Project",
+      "clues": [
+        "Three filmmakers lose the map, the plot, and eventually the entire weekend.",
+        "Film students get lost and the marketing insisted it was real."
+      ]
+    },
+    {
+      "title": "The Sixth Sense",
+      "clues": [
+        "Child therapist misses one fairly important detail about his current employment status.",
+        "Child therapist takes a case and misses one detail about himself."
+      ]
+    },
+    {
+      "title": "The Ring",
+      "clues": [
+        "Journalist watches a suspicious tape and receives the world's most hostile seven-day free trial.",
+        "Journalist watches a tape and gets a week of customer service."
+      ]
+    },
+    {
+      "title": "Final Destination",
+      "clues": [
+        "Teen cheats a disaster, so fate begins balancing the spreadsheet creatively.",
+        "Teens survive a crash and physics files an appeal."
+      ]
+    },
+    {
+      "title": "28 Days Later",
+      "clues": [
+        "Bike courier wakes from a coma to discover rage has gone fully viral.",
+        "Man wakes from a coma into an empty London and a rage outbreak."
+      ]
+    },
+    {
+      "title": "Saw",
+      "clues": [
+        "Two strangers wake in a bathroom and receive performance reviews from a puppet.",
+        "Two men wake in a bathroom and a puppet explains the rules."
+      ]
+    },
+    {
+      "title": "Shaun of the Dead",
+      "clues": [
+        "Retail worker treats the zombie apocalypse as relationship counseling with pub breaks.",
+        "Man handles a zombie apocalypse by going to his usual pub."
+      ]
+    },
+    {
+      "title": "The Grudge",
+      "deep": true,
+      "clues": [
+        "Home-care job includes a house, a curse, and absolutely no useful benefits package."
+      ]
+    },
+    {
+      "title": "The Descent",
+      "deep": true,
+      "clues": [
+        "Friends choose recreational cave trauma and discover something worse than the group chat."
+      ]
+    },
+    {
+      "title": "Hostel",
+      "deep": true,
+      "clues": [
+        "Backpackers follow a travel recommendation with aggressively nonrefundable consequences."
+      ]
+    },
+    {
+      "title": "The Hills Have Eyes",
+      "deep": true,
+      "clues": [
+        "Family road trip detours through a desert community with hostile hospitality."
+      ]
+    },
+    {
+      "title": "Paranormal Activity",
+      "clues": [
+        "Couple documents a nighttime haunting instead of moving, sleeping elsewhere, or making one good choice.",
+        "Couple sets up a camera and the footage is mostly a bedroom door."
+      ]
+    },
+    {
+      "title": "[REC]",
+      "deep": true,
+      "clues": [
+        "Reporter follows firefighters into an apartment building where breaking news refuses to stay dead."
+      ]
+    },
+    {
+      "title": "The Mist",
+      "deep": true,
+      "clues": [
+        "Shoppers hide from monsters while one customer makes the group project much, much worse."
+      ]
+    },
+    {
+      "title": "The Strangers",
+      "deep": true,
+      "clues": [
+        "Couple's isolated getaway gets interrupted by masked visitors who skipped doorbell etiquette."
+      ]
+    },
+    {
+      "title": "Orphan",
+      "deep": true,
+      "clues": [
+        "Family adopts a child and discovers the paperwork missed several extremely adult details."
+      ]
+    },
+    {
+      "title": "Drag Me to Hell",
+      "deep": true,
+      "clues": [
+        "Loan officer denies an extension and receives supernatural collections activity."
+      ]
+    },
+    {
+      "title": "Insidious",
+      "clues": [
+        "Family moves houses, then learns the haunting has excellent forwarding service.",
+        "Family moves house and learns the problem was the child."
+      ]
+    },
+    {
+      "title": "Sinister",
+      "deep": true,
+      "clues": [
+        "Writer finds home movies and somehow keeps pressing play."
+      ]
+    },
+    {
+      "title": "The Cabin in the Woods",
+      "clues": [
+        "College getaway becomes a horror simulation run by exhausted office workers.",
+        "Teens visit a cabin while an office watches and takes bets."
+      ]
+    },
+    {
+      "title": "The Conjuring",
+      "clues": [
+        "Paranormal consultants inspect a farmhouse where every room has a different HR violation.",
+        "Paranormal investigators visit a farmhouse with a basement and a doll problem."
+      ]
+    },
+    {
+      "title": "The Babadook",
+      "deep": true,
+      "clues": [
+        "Mysterious children's book turns grief into the least soothing bedtime story ever."
+      ]
+    },
+    {
+      "title": "It Follows",
+      "deep": true,
+      "clues": [
+        "Teen receives a supernatural problem that walks slowly and never stops following up."
+      ]
+    },
+    {
+      "title": "The Witch",
+      "deep": true,
+      "clues": [
+        "Puritan family blames the woods while their goat quietly builds a personal brand."
+      ]
+    },
+    {
+      "title": "Train to Busan",
+      "clues": [
+        "Absent dad attempts one train ride while zombies destroy the quiet-car policy.",
+        "Father and daughter take a train and the carriages fall one by one."
+      ]
+    },
+    {
+      "title": "Get Out",
+      "clues": [
+        "Weekend with a girlfriend's parents becomes a deeply literal lesson in stolen identity.",
+        "Man meets his girlfriend's parents and the hospitality is unusually thorough.",
+        "Weekend visit includes hypnosis, an auction, and a very specific job offer."
+      ]
+    },
+    {
+      "title": "It (2017)",
+      "clues": [
+        "Children form a club because local adults keep outsourcing clown problems.",
+        "Kids fight a clown that arrives every twenty-seven years on schedule."
+      ]
+    },
+    {
+      "title": "Hereditary",
+      "clues": [
+        "Family grief exposes an inherited plan with terrible benefits and worse management.",
+        "Family grief spirals into a cult's very long-term hiring plan."
+      ]
+    },
+    {
+      "title": "A Quiet Place",
+      "clues": [
+        "Family raises children where stepping on a toy is a fatal parenting mistake.",
+        "Family communicates in sign language because the monsters have great hearing."
+      ]
+    },
+    {
+      "title": "Us",
+      "clues": [
+        "Family vacation is interrupted by matching visitors with scissors and unresolved national symbolism.",
+        "Family vacation is interrupted by an identical family in red."
+      ]
+    },
+    {
+      "title": "Midsommar",
+      "clues": [
+        "Grad student brings a dying relationship to a festival with no clear checkout time.",
+        "Breakup happens during a Swedish festival with excellent lighting."
+      ]
+    },
+    {
+      "title": "Ready or Not",
+      "deep": true,
+      "clues": [
+        "Bride joins family game night and learns rich people take hide-and-seek personally."
+      ]
+    },
+    {
+      "title": "The Invisible Man (2020)",
+      "clues": [
+        "Woman escapes an abusive genius who continues gaslighting her from literally nowhere.",
+        "Woman escapes her ex and nobody believes he is still in the room."
+      ]
+    },
+    {
+      "title": "Nope",
+      "clues": [
+        "Horse trainers discover the sky is hungry and try turning it into premium footage.",
+        "Ranch siblings try to film the thing in the cloud that eats people."
+      ]
+    },
+    {
+      "title": "Barbarian",
+      "deep": true,
+      "clues": [
+        "Traveler finds a double-booked rental and somehow the basement is not the biggest red flag."
+      ]
+    },
+    {
+      "title": "Talk to Me",
+      "deep": true,
+      "clues": [
+        "Teenagers use a haunted hand as party entertainment because phones were apparently too safe."
+      ]
+    },
+    {
+      "title": "The Substance",
+      "clues": [
+        "Celebrity tries a premium self-improvement injection and gets trapped in a hostile brand extension.",
+        "Star takes an injection that generates a younger rival with shared custody."
+      ]
+    },
+    {
+      "title": "Sinners",
+      "clues": [
+        "Twin brothers open a juke joint and accidentally attract customers with a blood-only cover charge.",
+        "Twin brothers open a juke joint and the first night attracts the wrong crowd."
+      ]
+    }
+  ],
+  "Classics": [
+    {
+      "title": "Psycho",
+      "clues": [
+        "Woman disappears after choosing a roadside motel with very involved management.",
+        "Motel manager has unresolved mother issues and a shower-based hobby."
+      ]
+    },
+    {
+      "title": "The Apartment",
+      "deep": true,
+      "clues": [
+        "Office worker loans his home to executives and learns promotions have a terrible cleaning fee."
+      ]
+    },
+    {
+      "title": "West Side Story",
+      "deep": true,
+      "clues": [
+        "Street gangs process neighborhood tension through balletic scheduling conflicts."
+      ]
+    },
+    {
+      "title": "Lawrence of Arabia",
+      "deep": true,
+      "clues": [
+        "British officer crosses a desert, remakes himself, and develops a complicated relationship with legend."
+      ]
+    },
+    {
+      "title": "To Kill a Mockingbird",
+      "clues": [
+        "Small-town lawyer asks a jury to do the bare minimum and learns decency is still unpopular.",
+        "Lawyer loses an obvious case and the neighbor recluse saves his kids."
+      ]
+    },
+    {
+      "title": "Dr. No",
+      "deep": true,
+      "clues": [
+        "Secret agent visits Jamaica and finds the island hospitality includes nuclear sabotage."
+      ]
+    },
+    {
+      "title": "The Great Escape",
+      "deep": true,
+      "clues": [
+        "Prisoners turn captivity into an engineering project with motorcycles and very strict deadlines."
+      ]
+    },
+    {
+      "title": "Mary Poppins",
+      "clues": [
+        "Nanny arrives by umbrella and restructures a family through songs and mild sorcery.",
+        "Nanny arrives by umbrella and fixes a bank employee's entire personality."
+      ]
+    },
+    {
+      "title": "Goldfinger",
+      "deep": true,
+      "clues": [
+        "Spy investigates a gold enthusiast whose business plan involves irradiating the competition."
+      ]
+    },
+    {
+      "title": "The Sound of Music",
+      "clues": [
+        "Nun teaches children harmony while fascism makes the family vacation suddenly urgent.",
+        "Nun is hired to manage seven children and accidentally acquires a naval husband."
+      ]
+    },
+    {
+      "title": "Doctor Zhivago",
+      "deep": true,
+      "clues": [
+        "Poet attempts romance while revolution keeps rescheduling everyone's life."
+      ]
+    },
+    {
+      "title": "The Good, the Bad and the Ugly",
+      "deep": true,
+      "clues": [
+        "Three men pursue buried money and make eye contact last longer than some marriages."
+      ]
+    },
+    {
+      "title": "Bonnie and Clyde",
+      "deep": true,
+      "clues": [
+        "Young couple turns bank robbery into a romantic road trip with poor retirement planning."
+      ]
+    },
+    {
+      "title": "The Graduate",
+      "deep": true,
+      "clues": [
+        "Aimless college graduate begins an affair with one generation and dates the next."
+      ]
+    },
+    {
+      "title": "2001: A Space Odyssey",
+      "clues": [
+        "Humanity finds a mysterious slab, goes to space, and loses an argument with a calm red light.",
+        "Crew has a disagreement with the ship computer about opening a door."
+      ]
+    },
+    {
+      "title": "Planet of the Apes",
+      "clues": [
+        "Astronaut lands on a strange planet and misses several enormous geographic clues.",
+        "Astronaut lands on alien world, is very rude to it, discovers it was home."
+      ]
+    },
+    {
+      "title": "Night of the Living Dead",
+      "clues": [
+        "Farmhouse roommates attempt emergency democracy while the dead wait outside."
+      ]
+    },
+    {
+      "title": "Rosemary's Baby",
+      "clues": [
+        "Newlywed discovers her apartment building offers aggressively involved prenatal care."
+      ]
+    },
+    {
+      "title": "Butch Cassidy and the Sundance Kid",
+      "deep": true,
+      "clues": [
+        "Two charming outlaws respond to a shrinking job market by moving their crime startup abroad."
+      ]
+    },
+    {
+      "title": "Easy Rider",
+      "deep": true,
+      "clues": [
+        "Motorcyclists chase freedom across America and discover hospitality varies wildly."
+      ]
+    },
+    {
+      "title": "The Godfather",
+      "clues": [
+        "Crime-family wedding becomes orientation for the son who insisted he was not joining the business.",
+        "Youngest son avoids the family business until the family business needs him."
+      ]
+    },
+    {
+      "title": "The Godfather Part II",
+      "clues": [
+        "Father builds an empire while his son discovers succession is mostly betrayal with nicer suits.",
+        "Man runs a crime empire while flashing back to how his dad ruined everything."
+      ]
+    },
+    {
+      "title": "The Exorcist",
+      "clues": [
+        "A mother's medical referral chain eventually escalates to two priests and a window.",
+        "Two priests are called in after a mother exhausts every specialist in Georgetown."
+      ]
+    },
+    {
+      "title": "Jaws",
+      "clues": [
+        "Island police chief tries closing the beach while capitalism keeps reopening the shark buffet.",
+        "Town leadership treats a shark as a tourism messaging problem."
+      ]
+    },
+    {
+      "title": "Star Wars: A New Hope",
+      "clues": [
+        "Farm boy joins a space wizard to destroy a fascist moon with a ventilation problem."
+      ]
+    },
+    {
+      "title": "Rocky",
+      "clues": [
+        "Debt collector receives one unlikely promotion and celebrates by punching refrigerated meat.",
+        "Debt collector gets a title shot and mostly wants to still be standing."
+      ]
+    },
+    {
+      "title": "One Flew Over the Cuckoo's Nest",
+      "clues": [
+        "New patient challenges hospital management and learns the complaint process is medically aggressive.",
+        "Man fakes insanity to dodge work and picks a fight with the head nurse."
+      ]
+    },
+    {
+      "title": "Taxi Driver",
+      "deep": true,
+      "clues": [
+        "Lonely cabbie patrols nightlife until isolation becomes a very alarming personal project."
+      ]
+    },
+    {
+      "title": "Alien",
+      "clues": [
+        "Commercial crew brings one unauthorized passenger aboard and destroys the team-retreat atmosphere.",
+        "Crew answers a distress signal and ruins dinner for everyone."
+      ]
+    },
+    {
+      "title": "Grease",
+      "clues": [
+        "Teenagers rebuild their personalities over summer romance and several school-wide musical interruptions.",
+        "Summer romance is complicated by the girl transferring to his actual school."
+      ]
+    },
+    {
+      "title": "Superman",
+      "clues": [
+        "Small-town journalist hides impossible qualifications behind glasses and excellent workplace posture.",
+        "Alien refugee takes a journalism job as a disguise and lifts a helicopter."
+      ]
+    },
+    {
+      "title": "Saturday Night Fever",
+      "deep": true,
+      "clues": [
+        "Hardware-store employee uses the dance floor as his only available career ladder."
+      ]
+    },
+    {
+      "title": "Close Encounters of the Third Kind",
+      "deep": true,
+      "clues": [
+        "Utility worker abandons normal life after the sky gives him a mashed-potato-based assignment."
+      ]
+    },
+    {
+      "title": "Apocalypse Now",
+      "deep": true,
+      "clues": [
+        "Officer travels upriver for one termination meeting while war consumes the entire agenda."
+      ]
+    },
+    {
+      "title": "Chinatown",
+      "deep": true,
+      "clues": [
+        "Private detective investigates an affair and finds municipal water has a horrifying family plan."
+      ]
+    },
+    {
+      "title": "Willy Wonka & the Chocolate Factory",
+      "clues": [
+        "Candy executive invites children to tour his factory and lets workplace hazards handle succession."
+      ]
+    },
+    {
+      "title": "The Sting",
+      "deep": true,
+      "clues": [
+        "Two con artists build an elaborate fake business to improve one gangster's customer experience."
+      ]
+    },
+    {
+      "title": "Blazing Saddles",
+      "deep": true,
+      "clues": [
+        "Town hires a sheriff as a political stunt and accidentally gets competent leadership."
+      ]
+    },
+    {
+      "title": "Monty Python and the Holy Grail",
+      "clues": [
+        "King conducts a poorly funded recruiting tour while coconuts cover the transportation budget."
+      ]
+    },
+    {
+      "title": "Halloween",
+      "clues": [
+        "Masked hometown alumnus returns for one extremely antisocial holiday tradition.",
+        "Escaped patient goes home for the holidays and babysitters pay the price."
+      ]
+    },
+    {
+      "title": "Star Wars: The Empire Strikes Back",
+      "clues": [
+        "Space rebellion loses its office, its vehicles, and one deeply inconvenient family secret.",
+        "Farm boy loses a fight, a hand, and his entire understanding of his family."
+      ]
+    },
+    {
+      "title": "Raiders of the Lost Ark",
+      "clues": [
+        "Professor races fascists to a sacred artifact whose security system already works perfectly.",
+        "Archaeologist beats Nazis to a crate and it gets filed in a warehouse."
+      ]
+    },
+    {
+      "title": "E.T. the Extra-Terrestrial",
+      "clues": [
+        "Children hide an undocumented houseguest who improves bicycles and devastates phone bills.",
+        "Kid hides an alien in a closet and bikes him to the airport."
+      ]
+    },
+    {
+      "title": "Back to the Future",
+      "clues": [
+        "Teen damages the family timeline and must make his parents attracted to each other again.",
+        "Teen accidentally sabotages his parents' meet-cute and has to reboot it."
+      ]
+    },
+    {
+      "title": "Top Gun",
+      "clues": [
+        "Elite pilots turn national defense into volleyball, nicknames, and one dangerous workplace rivalry.",
+        "Pilot with authority issues learns humility at extremely high speed."
+      ]
+    },
+    {
+      "title": "Ghostbusters",
+      "clues": [
+        "Three academics lose university funding and pivot directly into paranormal pest control.",
+        "Fired academics start a small business in the paranormal removal sector."
+      ]
+    },
+    {
+      "title": "The Breakfast Club",
+      "clues": [
+        "Five students spend one Saturday discovering school labels have terrible data quality.",
+        "Five students serve detention and diagnose each other for free."
+      ]
+    },
+    {
+      "title": "Ferris Bueller's Day Off",
+      "clues": [
+        "Teen skips school so successfully that an entire city becomes his extracurricular activity.",
+        "Teen commits elaborate fraud to justify one very ambitious Tuesday."
+      ]
+    },
+    {
+      "title": "Die Hard",
+      "clues": [
+        "Off-duty cop attends an office party and becomes the building's unpaid security department.",
+        "Cop attends his wife's office party and it becomes a hostage situation."
+      ]
+    },
+    {
+      "title": "Aliens",
+      "clues": [
+        "Traumatized survivor returns to the problem with soldiers, forklifts, and improved boundaries.",
+        "Survivor goes back to the same planet, this time with marines and worse results."
+      ]
+    },
+    {
+      "title": "The Terminator",
+      "clues": [
+        "Future sends a murder robot to stop one waitress from eventually becoming management.",
+        "Waitress is hunted over a child she has not had yet."
+      ]
+    },
+    {
+      "title": "The Shining",
+      "clues": [
+        "Family accepts winter lodging package whose amenities include isolation and axe-based conflict resolution.",
+        "Writer takes a seasonal caretaking gig and his typing gets repetitive."
+      ]
+    },
+    {
+      "title": "Blade Runner",
+      "clues": [
+        "Detective conducts retirement interviews for employees who insist they are people.",
+        "Detective retires artificial people and never resolves whether he is one."
+      ]
+    },
+    {
+      "title": "Beverly Hills Cop",
+      "deep": true,
+      "clues": [
+        "Detroit detective visits California and treats every jurisdictional boundary as a suggestion."
+      ]
+    },
+    {
+      "title": "Dirty Dancing",
+      "clues": [
+        "Vacationer discovers class conflict, first love, and the structural importance of lift practice.",
+        "Resort teen learns choreography and defends a coworker's medical bill."
+      ]
+    },
+    {
+      "title": "When Harry Met Sally",
+      "clues": [
+        "Two friends spend twelve years debating whether the relationship tab should remain open.",
+        "Two people argue for twelve years about whether this is possible."
+      ]
+    },
+    {
+      "title": "The Princess Bride",
+      "clues": [
+        "Farm boy adopts a pirate brand to interrupt a prince's highly questionable wedding.",
+        "Grandfather reads a book to a sick kid and it has fencing and revenge."
+      ]
+    },
+    {
+      "title": "The Karate Kid",
+      "clues": [
+        "Teen learns home maintenance is secretly martial-arts onboarding.",
+        "Teen does unpaid handyman work and it turns out to be combat training."
+      ]
+    },
+    {
+      "title": "The Goonies",
+      "clues": [
+        "Children respond to foreclosure by following a pirate's extremely informal financial plan.",
+        "Kids follow a pirate map to avoid a foreclosure."
+      ]
+    },
+    {
+      "title": "Airplane!",
+      "deep": true,
+      "clues": [
+        "Traumatized pilot boards one flight and discovers every employee is committed to the wrong joke."
+      ]
+    },
+    {
+      "title": "Titanic",
+      "clues": [
+        "Luxury cruise promises modern safety, hits old ice, and creates a permanent debate about furniture capacity.",
+        "Ship's maiden voyage is upstaged by a doomed shipboard romance."
+      ]
+    },
+    {
+      "title": "Jurassic Park",
+      "clues": [
+        "Billionaire beta-tests a dinosaur resort before hiring a competent safety team.",
+        "Theme park preview goes badly when the IT department calls in sick."
+      ]
+    },
+    {
+      "title": "Forrest Gump",
+      "clues": [
+        "Polite runner wanders through American history while waiting for one person to call back.",
+        "Man accidentally attends most of American history while waiting for a girl."
+      ]
+    },
+    {
+      "title": "The Shawshank Redemption",
+      "clues": [
+        "Banker spends decades improving prison operations while quietly planning an unauthorized exit.",
+        "Banker spends two decades on a very slow home improvement project."
+      ]
+    },
+    {
+      "title": "Pulp Fiction",
+      "clues": [
+        "Criminal coworkers discuss fast food while several timelines misplace a briefcase.",
+        "Hitmen, a boxer, and a briefcase have a chronologically confusing weekend."
+      ]
+    },
+    {
+      "title": "The Lion King",
+      "clues": [
+        "Prince avoids succession planning until one musical ghost schedules a performance review."
+      ]
+    },
+    {
+      "title": "The Matrix",
+      "clues": [
+        "Office worker discovers reality is software and immediately changes the dress code.",
+        "Office worker learns his job, apartment, and lunch are all rendering."
+      ]
+    },
+    {
+      "title": "Terminator 2: Judgment Day",
+      "clues": [
+        "Former murder robot returns as childcare while a newer model pursues aggressive automation."
+      ]
+    },
+    {
+      "title": "The Silence of the Lambs",
+      "clues": [
+        "FBI trainee trades personal stories with a cannibal to solve somebody else's murder project."
+      ]
+    },
+    {
+      "title": "Goodfellas",
+      "clues": [
+        "Kid achieves his dream career in organized crime and discovers the pension plan is paranoia.",
+        "Man narrates his entire criminal career and blames everyone but himself."
+      ]
+    },
+    {
+      "title": "Home Alone",
+      "clues": [
+        "Family forgets one child, who responds by turning home security into performance art."
+      ]
+    },
+    {
+      "title": "Toy Story",
+      "clues": [
+        "Cowboy experiences professional jealousy when a flashy new hire believes his own résumé."
+      ]
+    },
+    {
+      "title": "Saving Private Ryan",
+      "clues": [
+        "Military team crosses a war zone to complete one very expensive family-return request."
+      ]
+    },
+    {
+      "title": "The Sixth Sense",
+      "clues": [
+        "Child sees dead people while his therapist overlooks one major credentialing issue."
+      ]
+    },
+    {
+      "title": "Men in Black",
+      "clues": [
+        "Police recruit learns immigration enforcement includes aliens, memory wipes, and excellent tailoring."
+      ]
+    },
+    {
+      "title": "Independence Day",
+      "clues": [
+        "Humanity responds to alien invasion with one speech, one laptop, and extremely optimistic compatibility."
+      ]
+    },
+    {
+      "title": "Pretty Woman",
+      "clues": [
+        "Business arrangement becomes romance after retail employees provide the villain origin story."
+      ]
+    },
+    {
+      "title": "Groundhog Day",
+      "clues": [
+        "Weatherman repeats one workday until personal growth finally clears quality assurance."
+      ]
+    },
+    {
+      "title": "The Truman Show",
+      "clues": [
+        "Man discovers his entire life is sponsored content and exits before the finale can stop him."
+      ]
+    },
+    {
+      "title": "Clueless",
+      "clues": [
+        "Teen treats matchmaking as community service and eventually audits her own emotional inventory."
+      ]
+    }
+  ]
+}
