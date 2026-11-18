@@ -1,11 +1,14 @@
-const CACHE = 'plot-twisted-v27';
+const CACHE = 'plot-twisted-v28';
 const ASSETS = [
   './index.html', './game.html', './privacy.html', './manifest.webmanifest',
   './assets/css/landing.css', './assets/css/game.css', './assets/css/privacy.css',
-  './assets/js/landing.js', './assets/js/game.js', './assets/data/questions.json',
+  './assets/css/desktop-expansion.css', './assets/css/wide-desktop-categories.css', './assets/css/cinema-polish.css',
+  './assets/js/landing.js', './assets/js/game.js', './assets/js/category-expansion.js',
+  './assets/js/mobile-feedback-polish.js', './assets/js/cinema-icons.js', './assets/js/cinema-polish.js',
+  './assets/data/questions.json',
   './assets/images/icon-marquee-192.png', './assets/images/icon-marquee-512.png',
   './assets/images/icon-marquee-maskable-512.png', './assets/images/apple-touch-icon-marquee-180.png',
-  './assets/images/social-share.png'
+  './assets/images/favicon-marquee-48.png'
 ];
 
 self.addEventListener('install', event => {

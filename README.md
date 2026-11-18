@@ -22,6 +22,15 @@
 └── sw.js             # PWA service worker
 ```
 
+### Visual system
+
+Landing page, game, icons, and share card all use one theater look: velvet (`#4a1216`), brass (`#e4b34c`), bulb cream (`#fcebc0`), and neon pink (`#ff4d8d`), set in Bungee, Barlow Condensed, Barlow, and Space Mono.
+
+- `assets/css/cinema-polish.css` + `assets/js/cinema-polish.js` — loaded last on the game: ticket-stub box office, proscenium valance, projector beam, film grain, reel labels, and the 3-2-1 leader countdown. They wrap core functions instead of editing them.
+- `assets/js/cinema-icons.js` — the line-icon set for every showing, shared by the game board and the landing page.
+- `assets/images/icon-marquee-*`, `favicon-marquee-48.png`, `social-share-marquee.png` — the marquee-sign icon set and share card. Icons are served `immutable`, so give a redesigned icon a new filename.
+- `assets/images/screens/` — real game screenshots used on the landing page. Recapture them when the game UI changes.
+
 The site intentionally has no build step. Production assets use stable, descriptive names; obsolete versioned files belong in `archive/`.
 
 ## Routes
