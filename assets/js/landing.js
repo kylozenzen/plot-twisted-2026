@@ -78,6 +78,7 @@ function rememberLandingForThisSession() {
 function ctaLocation(link) {
   if (link.closest(".site-nav")) return "navigation";
   if (link.closest(".hero")) return "hero";
+  if (link.closest(".showings-section")) return "showing_stub";
   if (link.closest(".install-section")) return "install_section";
   if (link.closest(".cta-section")) return "final_cta";
   return "landing_page";
@@ -264,6 +265,10 @@ if ("IntersectionObserver" in window) {
 } else {
   revealElements.forEach((element) => element.classList.add("in"));
 }
+
+document.querySelectorAll("[data-icon]").forEach((node) => {
+  if (window.ptIcon) node.innerHTML = window.ptIcon(node.dataset.icon);
+});
 
 document.getElementById("year").textContent = new Date().getFullYear();
 addLandingBetaLabels();
