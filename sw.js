@@ -3,8 +3,8 @@ const ASSETS = [
   './index.html', './game.html', './privacy.html', './manifest.webmanifest',
   './assets/css/landing.css', './assets/css/game.css', './assets/css/privacy.css',
   './assets/js/landing.js', './assets/js/game.js', './assets/data/questions.json',
-  './assets/images/icon-192.png', './assets/images/icon-512.png',
-  './assets/images/icon-maskable-512.png', './assets/images/apple-touch-icon-180.png',
+  './assets/images/icon-marquee-192.png', './assets/images/icon-marquee-512.png',
+  './assets/images/icon-marquee-maskable-512.png', './assets/images/apple-touch-icon-marquee-180.png',
   './assets/images/social-share.png'
 ];
 

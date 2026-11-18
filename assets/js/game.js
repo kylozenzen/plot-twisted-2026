@@ -160,7 +160,7 @@ function win(q){
 }
 function wrong(){ sfxWrong(); buzz([0,30,40,30]); const line=document.getElementById('answerLine'); line.classList.add('shake'); setTimeout(()=>line.classList.remove('shake'),350); const sub=document.getElementById('subtitle'); sub.classList.add('wrong'); sub.innerHTML=`<span class="lbl">cut!</span>Not that one. Roll it again.`; S.typed=""; renderTyped(); }
 function letterReveal(title){ return title.split(/\s+/).map(w=>[...w].map((ch,i)=>{ if(!/[a-z0-9]/i.test(ch))return ch; return i===0?ch.toUpperCase():'_'; }).join('')).join(' '); }
-function useHint(){ if(S.locked||S.hintUsed)return; S.hintUsed=true; document.getElementById('hintBtn').disabled=true; const q=S.qs[S.i]; const sub=document.getElementById('subtitle'); sub.classList.remove('wrong'); if(q.hint) sub.innerHTML=`<span class="lbl">subtitle</span>${esc(q.hint)}`; else sub.innerHTML=`<span class="lbl">on the marquee</span><span style="font-family:'Space Mono';letter-spacing:.22em">${esc(letterReveal(q.title))}</span>`; }
+function useHint(){ if(S.locked||S.hintUsed)return; S.hintUsed=true; document.getElementById('hintBtn').disabled=true; const q=S.qs[S.i]; const sub=document.getElementById('subtitle'); sub.classList.remove('wrong'); if(q.hint) sub.innerHTML=`<span class="lbl">subtitle</span>${esc(q.hint)}`; else sub.innerHTML=`<span class="lbl">on the marquee</span><span style="font-family:'Space Mono',ui-monospace,monospace;letter-spacing:.22em">${esc(letterReveal(q.title))}</span>`; }
 function speakClue(){ if(!SETTINGS.sound){ toast("Sound is off \u2014 check Settings"); return; } const q=S.qs[S.i]; if(!('speechSynthesis' in window)){ toast("Audio not supported"); return; } speechSynthesis.cancel(); const u=new SpeechSynthesisUtterance(q.clue); u.rate=.96; u.pitch=1; speechSynthesis.speak(u); }
 function skipQuestion(){ if(S.locked)return; S.locked=true; const q=S.qs[S.i]; const sub=document.getElementById('subtitle'); sub.classList.remove('wrong'); sub.innerHTML=`<span class="lbl">the answer was</span>${esc(q.title)}`; S.results[S.i]=false; renderPips(); setTimeout(next,1100); }
 function next(){ if('speechSynthesis' in window) speechSynthesis.cancel(); S.i++; if(S.i>=S.qs.length) endRound(); else loadQuestion(); }
@@ -230,9 +230,11 @@ function rememberCompletedRound(){ const receipt=document.getElementById('receip
 async function bootGame(){
   try { await loadQuestions(); } catch (error) { console.error(error); const tagline=document.querySelector('#lobby .tagline'); if(tagline) tagline.textContent='The projection booth lost the film reel. Refresh to retry.'; }
   renderBoard(); applySettingsUI(); initInstall(); addBetaLabels(); addSettingsTools(); instrumentGameEvents(); rememberCompletedRound();
-  if('serviceWorker' in navigator){ window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{})); }
+  if('serviceWorker' in navigator){ const regSW=()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}); if(document.readyState==='complete') regSW(); else window.addEventListener('load',regSW); }
   document.getElementById('exitOverlay').addEventListener('click',e=>{ if(e.target.id==='exitOverlay') closeExit(); });
   document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeExit(); });
-  window.addEventListener('load',()=>{ const ident=document.getElementById('ident'); const reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches; setTimeout(()=>{ ident.style.opacity='0'; setTimeout(()=>{ ident.style.display='none'; showScreen('lobby'); },reduce?50:800); },reduce?400:2600); });
+  const dismissIdent=()=>{ const ident=document.getElementById('ident'); const reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches; setTimeout(()=>{ ident.style.opacity='0'; setTimeout(()=>{ ident.style.display='none'; showScreen('lobby'); },reduce?50:800); },reduce?400:2600); };
+  // The question fetch can finish after window load (static fallback), so don't wait on an event that already fired.
+  if(document.readyState==='complete') dismissIdent(); else window.addEventListener('load',dismissIdent);
 }
 bootGame();
