@@ -96,18 +96,21 @@ body:not(.gameplay-active)::after{
   filter:drop-shadow(0 4px 6px rgba(0,0,0,.6));
 }
 #theater .projector-beam{
-  position:absolute;left:8%;right:8%;top:30px;bottom:0;z-index:-1;pointer-events:none;
+  position:absolute;left:8%;right:8%;top:30px;bottom:0;z-index:-1;pointer-events:none;overflow:hidden;
   clip-path:polygon(0 0,100% 0,56% 100%,44% 100%);
+  background:linear-gradient(0deg,rgba(223,233,242,.10),rgba(223,233,242,.035) 55%,rgba(223,233,242,0));
+}
+#theater .projector-beam::after{
+  content:"";position:absolute;left:0;right:0;top:0;height:200%;will-change:transform;
   background:
-    linear-gradient(0deg,rgba(223,233,242,.10),rgba(223,233,242,.035) 55%,rgba(223,233,242,.0)),
     radial-gradient(1px 1px at 20% 30%,rgba(255,255,255,.5),transparent),
     radial-gradient(1px 1px at 70% 60%,rgba(255,255,255,.45),transparent),
     radial-gradient(1.5px 1.5px at 45% 80%,rgba(255,255,255,.35),transparent),
     radial-gradient(1px 1px at 60% 20%,rgba(255,255,255,.4),transparent);
-  background-size:100% 100%,120px 140px,90px 110px,140px 160px,110px 90px;
-  animation:dust 14s linear infinite;
+  background-size:120px 140px,90px 110px,140px 160px,110px 90px;
+  animation:dust 16s linear infinite;
 }
-@keyframes dust{to{background-position:0 0,40px -140px,-30px -110px,20px -160px,-40px -90px}}
+@keyframes dust{to{transform:translateY(-50%)}}
 
 #theater .movie-screen{
   overflow:hidden;
@@ -117,8 +120,8 @@ body:not(.gameplay-active)::after{
 }
 #theater .movie-screen::before{
   content:"";position:absolute;inset:-20%;pointer-events:none;z-index:0;
-  background:var(--grain);background-size:160px 160px;opacity:.07;mix-blend-mode:screen;
-  animation:grain .6s steps(4) infinite;
+  background:var(--grain);background-size:160px 160px;opacity:.05;will-change:transform;
+  animation:grain .8s steps(4) infinite;
 }
 #theater .movie-screen::after{
   content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
@@ -145,7 +148,7 @@ body:not(.gameplay-active)::after{
   background:radial-gradient(circle at 50% 50%,#8f8778 0%,#5e574b 60%,#3a352d 100%);
   color:#14110d;
 }
-#theater .leader::after{content:"";position:absolute;inset:-20%;background:var(--grain);background-size:140px 140px;opacity:.25;mix-blend-mode:multiply;animation:grain .3s steps(3) infinite}
+#theater .leader::after{content:"";position:absolute;inset:-20%;background:var(--grain);background-size:140px 140px;opacity:.18;animation:grain .3s steps(3) infinite}
 #theater .leader-sweep{position:absolute;width:220%;aspect-ratio:1;border-radius:50%;background:conic-gradient(from 0deg,rgba(20,17,13,.38) 0 90deg,transparent 90deg);animation:sweep var(--step,360ms) linear infinite}
 @keyframes sweep{to{transform:rotate(360deg)}}
 #theater .leader-ring{position:absolute;height:78%;aspect-ratio:1;border-radius:50%;border:3px solid rgba(20,17,13,.75)}
@@ -188,3 +191,79 @@ body:not(.gameplay-active)::after{
 }
 /* Clear the valance on scrolling screens */
 body:not(.gameplay-active) .stage{padding-top:max(46px,env(safe-area-inset-top))}
+
+
+/* ======================================================================
+   Stable stage: nothing in the theater changes size while you play.
+   Every row has a fixed height; only the movie screen flexes, and the
+   clue auto-fits inside it (cinema-polish.js). Long answers shrink and
+   slide inside a one-line answer box instead of growing it.
+   ====================================================================== */
+#theater .answer-line{overflow:hidden}
+#theater .answer-line .typed{--fit:1;display:flex;align-items:center;min-width:0;overflow:hidden;white-space:pre;word-break:normal;font-size:calc(26px * var(--fit))}
+#theater .answer-line .typed.overflowing{justify-content:flex-end;-webkit-mask:linear-gradient(90deg,transparent,#000 28px);mask:linear-gradient(90deg,transparent,#000 28px)}
+#theater .answer-line .typed .cur{flex:0 0 auto}
+#theater .answer-line.has-text .caret-lbl{display:none}
+#theater .subtitle{display:flex;align-items:center;justify-content:center;overflow:hidden;line-height:1.25}
+#theater .subtitle>*{flex:0 0 auto}
+#theater .movie-screen .clue{transition:none}
+#theater .movie-screen.miss{box-shadow:0 0 0 8px #050304,0 0 0 10px #b7353d,0 0 50px rgba(183,53,61,.4),inset 0 0 70px rgba(0,0,0,.65)}
+
+/* Confetti on a correct answer (absolute, never touches layout) */
+#theater .confetti{position:absolute;inset:0;z-index:6;pointer-events:none;overflow:hidden}
+#theater .confetti i{position:absolute;top:-14px;width:7px;height:12px;border-radius:2px;will-change:transform,opacity;animation:confetti var(--d,1.2s) cubic-bezier(.25,.6,.45,1) forwards}
+@keyframes confetti{0%{transform:translate3d(0,0,0) rotate(0);opacity:1}100%{transform:translate3d(var(--x,0),var(--y,420px),0) rotate(var(--r,540deg));opacity:0}}
+
+@media(max-width:959px){
+  body.gameplay-active{height:100vh;height:100dvh;overflow:hidden;overscroll-behavior:none}
+  body.gameplay-active .stage{height:100vh;height:100dvh;min-height:0;align-items:stretch;
+    padding:max(8px,env(safe-area-inset-top)) max(10px,env(safe-area-inset-right)) max(8px,env(safe-area-inset-bottom)) max(10px,env(safe-area-inset-left))}
+  #theater.active{display:flex;flex-direction:column;height:100%;min-height:0}
+  #theater .hud{flex:0 0 auto;margin-bottom:8px}
+  #theater .pips{flex:0 0 auto;margin:0 0 8px}
+  #theater .auditorium{flex:1 1 auto;min-height:0;display:flex;flex-direction:column;padding-bottom:10px}
+  #theater .movie-screen,#theater .movie-screen.feature{flex:1 1 0;min-height:110px;height:auto;margin-top:0}
+  #theater .subtitle{flex:0 0 auto;height:40px;min-height:0;margin:8px 10px 2px;font-size:14.5px;text-align:center}
+  #theater .subtitle:empty{visibility:hidden}
+  #theater .answer-line{flex:0 0 auto;height:54px;min-height:0;margin-top:4px;margin-bottom:10px;padding:0 14px}
+  #theater .answer-line .typed{font-size:calc(25px * var(--fit));min-height:0}
+  body #theater .actions{flex:0 0 auto}
+  body #theater .actions .act{min-height:50px;padding:6px 10px}
+  #theater .screen-label{flex:0 0 auto}
+  #theater .seating{flex:0 0 auto}
+  #theater .seating .seat{height:54px}
+  body #theater .seating .seat-row:last-child .seat.wide{height:56px}
+  /* Result card also covers Hint/Skip (unusable mid-result) so it has room on every phone */
+  #theater .seating .pt-mobile-result{top:-80px;overflow:hidden}
+}
+/* Shorter phones (browser bars showing, SE-size): tighten the seats, keep the screen readable */
+@media(max-width:959px) and (max-height:760px){
+  #theater .auditorium{padding-top:24px}
+  #theater .valance{height:18px;background-size:24px 18px,100% 6px}
+  #theater .screen-label{display:none}
+  #theater .seating{padding-top:2px}
+  #theater .seating .seat-row{margin-bottom:6px}
+  #theater .seating .seat{height:46px}
+  body #theater .seating .seat-row:last-child .seat.wide{height:48px}
+  body #theater .actions .act{min-height:44px}
+  #theater .answer-line{height:48px;margin-bottom:8px}
+  #theater .subtitle{height:36px;margin-top:6px;font-size:13.5px}
+  #theater .pt-mobile-result-card{gap:5px}
+  #theater .seating .pt-mobile-result{top:-56px}
+}
+@media(max-width:959px) and (max-height:640px){
+  #theater .hud{margin-bottom:4px}
+  #theater .pips{margin-bottom:4px}
+  #theater .seating .seat{height:40px}
+  body #theater .seating .seat-row:last-child .seat.wide{height:42px}
+  body #theater .actions .act{min-height:40px}
+  #theater .movie-screen,#theater .movie-screen.feature{min-height:96px}
+  #theater .seating .pt-mobile-result{top:-52px}
+  #theater .pt-mobile-result-card{gap:3px}
+}
+@media(min-width:960px){
+  #theater .subtitle{height:34px;min-height:0}
+  #theater .answer-line{height:62px;min-height:0}
+  #theater .answer-line .typed{font-size:calc(29px * var(--fit))}
+}
+@media(prefers-reduced-motion:reduce){#theater .projector-beam::after{animation:none}}

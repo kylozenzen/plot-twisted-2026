@@ -113,6 +113,8 @@
       clue.classList.add('title-in');
       clue.style.animationDelay = (S.i === 0 ? 1080 : 420) + 'ms';
     }
+    takes = 0;
+    fitClue();
     rollLeader(screen, S.i);
     return result;
   };
@@ -125,6 +127,110 @@
     window[name] = function cinemaVerdict() { clearFeature(); return original.apply(this, arguments); };
   });
   win = window.win; skipQuestion = window.skipQuestion;
+
+  /* ---------- Stable stage helpers ---------- */
+  // Shrink the clue until it fits the screen, so the screen never has to grow.
+  function fitClue() {
+    const screen = document.getElementById('movieScreen');
+    const clue = document.getElementById('clue');
+    if (!screen || !clue) return;
+    clue.style.fontSize = '';
+    const cs = getComputedStyle(screen);
+    const room = screen.clientHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom);
+    let size = parseFloat(getComputedStyle(clue).fontSize);
+    while (clue.scrollHeight > room && size > 13) {
+      size -= 1;
+      clue.style.fontSize = size + 'px';
+    }
+  }
+  let fitTimer;
+  window.addEventListener('resize', () => { clearTimeout(fitTimer); fitTimer = setTimeout(fitClue, 120); });
+  if (document.fonts?.ready) document.fonts.ready.then(fitClue);
+
+  // One-line answer box: step the type down for long titles, then slide so the cursor stays in view.
+  function fitTyped() {
+    const line = document.getElementById('answerLine');
+    const typed = document.getElementById('typed');
+    if (!line || !typed) return;
+    const len = S.typed.length;
+    line.classList.toggle('has-text', len > 0);
+    typed.style.setProperty('--fit', len > 30 ? '.62' : len > 22 ? '.72' : len > 15 ? '.84' : '1');
+    typed.classList.remove('overflowing');
+    if (typed.scrollWidth > typed.clientWidth + 1) typed.classList.add('overflowing');
+  }
+  const previousRenderTyped = renderTyped;
+  renderTyped = function cinemaRenderTyped() {
+    const result = previousRenderTyped.apply(this, arguments);
+    fitTyped();
+    return result;
+  };
+
+  /* ---------- Wrong answers: rotating roasts, counted like film takes ---------- */
+  const WRONG_ROASTS = [
+    'Not that one. Roll it again.',
+    'Wrong reel. The projectionist saw that.',
+    'Bold guess. Wrong movie.',
+    'That movie exists. Just not here.',
+    'The front row gasped. Not in a good way.',
+    'Plot twist: that was wrong.',
+    'Even the popcorn knew that one.',
+    'Close? Maybe. Correct? No.',
+    'Somewhere, a film critic sighed.',
+    'Swing and a miss. Stay in your seat.'
+  ];
+  let takes = 0;
+  let lastRoast = -1;
+  wrong = function cinemaWrong() {
+    sfxWrong();
+    buzz([0, 30, 40, 30]);
+    takes += 1;
+    const line = document.getElementById('answerLine');
+    line.classList.add('shake');
+    setTimeout(() => line.classList.remove('shake'), 350);
+    const screen = document.getElementById('movieScreen');
+    screen?.classList.add('miss');
+    setTimeout(() => screen?.classList.remove('miss'), 420);
+    let i = Math.floor(Math.random() * WRONG_ROASTS.length);
+    if (i === lastRoast) i = (i + 1) % WRONG_ROASTS.length;
+    lastRoast = i;
+    const sub = document.getElementById('subtitle');
+    sub.classList.add('wrong');
+    sub.innerHTML = `<span class="lbl">${takes === 1 ? 'cut!' : 'take ' + takes}</span>${esc(WRONG_ROASTS[i])}`;
+    S.typed = '';
+    renderTyped();
+  };
+
+  /* ---------- Correct answers: confetti over the auditorium ---------- */
+  const CONFETTI = ['#e4b34c', '#fcebc0', '#ff4d8d', '#5ee08a', '#f6c96a'];
+  function throwConfetti() {
+    if (reduceMotion()) return;
+    const aud = document.querySelector('#theater .auditorium');
+    if (!aud) return;
+    const layer = document.createElement('div');
+    layer.className = 'confetti';
+    layer.setAttribute('aria-hidden', 'true');
+    const h = aud.clientHeight;
+    for (let n = 0; n < 26; n++) {
+      const bit = document.createElement('i');
+      bit.style.left = (8 + Math.random() * 84) + '%';
+      bit.style.background = CONFETTI[n % CONFETTI.length];
+      bit.style.setProperty('--x', (Math.random() * 120 - 60) + 'px');
+      bit.style.setProperty('--y', (h * (0.55 + Math.random() * 0.4)) + 'px');
+      bit.style.setProperty('--r', (Math.random() * 900 - 450) + 'deg');
+      bit.style.setProperty('--d', (0.9 + Math.random() * 0.7) + 's');
+      bit.style.animationDelay = (Math.random() * 0.15) + 's';
+      layer.appendChild(bit);
+    }
+    aud.appendChild(layer);
+    setTimeout(() => layer.remove(), 1900);
+  }
+  const verdictWin = win;
+  win = window.win = function cinemaWin() {
+    const wasLocked = S.locked;
+    const result = verdictWin.apply(this, arguments);
+    if (!wasLocked) throwConfetti();
+    return result;
+  };
 
   renderBoard();
 })();

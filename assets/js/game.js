@@ -90,7 +90,7 @@ function buildSeats(){
   if(!seatBound){ seatBound=true; wrap.addEventListener('pointerdown', onSeatDown); }
 }
 function flashSeat(key){ const el=seatMap[key]; if(!el) return; el.classList.add('hit'); setTimeout(()=>el.classList.remove('hit'),90); }
-function typeChar(ch){ if(S.locked)return; if(S.typed.length>=40)return; S.typed+=ch; sfxType(); flashSeat(ch===" "?" ":ch.toUpperCase()); renderTyped(); }
+function typeChar(ch){ if(S.locked)return; if(S.typed.length>=60)return; S.typed+=ch; sfxType(); flashSeat(ch===" "?" ":ch.toUpperCase()); renderTyped(); }
 function backspace(){ if(S.locked)return; S.typed=S.typed.slice(0,-1); flashSeat("Backspace"); renderTyped(); }
 function renderTyped(){ document.getElementById('typed').innerHTML=esc(S.typed)+`<span class="cur">\u258a</span>`; }
 function editDistance(a,b){
