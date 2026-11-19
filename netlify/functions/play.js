@@ -1,8 +1,8 @@
 const clueOverrides = require('./clue-overrides');
 
 const SITE_URL = 'https://plot-twisted.netlify.app/';
-const SOCIAL_IMAGE = 'https://plot-twisted.netlify.app/assets/images/social-share.png';
-const SOCIAL_ALT = 'Plot Twisted movie trivia social card with the game branding, category icons, and a phone mockup showing a twisted movie clue.';
+const SOCIAL_IMAGE = 'https://plot-twisted.netlify.app/assets/images/social-share-marquee.png';
+const SOCIAL_ALT = 'Plot Twisted marquee sign lit up between red velvet curtains, beside a movie screen showing a twisted plot clue.';
 
 function applyClueOverrides(questions) {
   Object.entries(clueOverrides).forEach(([category, categoryOverrides]) => {
@@ -11,7 +11,10 @@ function applyClueOverrides(questions) {
 
     Object.entries(categoryOverrides).forEach(([title, clue]) => {
       const match = entries.find((entry) => entry.title === title);
-      if (match) match.clue = clue;
+      if (!match) return;
+      // An override rewrites the movie's original clue (always first in the list) and keeps the extra variants.
+      if (Array.isArray(match.clues) && match.clues.length) match.clues[0] = clue;
+      else match.clue = clue;
     });
   });
   return questions;

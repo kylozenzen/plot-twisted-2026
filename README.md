@@ -22,6 +22,27 @@
 └── sw.js             # PWA service worker
 ```
 
+### Visual system
+
+Landing page, game, icons, and share card all use one theater look: velvet (`#4a1216`), brass (`#e4b34c`), bulb cream (`#fcebc0`), and neon pink (`#ff4d8d`), set in Bungee, Barlow Condensed, Barlow, and Space Mono.
+
+- `assets/css/cinema-polish.css` + `assets/js/cinema-polish.js` — loaded last on the game: ticket-stub box office, proscenium valance, projector beam, film grain, reel labels, and the 3-2-1 leader countdown. They wrap core functions instead of editing them.
+- `assets/js/cinema-icons.js` — the line-icon set for every showing, shared by the game board and the landing page.
+- `assets/images/icon-marquee-*`, `favicon-marquee-48.png`, `social-share-marquee.png` — the marquee-sign icon set and share card. Icons are served `immutable`, so give a redesigned icon a new filename.
+- `assets/images/screens/` — real game screenshots used on the landing page. Recapture them when the game UI changes.
+
+### Difficulty
+
+`assets/data/questions.json` holds one entry per movie: a `title`, a `clues` list (the original clue first, then any alternate versions), and `"deep": true` on lesser-known films. Leave the tag off and a film counts as popular.
+
+- **Normal** (default) deals popular films only.
+- **Director's Cut** (Settings → Difficulty) deals from the whole bank and guarantees at least 3 deep cuts per round (`HARD_MIN_DEEP` in `game.js`).
+- A round picks titles first, then one clue per title, so adding alternate clues never makes a film show up more often.
+- Best scores are kept per mode (`Family` vs `Family:hard`).
+- A clue override in `netlify/functions/clue-overrides.js` replaces a movie's first clue and keeps its alternates.
+
+Bump the cache name in `sw.js` whenever `questions.json` changes, or returning players keep the old bank.
+
 The site intentionally has no build step. Production assets use stable, descriptive names; obsolete versioned files belong in `archive/`.
 
 ## Routes

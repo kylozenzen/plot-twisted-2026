@@ -1,17 +1,20 @@
-/assets/images/social-share.png
+/assets/images/social-share-marquee.png
   Content-Type: image/png
   Cache-Control: public, max-age=0, must-revalidate
 
-/assets/images/icon-192.png
+/assets/images/icon-marquee-192.png
   Cache-Control: public, max-age=31536000, immutable
 
-/assets/images/icon-512.png
+/assets/images/icon-marquee-512.png
   Cache-Control: public, max-age=31536000, immutable
 
-/assets/images/icon-maskable-512.png
+/assets/images/icon-marquee-maskable-512.png
   Cache-Control: public, max-age=31536000, immutable
 
-/assets/images/apple-touch-icon-180.png
+/assets/images/apple-touch-icon-marquee-180.png
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/images/favicon-marquee-48.png
   Cache-Control: public, max-age=31536000, immutable
 
 /assets/css/*

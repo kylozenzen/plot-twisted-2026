@@ -6,3 +6,5 @@ These files are retained for design and release history only. They are not part 
 - `legacy/plot-twisted-share.png` — previous social preview export.
 - `legacy/plot-twisted-social-v2.jpg` — oversized intermediate social preview export.
 - `social-preview-v2.svg` — previous vector social preview source.
+- `legacy/icons/` — the original "PT" monogram app icons, replaced by the marquee-sign icon set (`icon-marquee-*`).
+- `legacy/social-share-pt-monogram.png` — social card from the PT-monogram era, replaced by `assets/images/social-share-marquee.png`.

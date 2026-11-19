@@ -16,7 +16,7 @@ const CAT_META = {
   StreamingHits:   {name:"Streaming Hits",   flick:"📱", rated:"NEW",  blurb:"Whatever you binged last weekend."}
 };
 const CAT_ORDER = ["Family","Superhero","SciFi","Fantasy","EmotionalDamage","StreamingHits"];
-const SETTINGS = { layout:'qwerty', sound:true };
+const SETTINGS = { layout:'qwerty', sound:true, mode:'normal' };
 const LAYOUTS = { qwerty:["QWERTYUIOP","ASDFGHJKL","ZXCVBNM"], abc:["ABCDEFGHI","JKLMNOPQR","STUVWXYZ"] };
 const LS={get(k,d){try{const v=localStorage.getItem(k);return v==null?d:JSON.parse(v);}catch(_){return d;}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(_){}}};
 Object.assign(SETTINGS, LS.get('pt_settings',{}));
@@ -24,6 +24,10 @@ let BEST = LS.get('pt_best',{});
 function saveSettings(){ LS.set('pt_settings', SETTINGS); }
 function toggleLayout(){ SETTINGS.layout = SETTINGS.layout==='qwerty'?'abc':'qwerty'; saveSettings(); document.getElementById('setLayout').textContent = SETTINGS.layout==='qwerty'?'QWERTY':'A\u2013Z'; }
 function toggleSound(){ SETTINGS.sound=!SETTINGS.sound; saveSettings(); const b=document.getElementById('setSound'); b.textContent=SETTINGS.sound?'ON':'OFF'; b.classList.toggle('off',!SETTINGS.sound); }
+const MODE_META = { normal:{btn:'NORMAL', name:'Normal'}, hard:{btn:"DIRECTOR'S CUT", name:"Director's Cut"} };
+const HARD_MIN_DEEP = 3; // Director's Cut guarantees at least this many deep cuts per round
+function modeKey(k){ return SETTINGS.mode==='hard' ? k+':hard' : k; }
+function toggleMode(){ SETTINGS.mode = SETTINGS.mode==='hard'?'normal':'hard'; saveSettings(); applySettingsUI(); if(document.getElementById('board')) renderBoard(); }
 
 const ROUND_SIZE = 5;
 const S = { cat:null, qs:[], i:0, score:0, correct:0, typed:"", hintUsed:false, locked:false, results:[], eggBusy:false };
@@ -39,7 +43,7 @@ function buzz(p){ try{ navigator.vibrate&&navigator.vibrate(p); }catch(_){} }
 function buildPips(){ const w=document.getElementById('pips'); if(!w)return; w.innerHTML=S.qs.map((_,i)=>'<span class="pip" data-i="'+i+'"></span>').join(''); }
 function renderPips(){ const w=document.getElementById('pips'); if(!w)return; [...w.children].forEach((el,i)=>{ el.className='pip'+(S.results[i]===true?' ok':S.results[i]===false?' miss':'')+(i===S.i?' now':''); }); }
 function surpriseMe(){ startRound(CAT_ORDER[Math.random()*CAT_ORDER.length|0]); }
-function applySettingsUI(){ const a=document.getElementById('setLayout'); if(a)a.textContent=SETTINGS.layout==='qwerty'?'QWERTY':'A\u2013Z'; const b=document.getElementById('setSound'); if(b){ b.textContent=SETTINGS.sound?'ON':'OFF'; b.classList.toggle('off',!SETTINGS.sound);} }
+function applySettingsUI(){ if(!MODE_META[SETTINGS.mode]) SETTINGS.mode='normal'; const c=document.getElementById('setMode'); if(c){ c.textContent=MODE_META[SETTINGS.mode].btn; c.classList.toggle('hard',SETTINGS.mode==='hard'); } const a=document.getElementById('setLayout'); if(a)a.textContent=SETTINGS.layout==='qwerty'?'QWERTY':'A\u2013Z'; const b=document.getElementById('setSound'); if(b){ b.textContent=SETTINGS.sound?'ON':'OFF'; b.classList.toggle('off',!SETTINGS.sound);} }
 function showScreen(id){ document.body.classList.toggle('gameplay-active',id==='theater'); document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active')); document.getElementById(id).classList.add('active'); window.scrollTo(0,0); }
 function goLobby(){ showScreen('lobby'); }
 function goBoxOffice(){ showScreen('boxoffice'); }
@@ -51,17 +55,32 @@ function renderBoard(){
   const board=document.getElementById('board');
   board.innerHTML = CAT_ORDER.map(key=>{
     const m=CAT_META[key];
-    return `<button class="poster" onclick="startRound('${key}')" aria-label="Buy ticket to ${esc(m.name)}"><span class="rated">${m.rated}</span><span class="flick" aria-hidden="true">${m.flick}</span><h3>${esc(m.name)}</h3><p>${esc(m.blurb)}</p><div class="runtime">&nbsp;\u00b7 ${ROUND_SIZE} questions</div>${BEST[key]?`<div class="pbest">★ Best ${BEST[key]}</div>`:''}</button>`;
+    return `<button class="poster" onclick="startRound('${key}')" aria-label="Buy ticket to ${esc(m.name)}"><span class="rated">${m.rated}</span><span class="flick" aria-hidden="true">${m.flick}</span><h3>${esc(m.name)}</h3><p>${esc(m.blurb)}</p><div class="runtime">&nbsp;\u00b7 ${ROUND_SIZE} questions</div>${BEST[modeKey(key)]?`<div class="pbest">★ Best ${BEST[modeKey(key)]}</div>`:''}</button>`;
   }).join('');
 }
 function shuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]];} return a; }
+// Normal deals popular films only (untagged). Director's Cut deals from the whole bank with at least HARD_MIN_DEEP deep cuts.
+// A title is picked first, then one of its clue variants, so extra variants never make a film show up more often.
+function pickClue(q){ const c=(q.clues&&q.clues.length)?q.clues:[q.clue]; return c[Math.random()*c.length|0]; }
+function drawQuestions(pool){
+  const normal=pool.filter(q=>!q.deep), deep=pool.filter(q=>q.deep);
+  let picks;
+  if(SETTINGS.mode==='hard'){
+    picks=shuffle(deep).slice(0,Math.min(HARD_MIN_DEEP,deep.length));
+    const used=new Set(picks);
+    picks=shuffle(picks.concat(shuffle(pool.filter(q=>!used.has(q))).slice(0,ROUND_SIZE-picks.length)));
+  } else {
+    picks=shuffle(normal.length>=ROUND_SIZE?normal:pool).slice(0,ROUND_SIZE);
+  }
+  return picks.map(q=>({ title:q.title, clue:pickClue(q), deep:!!q.deep }));
+}
 function startRound(key){
   const pool=QUESTIONS[key]||[];
   if(!pool.length){ toast('That reel is missing. Refresh and try again.'); return; }
   S.cat = Object.assign({key}, CAT_META[key]);
-  S.qs = shuffle(pool).slice(0,ROUND_SIZE);
+  S.qs = drawQuestions(pool);
   S.i=0; S.score=0; S.correct=0; S.results=new Array(S.qs.length).fill(null);
-  document.getElementById('hudCat').textContent=S.cat.name;
+  const hud=document.getElementById('hudCat'); hud.textContent=S.cat.name; hud.classList.toggle('hard',SETTINGS.mode==='hard'); hud.title=MODE_META[SETTINGS.mode].name;
   document.getElementById('hudTotal').textContent=S.qs.length;
   buildSeats(); buildPips(); showScreen('theater'); loadQuestion();
 }
@@ -90,7 +109,7 @@ function buildSeats(){
   if(!seatBound){ seatBound=true; wrap.addEventListener('pointerdown', onSeatDown); }
 }
 function flashSeat(key){ const el=seatMap[key]; if(!el) return; el.classList.add('hit'); setTimeout(()=>el.classList.remove('hit'),90); }
-function typeChar(ch){ if(S.locked)return; if(S.typed.length>=40)return; S.typed+=ch; sfxType(); flashSeat(ch===" "?" ":ch.toUpperCase()); renderTyped(); }
+function typeChar(ch){ if(S.locked)return; if(S.typed.length>=60)return; S.typed+=ch; sfxType(); flashSeat(ch===" "?" ":ch.toUpperCase()); renderTyped(); }
 function backspace(){ if(S.locked)return; S.typed=S.typed.slice(0,-1); flashSeat("Backspace"); renderTyped(); }
 function renderTyped(){ document.getElementById('typed').innerHTML=esc(S.typed)+`<span class="cur">\u258a</span>`; }
 function editDistance(a,b){
@@ -160,7 +179,7 @@ function win(q){
 }
 function wrong(){ sfxWrong(); buzz([0,30,40,30]); const line=document.getElementById('answerLine'); line.classList.add('shake'); setTimeout(()=>line.classList.remove('shake'),350); const sub=document.getElementById('subtitle'); sub.classList.add('wrong'); sub.innerHTML=`<span class="lbl">cut!</span>Not that one. Roll it again.`; S.typed=""; renderTyped(); }
 function letterReveal(title){ return title.split(/\s+/).map(w=>[...w].map((ch,i)=>{ if(!/[a-z0-9]/i.test(ch))return ch; return i===0?ch.toUpperCase():'_'; }).join('')).join(' '); }
-function useHint(){ if(S.locked||S.hintUsed)return; S.hintUsed=true; document.getElementById('hintBtn').disabled=true; const q=S.qs[S.i]; const sub=document.getElementById('subtitle'); sub.classList.remove('wrong'); if(q.hint) sub.innerHTML=`<span class="lbl">subtitle</span>${esc(q.hint)}`; else sub.innerHTML=`<span class="lbl">on the marquee</span><span style="font-family:'Space Mono';letter-spacing:.22em">${esc(letterReveal(q.title))}</span>`; }
+function useHint(){ if(S.locked||S.hintUsed)return; S.hintUsed=true; document.getElementById('hintBtn').disabled=true; const q=S.qs[S.i]; const sub=document.getElementById('subtitle'); sub.classList.remove('wrong'); if(q.hint) sub.innerHTML=`<span class="lbl">subtitle</span>${esc(q.hint)}`; else sub.innerHTML=`<span class="lbl">on the marquee</span><span style="font-family:'Space Mono',ui-monospace,monospace;letter-spacing:.22em">${esc(letterReveal(q.title))}</span>`; }
 function speakClue(){ if(!SETTINGS.sound){ toast("Sound is off \u2014 check Settings"); return; } const q=S.qs[S.i]; if(!('speechSynthesis' in window)){ toast("Audio not supported"); return; } speechSynthesis.cancel(); const u=new SpeechSynthesisUtterance(q.clue); u.rate=.96; u.pitch=1; speechSynthesis.speak(u); }
 function skipQuestion(){ if(S.locked)return; S.locked=true; const q=S.qs[S.i]; const sub=document.getElementById('subtitle'); sub.classList.remove('wrong'); sub.innerHTML=`<span class="lbl">the answer was</span>${esc(q.title)}`; S.results[S.i]=false; renderPips(); setTimeout(next,1100); }
 function next(){ if('speechSynthesis' in window) speechSynthesis.cancel(); S.i++; if(S.i>=S.qs.length) endRound(); else loadQuestion(); }
@@ -169,9 +188,9 @@ function ratingFor(c){ switch(c){ case 5:return{stars:"\u2605\u2605\u2605\u2605\
 function serial(){ return Array.from({length:12},()=>Math.random().toString(36)[2]||"0").join("").toUpperCase(); }
 function endRound(){
   const r=ratingFor(S.correct); const now=new Date();
-  const bkey=S.cat.key, prev=BEST[bkey]||0, isBest=S.score>prev&&S.score>0; if(isBest){ BEST[bkey]=S.score; LS.set('pt_best',BEST); }
+  const bkey=modeKey(S.cat.key), prev=BEST[bkey]||0, isBest=S.score>prev&&S.score>0; if(isBest){ BEST[bkey]=S.score; LS.set('pt_best',BEST); }
   const when=now.toLocaleDateString(undefined,{month:'short',day:'numeric',year:'numeric'})+" \u00b7 "+now.toLocaleTimeString(undefined,{hour:'numeric',minute:'2-digit'});
-  document.getElementById('ticket').innerHTML=`<div class="t-brand"><div class="cinema">PLOT TWISTED CINEMAS</div><div class="admit">ADMIT ONE</div></div><div class="t-row"><span class="k">SHOWING</span><span class="v">${esc(S.cat.name)}</span></div><div class="t-row"><span class="k">DATE</span><span class="v">${when}</span></div><div class="t-row"><span class="k">SEATS PLAYED</span><span class="v">${S.correct}/${S.qs.length} correct</span></div><div class="t-score"><div class="num">${S.score}</div><div class="lbl">FINAL SCORE</div></div><div class="t-rating"><div class="stars">${r.stars}</div><div class="crit">${r.crit}</div></div>${isBest?'<div class="t-best">★ NEW HIGH SCORE ★</div>':''}<div class="barcode" aria-hidden="true"></div><div class="t-serial">NO. ${serial()} \u00b7 NOBODY CREATIVE</div>`;
+  document.getElementById('ticket').innerHTML=`<div class="t-brand"><div class="cinema">PLOT TWISTED CINEMAS</div><div class="admit">ADMIT ONE</div></div><div class="t-row"><span class="k">SHOWING</span><span class="v">${esc(S.cat.name)}</span></div><div class="t-row"><span class="k">PROGRAM</span><span class="v">${MODE_META[SETTINGS.mode].name}</span></div><div class="t-row"><span class="k">DATE</span><span class="v">${when}</span></div><div class="t-row"><span class="k">SEATS PLAYED</span><span class="v">${S.correct}/${S.qs.length} correct</span></div><div class="t-score"><div class="num">${S.score}</div><div class="lbl">FINAL SCORE</div></div><div class="t-rating"><div class="stars">${r.stars}</div><div class="crit">${r.crit}</div></div>${isBest?'<div class="t-best">★ NEW HIGH SCORE ★</div>':''}<div class="barcode" aria-hidden="true"></div><div class="t-serial">NO. ${serial()} \u00b7 NOBODY CREATIVE</div>`;
   showScreen('receipt');
 }
 async function shareScoreCard(){
@@ -190,7 +209,7 @@ async function renderCard(){
   x.strokeStyle='#e4b34c'; x.lineWidth=8; roundRect(x,40,40,W-80,H-80,26); x.stroke(); x.textAlign='center'; x.fillStyle='#fcebc0'; for(let i=0;i<15;i++){ const bx=95+i*(W-190)/14; cdot(x,bx,96,8); cdot(x,bx,H-96,8); }
   x.fillStyle='#e4b34c'; x.font='700 34px "Barlow Condensed",sans-serif'; x.fillText('★  NOW SHOWING  ★', cx,178); x.font='92px "Bungee",sans-serif'; x.fillStyle='#fcebc0'; x.fillText('PLOT', cx,300); x.save(); x.shadowColor='rgba(255,77,141,.75)'; x.shadowBlur=40; x.fillStyle='#ff4d8d'; x.fillText('TWISTED', cx,406); x.restore();
   const px=110,pw=W-220,py=470,ph=420; const sg=x.createLinearGradient(0,py,0,py+ph); sg.addColorStop(0,'#0a0f14'); sg.addColorStop(1,'#050708'); x.fillStyle=sg; roundRect(x,px,py,pw,ph,18); x.fill(); x.strokeStyle='#33404a'; x.lineWidth=3; roundRect(x,px,py,pw,ph,18); x.stroke();
-  x.fillStyle='#c9a978'; x.font='500 36px "Barlow",sans-serif'; x.fillText('Showing: '+S.cat.name, cx,py+72); x.fillStyle='#fcebc0'; x.font='700 200px "Barlow Condensed",sans-serif'; x.fillText(String(S.score), cx,py+262); x.fillStyle='#a97f2e'; x.font='700 30px "Barlow Condensed",sans-serif'; x.fillText('FINAL SCORE', cx,py+312); x.fillStyle='#f4e6cf'; x.font='500 40px "Space Mono",monospace'; x.fillText(S.correct+' / '+S.qs.length+' correct', cx,py+382);
+  x.fillStyle='#c9a978'; x.font='500 36px "Barlow",sans-serif'; x.fillText('Showing: '+S.cat.name+'  \u00b7  '+MODE_META[SETTINGS.mode].name, cx,py+72); x.fillStyle='#fcebc0'; x.font='700 200px "Barlow Condensed",sans-serif'; x.fillText(String(S.score), cx,py+262); x.fillStyle='#a97f2e'; x.font='700 30px "Barlow Condensed",sans-serif'; x.fillText('FINAL SCORE', cx,py+312); x.fillStyle='#f4e6cf'; x.font='500 40px "Space Mono",monospace'; x.fillText(S.correct+' / '+S.qs.length+' correct', cx,py+382);
   x.fillStyle='#e4b34c'; x.font='74px "Barlow",sans-serif'; x.fillText(r.stars, cx,1005); x.fillStyle='#fcebc0'; x.font='700 50px "Barlow Condensed",sans-serif'; x.fillText(r.crit.toUpperCase(), cx,1076);
   const n=S.results.length||5,sw=70,gap=16,tot=n*sw+(n-1)*gap,sx=cx-tot/2,sy=1120; for(let i=0;i<n;i++){ const bx=sx+i*(sw+gap),res=S.results[i]; x.fillStyle=res===true?'#5ee08a':res===false?'#a3434a':'#7a1e22'; roundRect(x,bx,sy,sw,60,12); x.fill(); x.fillStyle='#2c0a0d'; roundRect(x,bx,sy+60,sw,8,3); x.fill(); }
   x.fillStyle='#c9a978'; x.font='italic 30px "Barlow",sans-serif'; x.fillText('Trust nobody. Especially the hints.', cx,1258); x.fillStyle='#6b4c3a'; x.font='700 24px "Barlow Condensed",sans-serif'; x.fillText('A NOBODY CREATIVE PRODUCTION', cx,1300); return await new Promise(res=>c.toBlob(res,'image/png'));
@@ -230,9 +249,11 @@ function rememberCompletedRound(){ const receipt=document.getElementById('receip
 async function bootGame(){
   try { await loadQuestions(); } catch (error) { console.error(error); const tagline=document.querySelector('#lobby .tagline'); if(tagline) tagline.textContent='The projection booth lost the film reel. Refresh to retry.'; }
   renderBoard(); applySettingsUI(); initInstall(); addBetaLabels(); addSettingsTools(); instrumentGameEvents(); rememberCompletedRound();
-  if('serviceWorker' in navigator){ window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{})); }
+  if('serviceWorker' in navigator){ const regSW=()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}); if(document.readyState==='complete') regSW(); else window.addEventListener('load',regSW); }
   document.getElementById('exitOverlay').addEventListener('click',e=>{ if(e.target.id==='exitOverlay') closeExit(); });
   document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeExit(); });
-  window.addEventListener('load',()=>{ const ident=document.getElementById('ident'); const reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches; setTimeout(()=>{ ident.style.opacity='0'; setTimeout(()=>{ ident.style.display='none'; showScreen('lobby'); },reduce?50:800); },reduce?400:2600); });
+  const dismissIdent=()=>{ const ident=document.getElementById('ident'); const reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches; setTimeout(()=>{ ident.style.opacity='0'; setTimeout(()=>{ ident.style.display='none'; showScreen('lobby'); },reduce?50:800); },reduce?400:2600); };
+  // The question fetch can finish after window load (static fallback), so don't wait on an event that already fired.
+  if(document.readyState==='complete') dismissIdent(); else window.addEventListener('load',dismissIdent);
 }
 bootGame();
