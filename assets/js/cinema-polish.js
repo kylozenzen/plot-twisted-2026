@@ -26,7 +26,8 @@
     board.innerHTML = CAT_ORDER.map((key, index) => {
       const m = CAT_META[key];
       if (!m) return '';
-      const best = BEST[key] ? `<span class="stub-best">★ Best ${BEST[key]}</span>` : '';
+      const bk = typeof modeKey === 'function' ? modeKey(key) : key;
+      const best = BEST[bk] ? `<span class="stub-best">★ Best ${BEST[bk]}</span>` : '';
       return `<button class="poster stub" style="--accent:${ACCENTS[key] || '#e4b34c'};--i:${index}" onclick="startRound('${key}')" aria-label="Buy ticket to ${esc(m.name)}">
         <span class="stub-art" aria-hidden="true">${icon(key)}</span>
         <h3>${esc(m.name)}</h3>
@@ -101,7 +102,8 @@
     const label = document.createElement('div');
     label.className = 'reel-label';
     label.setAttribute('aria-hidden', 'true');
-    label.innerHTML = `<span>Reel ${pad(S.i + 1)} / ${pad(S.qs.length)}</span><span>${esc(S.cat?.name || '')}</span>`;
+    const hard = typeof SETTINGS !== 'undefined' && SETTINGS.mode === 'hard';
+    label.innerHTML = `<span>Reel ${pad(S.i + 1)} / ${pad(S.qs.length)}</span><span${hard ? ' class="reel-program"' : ''}>${esc(hard ? "Director's Cut" : (S.cat?.name || ''))}</span>`;
     const cue = document.createElement('div');
     cue.className = 'reel-cue';
     cue.setAttribute('aria-hidden', 'true');

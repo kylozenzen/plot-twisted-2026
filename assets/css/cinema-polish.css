@@ -169,6 +169,8 @@ body:not(.gameplay-active)::after{
 
 /* HUD: category reads like a lit sign */
 #theater .hud .now{border-color:var(--brass-dim);background:rgba(228,179,76,.08);box-shadow:0 0 14px rgba(228,179,76,.12)}
+#theater .hud .now.hard{border-color:var(--neon);color:var(--neon);background:rgba(255,77,141,.1);box-shadow:0 0 14px rgba(255,77,141,.25)}
+#theater .reel-label .reel-program{color:var(--neon);text-shadow:0 0 6px rgba(255,77,141,.5)}
 
 @media(min-width:960px){
   #theater .auditorium{padding-top:40px}
