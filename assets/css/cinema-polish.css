@@ -269,3 +269,23 @@ body:not(.gameplay-active) .stage{padding-top:max(46px,env(safe-area-inset-top))
   #theater .answer-line .typed{font-size:calc(29px * var(--fit))}
 }
 @media(prefers-reduced-motion:reduce){#theater .projector-beam::after{animation:none}}
+
+/* ---------- Desktop polish: big title-card clue, keycaps, stateful help line ---------- */
+.key-cap{display:none}
+#keyTip .tip-play{display:inline-flex;align-items:center;gap:12px}
+#keyTip .tip-result{display:none}
+#theater.result-up #keyTip .tip-play{display:none}
+#theater.result-up #keyTip .tip-result{display:inline}
+@media(min-width:960px){
+  /* fitClue() still shrinks anything that would overflow the screen */
+  #theater .movie-screen .clue{font-size:clamp(30px,2.9vw,54px);max-width:26ch;line-height:1.24;text-wrap:balance}
+  #theater .reel-label{color:rgba(228,179,76,.85)}
+  #theater .reel-cue{color:rgba(223,233,242,.62)}
+  #theater .desktop-keyboard-tip{color:#a98468;font-size:11px}
+  #theater.result-up .desktop-keyboard-tip{color:var(--brass)}
+}
+@media(min-width:960px) and (hover:hover) and (pointer:fine){
+  .key-cap{display:inline-block;margin-left:8px;padding:3px 6px 2px;font-family:'Space Mono',ui-monospace,monospace;font-size:10px;font-weight:700;letter-spacing:.02em;line-height:1;text-transform:none;color:rgba(228,179,76,.85);background:rgba(228,179,76,.06);border:1px solid rgba(228,179,76,.35);border-bottom-width:2px;border-radius:4px}
+  .act:disabled .key-cap{opacity:.5}
+  #theater .pt-mobile-result-continue .key-cap{color:rgba(43,26,8,.72);background:rgba(43,26,8,.06);border-color:rgba(43,26,8,.3)}
+}

@@ -242,10 +242,12 @@
         <div class="pt-mobile-result-title"></div>
         <div class="pt-mobile-result-movie"></div>
         <div class="pt-mobile-result-copy"></div>
-        <button class="pt-mobile-result-continue" type="button">Continue →</button>
+        <button class="pt-mobile-result-continue" type="button">Continue →<kbd class="key-cap" aria-hidden="true">Enter</kbd></button>
       </div>
     `;
     overlay.querySelector('.pt-mobile-result-continue').addEventListener('click', () => {
+      // Enter and a click can land on the same result; only the first one advances.
+      if (!overlay.classList.contains('show')) return;
       hideOverlay();
       next();
     });
@@ -264,8 +266,19 @@
 
   function hideOverlay() {
     const overlay = document.querySelector('#theater .pt-mobile-result');
+    document.getElementById('theater')?.classList.remove('result-up');
     if (!overlay) return;
     overlay.classList.remove('show', 'skip', 'correct');
+  }
+
+  // Desktop shows the title once, on the screen card: clear the strip and the answer box behind it.
+  function clearBehindCard() {
+    if (isMobile()) return;
+    const sub = document.getElementById('subtitle');
+    sub.classList.remove('wrong');
+    sub.innerHTML = '';
+    S.typed = '';
+    renderTyped();
   }
 
   function showOverlay({ type, kicker, title, movie, copy }) {
@@ -280,6 +293,7 @@
     movieLine.hidden = !movie;
     overlay.querySelector('.pt-mobile-result-copy').textContent = copy;
     overlay.querySelector('.pt-mobile-result-continue').focus({ preventScroll:true });
+    document.getElementById('theater')?.classList.add('result-up');
     return true;
   }
 
@@ -332,7 +346,8 @@
       movie:q.title,
       copy:pick(PRAISE)
     });
-    if (!shown) setTimeout(next, 1150);
+    if (shown) clearBehindCard();
+    else setTimeout(next, 1150);
   };
 
   skipQuestion = function mobilePolishSkip() {
@@ -358,6 +373,7 @@
       title:q.title,
       copy:pick(SKIP_ROASTS)
     });
-    if (!shown) setTimeout(next, 1100);
+    if (shown) clearBehindCard();
+    else setTimeout(next, 1100);
   };
 })();

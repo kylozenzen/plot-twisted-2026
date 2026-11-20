@@ -72,7 +72,7 @@ function drawQuestions(pool){
   } else {
     picks=shuffle(normal.length>=ROUND_SIZE?normal:pool).slice(0,ROUND_SIZE);
   }
-  return picks.map(q=>({ title:q.title, clue:pickClue(q), deep:!!q.deep }));
+  return picks.map(q=>({ title:q.title, clue:pickClue(q), deep:!!q.deep, aliases:q.aliases||[] }));
 }
 function startRound(key){
   const pool=QUESTIONS[key]||[];
@@ -130,6 +130,7 @@ function baseTitle(w){ let s=w,p; do{ p=s; s=s.replace(/\s+(part|volume|vol|chap
 function buildPool(q){
   const out=new Set();
   variants(q.title).forEach(v=>out.add(v));
+  (q.aliases||[]).forEach(a=>variants(a).forEach(v=>out.add(v)));
   variants(baseTitle(words(q.title))).forEach(v=>out.add(v));
   const seg=q.title.split(/[:(]/)[0].trim();
   if(seg && seg.length>3 && seg!==q.title) variants(seg).forEach(v=>out.add(v));
@@ -218,7 +219,25 @@ function fallbackCopy(t){ navigator.clipboard?.writeText(t).then(()=>toast("Scor
 function replay(){ startRound(S.cat.key); }
 let toastT;
 function toast(msg){ const el=document.getElementById('toast'); el.textContent=msg; el.classList.add('show'); clearTimeout(toastT); toastT=setTimeout(()=>el.classList.remove('show'),1900); }
-document.addEventListener('keydown',e=>{ if(!document.getElementById('theater').classList.contains('active'))return; if(S.locked)return; const k=e.key; if(k==="Enter"){ e.preventDefault(); flashSeat("Enter"); submitAnswer(); } else if(k==="Backspace"){ e.preventDefault(); backspace(); } else if(k===" "){ e.preventDefault(); typeChar(" "); } else if(/^[a-zA-Z]$/.test(k)){ typeChar(k.toUpperCase()); } });
+// Keyboard play. Letters and digits type; shortcuts use keys that never appear in an answer.
+// Enter submit · Shift+Enter skip · / hint · \ speak · Esc exit · Enter/Space continue after a result · 1-8 pick a showing.
+function isActive(id){ const el=document.getElementById(id); return !!el && el.classList.contains('active'); }
+function continueResult(){ const b=document.querySelector('#theater .pt-mobile-result.show .pt-mobile-result-continue'); if(!b) return false; b.click(); return true; }
+document.addEventListener('keydown',e=>{
+  if(e.metaKey||e.ctrlKey||e.altKey) return;
+  const k=e.key;
+  if(isActive('boxoffice')){ if(/^[1-9]$/.test(k)){ const key=(typeof CAT_ORDER!=='undefined'?CAT_ORDER:Object.keys(CAT_META))[+k-1]; if(key){ e.preventDefault(); startRound(key); } } return; }
+  if(!isActive('theater')) return;
+  if(document.getElementById('exitOverlay').classList.contains('show')) return;
+  if(k==='Escape'){ e.preventDefault(); quitGame(); return; }
+  if(S.locked){ if((k==='Enter'||k===' ') && continueResult()) e.preventDefault(); return; }
+  if(k==='Enter'){ e.preventDefault(); if(e.shiftKey){ skipQuestion(); return; } flashSeat('Enter'); submitAnswer(); }
+  else if(k==='/'||k==='?'){ e.preventDefault(); useHint(); }
+  else if(k==='\\'){ e.preventDefault(); speakClue(); }
+  else if(k==='Backspace'){ e.preventDefault(); backspace(); }
+  else if(k===' '){ e.preventDefault(); typeChar(' '); }
+  else if(/^[a-zA-Z0-9]$/.test(k)){ typeChar(k.toUpperCase()); }
+});
 function onFbType(){ document.getElementById('fbClue').hidden = (document.getElementById('fbType').value!=='Submit a clue'); }
 function submitFeedback(e){ e.preventDefault(); const form=document.getElementById('fbForm'); const body=new URLSearchParams(new FormData(form)).toString(); fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body}).then(r=>{ if(!r.ok) throw 0; fbSuccess(false); }).catch(()=>fbSuccess(true)); return false; }
 function fbSuccess(preview){ document.getElementById('fbForm').style.display='none'; document.getElementById('fbDone').hidden=false; document.getElementById('fbDoneMsg').textContent = preview ? 'Saved. This sends for real once the game is live on Netlify.' : 'Thanks for helping run the theater. I read every one.'; }
@@ -251,7 +270,7 @@ async function bootGame(){
   renderBoard(); applySettingsUI(); initInstall(); addBetaLabels(); addSettingsTools(); instrumentGameEvents(); rememberCompletedRound();
   if('serviceWorker' in navigator){ const regSW=()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}); if(document.readyState==='complete') regSW(); else window.addEventListener('load',regSW); }
   document.getElementById('exitOverlay').addEventListener('click',e=>{ if(e.target.id==='exitOverlay') closeExit(); });
-  document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeExit(); });
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape' && !e.defaultPrevented) closeExit(); });
   const dismissIdent=()=>{ const ident=document.getElementById('ident'); const reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches; setTimeout(()=>{ ident.style.opacity='0'; setTimeout(()=>{ ident.style.display='none'; showScreen('lobby'); },reduce?50:800); },reduce?400:2600); };
   // The question fetch can finish after window load (static fallback), so don't wait on an event that already fired.
   if(document.readyState==='complete') dismissIdent(); else window.addEventListener('load',dismissIdent);
