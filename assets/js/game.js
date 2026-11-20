@@ -181,7 +181,6 @@ function win(q){
 function wrong(){ sfxWrong(); buzz([0,30,40,30]); const line=document.getElementById('answerLine'); line.classList.add('shake'); setTimeout(()=>line.classList.remove('shake'),350); const sub=document.getElementById('subtitle'); sub.classList.add('wrong'); sub.innerHTML=`<span class="lbl">cut!</span>Not that one. Roll it again.`; S.typed=""; renderTyped(); }
 function letterReveal(title){ return title.split(/\s+/).map(w=>[...w].map((ch,i)=>{ if(!/[a-z0-9]/i.test(ch))return ch; return i===0?ch.toUpperCase():'_'; }).join('')).join(' '); }
 function useHint(){ if(S.locked||S.hintUsed)return; S.hintUsed=true; document.getElementById('hintBtn').disabled=true; const q=S.qs[S.i]; const sub=document.getElementById('subtitle'); sub.classList.remove('wrong'); if(q.hint) sub.innerHTML=`<span class="lbl">subtitle</span>${esc(q.hint)}`; else sub.innerHTML=`<span class="lbl">on the marquee</span><span style="font-family:'Space Mono',ui-monospace,monospace;letter-spacing:.22em">${esc(letterReveal(q.title))}</span>`; }
-function speakClue(){ if(!SETTINGS.sound){ toast("Sound is off \u2014 check Settings"); return; } const q=S.qs[S.i]; if(!('speechSynthesis' in window)){ toast("Audio not supported"); return; } speechSynthesis.cancel(); const u=new SpeechSynthesisUtterance(q.clue); u.rate=.96; u.pitch=1; speechSynthesis.speak(u); }
 function skipQuestion(){ if(S.locked)return; S.locked=true; const q=S.qs[S.i]; const sub=document.getElementById('subtitle'); sub.classList.remove('wrong'); sub.innerHTML=`<span class="lbl">the answer was</span>${esc(q.title)}`; S.results[S.i]=false; renderPips(); setTimeout(next,1100); }
 function next(){ if('speechSynthesis' in window) speechSynthesis.cancel(); S.i++; if(S.i>=S.qs.length) endRound(); else loadQuestion(); }
 function bump(){ const line=document.getElementById('answerLine'); line.classList.add('shake'); setTimeout(()=>line.classList.remove('shake'),350); }
@@ -220,7 +219,7 @@ function replay(){ startRound(S.cat.key); }
 let toastT;
 function toast(msg){ const el=document.getElementById('toast'); el.textContent=msg; el.classList.add('show'); clearTimeout(toastT); toastT=setTimeout(()=>el.classList.remove('show'),1900); }
 // Keyboard play. Letters and digits type; shortcuts use keys that never appear in an answer.
-// Enter submit · Shift+Enter skip · / hint · \ speak · Esc exit · Enter/Space continue after a result · 1-8 pick a showing.
+// Enter submit · Shift+Enter skip · / hint · Esc exit · Enter/Space continue after a result · 1-8 pick a showing.
 function isActive(id){ const el=document.getElementById(id); return !!el && el.classList.contains('active'); }
 function continueResult(){ const b=document.querySelector('#theater .pt-mobile-result.show .pt-mobile-result-continue'); if(!b) return false; b.click(); return true; }
 document.addEventListener('keydown',e=>{
@@ -233,7 +232,6 @@ document.addEventListener('keydown',e=>{
   if(S.locked){ if((k==='Enter'||k===' ') && continueResult()) e.preventDefault(); return; }
   if(k==='Enter'){ e.preventDefault(); if(e.shiftKey){ skipQuestion(); return; } flashSeat('Enter'); submitAnswer(); }
   else if(k==='/'||k==='?'){ e.preventDefault(); useHint(); }
-  else if(k==='\\'){ e.preventDefault(); speakClue(); }
   else if(k==='Backspace'){ e.preventDefault(); backspace(); }
   else if(k===' '){ e.preventDefault(); typeChar(' '); }
   else if(/^[a-zA-Z0-9]$/.test(k)){ typeChar(k.toUpperCase()); }

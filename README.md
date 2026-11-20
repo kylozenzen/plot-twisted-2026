@@ -53,7 +53,6 @@ An entry can also carry `aliases`: extra accepted answers, matched with the same
 | Enter | Submit, or continue after a result |
 | Shift + Enter | Skip |
 | `/` | Hint |
-| `\` | Speak the clue |
 | Esc | Open or close the exit menu |
 | 1–8 | Pick a showing at the box office |
 

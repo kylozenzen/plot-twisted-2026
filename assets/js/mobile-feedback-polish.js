@@ -1,23 +1,7 @@
 (() => {
   const MOBILE_QUERY = '(max-width: 959px)';
-  const PRAISE = [
-    'Roll credits — that answer just won opening weekend.',
-    'Spotlight on you. Correct, and with style.',
-    'That landed like a third-act reveal.',
-    'Box office confirmed: correct.',
-    'Your watchlist is paying dividends.',
-    'The clue never stood a chance.'
-  ];
-  const SKIP_ROASTS = [
-    'We’ll pretend you went for popcorn.',
-    'Your brain called in a stunt double.',
-    'A strategic retreat. Very cinematic.',
-    'The clue survives another screening.',
-    'This one is leaving the theater without you.',
-    'Skipped. Your Letterboxd account has been notified.'
-  ];
-
-  const pick = (pool) => pool[Math.floor(Math.random() * pool.length)];
+  // Reply lines live in reply-lines.js and are dealt without repeats.
+  const line = (kind) => (typeof ptLine === 'function' ? ptLine(kind) : '');
   const isMobile = () => window.matchMedia(MOBILE_QUERY).matches;
 
   const style = document.createElement('style');
@@ -31,7 +15,6 @@
       text-shadow:0 0 30px rgba(183,53,61,.55);
     }
     @media (max-width: 959px) {
-      #theater .actions .act:nth-child(2) { display:none; }
       #theater .actions { gap:10px; }
       #theater .actions .act {
         min-height:58px;
@@ -343,7 +326,7 @@
       kicker:'★ Nice work ★',
       title:`+${gained} PTS`,
       movie:q.title,
-      copy:pick(PRAISE)
+      copy:line('correct')
     });
     if (shown) clearBehindCard();
     else setTimeout(next, 1150);
@@ -370,7 +353,7 @@
       type:'skip',
       kicker:'SKIPPED',
       title:q.title,
-      copy:pick(SKIP_ROASTS)
+      copy:line('skip')
     });
     if (shown) clearBehindCard();
     else setTimeout(next, 1100);

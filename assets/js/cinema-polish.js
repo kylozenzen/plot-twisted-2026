@@ -168,20 +168,7 @@
   };
 
   /* ---------- Wrong answers: rotating roasts, counted like film takes ---------- */
-  const WRONG_ROASTS = [
-    'Not that one. Roll it again.',
-    'Wrong reel. The projectionist saw that.',
-    'Bold guess. Wrong movie.',
-    'That movie exists. Just not here.',
-    'The front row gasped. Not in a good way.',
-    'Plot twist: that was wrong.',
-    'Even the popcorn knew that one.',
-    'Close? Maybe. Correct? No.',
-    'Somewhere, a film critic sighed.',
-    'Swing and a miss. Stay in your seat.'
-  ];
   let takes = 0;
-  let lastRoast = -1;
   wrong = function cinemaWrong() {
     sfxWrong();
     buzz([0, 30, 40, 30]);
@@ -192,12 +179,9 @@
     const screen = document.getElementById('movieScreen');
     screen?.classList.add('miss');
     setTimeout(() => screen?.classList.remove('miss'), 420);
-    let i = Math.floor(Math.random() * WRONG_ROASTS.length);
-    if (i === lastRoast) i = (i + 1) % WRONG_ROASTS.length;
-    lastRoast = i;
     const sub = document.getElementById('subtitle');
     sub.classList.add('wrong');
-    sub.innerHTML = `<span class="lbl">${takes === 1 ? 'cut!' : 'take ' + takes}</span>${esc(WRONG_ROASTS[i])}`;
+    sub.innerHTML = `<span class="lbl">${takes === 1 ? 'cut!' : 'take ' + takes}</span>${esc(typeof ptLine === 'function' ? ptLine('wrong') : 'Not that one. Roll it again.')}`;
     S.typed = '';
     renderTyped();
   };
