@@ -271,9 +271,8 @@
     overlay.classList.remove('show', 'skip', 'correct');
   }
 
-  // Desktop shows the title once, on the screen card: clear the strip and the answer box behind it.
+  // The title shows once, on the result card: the screen keeps the verdict word, and the strip and answer box clear.
   function clearBehindCard() {
-    if (isMobile()) return;
     const sub = document.getElementById('subtitle');
     sub.classList.remove('wrong');
     sub.innerHTML = '';

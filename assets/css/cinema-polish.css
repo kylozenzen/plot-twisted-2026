@@ -289,3 +289,17 @@ body:not(.gameplay-active) .stage{padding-top:max(46px,env(safe-area-inset-top))
   .act:disabled .key-cap{opacity:.5}
   #theater .pt-mobile-result-continue .key-cap{color:rgba(43,26,8,.72);background:rgba(43,26,8,.06);border-color:rgba(43,26,8,.3)}
 }
+@media(min-width:960px){
+  /* Right / wrong feedback at the same scale as the title-card clue.
+     #movieScreen doubles the id so these beat the result styles injected by mobile-feedback-polish.js. */
+  #theater #movieScreen .pt-mobile-result-card{width:min(100%,900px);gap:14px}
+  #theater #movieScreen .pt-mobile-result-kicker{font-size:clamp(13px,1vw,17px);letter-spacing:.24em}
+  #theater #movieScreen .pt-mobile-result-title{font-size:clamp(50px,4.6vw,88px);line-height:1}
+  #theater #movieScreen .pt-mobile-result.skip .pt-mobile-result-title{font-size:clamp(36px,3.3vw,62px);line-height:1.08;text-wrap:balance}
+  #theater #movieScreen .pt-mobile-result-movie{font-size:clamp(26px,2.4vw,46px);line-height:1.08;text-wrap:balance}
+  #theater #movieScreen .pt-mobile-result-copy{font-size:clamp(18px,1.45vw,26px);line-height:1.35;max-width:36ch}
+  #theater #movieScreen .pt-mobile-result-continue{min-width:clamp(240px,20vw,320px);min-height:clamp(48px,4vw,62px);margin-top:10px;font-size:clamp(17px,1.35vw,22px)}
+  /* Wrong answers and hints land in the strip under the screen */
+  #theater .subtitle{height:clamp(40px,3.6vw,56px);font-size:clamp(18px,1.5vw,27px)}
+  #theater .subtitle .lbl{font-size:clamp(12px,.95vw,16px)}
+}
