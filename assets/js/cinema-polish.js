@@ -218,5 +218,34 @@
     return result;
   };
 
+  /* ---------- Desktop lobby: the showings live on the front page ---------- */
+  const desktop = window.matchMedia('(min-width: 960px)');
+  function fillLobbyStats() {
+    const cats = typeof CAT_ORDER !== 'undefined' ? CAT_ORDER : Object.keys(QUESTIONS || {});
+    const titles = new Set();
+    cats.forEach((key) => (QUESTIONS[key] || []).forEach((q) => titles.add(q.title)));
+    if (!titles.size) return;
+    const shows = document.getElementById('statShowings');
+    const movies = document.getElementById('statMovies');
+    if (shows) shows.textContent = cats.length;
+    if (movies) movies.textContent = titles.size;
+  }
+  const stubBoard = renderBoard;
+  renderBoard = function lobbyRenderBoard() {
+    const result = stubBoard.apply(this, arguments);
+    const src = document.getElementById('board');
+    const dst = document.getElementById('lobbyBoard');
+    if (src && dst) dst.innerHTML = src.innerHTML;
+    fillLobbyStats();
+    return result;
+  };
+  // Re-render on the way in so best scores from the round just played show up.
+  const baseGoLobby = goLobby;
+  goLobby = function lobbyGoLobby() { renderBoard(); return baseGoLobby.apply(this, arguments); };
+  goBoxOffice = function lobbyGoBoxOffice() {
+    renderBoard();
+    showScreen(desktop.matches ? 'lobby' : 'boxoffice');
+  };
+
   renderBoard();
 })();

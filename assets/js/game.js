@@ -79,7 +79,7 @@ function startRound(key){
   if(!pool.length){ toast('That reel is missing. Refresh and try again.'); return; }
   S.cat = Object.assign({key}, CAT_META[key]);
   S.qs = drawQuestions(pool);
-  S.i=0; S.score=0; S.correct=0; S.results=new Array(S.qs.length).fill(null);
+  S.i=0; S.score=0; S.correct=0; S.results=new Array(S.qs.length).fill(null); S.hints=[];
   const hud=document.getElementById('hudCat'); hud.textContent=S.cat.name; hud.classList.toggle('hard',SETTINGS.mode==='hard'); hud.title=MODE_META[SETTINGS.mode].name;
   document.getElementById('hudTotal').textContent=S.qs.length;
   buildSeats(); buildPips(); showScreen('theater'); loadQuestion();
@@ -180,7 +180,7 @@ function win(q){
 }
 function wrong(){ sfxWrong(); buzz([0,30,40,30]); const line=document.getElementById('answerLine'); line.classList.add('shake'); setTimeout(()=>line.classList.remove('shake'),350); const sub=document.getElementById('subtitle'); sub.classList.add('wrong'); sub.innerHTML=`<span class="lbl">cut!</span>Not that one. Roll it again.`; S.typed=""; renderTyped(); }
 function letterReveal(title){ return title.split(/\s+/).map(w=>[...w].map((ch,i)=>{ if(!/[a-z0-9]/i.test(ch))return ch; return i===0?ch.toUpperCase():'_'; }).join('')).join(' '); }
-function useHint(){ if(S.locked||S.hintUsed)return; S.hintUsed=true; document.getElementById('hintBtn').disabled=true; const q=S.qs[S.i]; const sub=document.getElementById('subtitle'); sub.classList.remove('wrong'); if(q.hint) sub.innerHTML=`<span class="lbl">subtitle</span>${esc(q.hint)}`; else sub.innerHTML=`<span class="lbl">on the marquee</span><span style="font-family:'Space Mono',ui-monospace,monospace;letter-spacing:.22em">${esc(letterReveal(q.title))}</span>`; }
+function useHint(){ if(S.locked||S.hintUsed)return; S.hintUsed=true; S.hints[S.i]=true; document.getElementById('hintBtn').disabled=true; const q=S.qs[S.i]; const sub=document.getElementById('subtitle'); sub.classList.remove('wrong'); if(q.hint) sub.innerHTML=`<span class="lbl">subtitle</span>${esc(q.hint)}`; else sub.innerHTML=`<span class="lbl">on the marquee</span><span style="font-family:'Space Mono',ui-monospace,monospace;letter-spacing:.22em">${esc(letterReveal(q.title))}</span>`; }
 function skipQuestion(){ if(S.locked)return; S.locked=true; const q=S.qs[S.i]; const sub=document.getElementById('subtitle'); sub.classList.remove('wrong'); sub.innerHTML=`<span class="lbl">the answer was</span>${esc(q.title)}`; S.results[S.i]=false; renderPips(); setTimeout(next,1100); }
 function next(){ if('speechSynthesis' in window) speechSynthesis.cancel(); S.i++; if(S.i>=S.qs.length) endRound(); else loadQuestion(); }
 function bump(){ const line=document.getElementById('answerLine'); line.classList.add('shake'); setTimeout(()=>line.classList.remove('shake'),350); }
@@ -191,7 +191,19 @@ function endRound(){
   const bkey=modeKey(S.cat.key), prev=BEST[bkey]||0, isBest=S.score>prev&&S.score>0; if(isBest){ BEST[bkey]=S.score; LS.set('pt_best',BEST); }
   const when=now.toLocaleDateString(undefined,{month:'short',day:'numeric',year:'numeric'})+" \u00b7 "+now.toLocaleTimeString(undefined,{hour:'numeric',minute:'2-digit'});
   document.getElementById('ticket').innerHTML=`<div class="t-brand"><div class="cinema">PLOT TWISTED CINEMAS</div><div class="admit">ADMIT ONE</div></div><div class="t-row"><span class="k">SHOWING</span><span class="v">${esc(S.cat.name)}</span></div><div class="t-row"><span class="k">PROGRAM</span><span class="v">${MODE_META[SETTINGS.mode].name}</span></div><div class="t-row"><span class="k">DATE</span><span class="v">${when}</span></div><div class="t-row"><span class="k">SEATS PLAYED</span><span class="v">${S.correct}/${S.qs.length} correct</span></div><div class="t-score"><div class="num">${S.score}</div><div class="lbl">FINAL SCORE</div></div><div class="t-rating"><div class="stars">${r.stars}</div><div class="crit">${r.crit}</div></div>${isBest?'<div class="t-best">★ NEW HIGH SCORE ★</div>':''}<div class="barcode" aria-hidden="true"></div><div class="t-serial">NO. ${serial()} \u00b7 NOBODY CREATIVE</div>`;
+  renderRecap();
   showScreen('receipt');
+}
+// Round recap under the receipt: every clue with its answer. Open beside the ticket on desktop, a tap-to-open panel on phones.
+function renderRecap(){
+  const el=document.getElementById('recap'); if(!el) return;
+  const desktop=matchMedia('(min-width:960px)').matches;
+  const rows=S.qs.map((q,i)=>{ const got=S.results[i]===true, hinted=!!(S.hints&&S.hints[i]);
+    const tag=got?(hinted?'+50 \u00b7 hint':'+100'):'Skipped';
+    return `<li class="recap-row ${got?'got':'missed'}"><span class="recap-n">${String(i+1).padStart(2,'0')}</span><div class="recap-body"><div class="recap-title">${esc(q.title)}</div><div class="recap-clue">${esc(q.clue)}</div></div><span class="recap-tag">${tag}</span></li>`; }).join('');
+  el.innerHTML=`<summary><span class="recap-h">Round Recap</span><span class="recap-count">${S.correct}/${S.qs.length} correct</span></summary><ol class="recap-list">${rows}</ol>`;
+  el.open=desktop;
+  el.querySelector('summary').addEventListener('click',e=>{ if(matchMedia('(min-width:960px)').matches) e.preventDefault(); });
 }
 async function shareScoreCard(){
   try{
@@ -225,7 +237,7 @@ function continueResult(){ const b=document.querySelector('#theater .pt-mobile-r
 document.addEventListener('keydown',e=>{
   if(e.metaKey||e.ctrlKey||e.altKey) return;
   const k=e.key;
-  if(isActive('boxoffice')){ if(/^[1-9]$/.test(k)){ const key=(typeof CAT_ORDER!=='undefined'?CAT_ORDER:Object.keys(CAT_META))[+k-1]; if(key){ e.preventDefault(); startRound(key); } } return; }
+  if(isActive('boxoffice') || (isActive('lobby') && matchMedia('(min-width:960px)').matches)){ if(/^[1-9]$/.test(k)){ const key=(typeof CAT_ORDER!=='undefined'?CAT_ORDER:Object.keys(CAT_META))[+k-1]; if(key){ e.preventDefault(); startRound(key); } } return; }
   if(!isActive('theater')) return;
   if(document.getElementById('exitOverlay').classList.contains('show')) return;
   if(k==='Escape'){ e.preventDefault(); quitGame(); return; }

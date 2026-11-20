@@ -39,8 +39,8 @@ body:not(.gameplay-active)::after{
 @keyframes neonHum{0%,100%{opacity:1}46%{opacity:1}47%{opacity:.72}48%{opacity:1}52%{opacity:.86}53%{opacity:1}}
 
 /* ---------- Box office: ticket stubs ---------- */
-#boxoffice .board{counter-reset:stub}
-#boxoffice .poster.stub{
+:is(#boxoffice,#lobby) .board{counter-reset:stub}
+:is(#boxoffice,#lobby) .poster.stub{
   --perf:46px;
   display:flex;flex-direction:column;align-items:flex-start;text-align:left;
   padding:16px 16px 0;min-height:0;
@@ -54,36 +54,36 @@ body:not(.gameplay-active)::after{
   animation:stubIn .5s cubic-bezier(.2,.9,.3,1.2) both;animation-delay:calc(var(--i,0) * 45ms);
 }
 @keyframes stubIn{from{opacity:0;transform:translateY(14px) rotate(-1.2deg)}to{opacity:1;transform:none}}
-#boxoffice .poster.stub:hover{transform:translateY(-4px) rotate(-.6deg);border-color:var(--brass)}
-#boxoffice .poster.stub:hover .stub-art{color:var(--accent);filter:drop-shadow(0 0 10px color-mix(in srgb,var(--accent) 70%,transparent))}
-#boxoffice .poster.stub .stub-art{display:block;width:40px;height:40px;color:var(--bulb);transition:color .2s,filter .2s}
-#boxoffice .poster.stub .stub-art svg{width:100%;height:100%;display:block}
-#boxoffice .poster.stub h3{margin:10px 0 4px;font-size:22px}
-#boxoffice .poster.stub p{margin-bottom:14px}
-#boxoffice .poster.stub .stub-perf{margin-top:auto;align-self:stretch;height:0;border-top:2px dashed #5a171c;margin-left:-6px;margin-right:-6px}
-#boxoffice .poster.stub .stub-foot{
+:is(#boxoffice,#lobby) .poster.stub:hover{transform:translateY(-4px) rotate(-.6deg);border-color:var(--brass)}
+:is(#boxoffice,#lobby) .poster.stub:hover .stub-art{color:var(--accent);filter:drop-shadow(0 0 10px color-mix(in srgb,var(--accent) 70%,transparent))}
+:is(#boxoffice,#lobby) .poster.stub .stub-art{display:block;width:40px;height:40px;color:var(--bulb);transition:color .2s,filter .2s}
+:is(#boxoffice,#lobby) .poster.stub .stub-art svg{width:100%;height:100%;display:block}
+:is(#boxoffice,#lobby) .poster.stub h3{margin:10px 0 4px;font-size:22px}
+:is(#boxoffice,#lobby) .poster.stub p{margin-bottom:14px}
+:is(#boxoffice,#lobby) .poster.stub .stub-perf{margin-top:auto;align-self:stretch;height:0;border-top:2px dashed #5a171c;margin-left:-6px;margin-right:-6px}
+:is(#boxoffice,#lobby) .poster.stub .stub-foot{
   align-self:stretch;height:var(--perf);margin:0 -16px;padding:0 14px;
   display:flex;align-items:center;gap:8px;flex-wrap:nowrap;overflow:hidden;
   background:linear-gradient(180deg,rgba(228,179,76,.07),rgba(228,179,76,.02));
 }
-#boxoffice .poster.stub .rated{position:static;flex:0 0 auto;font-size:10px;padding:2px 6px;background:rgba(14,7,8,.6)}
-#boxoffice .poster.stub .stub-admit{font-family:'Space Mono',ui-monospace,monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--brass-dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-#boxoffice .poster.stub .stub-best{margin-left:auto;font-family:'Space Mono',ui-monospace,monospace;font-size:10px;color:var(--brass);white-space:nowrap}
-#boxoffice .poster.stub .runtime,#boxoffice .poster.stub .flick{display:none}
+:is(#boxoffice,#lobby) .poster.stub .rated{position:static;flex:0 0 auto;font-size:10px;padding:2px 6px;background:rgba(14,7,8,.6)}
+:is(#boxoffice,#lobby) .poster.stub .stub-admit{font-family:'Space Mono',ui-monospace,monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--brass-dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+:is(#boxoffice,#lobby) .poster.stub .stub-best{margin-left:auto;font-family:'Space Mono',ui-monospace,monospace;font-size:10px;color:var(--brass);white-space:nowrap}
+:is(#boxoffice,#lobby) .poster.stub .runtime,:is(#boxoffice,#lobby) .poster.stub .flick{display:none}
 @media(max-width:959px){
-  #boxoffice .poster.stub{--perf:38px;padding:13px 12px 0}
-  #boxoffice .poster.stub .stub-art{width:32px;height:32px}
-  #boxoffice .poster.stub h3{font-size:clamp(17px,5.2vw,22px);margin-top:8px}
-  #boxoffice .poster.stub p{font-size:12px;margin-bottom:12px}
-  #boxoffice .poster.stub .stub-foot{margin:0 -12px;padding:0 10px;gap:6px}
-  #boxoffice .poster.stub .stub-admit{font-size:8.5px;letter-spacing:.04em}
-  #boxoffice .poster.stub .stub-best{display:none}
+  :is(#boxoffice,#lobby) .poster.stub{--perf:38px;padding:13px 12px 0}
+  :is(#boxoffice,#lobby) .poster.stub .stub-art{width:32px;height:32px}
+  :is(#boxoffice,#lobby) .poster.stub h3{font-size:clamp(17px,5.2vw,22px);margin-top:8px}
+  :is(#boxoffice,#lobby) .poster.stub p{font-size:12px;margin-bottom:12px}
+  :is(#boxoffice,#lobby) .poster.stub .stub-foot{margin:0 -12px;padding:0 10px;gap:6px}
+  :is(#boxoffice,#lobby) .poster.stub .stub-admit{font-size:8.5px;letter-spacing:.04em}
+  :is(#boxoffice,#lobby) .poster.stub .stub-best{display:none}
 }
 @media(min-width:960px){
-  #boxoffice .poster.stub{min-height:240px;padding:22px 22px 0}
-  #boxoffice .poster.stub .stub-art{width:50px;height:50px}
-  #boxoffice .poster.stub h3{font-size:26px}
-  #boxoffice .poster.stub .stub-foot{margin:0 -22px;padding:0 20px}
+  :is(#boxoffice,#lobby) .poster.stub{min-height:240px;padding:22px 22px 0}
+  :is(#boxoffice,#lobby) .poster.stub .stub-art{width:50px;height:50px}
+  :is(#boxoffice,#lobby) .poster.stub h3{font-size:26px}
+  :is(#boxoffice,#lobby) .poster.stub .stub-foot{margin:0 -22px;padding:0 20px}
 }
 #more .coming .stub-art{display:block;width:38px;height:38px;color:#9a7d6a}
 #more .coming .stub-art svg{width:100%;height:100%;display:block}
@@ -189,7 +189,7 @@ body:not(.gameplay-active)::after{
 }
 @media(prefers-reduced-motion:reduce){
   #theater .projector-beam,#theater .movie-screen::before,#theater .movie-screen::after,#lobby .title .twist,#lobby .marquee::before,#lobby .marquee::after{animation:none}
-  #boxoffice .poster.stub{animation:none}
+  :is(#boxoffice,#lobby) .poster.stub{animation:none}
 }
 /* Clear the valance on scrolling screens */
 body:not(.gameplay-active) .stage{padding-top:max(46px,env(safe-area-inset-top))}
@@ -303,3 +303,91 @@ body:not(.gameplay-active) .stage{padding-top:max(46px,env(safe-area-inset-top))
   #theater .subtitle{height:clamp(40px,3.6vw,56px);font-size:clamp(18px,1.5vw,27px)}
   #theater .subtitle .lbl{font-size:clamp(12px,.95vw,16px)}
 }
+
+/* ---------- Desktop lobby: marquee, box office and all eight showings on one screen ---------- */
+.lobby-showings,.lobby-surprise{display:none}
+@media(min-width:960px){
+  .lobby-buy{display:none}
+  .lobby-surprise{display:inline-block}
+  #lobby .marquee{min-height:0;height:clamp(240px,34vh,380px);padding:34px 30px}
+  #lobby .title{font-size:clamp(50px,5.2vw,80px)}
+  #lobby .lobby-boxoffice{padding:24px 24px 20px}
+  #lobby .lobby-boxoffice h2{font-size:24px}
+  #lobby .lobby-boxoffice .menu{margin-top:16px;gap:10px}
+  #lobby .lobby-boxoffice .menu .btn{padding:12px 20px;font-size:17px}
+  #lobby .lobby-details{padding-top:14px}
+  .lobby-showings{display:block;margin-top:clamp(16px,2.4vh,26px)}
+  .lobby-showings-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:12px}
+  .lobby-showings-head .lobby-kicker{margin:0}
+  .lobby-keys{display:none;font-family:'Space Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#8e6d59}
+  #lobbyBoard{grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+  #lobby .poster.stub{--perf:40px;padding:14px 18px 0;min-height:0}
+  #lobby .poster.stub .stub-art{width:32px;height:32px}
+  #lobby .poster.stub h3{font-size:20px;margin:8px 0 3px}
+  #lobby .poster.stub p{font-size:13px;line-height:1.35;margin-bottom:12px}
+  #lobby .poster.stub .stub-foot{margin:0 -18px;padding:0 16px}
+  #lobby .foot{margin-top:clamp(14px,2vh,22px)}
+  /* the stubs below do the talking, so the panel drops its intro line and the marquee matches the panel's height */
+  #lobby .lobby-boxoffice p{display:none}
+  #lobby .lobby-shell{align-items:stretch}
+  #lobby .marquee{height:auto;min-height:clamp(240px,30vh,340px)}
+  #lobby .foot::after{height:40px;margin-top:12px}
+}
+/* Shorter desktop screens (up to 880px tall): tighter stubs, no seat row, less top padding */
+@media(min-width:960px) and (max-height:880px){
+  body:not(.gameplay-active) .stage{padding-top:22px;padding-bottom:16px}
+  #lobby .marquee{min-height:0;padding:26px 24px}
+  #lobby .title{font-size:clamp(44px,4.4vw,64px)}
+  #lobby .tagline{display:none}
+  #lobby .lobby-boxoffice{padding:18px 20px 16px}
+  #lobby .lobby-boxoffice h2{font-size:21px;margin-bottom:0}
+  #lobby .lobby-boxoffice .menu{margin-top:12px;gap:8px}
+  #lobby .lobby-boxoffice .menu .btn{padding:10px 18px;font-size:16px}
+  #lobby .lobby-details{padding-top:10px}
+  #lobby .lobby-details b{font-size:19px}
+  .lobby-showings{margin-top:14px}
+  .lobby-showings-head{margin-bottom:8px}
+  #lobbyBoard{gap:12px}
+  #lobby .poster.stub{--perf:36px;padding-top:12px}
+  #lobby .poster.stub .stub-art{width:26px;height:26px}
+  #lobby .poster.stub h3{font-size:18px;margin:6px 0 10px}
+  #lobby .poster.stub p{display:none}
+  #lobby .foot{margin-top:12px}
+  #lobby .foot::after{display:none}
+  #receipt .receipt-copy{display:none}
+  .recap{margin-top:18px}
+  .recap-row{padding:7px 12px}
+}
+@media(min-width:960px) and (hover:hover) and (pointer:fine){
+  .lobby-keys{display:inline}
+  /* number keycap on each stub, matching the 1-8 shortcut */
+  #lobbyBoard .poster.stub::after{counter-increment:stub;content:counter(stub);position:absolute;top:12px;right:14px;min-width:20px;padding:3px 5px 2px;text-align:center;font-family:'Space Mono',ui-monospace,monospace;font-size:10px;font-weight:700;line-height:1;color:rgba(228,179,76,.8);background:rgba(228,179,76,.06);border:1px solid rgba(228,179,76,.32);border-bottom-width:2px;border-radius:4px}
+}
+
+/* ---------- Round recap on the receipt ---------- */
+.recap{max-width:400px;margin:14px auto 0;text-align:left}
+.recap summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:10px;padding:13px 16px;border:2px solid var(--velvet-lit);border-radius:10px;background:rgba(20,8,9,.6);font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-weight:700;font-size:15px;letter-spacing:.14em;text-transform:uppercase;color:var(--bulb)}
+.recap summary::-webkit-details-marker{display:none}
+.recap summary::after{content:"\25BE";color:var(--brass);font-size:14px}
+.recap[open] summary::after{content:"\25B4"}
+.recap-count{margin-left:auto;font-family:'Space Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.06em;color:var(--brass)}
+.recap-list{list-style:none;margin:10px 0 0;padding:0;display:flex;flex-direction:column;gap:8px}
+.recap-row{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:12px;align-items:start;padding:10px 12px;border:1px solid #3b181c;border-radius:10px;background:linear-gradient(180deg,#1d0a0c,#140708)}
+.recap-n{font-family:'Space Mono',ui-monospace,monospace;font-size:11px;color:var(--brass-dim);padding-top:3px}
+.recap-title{font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-weight:700;font-size:17px;letter-spacing:.05em;text-transform:uppercase;line-height:1.15;color:var(--bulb)}
+.recap-clue{margin-top:2px;font-size:13px;line-height:1.35;color:#b9987a}
+.recap-tag{white-space:nowrap;padding:3px 7px 2px;border-radius:5px;font-family:'Space Mono',ui-monospace,monospace;font-size:11px;font-weight:700;color:#5ee08a;border:1px solid rgba(94,224,138,.4)}
+.recap-row.missed{border-color:rgba(255,77,141,.3)}
+.recap-row.missed .recap-tag{color:#ff7078;border-color:rgba(255,112,120,.45)}
+@media(min-width:960px){
+  #receipt .receipt-layout{grid-template-columns:minmax(360px,400px) minmax(0,580px);gap:56px;align-items:center}
+  #receipt .receipt-copy{margin-top:8px}
+  #receipt .receipt-cta{margin-top:20px}
+  .recap{max-width:none;margin-top:24px}
+  .recap summary{cursor:default;padding:0 0 8px;border:none;border-bottom:1px solid #3b181c;border-radius:0;background:none;font-size:13px;letter-spacing:.3em;color:var(--brass)}
+  .recap summary::after,.recap[open] summary::after{content:none}
+  .recap-row{padding:9px 12px}
+}
+
+/* ---------- Settings: Seat Layout only matters for the on-screen keyboard, which desktop doesn't show ---------- */
+@media(min-width:960px){#settings .seat-layout-row{display:none}}
