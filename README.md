@@ -54,7 +54,11 @@ An entry can also carry `aliases`: extra accepted answers, matched with the same
 | Shift + Enter | Skip |
 | `/` | Hint |
 | Esc | Open or close the exit menu |
-| 1–8 | Pick a showing at the box office |
+| 1–8 | Pick a showing (lobby on desktop, box office on phones) |
+
+On desktop the lobby shows all eight showings next to the marquee, so "Buy Tickets" and "New Showing" both lead there. Phones keep the separate box office screen.
+
+After each round the receipt lists the five clues with their answers and points (Round Recap). It's open beside the ticket on desktop and a tap-to-open panel on phones.
 
 Shortcuts only use keys that never appear in an answer. Keycaps show on the buttons on desktops with a mouse and stay hidden on touch screens.
 
