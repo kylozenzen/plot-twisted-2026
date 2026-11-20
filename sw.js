@@ -1,9 +1,9 @@
-const CACHE = 'plot-twisted-v29';
+const CACHE = 'plot-twisted-v30';
 const ASSETS = [
   './index.html', './game.html', './privacy.html', './manifest.webmanifest',
   './assets/css/landing.css', './assets/css/game.css', './assets/css/privacy.css',
   './assets/css/desktop-expansion.css', './assets/css/wide-desktop-categories.css', './assets/css/cinema-polish.css',
-  './assets/js/landing.js', './assets/js/game.js', './assets/js/category-expansion.js',
+  './assets/js/landing.js', './assets/js/game.js', './assets/js/reply-lines.js', './assets/js/category-expansion.js',
   './assets/js/mobile-feedback-polish.js', './assets/js/cinema-icons.js', './assets/js/cinema-polish.js',
   './assets/data/questions.json',
   './assets/images/icon-marquee-192.png', './assets/images/icon-marquee-512.png',

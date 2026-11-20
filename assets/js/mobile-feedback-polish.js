@@ -1,23 +1,7 @@
 (() => {
   const MOBILE_QUERY = '(max-width: 959px)';
-  const PRAISE = [
-    'Roll credits — that answer just won opening weekend.',
-    'Spotlight on you. Correct, and with style.',
-    'That landed like a third-act reveal.',
-    'Box office confirmed: correct.',
-    'Your watchlist is paying dividends.',
-    'The clue never stood a chance.'
-  ];
-  const SKIP_ROASTS = [
-    'We’ll pretend you went for popcorn.',
-    'Your brain called in a stunt double.',
-    'A strategic retreat. Very cinematic.',
-    'The clue survives another screening.',
-    'This one is leaving the theater without you.',
-    'Skipped. Your Letterboxd account has been notified.'
-  ];
-
-  const pick = (pool) => pool[Math.floor(Math.random() * pool.length)];
+  // Reply lines live in reply-lines.js and are dealt without repeats.
+  const line = (kind) => (typeof ptLine === 'function' ? ptLine(kind) : '');
   const isMobile = () => window.matchMedia(MOBILE_QUERY).matches;
 
   const style = document.createElement('style');
@@ -31,7 +15,6 @@
       text-shadow:0 0 30px rgba(183,53,61,.55);
     }
     @media (max-width: 959px) {
-      #theater .actions .act:nth-child(2) { display:none; }
       #theater .actions { gap:10px; }
       #theater .actions .act {
         min-height:58px;
@@ -242,10 +225,12 @@
         <div class="pt-mobile-result-title"></div>
         <div class="pt-mobile-result-movie"></div>
         <div class="pt-mobile-result-copy"></div>
-        <button class="pt-mobile-result-continue" type="button">Continue →</button>
+        <button class="pt-mobile-result-continue" type="button">Continue →<kbd class="key-cap" aria-hidden="true">Enter</kbd></button>
       </div>
     `;
     overlay.querySelector('.pt-mobile-result-continue').addEventListener('click', () => {
+      // Enter and a click can land on the same result; only the first one advances.
+      if (!overlay.classList.contains('show')) return;
       hideOverlay();
       next();
     });
@@ -264,8 +249,18 @@
 
   function hideOverlay() {
     const overlay = document.querySelector('#theater .pt-mobile-result');
+    document.getElementById('theater')?.classList.remove('result-up');
     if (!overlay) return;
     overlay.classList.remove('show', 'skip', 'correct');
+  }
+
+  // The title shows once, on the result card: the screen keeps the verdict word, and the strip and answer box clear.
+  function clearBehindCard() {
+    const sub = document.getElementById('subtitle');
+    sub.classList.remove('wrong');
+    sub.innerHTML = '';
+    S.typed = '';
+    renderTyped();
   }
 
   function showOverlay({ type, kicker, title, movie, copy }) {
@@ -280,6 +275,7 @@
     movieLine.hidden = !movie;
     overlay.querySelector('.pt-mobile-result-copy').textContent = copy;
     overlay.querySelector('.pt-mobile-result-continue').focus({ preventScroll:true });
+    document.getElementById('theater')?.classList.add('result-up');
     return true;
   }
 
@@ -330,9 +326,10 @@
       kicker:'★ Nice work ★',
       title:`+${gained} PTS`,
       movie:q.title,
-      copy:pick(PRAISE)
+      copy:line('correct')
     });
-    if (!shown) setTimeout(next, 1150);
+    if (shown) clearBehindCard();
+    else setTimeout(next, 1150);
   };
 
   skipQuestion = function mobilePolishSkip() {
@@ -356,8 +353,9 @@
       type:'skip',
       kicker:'SKIPPED',
       title:q.title,
-      copy:pick(SKIP_ROASTS)
+      copy:line('skip')
     });
-    if (!shown) setTimeout(next, 1100);
+    if (shown) clearBehindCard();
+    else setTimeout(next, 1100);
   };
 })();

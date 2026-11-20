@@ -43,6 +43,21 @@ Landing page, game, icons, and share card all use one theater look: velvet (`#4a
 
 Bump the cache name in `sw.js` whenever `questions.json` changes, or returning players keep the old bank.
 
+An entry can also carry `aliases`: extra accepted answers, matched with the same fuzzy rules as the title. Use them for titles that can't be typed on the phone keyboard, which has letters only (for example `X2` → "X-Men United").
+
+### Keyboard (desktop)
+
+| Key | Action |
+| --- | --- |
+| Letters, digits, Space | Type the answer |
+| Enter | Submit, or continue after a result |
+| Shift + Enter | Skip |
+| `/` | Hint |
+| Esc | Open or close the exit menu |
+| 1–8 | Pick a showing at the box office |
+
+Shortcuts only use keys that never appear in an answer. Keycaps show on the buttons on desktops with a mouse and stay hidden on touch screens.
+
 The site intentionally has no build step. Production assets use stable, descriptive names; obsolete versioned files belong in `archive/`.
 
 ## Routes

@@ -1933,6 +1933,13 @@
     },
     {
       "title": "X2",
+      "aliases": [
+        "X2: X-Men United",
+        "X-Men United",
+        "X-Men 2",
+        "X-Men Two",
+        "X Two"
+      ],
       "deep": true,
       "clues": [
         "Government attacks school, proving mutant kids needed better field trip forms."
@@ -3922,6 +3929,11 @@
     },
     {
       "title": "2001: A Space Odyssey",
+      "aliases": [
+        "A Space Odyssey",
+        "Space Odyssey",
+        "Two Thousand One"
+      ],
       "clues": [
         "Humanity finds a mysterious slab, goes to space, and loses an argument with a calm red light.",
         "Crew has a disagreement with the ship computer about opening a door."
